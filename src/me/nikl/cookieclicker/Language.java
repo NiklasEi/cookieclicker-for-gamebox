@@ -17,12 +17,12 @@ public class Language {
 	private Main plugin;
 	private FileConfiguration langFile;
 	
-	public String PREFIX = "[WhacAMole]", NAME = "&1WhacAMole&r";
-	public List<String> GAME_HELP;
+	public String PREFIX = "[CookieClicker]", NAME = "&1CookieClicker&r";
+	public List<String> GAME_HELP, GAME_OVEN_LORE;
 	private YamlConfiguration defaultLang;
 
-	public String GAME_TITLE, GAME_TITLE_LOST, GAME_TITLE_START, GAME_WON_MONEY, GAME_WON
-			, GAME_MOLE_NAME, GAME_CREEPER_NAME, GAME_HUMAN_NAME;
+	public String GAME_TITLE, GAME_WON_MONEY, GAME_WON
+			, GAME_COOKIE_NAME, GAME_OVEN_NAME;
 	public String GAME_PAYED, GAME_NOT_ENOUGH_MONEY;
 
 	public Language(Main plugin){
@@ -37,12 +37,11 @@ public class Language {
 
 	private void getGameMessages() {
 		this.GAME_TITLE = getString("game.inventoryTitles.gameTitle");
-		this.GAME_TITLE_LOST = getString("game.inventoryTitles.gameOver");
-		this.GAME_TITLE_START = getString("game.inventoryTitles.start");
 
-		this.GAME_MOLE_NAME = getString("game.moleDisplayName");
-		this.GAME_CREEPER_NAME = getString("game.creeperDisplayName");
-		this.GAME_HUMAN_NAME = getString("game.humanDisplayName");
+		this.GAME_COOKIE_NAME = getString("game.cookieName");
+
+		this.GAME_OVEN_NAME = getString("game.ovenName");
+		this.GAME_OVEN_LORE = getStringList("game.ovenLore");
 
 		this.GAME_PAYED = getString("game.econ.payed");
 		this.GAME_NOT_ENOUGH_MONEY = getString("game.econ.notEnoughMoney");
