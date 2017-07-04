@@ -93,6 +93,7 @@ public class GameManager implements IGameManager {
 
         if(game == null) return;
 
+        game.cancel();
         game.onGameEnd();
 
         games.remove(uuid);
