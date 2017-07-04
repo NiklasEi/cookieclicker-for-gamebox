@@ -3,3 +3,4 @@ author: Nikl
 main: me.nikl.cookieclicker.Main
 version: 0.0.1
 website: nikl.me
+depend: [GameBox]
