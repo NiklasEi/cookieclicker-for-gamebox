@@ -11,24 +11,21 @@ game:
     wonMoney: " &2You scored &6%score%&2 and won &6%reward%&2!"
   gameOverNoPay: " &2You reached a final score of &6%score%"
   inventoryTitles:
-    gameTitle: "&9WhacAMole      Score: %score%    &4%time%"
-    start: "&9WhacAMole       &c&lClick to start"
-    gameOver: " &4Game Over         &9Score: %score%"
-  moleDisplayName: "&1&lMole"
-  creeperDisplayName: "&c&lCreeper"
-  humanDisplayName: "&a&lHuman"
+    gameTitle: "&9&lCC   &r&a%score%"
+  cookieName: "&1&lCookie"
+  ovenName: "&a&lCookies per second"
+  ovenLore:
+    - ""
+    - '&1You currently produce'
+    - "  &2%cookies_per_second%"
+    - "&1cookies per second (without clicking)"
 
 
-prefix: "[&3WhacAMole&r]"
-name: "&1WhacAMole&r"
+prefix: "[&3CookieClicker&r]"
+name: "&1CookieClicker&r"
 
 
 gameHelp:
-  - '&1&lClassic:'
-  - '  &1&lMoles appear in one of 4 molehills.'
-  - '  &1&lClick on them before they disappear.'
+  - '&1&lJust click...'
   - ""
-  - '&1&lCreepers chasing Humans:'
-  - '  &1&lAnywhere in your inventory creepers'
-  - '  &1&l  or humans can appear.'
-  - '&1&l  Hit the creepers, but spare the humans!'
+  - '  &1&lClick and bake those cookies!'
