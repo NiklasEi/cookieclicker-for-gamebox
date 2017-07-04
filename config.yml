@@ -1,0 +1,61 @@
+# ----------------------------------------------------------------------------#
+#                                                                             #
+#                           Cookie Clicker config                             #
+#                                                                             #
+#                                  by Nikl                                    #
+# ----------------------------------------------------------------------------#
+
+# name of the language file (in the folder 'language')
+langFile: "default"
+
+rules:
+  # enable/disable sound
+  playSounds: true
+
+
+# requires vault and an economy plugin
+#   to enable economy do not forget to enable it for GameBox too
+economy:
+  enabled: false
+
+gameBox:
+  mainButton:
+    # define the Material and data for the button (format: 'material:data')
+    materialData: "357"
+    # display name of the button
+    displayName: "&3Cookie Clicker"
+    # lore of the button
+    lore:
+    - ""
+    - "&1Come to the dark side of the force..."
+  gameButtons:
+    normal:
+      materialData: "357"
+      displayName: "&aCookie Clicker"
+      lore:
+      - ""
+      - "&6Click on the cookie!"
+      - ""
+      - "&6Yes..."
+      - "  &6It's that simple."
+      slot: 20
+      cost: 5
+      # if true the best score of this button is saved
+      saveStats: true
+  topListButtons:
+    # use the same key as the game you want to display the top list for
+    #   for that button 'saveStats' must be true (see above)
+    saveStats:
+      materialData: "397:3"
+      displayName: "&6Cookie Clicker &c&lTop list"
+      slot: 33
+      # inventory title of the top list (%player% and %game%)
+      inventoryTitle: '     &6Cookie Clicker &rTop List'
+      # Lore of the skulls in the inventory. Use %rank% for the rank and %score% for the highest score of the player
+      skullLore:
+      - ''
+      - '&6Rank:&1 %rank%'
+      - '&6Score:&1 %score%'
+
+
+
