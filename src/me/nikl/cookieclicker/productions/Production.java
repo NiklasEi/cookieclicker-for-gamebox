@@ -2,12 +2,12 @@ package me.nikl.cookieclicker.productions;
 
 import me.nikl.cookieclicker.Language;
 import me.nikl.cookieclicker.Main;
-import org.bukkit.Material;
+import me.nikl.cookieclicker.Utility;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.material.MaterialData;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -96,9 +96,9 @@ public class Production {
         List<String> newLore = new ArrayList<>();
         for (String line : lore) {
             newLore.add(line.replace("%count%", String.valueOf(count))
-                    .replace("%cost%", String.valueOf(getCost()))
-                    .replace("%cookies_per_second_per_item%", String.format("%.1f", getProductionPerSecondPerItem()))
-                    .replace("%cookies_per_second%", String.format("%.1f", getAllInAllProductionPerSecond())));
+                    .replace("%cost%", Utility.convertHugeNumber(getCost()))
+                    .replace("%cookies_per_second_per_item%", Utility.convertHugeNumber(getProductionPerSecondPerItem()))
+                    .replace("%cookies_per_second%", Utility.convertHugeNumber(getAllInAllProductionPerSecond())));
         }
         if(description != null && !description.isEmpty()){
             newLore.add("");

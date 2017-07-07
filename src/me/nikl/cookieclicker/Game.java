@@ -16,11 +16,9 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.material.MaterialData;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 /**
  * Created by Niklas
@@ -65,7 +63,7 @@ public class Game extends BukkitRunnable{
         this.rule = rule;
         this.player = player;
 
-        cookies = 0;
+        cookies = 0.;
         time = 0;
 
         // only play sounds if the game setting allows to
@@ -121,10 +119,10 @@ public class Game extends BukkitRunnable{
         if(inventoryClickEvent.getCurrentItem() == null) return;
 
         if(inventoryClickEvent.getRawSlot() == mainCookieSlot) {
-            cookies++;
+            cookies += 1000000;
         } else if(productions.keySet().contains(inventoryClickEvent.getRawSlot())){
             Production production = productions.get(inventoryClickEvent.getRawSlot());
-            int cost = (int) (production.getCost() * Math.pow(1.15, production.getCount()));
+            int cost = production.getCost();
 
             switch (inventoryClickEvent.getAction()){
                 case PICKUP_ALL:
@@ -170,7 +168,7 @@ public class Game extends BukkitRunnable{
 
         lastTimeStamp = newTimeStamp;
 
-        nms.updateInventoryTitle(player, lang.GAME_TITLE.replace("%score%", String.valueOf((int) cookies)));
+        nms.updateInventoryTitle(player, lang.GAME_TITLE.replace("%score%", Utility.convertHugeNumber(cookies)));
         updateOven();
     }
 
