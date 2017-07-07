@@ -19,6 +19,12 @@ game:
     - '&1You currently produce'
     - "  &2%cookies_per_second%"
     - "&1cookies per second (without clicking)"
+  productionLore:
+    - "Buy one for %cost% (left click)"
+    - ""
+    - '&1You have %count% %name%'
+    - "  &1Each produces %cookies_per_second_per_item% cookies per second"
+    - "  &1Total production: %cookies_per_second%"
 
 
 prefix: "[&3CookieClicker&r]"
