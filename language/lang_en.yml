@@ -22,7 +22,7 @@ game:
   productionLore:
     - "Buy one for %cost% (left click)"
     - ""
-    - '&1You have %count% %name%'
+    - '&1You have %count% %name%(s)'
     - "  &1Each produces %cookies_per_second_per_item% cookies per second"
     - "  &1Total production: %cookies_per_second%"
 
