@@ -29,7 +29,7 @@ gameBox:
     - ""
     - "&1Come to the dark side of the force..."
   gameButtons:
-    normal:
+    weekly:
       materialData: "357"
       displayName: "&aCookie Clicker"
       lore:
@@ -45,7 +45,7 @@ gameBox:
   topListButtons:
     # use the same key as the game you want to display the top list for
     #   for that button 'saveStats' must be true (see above)
-    saveStats:
+    weekly:
       materialData: "397:3"
       displayName: "&6Cookie Clicker &c&lTop list"
       slot: 33
