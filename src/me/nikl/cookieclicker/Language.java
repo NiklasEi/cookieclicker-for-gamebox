@@ -18,7 +18,7 @@ public class Language {
 	private FileConfiguration langFile;
 	
 	public String PREFIX = "[CookieClicker]", NAME = "&1CookieClicker&r";
-	public List<String> GAME_HELP, GAME_OVEN_LORE;
+	public List<String> GAME_HELP, GAME_OVEN_LORE, GAME_PRODUCTION_LORE;
 	private YamlConfiguration defaultLang;
 
 	public String GAME_TITLE, GAME_WON_MONEY, GAME_WON
@@ -42,6 +42,8 @@ public class Language {
 
 		this.GAME_OVEN_NAME = getString("game.ovenName");
 		this.GAME_OVEN_LORE = getStringList("game.ovenLore");
+
+		this.GAME_PRODUCTION_LORE = getStringList("game.productionLore");
 
 		this.GAME_PAYED = getString("game.econ.payed");
 		this.GAME_NOT_ENOUGH_MONEY = getString("game.econ.notEnoughMoney");
