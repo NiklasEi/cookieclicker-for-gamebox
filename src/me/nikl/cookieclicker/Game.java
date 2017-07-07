@@ -1,5 +1,9 @@
 package me.nikl.cookieclicker;
 
+import me.nikl.cookieclicker.productions.Curser;
+import me.nikl.cookieclicker.productions.Farm;
+import me.nikl.cookieclicker.productions.Grandma;
+import me.nikl.cookieclicker.productions.Production;
 import me.nikl.gamebox.nms.NMSUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -15,6 +19,8 @@ import org.bukkit.scheduler.BukkitRunnable;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by Niklas
@@ -41,6 +47,8 @@ public class Game extends BukkitRunnable{
 
     private double cookiesPerSecond = 0.;
     private long lastTimeStamp = System.currentTimeMillis();
+
+    private HashMap<Integer, Production> productions = new HashMap<>();
 
     private int time;
 
@@ -74,10 +82,17 @@ public class Game extends BukkitRunnable{
     }
 
     private void buildInv() {
-        ItemMeta meta;
+        productions.put(6, new Curser(plugin, 6, "Curser"));
+        productions.put(7, new Grandma(plugin, 7, "Grandma"));
+        productions.put(8, new Farm(plugin, 8, "Farm"));
+
+
+        visualize();
+
+
 
         mainCookie.setAmount(1);
-        meta = mainCookie.getItemMeta();
+        ItemMeta meta = mainCookie.getItemMeta();
         meta.setDisplayName(lang.GAME_COOKIE_NAME);
         mainCookie.setItemMeta(meta);
         inventory.setItem(mainCookieSlot, mainCookie);
@@ -92,7 +107,7 @@ public class Game extends BukkitRunnable{
     private void updateOven() {
         ArrayList<String> lore = new ArrayList<>();
         for(String line : lang.GAME_OVEN_LORE){
-            lore.add(line.replace("%cookies_per_second%", String.format("%.2f", cookiesPerSecond)));
+            lore.add(line.replace("%cookies_per_second%", String.format("%.1f", cookiesPerSecond)));
         }
         ItemMeta meta = oven.getItemMeta();
         meta.setLore(lore);
@@ -103,10 +118,41 @@ public class Game extends BukkitRunnable{
 
     public void onClick(InventoryClickEvent inventoryClickEvent) {
         if(inventoryClickEvent.getAction() != InventoryAction.PICKUP_ALL && inventoryClickEvent.getAction() != InventoryAction.PICKUP_HALF) return;
+        if(inventoryClickEvent.getCurrentItem() == null) return;
 
-        cookies ++;
+        if(inventoryClickEvent.getRawSlot() == mainCookieSlot) {
+            cookies++;
+        } else if(productions.keySet().contains(inventoryClickEvent.getRawSlot())){
+            Production production = productions.get(inventoryClickEvent.getRawSlot());
+            int cost = (int) (production.getCost() * Math.pow(1.15, production.getCount()));
 
-        cookiesPerSecond += 0.01;
+            switch (inventoryClickEvent.getAction()){
+                case PICKUP_ALL:
+                    if(cookies < cost){
+                        return;
+                    }
+                    cookies -= cost;
+                    production.addProductions(1);
+                    production.visualize(inventory);
+                    break;
+
+                case PICKUP_HALF:
+                    if(production.getCount() == 0) return;
+
+                    production.addProductions(-1);
+                    cookies += 0.45 * cost;
+                    production.visualize(inventory);
+                    break;
+            }
+            calcCookiesPerSecond();
+        }
+    }
+
+    private void calcCookiesPerSecond() {
+        cookiesPerSecond = 0.;
+        for(Production production : productions.values()){
+            cookiesPerSecond += production.getAllInAllProductionPerSecond();
+        }
     }
 
 
@@ -127,4 +173,11 @@ public class Game extends BukkitRunnable{
         nms.updateInventoryTitle(player, lang.GAME_TITLE.replace("%score%", String.valueOf((int) cookies)));
         updateOven();
     }
+
+    public void visualize(){
+        for(Production production : productions.values()) {
+            production.visualize(inventory);
+        }
+    }
+
 }
