@@ -1,0 +1,35 @@
+package me.nikl.cookieclicker.productions;
+
+import me.nikl.cookieclicker.Main;
+import org.bukkit.ChatColor;
+import org.bukkit.Material;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.SkullMeta;
+import org.bukkit.material.MaterialData;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Created by Niklas on 07.07.2017.
+ */
+public class Grandma extends Production {
+
+    public Grandma(Main plugin, int slot, String name) {
+        super(plugin, slot, name);
+
+        icon = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
+        icon.setAmount(1);
+        SkullMeta skullMeta = (SkullMeta) icon.getItemMeta();
+        skullMeta.setOwner("MHF_Villager");
+        skullMeta.setDisplayName(name);
+        icon.setItemMeta(skullMeta);
+
+        this.baseCost = 100;
+        this.productionPerSecond = 1;
+
+        this.description = new ArrayList<>();
+        description.add(ChatColor.ITALIC + "\"A nice grandma to bake more cookies.\"");
+    }
+}
