@@ -7,7 +7,6 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -83,8 +82,8 @@ public class Production {
      * Calculate and return the cost for the next building
      * @return
      */
-    public int getCost() {
-        return (int) (baseCost * Math.pow(1.15, count));
+    public double getCost() {
+        return (baseCost * Math.pow(1.15, count));
     }
 
     public double getProductionPerSecondPerItem() {
