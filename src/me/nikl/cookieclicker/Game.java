@@ -148,7 +148,7 @@ public class Game extends BukkitRunnable{
             totalCookiesProduced += cookiesPerClick + cookiesPerClickPerCPS * cookiesPerSecond;
         } else if(productionsPositions.keySet().contains(inventoryClickEvent.getRawSlot())){
             Production production = productions.get(productionsPositions.get(inventoryClickEvent.getRawSlot()));
-            int cost = production.getCost();
+            double cost = production.getCost();
 
             switch (inventoryClickEvent.getAction()){
                 case PICKUP_ALL:
@@ -284,7 +284,7 @@ public class Game extends BukkitRunnable{
 
         lastTimeStamp = newTimeStamp;
 
-        nms.updateInventoryTitle(player, lang.GAME_TITLE.replace("%score%", Utility.convertHugeNumber((int) cookies)));
+        nms.updateInventoryTitle(player, lang.GAME_TITLE.replace("%score%", Utility.convertHugeNumber(cookies)));
         updateOven();
         checkUpgrades();
     }
@@ -305,5 +305,9 @@ public class Game extends BukkitRunnable{
 
     public Production getProduction(Productions production) {
         return productions.get(production);
+    }
+
+    public Inventory getInventory() {
+        return inventory;
     }
 }
