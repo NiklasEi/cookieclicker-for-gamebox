@@ -11,6 +11,8 @@ import me.nikl.cookieclicker.updates.Upgrade;
 import me.nikl.cookieclicker.updates.clicking.IronMouse;
 import me.nikl.cookieclicker.updates.clicking.PlasticMouse;
 import me.nikl.cookieclicker.updates.clicking.TitaniumMouse;
+import me.nikl.cookieclicker.updates.farm.CheapHoes;
+import me.nikl.cookieclicker.updates.farm.Fertilizer;
 import me.nikl.cookieclicker.updates.grandma.ForwardsFromGrandma;
 import me.nikl.cookieclicker.updates.grandma.SteelPlatedRollingPins;
 import me.nikl.gamebox.nms.NMSUtil;
@@ -105,6 +107,11 @@ public class Game extends BukkitRunnable{
         futureUpgradesTemp.add(new ForwardsFromGrandma(this));
         futureUpgradesTemp.add(new SteelPlatedRollingPins(this));
 
+        // Farm
+        futureUpgradesTemp.add(new CheapHoes(this));
+        futureUpgradesTemp.add(new Fertilizer(this));
+
+
         // sort updates in map with ids as key (fast lookup for loading of old game)
         Upgrade upgrade;
         Iterator<Upgrade> iterator = futureUpgradesTemp.iterator();
@@ -198,14 +205,12 @@ public class Game extends BukkitRunnable{
             }
             calcCookiesPerSecond();
         } else if(shownUpgrades.keySet().contains(53 - inventoryClickEvent.getRawSlot())){
-            Bukkit.getConsoleSender().sendMessage("click on upgrades");
             Upgrade upgrade = shownUpgrades.get(53 - inventoryClickEvent.getRawSlot());
             if(cookies < upgrade.getCost()) {
                 return;
             }
 
             cookies -= upgrade.getCost();
-            Bukkit.getConsoleSender().sendMessage("active");
             upgrade.onActivation();
 
             activeUpgrades.add(upgrade);
