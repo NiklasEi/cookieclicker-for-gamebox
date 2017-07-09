@@ -50,7 +50,7 @@ public class Main extends JavaPlugin{
 
     private final String[][] depends = new String[][]{
             new String[]{"Vault", "1.5"},
-            new String[]{"GameBox", "1.5.0"}
+            new String[]{"GameBox", "1.5.4"}
     };
 
     private final String[] subCommands = new String[]{"cookies", "cc"};
