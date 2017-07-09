@@ -30,7 +30,7 @@ public class CarpalTunnelPreventionCream extends Upgrade{
 
         ArrayList<String> lore = new ArrayList<>();
         lore.add("Price: " + Utility.convertHugeNumber(cost));
-        lore.add(ChatColor.AQUA + "The mouse and cursors are twice as efficient.");
+        lore.add(ChatColor.AQUA + "The mouse and cursors are "+ ChatColor.BOLD + "twice"+ ChatColor.RESET + ChatColor.AQUA + " as efficient.");
         lore.add("");
         lore.add(ChatColor.ITALIC + "\"it... it hurts to click...\"");
 
