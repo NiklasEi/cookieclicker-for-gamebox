@@ -169,13 +169,15 @@ public class Game extends BukkitRunnable{
                     break;
             }
             calcCookiesPerSecond();
-        } else if(shownUprades.keySet().contains(inventoryClickEvent.getRawSlot())){
-            Upgrade upgrade = shownUprades.get(inventoryClickEvent.getRawSlot());
+        } else if(shownUprades.keySet().contains(53 - inventoryClickEvent.getRawSlot())){
+            Bukkit.getConsoleSender().sendMessage("click on upgrades");
+            Upgrade upgrade = shownUprades.get(53 - inventoryClickEvent.getRawSlot());
             if(cookies < upgrade.getCost()) {
                 return;
             }
 
             cookies -= upgrade.getCost();
+            Bukkit.getConsoleSender().sendMessage("active");
             upgrade.onActivation();
 
             activeUprades.add(upgrade);
@@ -202,7 +204,6 @@ public class Game extends BukkitRunnable{
 
             added = true;
             toAdd.add(upgrade);
-            Bukkit.getConsoleSender().sendMessage("add upgrade " + upgrade.getClass().toString());
             iterator.remove();
         }
 
@@ -231,7 +232,10 @@ public class Game extends BukkitRunnable{
     private void visualizeUpgrades() {
         Map<Integer, Upgrade> orderedUpgrades = new HashMap<>();
 
-        if(shownUprades.isEmpty()) return;
+        if(shownUprades.isEmpty()){
+            inventory.setItem(53 - 8, null);
+            return;
+        }
         int currentSlot = 8;
 
 
@@ -242,6 +246,7 @@ public class Game extends BukkitRunnable{
             cheapestUpgrade = 0;
             for (int slot : shownUprades.keySet()) {
                 if (shownUprades.get(slot).getCost() < lowestCost) {
+                    lowestCost = shownUprades.get(slot).getCost();
                     cheapestUpgrade = slot;
                 }
             }
@@ -253,7 +258,10 @@ public class Game extends BukkitRunnable{
         shownUprades = orderedUpgrades;
 
         for(int i = 8; i >= 0 ; i --){
-            if(shownUprades.get(i) == null) return;
+            if(shownUprades.get(i) == null){
+                inventory.setItem(53 - i, null);
+                continue;
+            }
 
             inventory.setItem(53 - i, shownUprades.get(i).getIcon());
         }
