@@ -75,7 +75,7 @@ public class Game extends BukkitRunnable{
     private int ovenSlot = 0;
 
     private Set<Upgrade> activeUprades = new HashSet<>();
-    private Set<Upgrade> futureUpgrades = new HashSet<>();
+    private Map<Integer, Upgrade> futureUpgrades = new HashMap<>();
     private Map<Integer, Upgrade> shownUprades = new HashMap<>();
 
 
@@ -88,18 +88,29 @@ public class Game extends BukkitRunnable{
 
         cookies = 0.;
 
+
+        Set<Upgrade> futureUpgradesTemp = new HashSet<>();
+
         // clicking
-        futureUpgrades.add(new PlasticMouse(this));
-        futureUpgrades.add(new IronMouse(this));
-        futureUpgrades.add(new TitaniumMouse(this));
+        futureUpgradesTemp.add(new PlasticMouse(this));
+        futureUpgradesTemp.add(new IronMouse(this));
+        futureUpgradesTemp.add(new TitaniumMouse(this));
 
         // Curser
-        futureUpgrades.add(new CarpalTunnelPreventionCream(this));
-        futureUpgrades.add(new ReinforcedIndexFinger(this));
+        futureUpgradesTemp.add(new CarpalTunnelPreventionCream(this));
+        futureUpgradesTemp.add(new ReinforcedIndexFinger(this));
 
         // Grandma
-        futureUpgrades.add(new ForwardsFromGrandma(this));
-        futureUpgrades.add(new SteelPlatedRollingPins(this));
+        futureUpgradesTemp.add(new ForwardsFromGrandma(this));
+        futureUpgradesTemp.add(new SteelPlatedRollingPins(this));
+
+        // sort updates in map with ids as key (fast lookup for loading of old game)
+        Upgrade upgrade;
+        Iterator<Upgrade> iterator = futureUpgradesTemp.iterator();
+        while (iterator.hasNext()){
+            upgrade = iterator.next();
+            futureUpgrades.put(upgrade.getId(), upgrade);
+        }
 
         // only play sounds if the game setting allows to
         this.playSounds = plugin.getPlaySounds() && playSounds;
@@ -215,7 +226,7 @@ public class Game extends BukkitRunnable{
     private void checkUpgrades(){
         boolean added = false;
         Set<Upgrade> toAdd =  new HashSet<>();
-        Iterator<Upgrade> iterator = futureUpgrades.iterator();
+        Iterator<Upgrade> iterator = futureUpgrades.values().iterator();
         while (iterator.hasNext()){
             Upgrade upgrade = iterator.next();
             if(!upgrade.isUnlocked()) continue;
