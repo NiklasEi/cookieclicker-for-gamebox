@@ -8,7 +8,11 @@ import me.nikl.cookieclicker.productions.Productions;
 import me.nikl.cookieclicker.updates.Curser.CarpalTunnelPreventionCream;
 import me.nikl.cookieclicker.updates.Curser.ReinforcedIndexFinger;
 import me.nikl.cookieclicker.updates.Upgrade;
+import me.nikl.cookieclicker.updates.clicking.IronMouse;
 import me.nikl.cookieclicker.updates.clicking.PlasticMouse;
+import me.nikl.cookieclicker.updates.clicking.TitaniumMouse;
+import me.nikl.cookieclicker.updates.grandma.ForwardsFromGrandma;
+import me.nikl.cookieclicker.updates.grandma.SteelPlatedRollingPins;
 import me.nikl.gamebox.nms.NMSUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -66,7 +70,7 @@ public class Game extends BukkitRunnable{
     private HashMap<Integer, Productions> productionsPositions = new HashMap<>();
 
     private ItemStack mainCookie = new MaterialData(Material.COOKIE).toItemStack();
-    private int mainCookieSlot = 40;
+    private int mainCookieSlot = 31;
     private ItemStack oven = new MaterialData(Material.FURNACE).toItemStack();
     private int ovenSlot = 0;
 
@@ -84,9 +88,18 @@ public class Game extends BukkitRunnable{
 
         cookies = 0.;
 
+        // clicking
         futureUpgrades.add(new PlasticMouse(this));
+        futureUpgrades.add(new IronMouse(this));
+        futureUpgrades.add(new TitaniumMouse(this));
+
+        // Curser
         futureUpgrades.add(new CarpalTunnelPreventionCream(this));
         futureUpgrades.add(new ReinforcedIndexFinger(this));
+
+        // Grandma
+        futureUpgrades.add(new ForwardsFromGrandma(this));
+        futureUpgrades.add(new SteelPlatedRollingPins(this));
 
         // only play sounds if the game setting allows to
         this.playSounds = plugin.getPlaySounds() && playSounds;
