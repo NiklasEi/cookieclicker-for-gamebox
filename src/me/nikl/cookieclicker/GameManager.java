@@ -10,6 +10,7 @@ import org.bukkit.event.inventory.InventoryCloseEvent;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import java.util.logging.Level;
@@ -118,5 +119,8 @@ public class GameManager implements IGameManager {
         } else {
             return true;
         }
+    }
+
+    public void saveGame(double cookies, Map<String, Integer> productions, List<Integer> upgrades) {
     }
 }
