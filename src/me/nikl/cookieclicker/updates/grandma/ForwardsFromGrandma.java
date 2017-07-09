@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class ForwardsFromGrandma extends Upgrade{
 
     public ForwardsFromGrandma(Game game) {
-        super(game);
+        super(game, 7);
         this.cost = 1000;
         productionsRequirements.put(Productions.Grandma, 1);
 

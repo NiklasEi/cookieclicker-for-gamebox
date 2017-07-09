@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class IronMouse extends Upgrade{
 
     public IronMouse(Game game) {
-        super(game);
+        super(game, 76);
         this.cost = 5000000;
         setClickCookieReq(100000);
 

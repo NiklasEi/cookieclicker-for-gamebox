@@ -17,6 +17,7 @@ import java.util.logging.Level;
  *
  */
 public abstract class Upgrade {
+    private int id;
     protected Map<Productions, Integer> productionsRequirements;
     private Map<String, Double> cookiesRequirements;
 
@@ -27,7 +28,8 @@ public abstract class Upgrade {
 
     protected boolean active;
 
-    public Upgrade(Game game){
+    public Upgrade(Game game, int id){
+        this.id = id;
         productionsRequirements = new HashMap<>();
         cookiesRequirements = new HashMap<>();
         icon = new MaterialData(Material.BARRIER).toItemStack();
@@ -84,5 +86,9 @@ public abstract class Upgrade {
 
     public ItemStack getIcon(){
         return this.icon;
+    }
+
+    public int getId() {
+        return id;
     }
 }

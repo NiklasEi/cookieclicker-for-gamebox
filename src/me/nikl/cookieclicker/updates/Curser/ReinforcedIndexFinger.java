@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class ReinforcedIndexFinger extends Upgrade{
 
     public ReinforcedIndexFinger(Game game) {
-        super(game);
+        super(game, 0);
         this.cost = 100;
         productionsRequirements.put(Productions.CURSER, 1);
 

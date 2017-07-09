@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class SteelPlatedRollingPins extends Upgrade{
 
     public SteelPlatedRollingPins(Game game) {
-        super(game);
+        super(game, 8);
         this.cost = 5000;
         productionsRequirements.put(Productions.Grandma, 5);
 

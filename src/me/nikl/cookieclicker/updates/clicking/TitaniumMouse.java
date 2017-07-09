@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class TitaniumMouse extends Upgrade{
 
     public TitaniumMouse(Game game) {
-        super(game);
+        super(game, 77);
         this.cost = 5000000;
         setClickCookieReq(100000);
 

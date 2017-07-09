@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class CarpalTunnelPreventionCream extends Upgrade{
 
     public CarpalTunnelPreventionCream(Game game) {
-        super(game);
+        super(game, 1);
         this.cost = 500;
         productionsRequirements.put(Productions.CURSER, 1);
 

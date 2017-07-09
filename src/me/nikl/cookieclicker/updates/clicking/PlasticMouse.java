@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class PlasticMouse extends Upgrade{
 
     public PlasticMouse(Game game) {
-        super(game);
+        super(game, 75);
         this.cost = 50000;
         setClickCookieReq(1000);
 
