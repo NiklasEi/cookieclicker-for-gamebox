@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 /**
  * Created by Niklas on 09.07.2017.
+ *
  */
 public class SteelPlatedRollingPins extends Upgrade{
 
@@ -29,7 +30,7 @@ public class SteelPlatedRollingPins extends Upgrade{
 
         ArrayList<String> lore = new ArrayList<>();
         lore.add("Price: " + Utility.convertHugeNumber(cost));
-        lore.add(ChatColor.AQUA + "Grandmas are "+ ChatColor.BOLD + "twice"+ ChatColor.RESET + " as efficient.");
+        lore.add(ChatColor.AQUA + "Grandmas are "+ ChatColor.BOLD + "twice"+ ChatColor.RESET + ChatColor.AQUA + " as efficient.");
         lore.add("");
         lore.add(ChatColor.ITALIC + "\"Just what you kneaded.\"");
 
