@@ -6,7 +6,6 @@ import me.nikl.cookieclicker.productions.Productions;
 import me.nikl.cookieclicker.updates.Upgrade;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.material.MaterialData;
 
