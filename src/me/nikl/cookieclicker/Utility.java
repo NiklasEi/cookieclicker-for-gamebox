@@ -12,9 +12,11 @@ public class Utility {
     public static String convertHugeNumber(double number){
         if(number >= 1000.) return convertHugeNumber(BigInteger.valueOf((long) number));
         String numberStr = String.valueOf(number);
-        String[] split = numberStr.split(",");
+        String[] split = numberStr.split("\\.");
+        if(split.length == 1) return numberStr;
+        if(split[1].substring(0,1).equals("0")) return split[0];
         if(split[1].length() > 1){
-            numberStr = split[0] + "," + split[1].substring(0,1);
+            numberStr = split[0] + "." + split[1].substring(0,1);
         }
 
         return numberStr;

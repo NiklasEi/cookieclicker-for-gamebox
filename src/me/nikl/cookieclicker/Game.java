@@ -105,7 +105,7 @@ public class Game extends BukkitRunnable{
     private void updateOven() {
         ArrayList<String> lore = new ArrayList<>();
         for(String line : lang.GAME_OVEN_LORE){
-            lore.add(line.replace("%cookies_per_second%", String.format("%.1f", cookiesPerSecond)));
+            lore.add(line.replace("%cookies_per_second%", Utility.convertHugeNumber(cookiesPerSecond)));
         }
         ItemMeta meta = oven.getItemMeta();
         meta.setLore(lore);
@@ -168,7 +168,7 @@ public class Game extends BukkitRunnable{
 
         lastTimeStamp = newTimeStamp;
 
-        nms.updateInventoryTitle(player, lang.GAME_TITLE.replace("%score%", Utility.convertHugeNumber(cookies)));
+        nms.updateInventoryTitle(player, lang.GAME_TITLE.replace("%score%", Utility.convertHugeNumber((int) cookies)));
         updateOven();
     }
 
