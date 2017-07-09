@@ -43,6 +43,7 @@ public class ReinforcedIndexFinger extends Upgrade{
     public void onActivation() {
         game.cookiesPerClick = game.cookiesPerClick * 2;
         game.getProduction(Productions.CURSER).multiply(2);
+        game.getProduction(Productions.CURSER).visualize(game.getInventory());
         active = true;
     }
 
