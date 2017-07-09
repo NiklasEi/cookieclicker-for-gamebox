@@ -30,6 +30,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -74,9 +75,9 @@ public class Game extends BukkitRunnable{
     private ItemStack oven = new MaterialData(Material.FURNACE).toItemStack();
     private int ovenSlot = 0;
 
-    private Set<Upgrade> activeUprades = new HashSet<>();
+    private Set<Upgrade> activeUpgrades = new HashSet<>();
     private Map<Integer, Upgrade> futureUpgrades = new HashMap<>();
-    private Map<Integer, Upgrade> shownUprades = new HashMap<>();
+    private Map<Integer, Upgrade> shownUpgrades = new HashMap<>();
 
 
     public Game(GameRules rule, Main plugin, Player player, boolean playSounds){
@@ -172,7 +173,7 @@ public class Game extends BukkitRunnable{
             clickCookiesProduced += cookiesPerClick + cookiesPerClickPerCPS * cookiesPerSecond;
             totalCookiesProduced += cookiesPerClick + cookiesPerClickPerCPS * cookiesPerSecond;
 
-            Bukkit.getConsoleSender().sendMessage("got " + (cookiesPerClick + cookiesPerClickPerCPS * cookiesPerSecond) + " by clicking");
+            //Bukkit.getConsoleSender().sendMessage("got " + (cookiesPerClick + cookiesPerClickPerCPS * cookiesPerSecond) + " by clicking");
         } else if(productionsPositions.keySet().contains(inventoryClickEvent.getRawSlot())){
             Production production = productions.get(productionsPositions.get(inventoryClickEvent.getRawSlot()));
             double cost = production.getCost();
@@ -196,9 +197,9 @@ public class Game extends BukkitRunnable{
                     break;
             }
             calcCookiesPerSecond();
-        } else if(shownUprades.keySet().contains(53 - inventoryClickEvent.getRawSlot())){
+        } else if(shownUpgrades.keySet().contains(53 - inventoryClickEvent.getRawSlot())){
             Bukkit.getConsoleSender().sendMessage("click on upgrades");
-            Upgrade upgrade = shownUprades.get(53 - inventoryClickEvent.getRawSlot());
+            Upgrade upgrade = shownUpgrades.get(53 - inventoryClickEvent.getRawSlot());
             if(cookies < upgrade.getCost()) {
                 return;
             }
@@ -207,8 +208,8 @@ public class Game extends BukkitRunnable{
             Bukkit.getConsoleSender().sendMessage("active");
             upgrade.onActivation();
 
-            activeUprades.add(upgrade);
-            shownUprades.remove(53 - inventoryClickEvent.getRawSlot());
+            activeUpgrades.add(upgrade);
+            shownUpgrades.remove(53 - inventoryClickEvent.getRawSlot());
 
             visualizeUpgrades();
 
@@ -243,14 +244,14 @@ public class Game extends BukkitRunnable{
         Iterator<Upgrade> iterator = toAdd.iterator();
         int slot = 8;
         while (iterator.hasNext()){
-            if(shownUprades.keySet().contains(slot)){
+            if(shownUpgrades.keySet().contains(slot)){
                 slot --;
                 continue;
             }
 
             Upgrade upgrade = iterator.next();
 
-            shownUprades.put(slot, upgrade);
+            shownUpgrades.put(slot, upgrade);
             slot--;
             iterator.remove();
         }
@@ -261,7 +262,7 @@ public class Game extends BukkitRunnable{
     private void visualizeUpgrades() {
         Map<Integer, Upgrade> orderedUpgrades = new HashMap<>();
 
-        if(shownUprades.isEmpty()){
+        if(shownUpgrades.isEmpty()){
             inventory.setItem(53 - 8, null);
             return;
         }
@@ -270,35 +271,45 @@ public class Game extends BukkitRunnable{
 
         double lowestCost;
         int cheapestUpgrade;
-        while (!shownUprades.isEmpty()) {
+        while (!shownUpgrades.isEmpty()) {
             lowestCost = Double.MAX_VALUE;
             cheapestUpgrade = 0;
-            for (int slot : shownUprades.keySet()) {
-                if (shownUprades.get(slot).getCost() < lowestCost) {
-                    lowestCost = shownUprades.get(slot).getCost();
+            for (int slot : shownUpgrades.keySet()) {
+                if (shownUpgrades.get(slot).getCost() < lowestCost) {
+                    lowestCost = shownUpgrades.get(slot).getCost();
                     cheapestUpgrade = slot;
                 }
             }
-            orderedUpgrades.put(currentSlot, shownUprades.get(cheapestUpgrade));
-            shownUprades.remove(cheapestUpgrade);
+            orderedUpgrades.put(currentSlot, shownUpgrades.get(cheapestUpgrade));
+            shownUpgrades.remove(cheapestUpgrade);
             currentSlot--;
         }
 
-        shownUprades = orderedUpgrades;
+        shownUpgrades = orderedUpgrades;
 
         for(int i = 8; i >= 0 ; i --){
-            if(shownUprades.get(i) == null){
+            if(shownUpgrades.get(i) == null){
                 inventory.setItem(53 - i, null);
                 continue;
             }
 
-            inventory.setItem(53 - i, shownUprades.get(i).getIcon());
+            inventory.setItem(53 - i, shownUpgrades.get(i).getIcon());
         }
     }
 
 
     public void onGameEnd() {
+        Map<String, Integer> productions = new HashMap<>();
+        for(Productions production : productionsPositions.values()){
+            productions.put(production.toString(), getProduction(production).getCount());
+        }
 
+        List<Integer> upgrades = new ArrayList<>();
+        for(Upgrade upgrade : activeUpgrades){
+            upgrades.add(upgrade.getId());
+        }
+
+        plugin.getGameManager().saveGame(cookies, productions, upgrades);
     }
 
     @Override
