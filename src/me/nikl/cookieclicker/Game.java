@@ -21,6 +21,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.material.MaterialData;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -146,6 +147,8 @@ public class Game extends BukkitRunnable{
             cookies += cookiesPerClick + cookiesPerClickPerCPS * cookiesPerSecond;
             clickCookiesProduced += cookiesPerClick + cookiesPerClickPerCPS * cookiesPerSecond;
             totalCookiesProduced += cookiesPerClick + cookiesPerClickPerCPS * cookiesPerSecond;
+
+            Bukkit.getConsoleSender().sendMessage("got " + (cookiesPerClick + cookiesPerClickPerCPS * cookiesPerSecond) + " by clicking");
         } else if(productionsPositions.keySet().contains(inventoryClickEvent.getRawSlot())){
             Production production = productions.get(productionsPositions.get(inventoryClickEvent.getRawSlot()));
             double cost = production.getCost();
@@ -181,7 +184,9 @@ public class Game extends BukkitRunnable{
             upgrade.onActivation();
 
             activeUprades.add(upgrade);
-            shownUprades.remove(inventoryClickEvent.getRawSlot());
+            shownUprades.remove(53 - inventoryClickEvent.getRawSlot());
+
+            visualizeUpgrades();
 
             calcCookiesPerSecond();
         }
@@ -284,7 +289,7 @@ public class Game extends BukkitRunnable{
 
         lastTimeStamp = newTimeStamp;
 
-        nms.updateInventoryTitle(player, lang.GAME_TITLE.replace("%score%", Utility.convertHugeNumber(cookies)));
+        nms.updateInventoryTitle(player, lang.GAME_TITLE.replace("%score%", Utility.convertHugeNumber(BigInteger.valueOf((long) cookies))));
         updateOven();
         checkUpgrades();
     }
