@@ -8,13 +8,19 @@ import me.nikl.cookieclicker.productions.Productions;
 import me.nikl.cookieclicker.updates.Curser.CarpalTunnelPreventionCream;
 import me.nikl.cookieclicker.updates.Curser.ReinforcedIndexFinger;
 import me.nikl.cookieclicker.updates.Upgrade;
+import me.nikl.cookieclicker.updates.bank.ScissorResistantCreditCards;
+import me.nikl.cookieclicker.updates.bank.TallerTellers;
 import me.nikl.cookieclicker.updates.clicking.IronMouse;
 import me.nikl.cookieclicker.updates.clicking.PlasticMouse;
 import me.nikl.cookieclicker.updates.clicking.TitaniumMouse;
+import me.nikl.cookieclicker.updates.factory.ChildLabor;
+import me.nikl.cookieclicker.updates.factory.SturdierConveyorBelts;
 import me.nikl.cookieclicker.updates.farm.CheapHoes;
 import me.nikl.cookieclicker.updates.farm.Fertilizer;
 import me.nikl.cookieclicker.updates.grandma.ForwardsFromGrandma;
 import me.nikl.cookieclicker.updates.grandma.SteelPlatedRollingPins;
+import me.nikl.cookieclicker.updates.mine.Megadrill;
+import me.nikl.cookieclicker.updates.mine.SugarGas;
 import me.nikl.gamebox.nms.NMSUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -103,13 +109,25 @@ public class Game extends BukkitRunnable{
         futureUpgradesTemp.add(new CarpalTunnelPreventionCream(this));
         futureUpgradesTemp.add(new ReinforcedIndexFinger(this));
 
-        // Grandma
+        // GRANDMA
         futureUpgradesTemp.add(new ForwardsFromGrandma(this));
         futureUpgradesTemp.add(new SteelPlatedRollingPins(this));
 
         // Farm
         futureUpgradesTemp.add(new CheapHoes(this));
         futureUpgradesTemp.add(new Fertilizer(this));
+
+        // Mine
+        futureUpgradesTemp.add(new SugarGas(this));
+        futureUpgradesTemp.add(new Megadrill(this));
+
+        // Factory
+        futureUpgradesTemp.add(new SturdierConveyorBelts(this));
+        futureUpgradesTemp.add(new ChildLabor(this));
+
+        // Bank
+        futureUpgradesTemp.add(new TallerTellers(this));
+        futureUpgradesTemp.add(new ScissorResistantCreditCards(this));
 
 
         // sort updates in map with ids as key (fast lookup for loading of old game)
@@ -136,8 +154,8 @@ public class Game extends BukkitRunnable{
     private void buildInv() {
         productions.put(Productions.CURSER, new Curser(plugin, 6, "Curser"));
         productionsPositions.put(6, Productions.CURSER);
-        productions.put(Productions.Grandma, new Grandma(plugin, 7, "Grandma"));
-        productionsPositions.put(7, Productions.Grandma);
+        productions.put(Productions.GRANDMA, new Grandma(plugin, 7, "GRANDMA"));
+        productionsPositions.put(7, Productions.GRANDMA);
         productions.put(Productions.FARM, new Farm(plugin, 8, "Farm"));
         productionsPositions.put(8, Productions.FARM);
 

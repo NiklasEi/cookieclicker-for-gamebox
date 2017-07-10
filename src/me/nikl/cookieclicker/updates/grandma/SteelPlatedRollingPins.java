@@ -20,7 +20,7 @@ public class SteelPlatedRollingPins extends Upgrade{
     public SteelPlatedRollingPins(Game game) {
         super(game, 8);
         this.cost = 5000;
-        productionsRequirements.put(Productions.Grandma, 5);
+        productionsRequirements.put(Productions.GRANDMA, 5);
 
         icon = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
         icon.setAmount(1);
@@ -40,8 +40,8 @@ public class SteelPlatedRollingPins extends Upgrade{
 
     @Override
     public void onActivation() {
-        game.getProduction(Productions.Grandma).multiply(2);
-        game.getProduction(Productions.Grandma).visualize(game.getInventory());
+        game.getProduction(Productions.GRANDMA).multiply(2);
+        game.getProduction(Productions.GRANDMA).visualize(game.getInventory());
         active = true;
     }
 

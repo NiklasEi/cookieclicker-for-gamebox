@@ -21,7 +21,7 @@ public class ForwardsFromGrandma extends Upgrade{
     public ForwardsFromGrandma(Game game) {
         super(game, 7);
         this.cost = 1000;
-        productionsRequirements.put(Productions.Grandma, 1);
+        productionsRequirements.put(Productions.GRANDMA, 1);
 
         icon = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
         icon.setAmount(1);
@@ -41,8 +41,8 @@ public class ForwardsFromGrandma extends Upgrade{
 
     @Override
     public void onActivation() {
-        game.getProduction(Productions.Grandma).multiply(2);
-        game.getProduction(Productions.Grandma).visualize(game.getInventory());
+        game.getProduction(Productions.GRANDMA).multiply(2);
+        game.getProduction(Productions.GRANDMA).visualize(game.getInventory());
         active = true;
     }
 
