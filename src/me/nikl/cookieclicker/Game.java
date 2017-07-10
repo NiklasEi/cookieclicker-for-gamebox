@@ -1,6 +1,7 @@
 package me.nikl.cookieclicker;
 
 import me.nikl.cookieclicker.productions.*;
+import me.nikl.cookieclicker.updates.Curser.Ambidextrous;
 import me.nikl.cookieclicker.updates.Curser.CarpalTunnelPreventionCream;
 import me.nikl.cookieclicker.updates.Curser.ReinforcedIndexFinger;
 import me.nikl.cookieclicker.updates.Upgrade;
@@ -20,6 +21,7 @@ import me.nikl.cookieclicker.updates.mine.SugarGas;
 import me.nikl.gamebox.nms.NMSUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryAction;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -84,7 +86,7 @@ public class Game extends BukkitRunnable{
     private Map<Integer, Upgrade> shownUpgrades = new HashMap<>();
 
 
-    public Game(GameRules rule, Main plugin, Player player, boolean playSounds){
+    public Game(GameRules rule, Main plugin, Player player, boolean playSounds, ConfigurationSection save){
         this.plugin = plugin;
         nms = plugin.getNms();
         this.lang = plugin.lang;
@@ -104,6 +106,7 @@ public class Game extends BukkitRunnable{
         // Curser
         futureUpgradesTemp.add(new CarpalTunnelPreventionCream(this));
         futureUpgradesTemp.add(new ReinforcedIndexFinger(this));
+        futureUpgradesTemp.add(new Ambidextrous(this));
 
         // GRANDMA
         futureUpgradesTemp.add(new ForwardsFromGrandma(this));
@@ -141,6 +144,10 @@ public class Game extends BukkitRunnable{
         this.inventory = Bukkit.createInventory(null, 54, lang.GAME_TITLE.replace("%score%", String.valueOf((int) cookies)));
 
         buildInv();
+
+        if(save != null){
+            //load the game
+        }
 
         player.openInventory(inventory);
 
@@ -334,7 +341,7 @@ public class Game extends BukkitRunnable{
             upgrades.add(upgrade.getId());
         }
 
-        plugin.getGameManager().saveGame(cookies, productions, upgrades);
+        plugin.getGameManager().saveGame(rule, player.getUniqueId(), cookies, productions, upgrades);
     }
 
     @Override
