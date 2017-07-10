@@ -1,10 +1,6 @@
 package me.nikl.cookieclicker;
 
-import me.nikl.cookieclicker.productions.Curser;
-import me.nikl.cookieclicker.productions.Farm;
-import me.nikl.cookieclicker.productions.Grandma;
-import me.nikl.cookieclicker.productions.Production;
-import me.nikl.cookieclicker.productions.Productions;
+import me.nikl.cookieclicker.productions.*;
 import me.nikl.cookieclicker.updates.Curser.CarpalTunnelPreventionCream;
 import me.nikl.cookieclicker.updates.Curser.ReinforcedIndexFinger;
 import me.nikl.cookieclicker.updates.Upgrade;
@@ -158,6 +154,12 @@ public class Game extends BukkitRunnable{
         productionsPositions.put(7, Productions.GRANDMA);
         productions.put(Productions.FARM, new Farm(plugin, 8, "Farm"));
         productionsPositions.put(8, Productions.FARM);
+        productions.put(Productions.MINE, new Mine(plugin, 15, "Curser"));
+        productionsPositions.put(15, Productions.CURSER);
+        productions.put(Productions.FACTORY, new Factory(plugin, 16, "GRANDMA"));
+        productionsPositions.put(16, Productions.GRANDMA);
+        productions.put(Productions.BANK, new Bank(plugin, 17, "Farm"));
+        productionsPositions.put(17, Productions.FARM);
 
 
         visualize();
