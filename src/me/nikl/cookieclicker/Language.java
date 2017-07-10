@@ -122,7 +122,7 @@ public class Language {
 		}
 		try { 
 			this.langFile = YamlConfiguration.loadConfiguration(new InputStreamReader(new FileInputStream(languageFile), "UTF-8"));
-		} catch (UnsupportedEncodingException e) { 
+		} catch (UnsupportedEncodingException | FileNotFoundException e) {
 			e.printStackTrace(); 
 			Bukkit.getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&4*******************************************************"));
 			Bukkit.getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', PREFIX + " &4Error in language file!"));
@@ -130,15 +130,7 @@ public class Language {
 			Bukkit.getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', PREFIX + " &4Using default language file"));
 			this.langFile = defaultLang;
 			return;
-		} catch (FileNotFoundException e) { 
-			e.printStackTrace(); 
-			Bukkit.getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&4*******************************************************"));
-			Bukkit.getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', PREFIX + " &4Error in language file!"));
-			Bukkit.getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&4*******************************************************"));
-			Bukkit.getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', PREFIX + " &4Using default language file"));
-			this.langFile = defaultLang;
-			return;
-		} 
+		}
 		int count = 0;
 		for(String key : defaultLang.getKeys(true)){
 			if(defaultLang.isString(key)){
