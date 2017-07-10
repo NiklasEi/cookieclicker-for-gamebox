@@ -4,10 +4,18 @@ import me.nikl.gamebox.GameBox;
 import me.nikl.gamebox.Permissions;
 import me.nikl.gamebox.game.IGameManager;
 import org.bukkit.Bukkit;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -28,12 +36,30 @@ public class GameManager implements IGameManager {
     private Language lang;
 
     private Map<String,GameRules> gameTypes;
+    private File savesFile;
+    private FileConfiguration saves;
 
 
 
     public GameManager(Main plugin){
         this.plugin = plugin;
         this.lang = plugin.lang;
+
+        savesFile = new File(plugin.getDataFolder().toString() + File.separatorChar + "saves.yml");
+        if(!savesFile.exists()){
+            try {
+                savesFile.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+        try {
+            this.saves = YamlConfiguration.loadConfiguration(new InputStreamReader(new FileInputStream(savesFile), "UTF-8"));
+        } catch (UnsupportedEncodingException | FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -82,7 +108,12 @@ public class GameManager implements IGameManager {
             return GameBox.GAME_NOT_ENOUGH_MONEY;
         }
 
-        games.put(players[0].getUniqueId(), new Game(rule, plugin, players[0], playSounds));
+        if(saves.isConfigurationSection(rule.getKey() + "." + players[0].getUniqueId())) {
+            games.put(players[0].getUniqueId(), new Game(rule, plugin, players[0], playSounds, saves.getConfigurationSection(rule.getKey() + "." + players[0].getUniqueId())));
+        } else {
+            games.put(players[0].getUniqueId(), new Game(rule, plugin, players[0], playSounds, null));
+        }
+
         return GameBox.GAME_STARTED;
     }
 
@@ -121,6 +152,13 @@ public class GameManager implements IGameManager {
         }
     }
 
-    public void saveGame(double cookies, Map<String, Integer> productions, List<Integer> upgrades) {
+    public void saveGame(GameRules rule, UUID uuid, double cookies, Map<String, Integer> productions, List<Integer> upgrades) {
+        saves.set(rule.getKey() + "." + uuid.toString() + "." + "cookies", cookies);
+
+        for(String production : productions.keySet()){
+            saves.set(rule.getKey() + "." + uuid.toString() + "." + "productions" + "." + production, String.valueOf(productions.get(production)));
+        }
+
+        saves.set(rule.getKey() + "." + uuid.toString() + "." + "upgrades", upgrades);
     }
 }
