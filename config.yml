@@ -27,7 +27,10 @@ gameBox:
     # lore of the button
     lore:
     - ""
-    - "&1Come to the dark side of the force..."
+    - "&1Take over the world with your cookies."
+    - ""
+    - "&5&o\"Come to the dark side of the force..."
+    - "&5&o    We have cookies!\""
   gameButtons:
     weekly:
       materialData: "357"
@@ -36,10 +39,10 @@ gameBox:
       - ""
       - "&6Click on the cookie!"
       - ""
-      - "&6Yes..."
-      - "  &6It's that simple."
+      - "&5&o\"Yes..."
+      - "  &5&oIt's that simple.\""
       slot: 20
-      cost: 5
+      cost: 0
       # if true the best score of this button is saved
       saveStats: true
   topListButtons:
@@ -48,14 +51,14 @@ gameBox:
     weekly:
       materialData: "397:3"
       displayName: "&6Cookie Clicker &c&lTop list"
-      slot: 33
+      slot: 24
       # inventory title of the top list (%player% and %game%)
       inventoryTitle: '     &6Cookie Clicker &rTop List'
       # Lore of the skulls in the inventory. Use %rank% for the rank and %score% for the highest score of the player
       skullLore:
       - ''
       - '&6Rank:&1 %rank%'
-      - '&6Score:&1 %score%'
+      - '&6Cookies:&1 %score%'
 
 
 
