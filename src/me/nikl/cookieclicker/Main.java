@@ -81,7 +81,7 @@ public class Main extends JavaPlugin{
 
     @Override
     public void onDisable() {
-
+        gameManager.onShutDown();
     }
 
     private boolean setupEconomy() {
