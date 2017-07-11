@@ -5,32 +5,37 @@
 game:
   econ:
     # use %cost% for the amount payed
-    payed: " &2Du hast &4%cost% bezahlt"
-    notEnoughMoney: " &4Du hast nicht genug Geld!"
+    payed: " &2Du hast &4%cost% gezahlt"
+    notEnoughMoney: " &4Nicht genug Geld!"
     # use %reward% for the amount the player won
-    wonMoney: " &2Du hast &6%score%&2 Punkte erreicht und &6%reward%&2 gewonnen!"
-  gameOverNoPay: " &2Du hast &6%score%&2 Punkte erreicht"
+    wonMoney: " &2Du hast &6%score%&2 Kekse gebacken und &6%reward%&2 gewonnen!"
+  gameOverNoPay: " &2Du hast &6%score% Kekse gebacken!"
   inventoryTitles:
-    gameTitle: "&9WhacAMole     Punkte: %score%    &4%time%"
-    start: "&9WhacAMole       &c&lClick to start"
-    gameOver: " &4Game Over         &9Score: %score%"
-  moleDisplayName: "&1&lMole"
-  creeperDisplayName: "&c&lCreeper"
-  humanDisplayName: "&a&lHuman"
+    gameTitle: "&9&lCC   &r&a%score% Kekse"
+  cookieName: "&1&lKeks"
+  ovenName: "&a&lDeine Keksproduktion"
+  ovenLore:
+    - ""
+    - '&1Do produzierst im Moment:'
+    - "  &2%cookies_per_second% &1Kekse pro Sekunde"
+    - "  &2%cookies_per_click% &1Kekse pro Klick"
+  productionLore:
+    - "Kaufen für: %cost% (linksclick)"
+    - "  Verkaufe mit Rechtsklick"
+    - ""
+    - '&1Du hast %count% %name%(s)'
+    - "  &1Jedes Gebäude produziert %cookies_per_second_per_item% pro Sekunde"
+    - "  &1Gesamtproduktion: %cookies_per_second%"
 
 
-prefix: "[&3WhacAMole&r]"
-name: "&1WhacAMole&r"
+prefix: "[&3CookieClicker&r]"
+name: "&1CookieClicker&r"
 
 
 gameHelp:
-  - '&1&lClassic:'
-  - '  &1&lMaulwürfe tauchen in deinem Garten auf!'
-  - '  &1&lVerpasse ihnen einen,'
-  - '  &1&l  bevor sie wieder verschwinden.'
+  - '&1&lBacke Kekse, indem du auf den Keks klickst.'
   - ""
-  - '&1&lCreeper jagen Menschen:'
-  - '  &1&lAuf einem großen Feld jagen Creeper'
-  - '  &1&l  ein paar arme Menschen.'
-  - '&1&l  Schlage die Creeper, aber verschone'
-  - '&1&l    die Menschen!'
+  - '&1&lMit Keksen kannst du Gebäude kaufen,'
+  - '  &1&ldie automatisch Kekse produzieren.'
+  - ""
+  - '&1&lDu kannst Upgrades freischalten und kaufen.'
