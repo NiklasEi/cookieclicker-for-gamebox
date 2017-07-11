@@ -18,9 +18,11 @@ import me.nikl.cookieclicker.updates.grandma.ForwardsFromGrandma;
 import me.nikl.cookieclicker.updates.grandma.SteelPlatedRollingPins;
 import me.nikl.cookieclicker.updates.mine.Megadrill;
 import me.nikl.cookieclicker.updates.mine.SugarGas;
+import me.nikl.gamebox.Sounds;
 import me.nikl.gamebox.nms.NMSUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryAction;
@@ -84,6 +86,13 @@ public class Game extends BukkitRunnable{
     private Set<Upgrade> activeUpgrades = new HashSet<>();
     private Map<Integer, Upgrade> futureUpgrades = new HashMap<>();
     private Map<Integer, Upgrade> shownUpgrades = new HashMap<>();
+
+    private Sound click = Sounds.CLICK.bukkitSound();
+    private Sound clickCookie = Sounds.WOOD_CLICK.bukkitSound();
+    private Sound upgrade = Sounds.LEVEL_UP.bukkitSound();
+    private Sound no = Sounds.VILLAGER_NO.bukkitSound();
+    private float volume = 0.5f;
+    private float pitch = 10f;
 
 
     public Game(GameRules rule, Main plugin, Player player, boolean playSounds, ConfigurationSection save){
@@ -169,8 +178,10 @@ public class Game extends BukkitRunnable{
     }
 
     private void load(ConfigurationSection save) {
-        if(save.isDouble("cookies")){
-            cookies = save.getDouble("cookies", 0.);
+        if(save.isConfigurationSection("cookies")){
+            ConfigurationSection cookieSection = save.getConfigurationSection("cookies");
+            cookies = cookieSection.getDouble("total", 0.);
+            clickCookiesProduced = cookieSection.getDouble("click", 0.);
         }
 
         if(save.isConfigurationSection("productions")) {
@@ -213,7 +224,8 @@ public class Game extends BukkitRunnable{
     private void updateOven() {
         ArrayList<String> lore = new ArrayList<>();
         for(String line : lang.GAME_OVEN_LORE){
-            lore.add(line.replace("%cookies_per_second%", Utility.convertHugeNumber(cookiesPerSecond)));
+            lore.add(line.replace("%cookies_per_second%", Utility.convertHugeNumber(cookiesPerSecond))
+                    .replace("%cookies_per_click%", Utility.convertHugeNumber(cookiesPerClick + cookiesPerClickPerCPS * cookiesPerSecond)));
         }
         ItemMeta meta = oven.getItemMeta();
         meta.setLore(lore);
@@ -226,24 +238,30 @@ public class Game extends BukkitRunnable{
         if(inventoryClickEvent.getAction() != InventoryAction.PICKUP_ALL && inventoryClickEvent.getAction() != InventoryAction.PICKUP_HALF) return;
         if(inventoryClickEvent.getCurrentItem() == null) return;
 
+        // Click on cookie
         if(inventoryClickEvent.getRawSlot() == mainCookieSlot) {
             cookies += cookiesPerClick + cookiesPerClickPerCPS * cookiesPerSecond;
             clickCookiesProduced += cookiesPerClick + cookiesPerClickPerCPS * cookiesPerSecond;
             totalCookiesProduced += cookiesPerClick + cookiesPerClickPerCPS * cookiesPerSecond;
 
-            //Bukkit.getConsoleSender().sendMessage("got " + (cookiesPerClick + cookiesPerClickPerCPS * cookiesPerSecond) + " by clicking");
-        } else if(productionsPositions.keySet().contains(inventoryClickEvent.getRawSlot())){
+            if(playSounds) player.playSound(player.getLocation(), clickCookie, volume * 0.5f, pitch);
+        }
+
+        // click on production
+        else if(productionsPositions.keySet().contains(inventoryClickEvent.getRawSlot())){
             Production production = productions.get(productionsPositions.get(inventoryClickEvent.getRawSlot()));
             double cost = production.getCost();
 
             switch (inventoryClickEvent.getAction()){
                 case PICKUP_ALL:
                     if(cookies < cost){
+                        if(playSounds) player.playSound(player.getLocation(), no, volume, pitch);
                         return;
                     }
                     cookies -= cost;
                     production.addProductions(1);
                     production.visualize(inventory);
+                    if(playSounds) player.playSound(player.getLocation(), click, volume, pitch);
                     break;
 
                 case PICKUP_HALF:
@@ -251,25 +269,32 @@ public class Game extends BukkitRunnable{
 
                     production.addProductions(-1);
                     cookies += 0.45 * cost;
+                    if(playSounds) player.playSound(player.getLocation(), clickCookie, volume, pitch);
                     production.visualize(inventory);
                     break;
             }
             calcCookiesPerSecond();
-        } else if(shownUpgrades.keySet().contains(53 - inventoryClickEvent.getRawSlot())){
+            updateOven();
+        }
+
+        // click on upgrade
+        else if(shownUpgrades.keySet().contains(53 - inventoryClickEvent.getRawSlot())){
             Upgrade upgrade = shownUpgrades.get(53 - inventoryClickEvent.getRawSlot());
             if(cookies < upgrade.getCost()) {
+                if(playSounds) player.playSound(player.getLocation(), no, volume, pitch);
                 return;
             }
 
             cookies -= upgrade.getCost();
             upgrade.onActivation();
+            if(playSounds) player.playSound(player.getLocation(), this.upgrade, volume, pitch);
 
             activeUpgrades.add(upgrade);
             shownUpgrades.remove(53 - inventoryClickEvent.getRawSlot());
 
             visualizeUpgrades();
-
             calcCookiesPerSecond();
+            updateOven();
         }
     }
 
@@ -355,6 +380,10 @@ public class Game extends BukkitRunnable{
 
 
     public void onGameEnd() {
+        Map<String, Double> cookies = new HashMap<>();
+        cookies.put("total", this.cookies);
+        cookies.put("click", this.clickCookiesProduced);
+
         Map<String, Integer> productions = new HashMap<>();
         for(Productions production : productionsPositions.values()){
             productions.put(production.toString(), getProduction(production).getCount());
@@ -381,7 +410,6 @@ public class Game extends BukkitRunnable{
         lastTimeStamp = newTimeStamp;
 
         nms.updateInventoryTitle(player, lang.GAME_TITLE.replace("%score%", Utility.convertHugeNumber(BigInteger.valueOf((long) cookies))));
-        updateOven();
         checkUpgrades();
     }
 
