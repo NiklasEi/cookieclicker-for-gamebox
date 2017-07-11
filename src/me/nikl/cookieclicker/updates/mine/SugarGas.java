@@ -35,7 +35,8 @@ public class SugarGas extends Upgrade{
         lore.add("Price: " + Utility.convertHugeNumber(cost));
         lore.add(ChatColor.AQUA + "Mines are "+ ChatColor.BOLD + "twice"+ ChatColor.RESET + ChatColor.AQUA + " as efficient.");
         lore.add("");
-        lore.add(ChatColor.ITALIC + "\"A pink, volatile gas, found in the depths of some chocolate caves.\"");
+        lore.add(ChatColor.ITALIC + "\"A pink, volatile gas, found in");
+        lore.add(ChatColor.ITALIC + "    the depths of some chocolate caves.\"");
 
         meta.setLore(lore);
         icon.setItemMeta(meta);
