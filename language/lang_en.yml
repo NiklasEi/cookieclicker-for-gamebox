@@ -11,7 +11,7 @@ game:
     wonMoney: " &2You scored &6%score%&2 and won &6%reward%&2!"
   gameOverNoPay: " &2You reached a final score of &6%score%"
   inventoryTitles:
-    gameTitle: "&9&lCC   &r&a%score%"
+    gameTitle: "&9&lCC   &r&a%score% cookies"
   cookieName: "&1&lCookie"
   ovenName: "&a&lCookies per second"
   ovenLore:
