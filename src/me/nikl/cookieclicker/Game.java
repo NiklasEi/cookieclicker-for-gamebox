@@ -143,34 +143,58 @@ public class Game extends BukkitRunnable{
         // create inventory
         this.inventory = Bukkit.createInventory(null, 54, lang.GAME_TITLE.replace("%score%", String.valueOf((int) cookies)));
 
-        buildInv();
+        productions.put(Productions.CURSER, new Curser(plugin, 6, "Curser"));
+        productionsPositions.put(6, Productions.CURSER);
+        productions.put(Productions.GRANDMA, new Grandma(plugin, 7, "Grandma"));
+        productionsPositions.put(7, Productions.GRANDMA);
+        productions.put(Productions.FARM, new Farm(plugin, 8, "Farm"));
+        productionsPositions.put(8, Productions.FARM);
+        productions.put(Productions.MINE, new Mine(plugin, 15, "Mine"));
+        productionsPositions.put(15, Productions.MINE);
+        productions.put(Productions.FACTORY, new Factory(plugin, 16, "Factory"));
+        productionsPositions.put(16, Productions.FACTORY);
+        productions.put(Productions.BANK, new Bank(plugin, 17, "Bank"));
+        productionsPositions.put(17, Productions.BANK);
 
         if(save != null){
             //load the game
+            load(save);
         }
+
+        buildInv();
 
         player.openInventory(inventory);
 
         this.runTaskTimer(plugin, 0, 10);
     }
 
+    private void load(ConfigurationSection save) {
+        if(save.isDouble("cookies")){
+            cookies = save.getDouble("cookies", 0.);
+        }
+
+        if(save.isConfigurationSection("productions")) {
+            for (String key : save.getConfigurationSection("productions").getKeys(false)) {
+                productions.get(Productions.valueOf(key)).addProductions(save.getInt("productions" + "." + key, 0));
+            }
+        }
+
+        List<Integer> upgrades = save.getIntegerList("upgrades");
+
+        if(upgrades != null && !upgrades.isEmpty()){
+            for(int id : upgrades){
+                Upgrade upgrade = futureUpgrades.get(id);
+                if(upgrade == null) continue;
+                upgrade.onActivation();
+                activeUpgrades.add(upgrade);
+                futureUpgrades.remove(id);
+            }
+        }
+    }
+
     private void buildInv() {
-        productions.put(Productions.CURSER, new Curser(plugin, 6, "Curser"));
-        productionsPositions.put(6, Productions.CURSER);
-        productions.put(Productions.GRANDMA, new Grandma(plugin, 7, "GRANDMA"));
-        productionsPositions.put(7, Productions.GRANDMA);
-        productions.put(Productions.FARM, new Farm(plugin, 8, "Farm"));
-        productionsPositions.put(8, Productions.FARM);
-        productions.put(Productions.MINE, new Mine(plugin, 15, "Curser"));
-        productionsPositions.put(15, Productions.CURSER);
-        productions.put(Productions.FACTORY, new Factory(plugin, 16, "GRANDMA"));
-        productionsPositions.put(16, Productions.GRANDMA);
-        productions.put(Productions.BANK, new Bank(plugin, 17, "Farm"));
-        productionsPositions.put(17, Productions.FARM);
-
-
         visualize();
-
+        calcCookiesPerSecond();
 
 
         mainCookie.setAmount(1);
