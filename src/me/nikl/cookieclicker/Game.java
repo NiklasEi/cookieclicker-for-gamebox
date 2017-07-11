@@ -143,18 +143,18 @@ public class Game extends BukkitRunnable{
         // create inventory
         this.inventory = Bukkit.createInventory(null, 54, lang.GAME_TITLE.replace("%score%", String.valueOf((int) cookies)));
 
-        productions.put(Productions.CURSER, new Curser(plugin, 6, "Curser"));
-        productionsPositions.put(6, Productions.CURSER);
-        productions.put(Productions.GRANDMA, new Grandma(plugin, 7, "Grandma"));
-        productionsPositions.put(7, Productions.GRANDMA);
-        productions.put(Productions.FARM, new Farm(plugin, 8, "Farm"));
-        productionsPositions.put(8, Productions.FARM);
-        productions.put(Productions.MINE, new Mine(plugin, 15, "Mine"));
-        productionsPositions.put(15, Productions.MINE);
-        productions.put(Productions.FACTORY, new Factory(plugin, 16, "Factory"));
-        productionsPositions.put(16, Productions.FACTORY);
-        productions.put(Productions.BANK, new Bank(plugin, 17, "Bank"));
-        productionsPositions.put(17, Productions.BANK);
+        productions.put(Productions.CURSER, new Curser(plugin, 3, "Curser"));
+        productionsPositions.put(3, Productions.CURSER);
+        productions.put(Productions.GRANDMA, new Grandma(plugin, 4, "Grandma"));
+        productionsPositions.put(4, Productions.GRANDMA);
+        productions.put(Productions.FARM, new Farm(plugin, 5, "Farm"));
+        productionsPositions.put(5, Productions.FARM);
+        productions.put(Productions.MINE, new Mine(plugin, 6, "Mine"));
+        productionsPositions.put(6, Productions.MINE);
+        productions.put(Productions.FACTORY, new Factory(plugin, 7, "Factory"));
+        productionsPositions.put(7, Productions.FACTORY);
+        productions.put(Productions.BANK, new Bank(plugin, 8, "Bank"));
+        productionsPositions.put(8, Productions.BANK);
 
         if(save != null){
             //load the game
