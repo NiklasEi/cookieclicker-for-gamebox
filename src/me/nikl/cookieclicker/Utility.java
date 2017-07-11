@@ -33,45 +33,37 @@ public class Utility {
             numberStr = numberStr.substring(0, numberStr.length() - (index - 1) * 3);
         }
 
-        if (numberStr.substring(numberStr.length() - 3).equals("000")){
-            return numberStr.substring(0, numberStr.length() - 3) + " " + NAMES[index - 1];
-        }
-
-        numberStr = new StringBuilder(numberStr).insert(numberStr.length() - 3, ".").toString();
-
-        if(numberStr.substring(numberStr.length() - 2).equals("00")){
-             return numberStr.substring(0, numberStr.length() - 2) + " " + NAMES[index - 1];
-        }
-
-        if(numberStr.substring(numberStr.length() - 1).equals("0")){
-            return numberStr.substring(0, numberStr.length() - 1) + " " + NAMES[index - 1];
+        if(index > 1) {
+            numberStr = new StringBuilder(numberStr).insert(numberStr.length() - 3, ".").toString();
+        } else {
+            numberStr = new StringBuilder(numberStr).insert(numberStr.length() - 3, ",").toString();
         }
 
         return numberStr + " " + NAMES[index - 1];
     }
 
     private static final String NAMES[] = new String[]{
-            "Thousand",
-            "Million",
-            "Billion",
-            "Trillion",
-            "Quadrillion",
-            "Quintillion",
-            "Sextillion",
-            "Septillion",
-            "Octillion",
-            "Nonillion",
-            "Decillion",
-            "Undecillion",
-            "Duodecillion",
-            "Tredecillion",
-            "Quattuordecillion",
-            "Quindecillion",
-            "Sexdecillion",
-            "Septendecillion",
-            "Octodecillion",
-            "Novemdecillion",
-            "Vigintillion",
+            "",
+            "million",
+            "billion",
+            "trillion",
+            "quadrillion",
+            "quintillion",
+            "sextillion",
+            "septillion",
+            "octillion",
+            "nonillion",
+            "decillion",
+            "undecillion",
+            "duodecillion",
+            "tredecillion",
+            "quattuordecillion",
+            "quindecillion",
+            "sexdecillion",
+            "septendecillion",
+            "octodecillion",
+            "novemdecillion",
+            "vigintillion",
     };
 
     private static final NavigableMap<Integer, String> MAP;
