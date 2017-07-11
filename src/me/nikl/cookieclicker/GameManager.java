@@ -153,8 +153,11 @@ public class GameManager implements IGameManager {
         }
     }
 
-    public void saveGame(GameRules rule, UUID uuid, double cookies, Map<String, Integer> productions, List<Integer> upgrades) {
-        saves.set(rule.getKey() + "." + uuid.toString() + "." + "cookies", Math.floor(cookies));
+    public void saveGame(GameRules rule, UUID uuid, Map<String, Double> cookies, Map<String, Integer> productions, List<Integer> upgrades) {
+
+        for(String key : cookies.keySet()){
+            saves.set(rule.getKey() + "." + uuid.toString() + "." + "cookies" + "." + key, Math.floor(cookies.get(key)));
+        }
 
         for(String production : productions.keySet()){
             saves.set(rule.getKey() + "." + uuid.toString() + "." + "productions" + "." + production, productions.get(production));
