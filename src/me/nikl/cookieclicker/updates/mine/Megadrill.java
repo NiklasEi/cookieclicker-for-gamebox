@@ -4,8 +4,10 @@ import me.nikl.cookieclicker.Game;
 import me.nikl.cookieclicker.Utility;
 import me.nikl.cookieclicker.productions.Productions;
 import me.nikl.cookieclicker.updates.Upgrade;
+import me.nikl.gamebox.GameBoxSettings;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.material.MaterialData;
 
@@ -27,6 +29,7 @@ public class Megadrill extends Upgrade{
 
         ItemMeta meta = icon.getItemMeta();
         meta.setDisplayName("Megadrill");
+        if(!GameBoxSettings.delayedInventoryUpdate) meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 
         ArrayList<String> lore = new ArrayList<>();
         lore.add("Price: " + Utility.convertHugeNumber(cost));

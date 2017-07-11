@@ -1,8 +1,10 @@
 package me.nikl.cookieclicker.productions;
 
 import me.nikl.cookieclicker.Main;
+import me.nikl.gamebox.GameBoxSettings;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.material.MaterialData;
 
@@ -19,6 +21,7 @@ public class Mine extends Production {
         icon = new MaterialData(Material.DIAMOND_PICKAXE).toItemStack();
         icon.setAmount(1);
         ItemMeta meta = icon.getItemMeta();
+        if(!GameBoxSettings.delayedInventoryUpdate) meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         meta.setDisplayName("Mine");
         icon.setItemMeta(meta);
 
