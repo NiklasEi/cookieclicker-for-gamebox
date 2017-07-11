@@ -13,12 +13,12 @@ game:
   inventoryTitles:
     gameTitle: "&9&lCC   &r&a%score% cookies"
   cookieName: "&1&lCookie"
-  ovenName: "&a&lCookies per second"
+  ovenName: "&a&lYour Cookie Production"
   ovenLore:
     - ""
     - '&1You currently produce'
-    - "  &2%cookies_per_second%"
-    - "&1cookies per second (without clicking)"
+    - "  &2%cookies_per_second% &1cookies per second"
+    - "  &2%cookies_per_click% &1cookies per click"
   productionLore:
     - "Buy one for %cost% (left click)"
     - ""
@@ -32,6 +32,9 @@ name: "&1CookieClicker&r"
 
 
 gameHelp:
-  - '&1&lJust click...'
+  - '&1&lClick on the cookie to produce cookies.'
   - ""
-  - '  &1&lClick and bake those cookies!'
+  - '&1&lFor cookies you can buy buildings,'
+  - '  &1&lthat automatically produce more cookies'
+  - ""
+  - '&1&lYou can also unlock and buy upgrades.'
