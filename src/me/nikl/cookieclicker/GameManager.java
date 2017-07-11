@@ -18,6 +18,7 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -153,12 +154,26 @@ public class GameManager implements IGameManager {
     }
 
     public void saveGame(GameRules rule, UUID uuid, double cookies, Map<String, Integer> productions, List<Integer> upgrades) {
-        saves.set(rule.getKey() + "." + uuid.toString() + "." + "cookies", cookies);
+        saves.set(rule.getKey() + "." + uuid.toString() + "." + "cookies", Math.floor(cookies));
 
         for(String production : productions.keySet()){
-            saves.set(rule.getKey() + "." + uuid.toString() + "." + "productions" + "." + production, String.valueOf(productions.get(production)));
+            saves.set(rule.getKey() + "." + uuid.toString() + "." + "productions" + "." + production, productions.get(production));
         }
 
         saves.set(rule.getKey() + "." + uuid.toString() + "." + "upgrades", upgrades);
+    }
+
+    public void onShutDown(){
+        // save all open games!
+        for(Game game : games.values()){
+            game.cancel();
+            game.onGameEnd();
+        }
+
+        try {
+            saves.save(savesFile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
