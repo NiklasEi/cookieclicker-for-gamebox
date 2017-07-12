@@ -1,6 +1,7 @@
 name: CookieClicker
 author: Nikl
 main: me.nikl.cookieclicker.Main
-version: 0.0.1
+version: 0.1.0
 website: nikl.me
 depend: [GameBox]
+softdepend: [CalendarEvents]
