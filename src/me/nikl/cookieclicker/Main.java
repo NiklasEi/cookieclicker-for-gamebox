@@ -17,6 +17,9 @@ import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.RegisteredServiceProvider;
@@ -76,7 +79,27 @@ public class Main extends JavaPlugin{
         hook();
         if (disabled) return;
 
+
+
+        //Bukkit.getPluginManager().registerEvents(this, this);
     }
+
+    /*
+    @EventHandler
+    public void onTest(PlayerCommandPreprocessEvent event){
+        String [] split = event.getMessage().split(" ");
+        if(split[0].equalsIgnoreCase("/test")){
+            if(split.length == 2){
+                event.setCancelled(true);
+                gameManager.restart(split[1]);
+            } else {
+                return;
+            }
+        }
+    }*/
+
+
+
 
 
     @Override
