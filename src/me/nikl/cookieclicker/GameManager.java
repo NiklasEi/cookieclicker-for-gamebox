@@ -2,6 +2,8 @@ package me.nikl.cookieclicker;
 
 import me.nikl.gamebox.GameBox;
 import me.nikl.gamebox.Permissions;
+import me.nikl.gamebox.data.SaveType;
+import me.nikl.gamebox.data.Statistics;
 import me.nikl.gamebox.game.IGameManager;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -18,9 +20,11 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 import java.util.logging.Level;
 
@@ -40,10 +44,13 @@ public class GameManager implements IGameManager {
     private File savesFile;
     private FileConfiguration saves;
 
+    private Statistics statistics;
+
 
 
     public GameManager(Main plugin){
         this.plugin = plugin;
+        this.statistics = plugin.gameBox.getStatistics();
         this.lang = plugin.lang;
 
         savesFile = new File(plugin.getDataFolder().toString() + File.separatorChar + "saves.yml");
@@ -164,6 +171,7 @@ public class GameManager implements IGameManager {
         }
 
         saves.set(rule.getKey() + "." + uuid.toString() + "." + "upgrades", upgrades);
+        statistics.addStatistics(uuid, Main.gameID, rule.getKey(), Math.floor(cookies.get("total")), SaveType.SCORE);
     }
 
     public void onShutDown(){
@@ -178,5 +186,33 @@ public class GameManager implements IGameManager {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void restart(String key){
+        GameRules rule = gameTypes.get(key);
+        if(rule == null) return;
+
+        Set<Player> players = new HashSet<>();
+
+        for(Game game : games.values()){
+            if(game.getRule().getKey().equals(key)){
+                players.add(game.getPlayer());
+            }
+        }
+
+        for(Player player : players){
+            if(player != null) player.closeInventory();
+        }
+
+        // here pay out any rewards and gather the top players
+
+
+        // ToDo: update GameBox and allow for removing of statistics
+
+        // delete saves
+        if (saves.isConfigurationSection(key)){
+            saves.set(key, null);
+        }
+
     }
 }
