@@ -177,32 +177,6 @@ public class Game extends BukkitRunnable{
         this.runTaskTimer(plugin, 0, 10);
     }
 
-    private void load(ConfigurationSection save) {
-        if(save.isConfigurationSection("cookies")){
-            ConfigurationSection cookieSection = save.getConfigurationSection("cookies");
-            cookies = cookieSection.getDouble("total", 0.);
-            clickCookiesProduced = cookieSection.getDouble("click", 0.);
-        }
-
-        if(save.isConfigurationSection("productions")) {
-            for (String key : save.getConfigurationSection("productions").getKeys(false)) {
-                productions.get(Productions.valueOf(key)).addProductions(save.getInt("productions" + "." + key, 0));
-            }
-        }
-
-        List<Integer> upgrades = save.getIntegerList("upgrades");
-
-        if(upgrades != null && !upgrades.isEmpty()){
-            for(int id : upgrades){
-                Upgrade upgrade = futureUpgrades.get(id);
-                if(upgrade == null) continue;
-                upgrade.onActivation();
-                activeUpgrades.add(upgrade);
-                futureUpgrades.remove(id);
-            }
-        }
-    }
-
     private void buildInv() {
         visualize();
         calcCookiesPerSecond();
@@ -380,9 +354,12 @@ public class Game extends BukkitRunnable{
 
 
     public void onGameEnd() {
+        player.sendMessage(lang.PREFIX + lang.GAME_CLOSED.replace("%score%", Utility.convertHugeNumber(Math.floor(totalCookiesProduced))));
+
         Map<String, Double> cookies = new HashMap<>();
-        cookies.put("total", this.cookies);
+        cookies.put("current", this.cookies);
         cookies.put("click", this.clickCookiesProduced);
+        cookies.put("total", this.totalCookiesProduced);
 
         Map<String, Integer> productions = new HashMap<>();
         for(Productions production : productionsPositions.values()){
@@ -395,6 +372,33 @@ public class Game extends BukkitRunnable{
         }
 
         plugin.getGameManager().saveGame(rule, player.getUniqueId(), cookies, productions, upgrades);
+    }
+
+    private void load(ConfigurationSection save) {
+        if(save.isConfigurationSection("cookies")){
+            ConfigurationSection cookieSection = save.getConfigurationSection("cookies");
+            cookies = cookieSection.getDouble("current", 0.);
+            clickCookiesProduced = cookieSection.getDouble("click", 0.);
+            totalCookiesProduced = cookieSection.getDouble("total", 0.);
+        }
+
+        if(save.isConfigurationSection("productions")) {
+            for (String key : save.getConfigurationSection("productions").getKeys(false)) {
+                productions.get(Productions.valueOf(key)).addProductions(save.getInt("productions" + "." + key, 0));
+            }
+        }
+
+        List<Integer> upgrades = save.getIntegerList("upgrades");
+
+        if(upgrades != null && !upgrades.isEmpty()){
+            for(int id : upgrades){
+                Upgrade upgrade = futureUpgrades.get(id);
+                if(upgrade == null) continue;
+                upgrade.onActivation();
+                activeUpgrades.add(upgrade);
+                futureUpgrades.remove(id);
+            }
+        }
     }
 
     @Override
@@ -433,5 +437,13 @@ public class Game extends BukkitRunnable{
 
     public Inventory getInventory() {
         return inventory;
+    }
+
+    public GameRules getRule(){
+        return this.rule;
+    }
+
+    public Player getPlayer(){
+        return this.player;
     }
 }
