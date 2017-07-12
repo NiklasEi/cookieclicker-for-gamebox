@@ -7,9 +7,7 @@ game:
     # use %cost% for the amount payed
     payed: " &2Du hast &4%cost% gezahlt"
     notEnoughMoney: " &4Nicht genug Geld!"
-    # use %reward% for the amount the player won
-    wonMoney: " &2Du hast &6%score%&2 Kekse gebacken und &6%reward%&2 gewonnen!"
-  gameOverNoPay: " &2Du hast &6%score% Kekse gebacken!"
+  closedGame: " &2Momentaner Punktestand: &6%score%"
   inventoryTitles:
     gameTitle: "&9&lCC   &r&a%score% Kekse"
   cookieName: "&1&lKeks"
