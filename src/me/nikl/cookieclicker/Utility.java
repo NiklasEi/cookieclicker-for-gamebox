@@ -39,31 +39,31 @@ public class Utility {
             numberStr = new StringBuilder(numberStr).insert(numberStr.length() - 3, ",").toString();
         }
 
-        return numberStr + " " + NAMES[index - 1];
+        return numberStr + NAMES[index - 1];
     }
 
     private static final String NAMES[] = new String[]{
             "",
-            "million",
-            "billion",
-            "trillion",
-            "quadrillion",
-            "quintillion",
-            "sextillion",
-            "septillion",
-            "octillion",
-            "nonillion",
-            "decillion",
-            "undecillion",
-            "duodecillion",
-            "tredecillion",
-            "quattuordecillion",
-            "quindecillion",
-            "sexdecillion",
-            "septendecillion",
-            "octodecillion",
-            "novemdecillion",
-            "vigintillion",
+            " million",
+            " billion",
+            " trillion",
+            " quadrillion",
+            " quintillion",
+            " sextillion",
+            " septillion",
+            " octillion",
+            " nonillion",
+            " decillion",
+            " undecillion",
+            " duodecillion",
+            " tredecillion",
+            " quattuordecillion",
+            " quindecillion",
+            " sexdecillion",
+            " septendecillion",
+            " octodecillion",
+            " novemdecillion",
+            " vigintillion",
     };
 
     private static final NavigableMap<Integer, String> MAP;
