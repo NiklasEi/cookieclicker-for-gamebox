@@ -199,6 +199,7 @@ public class Game extends BukkitRunnable{
     private void buildInv() {
         visualize();
         calcCookiesPerSecond();
+        calcCookiesPerClick();
 
 
         mainCookie.setAmount(1);
