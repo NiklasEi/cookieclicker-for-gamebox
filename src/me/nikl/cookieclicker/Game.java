@@ -218,7 +218,7 @@ public class Game extends BukkitRunnable{
         ArrayList<String> lore = new ArrayList<>();
         for(String line : lang.GAME_OVEN_LORE){
             lore.add(line.replace("%cookies_per_second%", Utility.convertHugeNumber(cookiesPerSecond))
-                    .replace("%cookies_per_click%", Utility.convertHugeNumber(baseCookiesPerClick + cookiesPerClickPerCPS * cookiesPerSecond)));
+                    .replace("%cookies_per_click%", Utility.convertHugeNumber(cookiesPerClick)));
         }
         ItemMeta meta = oven.getItemMeta();
         meta.setLore(lore);
@@ -420,9 +420,9 @@ public class Game extends BukkitRunnable{
             totalCookiesProduced = cookieSection.getDouble("total", 0.);
         }
 
-        if(save.isConfigurationSection("buildings")) {
-            for (String key : save.getConfigurationSection("buildings").getKeys(false)) {
-                buildings.get(Buildings.valueOf(key)).addProductions(save.getInt("buildings" + "." + key, 0));
+        if(save.isConfigurationSection("productions")) {
+            for (String key : save.getConfigurationSection("productions").getKeys(false)) {
+                buildings.get(Buildings.valueOf(key)).addProductions(save.getInt("productions" + "." + key, 0));
             }
         }
 

@@ -167,7 +167,7 @@ public class GameManager implements IGameManager {
         }
 
         for(String production : productions.keySet()){
-            saves.set(rule.getKey() + "." + uuid.toString() + "." + "buildings" + "." + production, productions.get(production));
+            saves.set(rule.getKey() + "." + uuid.toString() + "." + "productions" + "." + production, productions.get(production));
         }
 
         saves.set(rule.getKey() + "." + uuid.toString() + "." + "upgrades", upgrades);
