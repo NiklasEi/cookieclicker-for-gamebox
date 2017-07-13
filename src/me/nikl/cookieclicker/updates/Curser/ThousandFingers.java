@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class ThousandFingers extends Upgrade{
 
     public ThousandFingers(Game game) {
-        super(game, 0);
+        super(game, 3);
         this.cost = 100000;
         productionsRequirements.put(Buildings.CURSER, 20);
 
