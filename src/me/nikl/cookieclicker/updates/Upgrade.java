@@ -1,7 +1,7 @@
 package me.nikl.cookieclicker.updates;
 
 import me.nikl.cookieclicker.Game;
-import me.nikl.cookieclicker.productions.Buildings;
+import me.nikl.cookieclicker.buildings.Buildings;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;

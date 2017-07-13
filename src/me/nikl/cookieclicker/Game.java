@@ -1,6 +1,6 @@
 package me.nikl.cookieclicker;
 
-import me.nikl.cookieclicker.productions.*;
+import me.nikl.cookieclicker.buildings.*;
 import me.nikl.cookieclicker.updates.Curser.Ambidextrous;
 import me.nikl.cookieclicker.updates.Curser.CarpalTunnelPreventionCream;
 import me.nikl.cookieclicker.updates.Curser.ReinforcedIndexFinger;
@@ -405,9 +405,9 @@ public class Game extends BukkitRunnable{
             totalCookiesProduced = cookieSection.getDouble("total", 0.);
         }
 
-        if(save.isConfigurationSection("productions")) {
-            for (String key : save.getConfigurationSection("productions").getKeys(false)) {
-                buildings.get(Buildings.valueOf(key)).addProductions(save.getInt("productions" + "." + key, 0));
+        if(save.isConfigurationSection("buildings")) {
+            for (String key : save.getConfigurationSection("buildings").getKeys(false)) {
+                buildings.get(Buildings.valueOf(key)).addProductions(save.getInt("buildings" + "." + key, 0));
             }
         }
 

@@ -1,4 +1,4 @@
-package me.nikl.cookieclicker.productions;
+package me.nikl.cookieclicker.buildings;
 
 import me.nikl.cookieclicker.Main;
 import org.bukkit.ChatColor;
@@ -11,21 +11,21 @@ import java.util.ArrayList;
 /**
  * Created by Niklas on 05.07.2017.
  */
-public class Farm extends Building {
+public class Bank extends Building {
 
-    public Farm(Main plugin, int slot, String name) {
+    public Bank(Main plugin, int slot, String name) {
         super(plugin, slot, name);
 
-        icon = new MaterialData(Material.DIRT).toItemStack();
+        icon = new MaterialData(Material.GOLD_NUGGET).toItemStack();
         icon.setAmount(1);
         ItemMeta meta = icon.getItemMeta();
-        meta.setDisplayName("Farm");
+        meta.setDisplayName("Bank");
         icon.setItemMeta(meta);
 
-        this.productionPerSecond = 8;
-        this.baseCost = 1100;
+        this.productionPerSecond = 1400;
+        this.baseCost = 1400000;
 
         this.description = new ArrayList<>();
-        description.add(ChatColor.ITALIC + "\"Grows cookie plants from cookie seeds.\"");
+        description.add(ChatColor.ITALIC + "\"Generates cookies from interest.\"");
     }
 }

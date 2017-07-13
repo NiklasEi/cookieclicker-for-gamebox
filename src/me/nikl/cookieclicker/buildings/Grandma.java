@@ -1,4 +1,4 @@
-package me.nikl.cookieclicker.productions;
+package me.nikl.cookieclicker.buildings;
 
 import me.nikl.cookieclicker.Main;
 import org.bukkit.ChatColor;

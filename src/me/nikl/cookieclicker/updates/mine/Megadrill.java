@@ -2,7 +2,7 @@ package me.nikl.cookieclicker.updates.mine;
 
 import me.nikl.cookieclicker.Game;
 import me.nikl.cookieclicker.Utility;
-import me.nikl.cookieclicker.productions.Buildings;
+import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.updates.Upgrade;
 import me.nikl.gamebox.GameBoxSettings;
 import org.bukkit.ChatColor;
