@@ -65,8 +65,15 @@ public class Game extends BukkitRunnable{
 
     private double cookies;
 
-    public double cookiesPerClick = 1.;
+    private double cookiesPerClick = 0.;
+
+    public double baseCookiesPerClick = 1.;
     public double cookiesPerClickPerCPS = 0.;
+
+    private Map<Buildings, Double> clickBonuses = new HashMap<>();
+
+
+    private Map<Buildings, Map<Buildings, Double>> buildingBonuses = new HashMap<>();
 
     // stats
     private double totalCookiesProduced = 0.;
@@ -75,8 +82,8 @@ public class Game extends BukkitRunnable{
     private double cookiesPerSecond = 0.;
     private long lastTimeStamp = System.currentTimeMillis();
 
-    private HashMap<Productions, Production> productions = new HashMap<>();
-    private HashMap<Integer, Productions> productionsPositions = new HashMap<>();
+    private HashMap<Buildings, Building> buildings = new HashMap<>();
+    private HashMap<Integer, Buildings> buildingsPositions = new HashMap<>();
 
     private ItemStack mainCookie = new MaterialData(Material.COOKIE).toItemStack();
     private int mainCookieSlot = 31;
@@ -152,18 +159,18 @@ public class Game extends BukkitRunnable{
         // create inventory
         this.inventory = Bukkit.createInventory(null, 54, lang.GAME_TITLE.replace("%score%", String.valueOf((int) cookies)));
 
-        productions.put(Productions.CURSER, new Curser(plugin, 3, "Curser"));
-        productionsPositions.put(3, Productions.CURSER);
-        productions.put(Productions.GRANDMA, new Grandma(plugin, 4, "Grandma"));
-        productionsPositions.put(4, Productions.GRANDMA);
-        productions.put(Productions.FARM, new Farm(plugin, 5, "Farm"));
-        productionsPositions.put(5, Productions.FARM);
-        productions.put(Productions.MINE, new Mine(plugin, 6, "Mine"));
-        productionsPositions.put(6, Productions.MINE);
-        productions.put(Productions.FACTORY, new Factory(plugin, 7, "Factory"));
-        productionsPositions.put(7, Productions.FACTORY);
-        productions.put(Productions.BANK, new Bank(plugin, 8, "Bank"));
-        productionsPositions.put(8, Productions.BANK);
+        buildings.put(Buildings.CURSER, new Curser(plugin, 3, "Curser"));
+        buildingsPositions.put(3, Buildings.CURSER);
+        buildings.put(Buildings.GRANDMA, new Grandma(plugin, 4, "Grandma"));
+        buildingsPositions.put(4, Buildings.GRANDMA);
+        buildings.put(Buildings.FARM, new Farm(plugin, 5, "Farm"));
+        buildingsPositions.put(5, Buildings.FARM);
+        buildings.put(Buildings.MINE, new Mine(plugin, 6, "Mine"));
+        buildingsPositions.put(6, Buildings.MINE);
+        buildings.put(Buildings.FACTORY, new Factory(plugin, 7, "Factory"));
+        buildingsPositions.put(7, Buildings.FACTORY);
+        buildings.put(Buildings.BANK, new Bank(plugin, 8, "Bank"));
+        buildingsPositions.put(8, Buildings.BANK);
 
         if(save != null){
             //load the game
@@ -199,7 +206,7 @@ public class Game extends BukkitRunnable{
         ArrayList<String> lore = new ArrayList<>();
         for(String line : lang.GAME_OVEN_LORE){
             lore.add(line.replace("%cookies_per_second%", Utility.convertHugeNumber(cookiesPerSecond))
-                    .replace("%cookies_per_click%", Utility.convertHugeNumber(cookiesPerClick + cookiesPerClickPerCPS * cookiesPerSecond)));
+                    .replace("%cookies_per_click%", Utility.convertHugeNumber(baseCookiesPerClick + cookiesPerClickPerCPS * cookiesPerSecond)));
         }
         ItemMeta meta = oven.getItemMeta();
         meta.setLore(lore);
@@ -214,17 +221,17 @@ public class Game extends BukkitRunnable{
 
         // Click on cookie
         if(inventoryClickEvent.getRawSlot() == mainCookieSlot) {
-            cookies += cookiesPerClick + cookiesPerClickPerCPS * cookiesPerSecond;
-            clickCookiesProduced += cookiesPerClick + cookiesPerClickPerCPS * cookiesPerSecond;
-            totalCookiesProduced += cookiesPerClick + cookiesPerClickPerCPS * cookiesPerSecond;
+            cookies += cookiesPerClick;
+            clickCookiesProduced += cookiesPerClick ;
+            totalCookiesProduced += cookiesPerClick;
 
             if(playSounds) player.playSound(player.getLocation(), clickCookie, volume * 0.5f, pitch);
         }
 
         // click on production
-        else if(productionsPositions.keySet().contains(inventoryClickEvent.getRawSlot())){
-            Production production = productions.get(productionsPositions.get(inventoryClickEvent.getRawSlot()));
-            double cost = production.getCost();
+        else if(buildingsPositions.keySet().contains(inventoryClickEvent.getRawSlot())){
+            Building building = buildings.get(buildingsPositions.get(inventoryClickEvent.getRawSlot()));
+            double cost = building.getCost();
 
             switch (inventoryClickEvent.getAction()){
                 case PICKUP_ALL:
@@ -233,18 +240,18 @@ public class Game extends BukkitRunnable{
                         return;
                     }
                     cookies -= cost;
-                    production.addProductions(1);
-                    production.visualize(inventory);
+                    building.addProductions(1);
+                    building.visualize(inventory);
                     if(playSounds) player.playSound(player.getLocation(), click, volume, pitch);
                     break;
 
                 case PICKUP_HALF:
-                    if(production.getCount() == 0) return;
+                    if(building.getCount() == 0) return;
 
-                    production.addProductions(-1);
+                    building.addProductions(-1);
                     cookies += 0.45 * cost;
                     if(playSounds) player.playSound(player.getLocation(), clickCookie, volume, pitch);
-                    production.visualize(inventory);
+                    building.visualize(inventory);
                     break;
             }
             calcCookiesPerSecond();
@@ -274,8 +281,24 @@ public class Game extends BukkitRunnable{
 
     private void calcCookiesPerSecond() {
         cookiesPerSecond = 0.;
-        for(Production production : productions.values()){
-            cookiesPerSecond += production.getAllInAllProductionPerSecond();
+        for(Buildings buildings : buildings.keySet()){
+            cookiesPerSecond += this.buildings.get(buildings).getAllInAllProductionPerSecond();
+
+            // check for bonuses from other buildings
+            if(!buildingBonuses.keySet().contains(buildings)) continue;
+
+            for(Buildings otherBuilding : buildingBonuses.get(buildings).keySet()){
+                cookiesPerSecond += this.buildings.get(otherBuilding).getCount() * buildingBonuses.get(buildings).get(otherBuilding);
+            }
+        }
+    }
+
+
+    private void calcCookiesPerClick() {
+        cookiesPerClick = baseCookiesPerClick + cookiesPerClickPerCPS * cookiesPerSecond;
+
+        for(Buildings buildings : clickBonuses.keySet()){
+            cookiesPerClick += this.buildings.get(buildings).getCount() * clickBonuses.get(buildings);
         }
     }
 
@@ -362,8 +385,8 @@ public class Game extends BukkitRunnable{
         cookies.put("total", this.totalCookiesProduced);
 
         Map<String, Integer> productions = new HashMap<>();
-        for(Productions production : productionsPositions.values()){
-            productions.put(production.toString(), getProduction(production).getCount());
+        for(Buildings production : buildingsPositions.values()){
+            productions.put(production.toString(), getBuilding(production).getCount());
         }
 
         List<Integer> upgrades = new ArrayList<>();
@@ -384,7 +407,7 @@ public class Game extends BukkitRunnable{
 
         if(save.isConfigurationSection("productions")) {
             for (String key : save.getConfigurationSection("productions").getKeys(false)) {
-                productions.get(Productions.valueOf(key)).addProductions(save.getInt("productions" + "." + key, 0));
+                buildings.get(Buildings.valueOf(key)).addProductions(save.getInt("productions" + "." + key, 0));
             }
         }
 
@@ -418,8 +441,42 @@ public class Game extends BukkitRunnable{
     }
 
     public void visualize(){
-        for(Production production : productions.values()) {
-            production.visualize(inventory);
+        for(Building building : buildings.values()) {
+            building.visualize(inventory);
+        }
+    }
+
+    /**
+     * Add a bonus number of cookies per click and per specified building
+     * @param production
+     * @param bonusPerBuilding
+     */
+    public void addClickBonus(Buildings production, double bonusPerBuilding){
+        if(clickBonuses.keySet().contains(production)){
+            clickBonuses.put(production, (clickBonuses.get(production) + bonusPerBuilding));
+            return;
+        } else {
+            clickBonuses.put(production, bonusPerBuilding);
+            return;
+        }
+    }
+
+    public void addBuildingBonus(Buildings buildingThatGetsTheBonus, Buildings buildingTheBonusComesFrom, double bonus){
+        if(buildingBonuses.keySet().contains(buildingThatGetsTheBonus)){
+            Map<Buildings, Double> bonusMap = buildingBonuses.get(buildingThatGetsTheBonus);
+            if(bonusMap.keySet().contains(buildingTheBonusComesFrom)){
+                bonusMap.put(buildingTheBonusComesFrom, bonusMap.get(buildingTheBonusComesFrom) + bonus);
+                buildingBonuses.put(buildingThatGetsTheBonus, bonusMap);
+                return;
+            } else {
+                bonusMap.put(buildingTheBonusComesFrom, bonus);
+                return;
+            }
+        } else {
+            Map<Buildings, Double> bonusMap = new HashMap<>();
+            bonusMap.put(buildingTheBonusComesFrom, bonus);
+            buildingBonuses.put(buildingThatGetsTheBonus, bonusMap);
+            return;
         }
     }
 
@@ -431,8 +488,8 @@ public class Game extends BukkitRunnable{
         return this.clickCookiesProduced;
     }
 
-    public Production getProduction(Productions production) {
-        return productions.get(production);
+    public Building getBuilding(Buildings production) {
+        return buildings.get(production);
     }
 
     public Inventory getInventory() {
