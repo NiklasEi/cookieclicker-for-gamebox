@@ -2,7 +2,7 @@ package me.nikl.cookieclicker.updates.mine;
 
 import me.nikl.cookieclicker.Game;
 import me.nikl.cookieclicker.Utility;
-import me.nikl.cookieclicker.productions.Productions;
+import me.nikl.cookieclicker.productions.Buildings;
 import me.nikl.cookieclicker.updates.Upgrade;
 import me.nikl.gamebox.GameBoxSettings;
 import org.bukkit.ChatColor;
@@ -22,7 +22,7 @@ public class Megadrill extends Upgrade{
     public Megadrill(Game game) {
         super(game, 17);
         this.cost = 600000;
-        productionsRequirements.put(Productions.MINE, 5);
+        productionsRequirements.put(Buildings.MINE, 5);
 
         icon = new MaterialData(Material.DIAMOND_PICKAXE).toItemStack();
         icon.setAmount(1);
@@ -43,8 +43,8 @@ public class Megadrill extends Upgrade{
 
     @Override
     public void onActivation() {
-        game.getProduction(Productions.MINE).multiply(2);
-        game.getProduction(Productions.MINE).visualize(game.getInventory());
+        game.getBuilding(Buildings.MINE).multiply(2);
+        game.getBuilding(Buildings.MINE).visualize(game.getInventory());
         active = true;
     }
 

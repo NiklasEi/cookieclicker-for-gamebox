@@ -1,7 +1,7 @@
 package me.nikl.cookieclicker.updates;
 
 import me.nikl.cookieclicker.Game;
-import me.nikl.cookieclicker.productions.Productions;
+import me.nikl.cookieclicker.productions.Buildings;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -18,7 +18,7 @@ import java.util.logging.Level;
  */
 public abstract class Upgrade {
     private int id;
-    protected Map<Productions, Integer> productionsRequirements;
+    protected Map<Buildings, Integer> productionsRequirements;
     private Map<String, Double> cookiesRequirements;
 
     protected double cost;
@@ -65,8 +65,8 @@ public abstract class Upgrade {
             }
         }
 
-        for (Productions productions : productionsRequirements.keySet()){
-            if(game.getProduction(productions).getCount() < productionsRequirements.get(productions)){
+        for (Buildings buildings : productionsRequirements.keySet()){
+            if(game.getBuilding(buildings).getCount() < productionsRequirements.get(buildings)){
                 return false;
             }
         }

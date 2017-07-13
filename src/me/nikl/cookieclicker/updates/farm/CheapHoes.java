@@ -2,7 +2,7 @@ package me.nikl.cookieclicker.updates.farm;
 
 import me.nikl.cookieclicker.Game;
 import me.nikl.cookieclicker.Utility;
-import me.nikl.cookieclicker.productions.Productions;
+import me.nikl.cookieclicker.productions.Buildings;
 import me.nikl.cookieclicker.updates.Upgrade;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -20,7 +20,7 @@ public class CheapHoes extends Upgrade{
     public CheapHoes(Game game) {
         super(game, 10);
         this.cost = 11000;
-        productionsRequirements.put(Productions.FARM, 1);
+        productionsRequirements.put(Buildings.FARM, 1);
 
         icon = new MaterialData(Material.DIRT).toItemStack();
         icon.setAmount(1);
@@ -40,8 +40,8 @@ public class CheapHoes extends Upgrade{
 
     @Override
     public void onActivation() {
-        game.getProduction(Productions.FARM).multiply(2);
-        game.getProduction(Productions.FARM).visualize(game.getInventory());
+        game.getBuilding(Buildings.FARM).multiply(2);
+        game.getBuilding(Buildings.FARM).visualize(game.getInventory());
         active = true;
     }
 

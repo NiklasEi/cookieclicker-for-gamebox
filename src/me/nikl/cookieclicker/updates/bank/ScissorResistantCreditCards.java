@@ -2,7 +2,7 @@ package me.nikl.cookieclicker.updates.bank;
 
 import me.nikl.cookieclicker.Game;
 import me.nikl.cookieclicker.Utility;
-import me.nikl.cookieclicker.productions.Productions;
+import me.nikl.cookieclicker.productions.Buildings;
 import me.nikl.cookieclicker.updates.Upgrade;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -20,7 +20,7 @@ public class ScissorResistantCreditCards extends Upgrade{
     public ScissorResistantCreditCards(Game game) {
         super(game, 233);
         this.cost = 70000000;
-        productionsRequirements.put(Productions.BANK, 5);
+        productionsRequirements.put(Buildings.BANK, 5);
 
         icon = new MaterialData(Material.GOLD_NUGGET).toItemStack();
         icon.setAmount(1);
@@ -40,8 +40,8 @@ public class ScissorResistantCreditCards extends Upgrade{
 
     @Override
     public void onActivation() {
-        game.getProduction(Productions.BANK).multiply(2);
-        game.getProduction(Productions.BANK).visualize(game.getInventory());
+        game.getBuilding(Buildings.BANK).multiply(2);
+        game.getBuilding(Buildings.BANK).visualize(game.getInventory());
         active = true;
     }
 

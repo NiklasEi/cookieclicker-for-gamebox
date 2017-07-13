@@ -2,7 +2,7 @@ package me.nikl.cookieclicker.updates.Curser;
 
 import me.nikl.cookieclicker.Game;
 import me.nikl.cookieclicker.Utility;
-import me.nikl.cookieclicker.productions.Productions;
+import me.nikl.cookieclicker.productions.Buildings;
 import me.nikl.cookieclicker.updates.Upgrade;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -20,7 +20,7 @@ public class Ambidextrous extends Upgrade{
     public Ambidextrous(Game game) {
         super(game, 2);
         this.cost = 10000;
-        productionsRequirements.put(Productions.CURSER, 10);
+        productionsRequirements.put(Buildings.CURSER, 10);
 
         icon = new MaterialData(Material.ARROW).toItemStack();
         icon.setAmount(1);
@@ -40,9 +40,9 @@ public class Ambidextrous extends Upgrade{
 
     @Override
     public void onActivation() {
-        game.cookiesPerClick = game.cookiesPerClick * 2;
-        game.getProduction(Productions.CURSER).multiply(2);
-        game.getProduction(Productions.CURSER).visualize(game.getInventory());
+        game.baseCookiesPerClick = game.baseCookiesPerClick * 2;
+        game.getBuilding(Buildings.CURSER).multiply(2);
+        game.getBuilding(Buildings.CURSER).visualize(game.getInventory());
         active = true;
     }
 

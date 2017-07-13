@@ -11,7 +11,7 @@ import java.util.ArrayList;
 /**
  * Created by Niklas on 05.07.2017.
  */
-public class Farm extends Production {
+public class Farm extends Building {
 
     public Farm(Main plugin, int slot, String name) {
         super(plugin, slot, name);

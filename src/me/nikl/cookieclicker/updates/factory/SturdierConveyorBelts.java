@@ -2,7 +2,7 @@ package me.nikl.cookieclicker.updates.factory;
 
 import me.nikl.cookieclicker.Game;
 import me.nikl.cookieclicker.Utility;
-import me.nikl.cookieclicker.productions.Productions;
+import me.nikl.cookieclicker.productions.Buildings;
 import me.nikl.cookieclicker.updates.Upgrade;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -20,7 +20,7 @@ public class SturdierConveyorBelts extends Upgrade{
     public SturdierConveyorBelts(Game game) {
         super(game, 13);
         this.cost = 1300000;
-        productionsRequirements.put(Productions.FACTORY, 1);
+        productionsRequirements.put(Buildings.FACTORY, 1);
 
         icon = new MaterialData(Material.IRON_BLOCK).toItemStack();
         icon.setAmount(1);
@@ -40,8 +40,8 @@ public class SturdierConveyorBelts extends Upgrade{
 
     @Override
     public void onActivation() {
-        game.getProduction(Productions.FACTORY).multiply(2);
-        game.getProduction(Productions.FACTORY).visualize(game.getInventory());
+        game.getBuilding(Buildings.FACTORY).multiply(2);
+        game.getBuilding(Buildings.FACTORY).visualize(game.getInventory());
         active = true;
     }
 

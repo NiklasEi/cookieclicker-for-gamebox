@@ -2,7 +2,7 @@ package me.nikl.cookieclicker.updates.grandma;
 
 import me.nikl.cookieclicker.Game;
 import me.nikl.cookieclicker.Utility;
-import me.nikl.cookieclicker.productions.Productions;
+import me.nikl.cookieclicker.productions.Buildings;
 import me.nikl.cookieclicker.updates.Upgrade;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -20,7 +20,7 @@ public class SteelPlatedRollingPins extends Upgrade{
     public SteelPlatedRollingPins(Game game) {
         super(game, 8);
         this.cost = 5000;
-        productionsRequirements.put(Productions.GRANDMA, 5);
+        productionsRequirements.put(Buildings.GRANDMA, 5);
 
         icon = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
         icon.setAmount(1);
@@ -40,8 +40,8 @@ public class SteelPlatedRollingPins extends Upgrade{
 
     @Override
     public void onActivation() {
-        game.getProduction(Productions.GRANDMA).multiply(2);
-        game.getProduction(Productions.GRANDMA).visualize(game.getInventory());
+        game.getBuilding(Buildings.GRANDMA).multiply(2);
+        game.getBuilding(Buildings.GRANDMA).visualize(game.getInventory());
         active = true;
     }
 

@@ -4,17 +4,14 @@ import me.nikl.cookieclicker.Main;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
-import org.bukkit.material.MaterialData;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Niklas on 07.07.2017.
  */
-public class Grandma extends Production {
+public class Grandma extends Building {
 
     public Grandma(Main plugin, int slot, String name) {
         super(plugin, slot, name);

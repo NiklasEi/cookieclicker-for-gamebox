@@ -2,7 +2,7 @@ package me.nikl.cookieclicker.updates.factory;
 
 import me.nikl.cookieclicker.Game;
 import me.nikl.cookieclicker.Utility;
-import me.nikl.cookieclicker.productions.Productions;
+import me.nikl.cookieclicker.productions.Buildings;
 import me.nikl.cookieclicker.updates.Upgrade;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -20,7 +20,7 @@ public class ChildLabor extends Upgrade{
     public ChildLabor(Game game) {
         super(game, 14);
         this.cost = 6500000;
-        productionsRequirements.put(Productions.FACTORY, 5);
+        productionsRequirements.put(Buildings.FACTORY, 5);
 
         icon = new MaterialData(Material.IRON_BLOCK).toItemStack();
         icon.setAmount(1);
@@ -40,8 +40,8 @@ public class ChildLabor extends Upgrade{
 
     @Override
     public void onActivation() {
-        game.getProduction(Productions.FACTORY).multiply(2);
-        game.getProduction(Productions.FACTORY).visualize(game.getInventory());
+        game.getBuilding(Buildings.FACTORY).multiply(2);
+        game.getBuilding(Buildings.FACTORY).visualize(game.getInventory());
         active = true;
     }
 

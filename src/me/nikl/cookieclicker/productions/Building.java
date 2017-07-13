@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Created by Niklas on 05.07.2017.
  */
-public class Production {
+public class Building {
     protected int count = 0;
     protected double baseCost = 0.;
     protected int slot;
@@ -27,7 +27,7 @@ public class Production {
 
     protected Language lang;
 
-    public Production(Main plugin, int slot, String name){
+    public Building(Main plugin, int slot, String name){
         this.lang = plugin.lang;
         this.name = name;
 

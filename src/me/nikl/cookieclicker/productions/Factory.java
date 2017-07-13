@@ -11,7 +11,7 @@ import java.util.ArrayList;
 /**
  * Created by Niklas on 05.07.2017.
  */
-public class Factory extends Production {
+public class Factory extends Building {
 
     public Factory(Main plugin, int slot, String name) {
         super(plugin, slot, name);

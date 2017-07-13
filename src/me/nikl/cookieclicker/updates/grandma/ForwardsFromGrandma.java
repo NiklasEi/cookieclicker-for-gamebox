@@ -2,14 +2,12 @@ package me.nikl.cookieclicker.updates.grandma;
 
 import me.nikl.cookieclicker.Game;
 import me.nikl.cookieclicker.Utility;
-import me.nikl.cookieclicker.productions.Productions;
+import me.nikl.cookieclicker.productions.Buildings;
 import me.nikl.cookieclicker.updates.Upgrade;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
-import org.bukkit.material.MaterialData;
 
 import java.util.ArrayList;
 
@@ -21,7 +19,7 @@ public class ForwardsFromGrandma extends Upgrade{
     public ForwardsFromGrandma(Game game) {
         super(game, 7);
         this.cost = 1000;
-        productionsRequirements.put(Productions.GRANDMA, 1);
+        productionsRequirements.put(Buildings.GRANDMA, 1);
 
         icon = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
         icon.setAmount(1);
@@ -41,8 +39,8 @@ public class ForwardsFromGrandma extends Upgrade{
 
     @Override
     public void onActivation() {
-        game.getProduction(Productions.GRANDMA).multiply(2);
-        game.getProduction(Productions.GRANDMA).visualize(game.getInventory());
+        game.getBuilding(Buildings.GRANDMA).multiply(2);
+        game.getBuilding(Buildings.GRANDMA).visualize(game.getInventory());
         active = true;
     }
 
