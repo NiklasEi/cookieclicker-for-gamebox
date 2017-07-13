@@ -20,6 +20,7 @@ public class Building {
     protected ItemStack icon;
     protected double productionPerSecond = 0.;
     protected double multiplier = 1.;
+    protected double otherBuildingsBonus = 0.;
     protected List<String > lore;
     protected List<String > description;
 
@@ -45,7 +46,7 @@ public class Building {
     }
 
     public double getAllInAllProductionPerSecond(){
-        return productionPerSecond * count * multiplier;
+        return  getProductionPerSecondPerItem() * count;
     }
 
     public void addProductions(int amount){
@@ -87,7 +88,7 @@ public class Building {
     }
 
     public double getProductionPerSecondPerItem() {
-        return productionPerSecond * multiplier;
+        return productionPerSecond * multiplier + otherBuildingsBonus;
     }
 
     public void visualize(Inventory inventory){
@@ -108,5 +109,9 @@ public class Building {
         icon.setItemMeta(meta);
 
         inventory.setItem(slot, icon);
+    }
+
+    public void setOtherBuildingsBonus(double bonus){
+        this.otherBuildingsBonus = bonus;
     }
 }
