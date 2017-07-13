@@ -254,6 +254,7 @@ public class Game extends BukkitRunnable{
                     building.visualize(inventory);
                     break;
             }
+            calcCookiesPerClick();
             calcCookiesPerSecond();
             updateOven();
         }
@@ -274,6 +275,8 @@ public class Game extends BukkitRunnable{
             shownUpgrades.remove(53 - inventoryClickEvent.getRawSlot());
 
             visualizeUpgrades();
+
+            calcCookiesPerClick();
             calcCookiesPerSecond();
             updateOven();
         }
