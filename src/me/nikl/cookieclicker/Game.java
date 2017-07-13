@@ -2,8 +2,12 @@ package me.nikl.cookieclicker;
 
 import me.nikl.cookieclicker.buildings.*;
 import me.nikl.cookieclicker.updates.Curser.Ambidextrous;
+import me.nikl.cookieclicker.updates.Curser.BillionFingers;
 import me.nikl.cookieclicker.updates.Curser.CarpalTunnelPreventionCream;
+import me.nikl.cookieclicker.updates.Curser.MillionFingers;
 import me.nikl.cookieclicker.updates.Curser.ReinforcedIndexFinger;
+import me.nikl.cookieclicker.updates.Curser.ThousandFingers;
+import me.nikl.cookieclicker.updates.Curser.TrillionFingers;
 import me.nikl.cookieclicker.updates.Upgrade;
 import me.nikl.cookieclicker.updates.bank.ScissorResistantCreditCards;
 import me.nikl.cookieclicker.updates.bank.TallerTellers;
@@ -15,6 +19,8 @@ import me.nikl.cookieclicker.updates.factory.SturdierConveyorBelts;
 import me.nikl.cookieclicker.updates.farm.CheapHoes;
 import me.nikl.cookieclicker.updates.farm.Fertilizer;
 import me.nikl.cookieclicker.updates.grandma.ForwardsFromGrandma;
+import me.nikl.cookieclicker.updates.grandma.LubricatedDentures;
+import me.nikl.cookieclicker.updates.grandma.PruneJuice;
 import me.nikl.cookieclicker.updates.grandma.SteelPlatedRollingPins;
 import me.nikl.cookieclicker.updates.mine.Megadrill;
 import me.nikl.cookieclicker.updates.mine.SugarGas;
@@ -123,10 +129,16 @@ public class Game extends BukkitRunnable{
         futureUpgradesTemp.add(new CarpalTunnelPreventionCream(this));
         futureUpgradesTemp.add(new ReinforcedIndexFinger(this));
         futureUpgradesTemp.add(new Ambidextrous(this));
+        futureUpgradesTemp.add(new ThousandFingers(this));
+        futureUpgradesTemp.add(new MillionFingers(this));
+        futureUpgradesTemp.add(new BillionFingers(this));
+        futureUpgradesTemp.add(new TrillionFingers(this));
 
         // GRANDMA
         futureUpgradesTemp.add(new ForwardsFromGrandma(this));
         futureUpgradesTemp.add(new SteelPlatedRollingPins(this));
+        futureUpgradesTemp.add(new LubricatedDentures(this));
+        futureUpgradesTemp.add(new PruneJuice(this));
 
         // Farm
         futureUpgradesTemp.add(new CheapHoes(this));
