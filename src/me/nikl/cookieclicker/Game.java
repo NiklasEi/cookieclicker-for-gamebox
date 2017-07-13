@@ -298,14 +298,22 @@ public class Game extends BukkitRunnable{
     private void calcCookiesPerSecond() {
         cookiesPerSecond = 0.;
         for(Buildings buildings : buildings.keySet()){
-            cookiesPerSecond += this.buildings.get(buildings).getAllInAllProductionPerSecond();
-
             // check for bonuses from other buildings
-            if(!buildingBonuses.keySet().contains(buildings)) continue;
+            if(buildingBonuses.keySet().contains(buildings)) {
 
-            for(Buildings otherBuilding : buildingBonuses.get(buildings).keySet()){
-                cookiesPerSecond += this.buildings.get(otherBuilding).getCount() * buildingBonuses.get(buildings).get(otherBuilding);
+                double otherBuildingBonus = 0.;
+                double bonus;
+                for (Buildings otherBuilding : buildingBonuses.get(buildings).keySet()) {
+                    bonus = this.buildings.get(otherBuilding).getCount() * buildingBonuses.get(buildings).get(otherBuilding);
+                    otherBuildingBonus += bonus;
+                }
+
+                // update the building with the new bonus
+                this.buildings.get(buildings).setOtherBuildingsBonus(otherBuildingBonus);
+                this.buildings.get(buildings).visualize(inventory);
             }
+
+            cookiesPerSecond += this.buildings.get(buildings).getAllInAllProductionPerSecond();
         }
     }
 
