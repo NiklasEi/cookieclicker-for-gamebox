@@ -17,7 +17,13 @@ import me.nikl.cookieclicker.updates.clicking.TitaniumMouse;
 import me.nikl.cookieclicker.updates.factory.ChildLabor;
 import me.nikl.cookieclicker.updates.factory.SturdierConveyorBelts;
 import me.nikl.cookieclicker.updates.farm.CheapHoes;
+import me.nikl.cookieclicker.updates.farm.CookieTrees;
 import me.nikl.cookieclicker.updates.farm.Fertilizer;
+import me.nikl.cookieclicker.updates.farm.FudgeFungus;
+import me.nikl.cookieclicker.updates.farm.GeneticallyModifiedCookies;
+import me.nikl.cookieclicker.updates.farm.GingerbreadScarecrows;
+import me.nikl.cookieclicker.updates.farm.PulsarSprinklers;
+import me.nikl.cookieclicker.updates.farm.WheatTriffids;
 import me.nikl.cookieclicker.updates.grandma.ForwardsFromGrandma;
 import me.nikl.cookieclicker.updates.grandma.LubricatedDentures;
 import me.nikl.cookieclicker.updates.grandma.PruneJuice;
@@ -143,6 +149,12 @@ public class Game extends BukkitRunnable{
         // Farm
         futureUpgradesTemp.add(new CheapHoes(this));
         futureUpgradesTemp.add(new Fertilizer(this));
+        futureUpgradesTemp.add(new CookieTrees(this));
+        futureUpgradesTemp.add(new GeneticallyModifiedCookies(this));
+        futureUpgradesTemp.add(new GingerbreadScarecrows(this));
+        futureUpgradesTemp.add(new PulsarSprinklers(this));
+        futureUpgradesTemp.add(new FudgeFungus(this));
+        futureUpgradesTemp.add(new WheatTriffids(this));
 
         // Mine
         futureUpgradesTemp.add(new SugarGas(this));
