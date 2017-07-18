@@ -186,7 +186,7 @@ public class Main extends JavaPlugin{
             double cost;
             boolean saveStats;
 
-            int time;
+            int moveCookieAfterClicks;
 
             String displayName;
             ArrayList<String> lore;
@@ -238,14 +238,14 @@ public class Main extends JavaPlugin{
                 button.setItemMeta(meta);
                 button.setArgs(gameID, buttonID);
 
-                time = buttonSec.getInt("time", 60);
-                if(time < 1) time = 60;
+                moveCookieAfterClicks = buttonSec.getInt("moveCookieAfterClicks", 0);
+                if(moveCookieAfterClicks < 1) moveCookieAfterClicks = 0;
 
                 cost = buttonSec.getDouble("cost", 0.);
                 saveStats = buttonSec.getBoolean("saveStats", false);
 
 
-                rules = new GameRules(this, buttonID, cost,  saveStats);
+                rules = new GameRules(this, buttonID, cost, moveCookieAfterClicks, saveStats);
 
 
 

@@ -10,11 +10,13 @@ public class GameRules {
     private double cost;
     private boolean saveStats;
     private String key;
+    private int moveCookieAfterClicks;
 
-    public GameRules(Main plugin, String key, double cost, boolean saveStats){
+    public GameRules(Main plugin, String key, double cost, int moveCookieAfterClicks, boolean saveStats){
         this.cost = cost;
         this.saveStats = saveStats;
         this.key = key;
+        this.moveCookieAfterClicks = moveCookieAfterClicks;
     }
 
 
@@ -29,5 +31,9 @@ public class GameRules {
 
     public String getKey() {
         return key;
+    }
+
+    public int getMoveCookieAfterClicks() {
+        return moveCookieAfterClicks;
     }
 }

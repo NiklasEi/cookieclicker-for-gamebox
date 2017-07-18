@@ -37,6 +37,7 @@ import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryAction;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
@@ -52,6 +53,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.Set;
 
 /**
@@ -60,6 +62,8 @@ import java.util.Set;
  * Game
  */
 public class Game extends BukkitRunnable{
+
+    private Random rand;
 
     private Language lang;
 
@@ -99,6 +103,8 @@ public class Game extends BukkitRunnable{
 
     private ItemStack mainCookie = new MaterialData(Material.COOKIE).toItemStack();
     private int mainCookieSlot = 31;
+    private List<Integer> mainCookieSlots;
+    private int moveCookieAfterClicks = rule.getMoveCookieAfterClicks();
     private ItemStack oven = new MaterialData(Material.FURNACE).toItemStack();
     private int ovenSlot = 0;
 
@@ -120,6 +126,13 @@ public class Game extends BukkitRunnable{
         this.lang = plugin.lang;
         this.rule = rule;
         this.player = player;
+
+        rand = new Random();
+
+        mainCookieSlots = new ArrayList<>();
+        mainCookieSlots.add(30);
+        mainCookieSlots.add(31);
+        mainCookieSlots.add(32);
 
         cookies = 0.;
 
@@ -249,6 +262,19 @@ public class Game extends BukkitRunnable{
             cookies += cookiesPerClick;
             clickCookiesProduced += cookiesPerClick ;
             totalCookiesProduced += cookiesPerClick;
+
+            // move the cookie if configured
+            if(moveCookieAfterClicks == 1){
+                int oldSlot = mainCookieSlot;
+                while (oldSlot == mainCookieSlot){
+                    mainCookieSlot = mainCookieSlots.get(rand.nextInt(mainCookieSlots.size()));
+                }
+                inventory.setItem(oldSlot, null);
+                inventory.setItem(mainCookieSlot, mainCookie);
+                moveCookieAfterClicks = rule.getMoveCookieAfterClicks();
+            } else if(moveCookieAfterClicks > 0){
+                moveCookieAfterClicks --;
+            }
 
             if(playSounds) player.playSound(player.getLocation(), clickCookie, volume * 0.5f, pitch);
         }

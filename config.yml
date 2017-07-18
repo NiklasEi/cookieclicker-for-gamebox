@@ -54,6 +54,11 @@ gameBox:
         occasion: "monday"
         timing: "00:00"
 
+      # after the set amount of clicks on the cookie it's position will change
+      #   This is optional and can be turned off by setting it to 0 or a negative number
+      #   This option is supposed to prevent players from using autoclickers
+      moveCookieAfterClicks: 100
+
       # rewards get payed when the game is reset, even to all offline players!
       rewards:
         # Any player with a score less then the value below will not get any reward, regardless of his/her rank
