@@ -104,7 +104,7 @@ public class Game extends BukkitRunnable{
     private ItemStack mainCookie = new MaterialData(Material.COOKIE).toItemStack();
     private int mainCookieSlot = 31;
     private List<Integer> mainCookieSlots;
-    private int moveCookieAfterClicks = rule.getMoveCookieAfterClicks();
+    private int moveCookieAfterClicks;
     private ItemStack oven = new MaterialData(Material.FURNACE).toItemStack();
     private int ovenSlot = 0;
 
@@ -133,6 +133,8 @@ public class Game extends BukkitRunnable{
         mainCookieSlots.add(30);
         mainCookieSlots.add(31);
         mainCookieSlots.add(32);
+
+        moveCookieAfterClicks = rule.getMoveCookieAfterClicks();
 
         cookies = 0.;
 
