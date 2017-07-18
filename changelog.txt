@@ -1,0 +1,8 @@
+
+
+
+---------------------------------------------------------------------
+
+v 0.1.2
+ - farm updates are completed
+ - cookie will move after configured amount of clicks
