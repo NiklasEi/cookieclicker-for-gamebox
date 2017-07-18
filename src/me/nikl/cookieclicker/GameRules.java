@@ -11,13 +11,10 @@ public class GameRules {
     private boolean saveStats;
     private String key;
 
-    private int time;
-
-    public GameRules(Main plugin, String key, double cost, int time, boolean saveStats){
+    public GameRules(Main plugin, String key, double cost, boolean saveStats){
         this.cost = cost;
         this.saveStats = saveStats;
         this.key = key;
-        this.time = time;
     }
 
 
@@ -32,9 +29,5 @@ public class GameRules {
 
     public String getKey() {
         return key;
-    }
-
-    public int getTime() {
-        return time;
     }
 }

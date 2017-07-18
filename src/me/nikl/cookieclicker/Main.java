@@ -245,7 +245,7 @@ public class Main extends JavaPlugin{
                 saveStats = buttonSec.getBoolean("saveStats", false);
 
 
-                rules = new GameRules(this, buttonID, cost, time,  saveStats);
+                rules = new GameRules(this, buttonID, cost,  saveStats);
 
 
 
