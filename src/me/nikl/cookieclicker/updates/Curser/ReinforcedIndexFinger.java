@@ -1,7 +1,7 @@
-package me.nikl.cookieclicker.updates.Curser;
+package me.nikl.cookieclicker.updates.curser;
 
 import me.nikl.cookieclicker.Game;
-import me.nikl.cookieclicker.Utility;
+import me.nikl.gamebox.util.NumberUtil;
 import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.updates.Upgrade;
 import org.bukkit.ChatColor;
@@ -29,7 +29,7 @@ public class ReinforcedIndexFinger extends Upgrade{
         meta.setDisplayName("Reinforced index finger");
 
         ArrayList<String> lore = new ArrayList<>();
-        lore.add("Price: " + Utility.convertHugeNumber(cost));
+        lore.add("Price: " + NumberUtil.convertHugeNumber(cost));
         lore.add(ChatColor.AQUA + "The mouse and cursors are "+ ChatColor.BOLD + "twice"+ ChatColor.RESET + ChatColor.AQUA + " as efficient.");
         lore.add("");
         lore.add(ChatColor.ITALIC + "\"prod prod\"");
