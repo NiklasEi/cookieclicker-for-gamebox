@@ -2,7 +2,7 @@ package me.nikl.cookieclicker.buildings;
 
 import me.nikl.cookieclicker.Language;
 import me.nikl.cookieclicker.Main;
-import me.nikl.cookieclicker.Utility;
+import me.nikl.gamebox.util.NumberUtil;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -96,9 +96,9 @@ public class Building {
         List<String> newLore = new ArrayList<>();
         for (String line : lore) {
             newLore.add(line.replace("%count%", String.valueOf(count))
-                    .replace("%cost%", Utility.convertHugeNumber(getCost()))
-                    .replace("%cookies_per_second_per_item%", Utility.convertHugeNumber(getProductionPerSecondPerItem()))
-                    .replace("%cookies_per_second%", Utility.convertHugeNumber(getAllInAllProductionPerSecond())));
+                    .replace("%cost%", NumberUtil.convertHugeNumber(getCost()))
+                    .replace("%cookies_per_second_per_item%", NumberUtil.convertHugeNumber(getProductionPerSecondPerItem()))
+                    .replace("%cookies_per_second%", NumberUtil.convertHugeNumber(getAllInAllProductionPerSecond())));
         }
         if(description != null && !description.isEmpty()){
             newLore.add("");

@@ -1,7 +1,7 @@
 package me.nikl.cookieclicker.updates.bank;
 
 import me.nikl.cookieclicker.Game;
-import me.nikl.cookieclicker.Utility;
+import me.nikl.gamebox.util.NumberUtil;
 import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.updates.Upgrade;
 import org.bukkit.ChatColor;
@@ -29,7 +29,7 @@ public class ScissorResistantCreditCards extends Upgrade{
         meta.setDisplayName("Scissor-resistant credit cards");
 
         ArrayList<String> lore = new ArrayList<>();
-        lore.add("Price: " + Utility.convertHugeNumber(cost));
+        lore.add("Price: " + NumberUtil.convertHugeNumber(cost));
         lore.add(ChatColor.AQUA + "Banks are "+ ChatColor.BOLD + "twice"+ ChatColor.RESET + ChatColor.AQUA + " as efficient.");
         lore.add("");
         lore.add(ChatColor.ITALIC + "\"For those truly valued customers.\"");

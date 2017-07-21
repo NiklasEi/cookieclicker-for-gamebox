@@ -1,7 +1,7 @@
 package me.nikl.cookieclicker.updates.mine;
 
 import me.nikl.cookieclicker.Game;
-import me.nikl.cookieclicker.Utility;
+import me.nikl.gamebox.util.NumberUtil;
 import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.updates.Upgrade;
 import me.nikl.gamebox.GameBoxSettings;
@@ -32,7 +32,7 @@ public class Megadrill extends Upgrade{
         if(!GameBoxSettings.delayedInventoryUpdate) meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 
         ArrayList<String> lore = new ArrayList<>();
-        lore.add("Price: " + Utility.convertHugeNumber(cost));
+        lore.add("Price: " + NumberUtil.convertHugeNumber(cost));
         lore.add(ChatColor.AQUA + "Mines are "+ ChatColor.BOLD + "twice"+ ChatColor.RESET + ChatColor.AQUA + " as efficient.");
         lore.add("");
         lore.add(ChatColor.ITALIC + "\"You're in deep.\"");

@@ -1,13 +1,13 @@
 package me.nikl.cookieclicker;
 
 import me.nikl.cookieclicker.buildings.*;
-import me.nikl.cookieclicker.updates.Curser.Ambidextrous;
-import me.nikl.cookieclicker.updates.Curser.BillionFingers;
-import me.nikl.cookieclicker.updates.Curser.CarpalTunnelPreventionCream;
-import me.nikl.cookieclicker.updates.Curser.MillionFingers;
-import me.nikl.cookieclicker.updates.Curser.ReinforcedIndexFinger;
-import me.nikl.cookieclicker.updates.Curser.ThousandFingers;
-import me.nikl.cookieclicker.updates.Curser.TrillionFingers;
+import me.nikl.cookieclicker.updates.curser.Ambidextrous;
+import me.nikl.cookieclicker.updates.curser.BillionFingers;
+import me.nikl.cookieclicker.updates.curser.CarpalTunnelPreventionCream;
+import me.nikl.cookieclicker.updates.curser.MillionFingers;
+import me.nikl.cookieclicker.updates.curser.ReinforcedIndexFinger;
+import me.nikl.cookieclicker.updates.curser.ThousandFingers;
+import me.nikl.cookieclicker.updates.curser.TrillionFingers;
 import me.nikl.cookieclicker.updates.Upgrade;
 import me.nikl.cookieclicker.updates.bank.ScissorResistantCreditCards;
 import me.nikl.cookieclicker.updates.bank.TallerTellers;
@@ -32,12 +32,12 @@ import me.nikl.cookieclicker.updates.mine.Megadrill;
 import me.nikl.cookieclicker.updates.mine.SugarGas;
 import me.nikl.gamebox.Sounds;
 import me.nikl.gamebox.nms.NMSUtil;
+import me.nikl.gamebox.util.NumberUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
-import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryAction;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
@@ -245,8 +245,8 @@ public class Game extends BukkitRunnable{
     private void updateOven() {
         ArrayList<String> lore = new ArrayList<>();
         for(String line : lang.GAME_OVEN_LORE){
-            lore.add(line.replace("%cookies_per_second%", Utility.convertHugeNumber(cookiesPerSecond))
-                    .replace("%cookies_per_click%", Utility.convertHugeNumber(cookiesPerClick)));
+            lore.add(line.replace("%cookies_per_second%", NumberUtil.convertHugeNumber(cookiesPerSecond))
+                    .replace("%cookies_per_click%", NumberUtil.convertHugeNumber(cookiesPerClick)));
         }
         ItemMeta meta = oven.getItemMeta();
         meta.setLore(lore);
@@ -441,7 +441,7 @@ public class Game extends BukkitRunnable{
 
 
     public void onGameEnd() {
-        player.sendMessage(lang.PREFIX + lang.GAME_CLOSED.replace("%score%", Utility.convertHugeNumber(Math.floor(totalCookiesProduced))));
+        player.sendMessage(lang.PREFIX + lang.GAME_CLOSED.replace("%score%", NumberUtil.convertHugeNumber(Math.floor(totalCookiesProduced))));
 
         Map<String, Double> cookies = new HashMap<>();
         cookies.put("current", this.cookies);
@@ -500,7 +500,7 @@ public class Game extends BukkitRunnable{
 
         lastTimeStamp = newTimeStamp;
 
-        nms.updateInventoryTitle(player, lang.GAME_TITLE.replace("%score%", Utility.convertHugeNumber(BigInteger.valueOf((long) cookies))));
+        nms.updateInventoryTitle(player, lang.GAME_TITLE.replace("%score%", NumberUtil.convertHugeNumber(BigInteger.valueOf((long) cookies))));
         checkUpgrades();
     }
 

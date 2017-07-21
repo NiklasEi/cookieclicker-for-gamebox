@@ -1,11 +1,10 @@
 package me.nikl.cookieclicker.updates.clicking;
 
 import me.nikl.cookieclicker.Game;
-import me.nikl.cookieclicker.Utility;
+import me.nikl.gamebox.util.NumberUtil;
 import me.nikl.cookieclicker.updates.Upgrade;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.material.MaterialData;
 
@@ -28,7 +27,7 @@ public class PlasticMouse extends Upgrade{
         meta.setDisplayName("Plastic mouse");
 
         ArrayList<String> lore = new ArrayList<>();
-        lore.add("Price: " + Utility.convertHugeNumber(cost));
+        lore.add("Price: " + NumberUtil.convertHugeNumber(cost));
         lore.add(ChatColor.AQUA + "Clicking gains +1% of your CpS..");
         lore.add("");
         lore.add(ChatColor.ITALIC + "\"Slightly squeaky.\"");
