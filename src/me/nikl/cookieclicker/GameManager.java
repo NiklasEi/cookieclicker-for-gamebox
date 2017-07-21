@@ -171,7 +171,7 @@ public class GameManager implements IGameManager {
         }
 
         saves.set(rule.getKey() + "." + uuid.toString() + "." + "upgrades", upgrades);
-        statistics.addStatistics(uuid, Main.gameID, rule.getKey(), Math.floor(cookies.get("total")), SaveType.SCORE);
+        statistics.addStatistics(uuid, Main.gameID, rule.getKey(), Math.floor(cookies.get("total")), SaveType.HIGH_NUMBER_SCORE);
     }
 
     public void onShutDown(){

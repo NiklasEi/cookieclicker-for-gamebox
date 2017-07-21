@@ -57,7 +57,7 @@ public class Main extends JavaPlugin{
     };
 
     private final String[] subCommands = new String[]{"cookies", "cc"};
-    private final SaveType topListSaveType = SaveType.SCORE;
+    private final SaveType topListSaveType = SaveType.HIGH_NUMBER_SCORE;
     private final int playerNum = 1;
 
     GameBox gameBox;
@@ -375,7 +375,8 @@ public class Main extends JavaPlugin{
                     lore = new ArrayList<>(Arrays.asList("", "No lore specified in the config!"));
                 }
 
-                TopListPage topListPage = new TopListPage(gameBox, guiManager, 54, gameID, buttonID + GUIManager.TOP_LIST_KEY_ADDON, GameBox.chatColor(buttonSec.getString("inventoryTitle", "Title missing in config")), this.topListSaveType, lore);
+                TopListPage topListPage = new TopListPage(gameBox, guiManager, 54, gameID, buttonID + GUIManager.TOP_LIST_KEY_ADDON,
+                        GameBox.chatColor(buttonSec.getString("inventoryTitle", "Title missing in config")), this.topListSaveType, lore);
 
                 guiManager.registerGameGUI(topListPage);
             }
