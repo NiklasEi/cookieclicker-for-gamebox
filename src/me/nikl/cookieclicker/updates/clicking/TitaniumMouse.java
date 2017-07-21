@@ -12,13 +12,14 @@ import java.util.ArrayList;
 
 /**
  * Created by Niklas on 09.07.2017.
+ *
  */
 public class TitaniumMouse extends Upgrade{
 
     public TitaniumMouse(Game game) {
         super(game, 77);
-        this.cost = 5000000;
-        setClickCookieReq(100000);
+        this.cost = 50000000;
+        setClickCookieReq(10000000);
 
         icon = new MaterialData(Material.ARROW).toItemStack();
         icon.setAmount(1);
