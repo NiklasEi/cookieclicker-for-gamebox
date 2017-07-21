@@ -146,7 +146,7 @@ public class Game extends BukkitRunnable{
         futureUpgradesTemp.add(new IronMouse(this));
         futureUpgradesTemp.add(new TitaniumMouse(this));
 
-        // Curser
+        // Cursor
         futureUpgradesTemp.add(new CarpalTunnelPreventionCream(this));
         futureUpgradesTemp.add(new ReinforcedIndexFinger(this));
         futureUpgradesTemp.add(new Ambidextrous(this));
@@ -198,8 +198,8 @@ public class Game extends BukkitRunnable{
         // create inventory
         this.inventory = Bukkit.createInventory(null, 54, lang.GAME_TITLE.replace("%score%", String.valueOf((int) cookies)));
 
-        buildings.put(Buildings.CURSER, new Curser(plugin, 3, "Curser"));
-        buildingsPositions.put(3, Buildings.CURSER);
+        buildings.put(Buildings.CURSOR, new Cursor(plugin, 3, "Cursor"));
+        buildingsPositions.put(3, Buildings.CURSOR);
         buildings.put(Buildings.GRANDMA, new Grandma(plugin, 4, "Grandma"));
         buildingsPositions.put(4, Buildings.GRANDMA);
         buildings.put(Buildings.FARM, new Farm(plugin, 5, "Farm"));
@@ -470,8 +470,20 @@ public class Game extends BukkitRunnable{
         }
 
         if(save.isConfigurationSection("productions")) {
+
+            // building name of Cursor was corrected => allow for old save and convert
+            Buildings building;
             for (String key : save.getConfigurationSection("productions").getKeys(false)) {
-                buildings.get(Buildings.valueOf(key)).addProductions(save.getInt("productions" + "." + key, 0));
+                try{
+                    building = Buildings.valueOf(key);
+                } catch (IllegalArgumentException exception){
+                    if(key.equalsIgnoreCase("Curser")){
+                        building = Buildings.CURSOR;
+                    } else {
+                        continue;
+                    }
+                }
+                buildings.get(building).addProductions(save.getInt("productions" + "." + key, 0));
             }
         }
 

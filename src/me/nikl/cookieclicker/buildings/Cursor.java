@@ -11,9 +11,9 @@ import java.util.ArrayList;
 /**
  * Created by Niklas on 05.07.2017.
  */
-public class Curser extends Building {
+public class Cursor extends Building {
 
-    public Curser(Main plugin, int slot, String name) {
+    public Cursor(Main plugin, int slot, String name) {
         super(plugin, slot, name);
 
         icon = new MaterialData(Material.ARROW).toItemStack();

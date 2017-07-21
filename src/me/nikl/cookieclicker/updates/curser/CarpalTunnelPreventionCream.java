@@ -20,7 +20,7 @@ public class CarpalTunnelPreventionCream extends Upgrade{
     public CarpalTunnelPreventionCream(Game game) {
         super(game, 1);
         this.cost = 500;
-        productionsRequirements.put(Buildings.CURSER, 1);
+        productionsRequirements.put(Buildings.CURSOR, 1);
 
         icon = new MaterialData(Material.ARROW).toItemStack();
         icon.setAmount(1);
@@ -41,8 +41,8 @@ public class CarpalTunnelPreventionCream extends Upgrade{
     @Override
     public void onActivation() {
         game.baseCookiesPerClick = game.baseCookiesPerClick * 2;
-        game.getBuilding(Buildings.CURSER).multiply(2);
-        game.getBuilding(Buildings.CURSER).visualize(game.getInventory());
+        game.getBuilding(Buildings.CURSOR).multiply(2);
+        game.getBuilding(Buildings.CURSOR).visualize(game.getInventory());
         active = true;
     }
 

@@ -20,7 +20,7 @@ public class BillionFingers extends Upgrade{
     public BillionFingers(Game game) {
         super(game, 5);
         this.cost = 100000000;
-        productionsRequirements.put(Buildings.CURSER, 80);
+        productionsRequirements.put(Buildings.CURSOR, 80);
 
         icon = new MaterialData(Material.ARROW).toItemStack();
         icon.setAmount(1);
@@ -42,8 +42,8 @@ public class BillionFingers extends Upgrade{
     @Override
     public void onActivation() {
         for(Buildings buildings : Buildings.values()){
-            if (buildings == Buildings.CURSER) continue;
-            game.addBuildingBonus(Buildings.CURSER, buildings, 5);
+            if (buildings == Buildings.CURSOR) continue;
+            game.addBuildingBonus(Buildings.CURSOR, buildings, 5);
             game.addClickBonus(buildings, 5);
         }
         active = true;

@@ -20,7 +20,7 @@ public class TrillionFingers extends Upgrade{
     public TrillionFingers(Game game) {
         super(game, 6);
         this.cost = 1000000000;
-        productionsRequirements.put(Buildings.CURSER, 120);
+        productionsRequirements.put(Buildings.CURSOR, 120);
 
         icon = new MaterialData(Material.ARROW).toItemStack();
         icon.setAmount(1);
@@ -42,8 +42,8 @@ public class TrillionFingers extends Upgrade{
     @Override
     public void onActivation() {
         for(Buildings buildings : Buildings.values()){
-            if (buildings == Buildings.CURSER) continue;
-            game.addBuildingBonus(Buildings.CURSER, buildings, 50);
+            if (buildings == Buildings.CURSOR) continue;
+            game.addBuildingBonus(Buildings.CURSOR, buildings, 50);
             game.addClickBonus(buildings, 50);
         }
         active = true;

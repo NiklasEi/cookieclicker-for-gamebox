@@ -20,7 +20,7 @@ public class Ambidextrous extends Upgrade{
     public Ambidextrous(Game game) {
         super(game, 2);
         this.cost = 10000;
-        productionsRequirements.put(Buildings.CURSER, 10);
+        productionsRequirements.put(Buildings.CURSOR, 10);
 
         icon = new MaterialData(Material.ARROW).toItemStack();
         icon.setAmount(1);
@@ -41,8 +41,8 @@ public class Ambidextrous extends Upgrade{
     @Override
     public void onActivation() {
         game.baseCookiesPerClick = game.baseCookiesPerClick * 2;
-        game.getBuilding(Buildings.CURSER).multiply(2);
-        game.getBuilding(Buildings.CURSER).visualize(game.getInventory());
+        game.getBuilding(Buildings.CURSOR).multiply(2);
+        game.getBuilding(Buildings.CURSOR).visualize(game.getInventory());
         active = true;
     }
 

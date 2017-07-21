@@ -20,7 +20,7 @@ public class ReinforcedIndexFinger extends Upgrade{
     public ReinforcedIndexFinger(Game game) {
         super(game, 0);
         this.cost = 100;
-        productionsRequirements.put(Buildings.CURSER, 1);
+        productionsRequirements.put(Buildings.CURSOR, 1);
 
         icon = new MaterialData(Material.ARROW).toItemStack();
         icon.setAmount(1);
@@ -41,8 +41,8 @@ public class ReinforcedIndexFinger extends Upgrade{
     @Override
     public void onActivation() {
         game.baseCookiesPerClick = game.baseCookiesPerClick * 2;
-        game.getBuilding(Buildings.CURSER).multiply(2);
-        game.getBuilding(Buildings.CURSER).visualize(game.getInventory());
+        game.getBuilding(Buildings.CURSOR).multiply(2);
+        game.getBuilding(Buildings.CURSOR).visualize(game.getInventory());
         active = true;
     }
 
