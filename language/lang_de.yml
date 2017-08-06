@@ -9,7 +9,7 @@ game:
     notEnoughMoney: " &4Nicht genug Geld!"
   closedGame: " &2Momentaner Punktestand: &6%score%"
   inventoryTitles:
-    gameTitle: "&9&lCC   &r&a%score% Kekse"
+    gameTitle: "&9&lCC   &r&1%score% Kekse"
   cookieName: "&1&lKeks"
   ovenName: "&a&lDeine Keksproduktion"
   ovenLore:
