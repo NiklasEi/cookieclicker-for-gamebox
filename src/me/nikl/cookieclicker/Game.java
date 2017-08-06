@@ -38,8 +38,14 @@ import me.nikl.cookieclicker.updates.grandma.PruneJuice;
 import me.nikl.cookieclicker.updates.grandma.SteelPlatedRollingPins;
 import me.nikl.cookieclicker.updates.grandma.TheUnbridling;
 import me.nikl.cookieclicker.updates.grandma.XtremeWalkers;
+import me.nikl.cookieclicker.updates.mine.CanolaOilWells;
+import me.nikl.cookieclicker.updates.mine.Coreforge;
+import me.nikl.cookieclicker.updates.mine.HBombMining;
 import me.nikl.cookieclicker.updates.mine.Megadrill;
+import me.nikl.cookieclicker.updates.mine.Planetsplitters;
 import me.nikl.cookieclicker.updates.mine.SugarGas;
+import me.nikl.cookieclicker.updates.mine.Ultimadrill;
+import me.nikl.cookieclicker.updates.mine.Ultradrill;
 import me.nikl.gamebox.Sounds;
 import me.nikl.gamebox.nms.NMSUtil;
 import me.nikl.gamebox.util.NumberUtil;
@@ -193,6 +199,12 @@ public class Game extends BukkitRunnable{
         // Mine
         futureUpgradesTemp.add(new SugarGas(this));
         futureUpgradesTemp.add(new Megadrill(this));
+        futureUpgradesTemp.add(new Ultradrill(this));
+        futureUpgradesTemp.add(new Ultimadrill(this));
+        futureUpgradesTemp.add(new HBombMining(this));
+        futureUpgradesTemp.add(new Coreforge(this));
+        futureUpgradesTemp.add(new Planetsplitters(this));
+        futureUpgradesTemp.add(new CanolaOilWells(this));
 
         // Factory
         futureUpgradesTemp.add(new SturdierConveyorBelts(this));
