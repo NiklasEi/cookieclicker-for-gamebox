@@ -1,5 +1,6 @@
 package me.nikl.cookieclicker;
 
+import me.nikl.cookieclicker.buildings.Buildings;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -10,6 +11,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -25,6 +28,9 @@ public class Language {
 			, GAME_COOKIE_NAME, GAME_OVEN_NAME;
 	public String GAME_PAYED, GAME_NOT_ENOUGH_MONEY;
 
+	public HashMap<Buildings, String> buildingName = new HashMap<>();
+	public HashMap<Buildings, List<String>> buildingLore = new HashMap<>();
+
 	public Language(Main plugin){
 		this.plugin = plugin;
 		getLangFile();
@@ -33,6 +39,40 @@ public class Language {
 
 
 		getGameMessages();
+		loadBuildingLanguage();
+	}
+
+	private void loadBuildingLanguage() {
+		this.GAME_PRODUCTION_LORE = getStringList("buildings.generalLore");
+		Buildings building;
+		List<String> lore;
+		for(String key : langFile.getConfigurationSection("buildings").getKeys(false)){
+			try{
+				building = Buildings.valueOf(key.toUpperCase());
+			} catch (IllegalArgumentException exception){
+				// ignore
+				continue;
+			}
+			lore = GAME_PRODUCTION_LORE;
+			buildingName.put(building, getString("buildings." + key + ".name"));
+			lore.addAll(getStringList("buildings." + key + ".name"));
+			buildingLore.put(building, lore);
+		}
+
+		// check for missing language in default file
+		for(String key : defaultLang.getConfigurationSection("buildings").getKeys(false)){
+			try{
+				building = Buildings.valueOf(key.toUpperCase());
+			} catch (IllegalArgumentException exception){
+				// ignore
+				continue;
+			}
+			if(buildingLore.containsKey(building) && buildingName.containsKey(building)) continue;
+			lore = GAME_PRODUCTION_LORE;
+			buildingName.put(building, getString("buildings." + key + ".name"));
+			lore.addAll(getStringList("buildings." + key + ".name"));
+			buildingLore.put(building, lore);
+		}
 	}
 
 	private void getGameMessages() {
@@ -42,8 +82,6 @@ public class Language {
 
 		this.GAME_OVEN_NAME = getString("game.ovenName");
 		this.GAME_OVEN_LORE = getStringList("game.ovenLore");
-
-		this.GAME_PRODUCTION_LORE = getStringList("game.productionLore");
 
 		this.GAME_PAYED = getString("game.econ.payed");
 		this.GAME_NOT_ENOUGH_MONEY = getString("game.econ.notEnoughMoney");
