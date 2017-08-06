@@ -14,13 +14,14 @@ import java.util.ArrayList;
 /**
  * Created by Niklas on 09.07.2017.
  *
+ * Custom upgrade replacing 'Sweatshop'
  */
 public class ChineseWorkers extends Upgrade{
 
-    public SturdierConveyorBelts(Game game) {
-        super(game, 13);
-        this.cost = 13000000;
-        productionsRequirements.put(Buildings.FACTORY, 50);
+    public ChineseWorkers(Game game) {
+        super(game, 15);
+        this.cost = 65000000;
+        productionsRequirements.put(Buildings.FACTORY, 25);
 
         icon = new MaterialData(Material.IRON_BLOCK).toItemStack();
         icon.setAmount(1);
@@ -30,9 +31,9 @@ public class ChineseWorkers extends Upgrade{
 
         ArrayList<String> lore = new ArrayList<>();
         lore.add("Price: " + NumberUtil.convertHugeNumber(cost));
-        lore.add(ChatColor.AQ UA + "Factories are "+ ChatColor.BOLD + "twice"+ ChatColor.RESET + ChatColor.AQUA + " as efficient.");
+        lore.add(ChatColor.AQUA + "Factories are "+ ChatColor.BOLD + "twice"+ ChatColor.RESET + ChatColor.AQUA + " as efficient.");
         lore.add("");
-        lore.add(ChatColor.ITALIC + "\"Update your factories with chinese workers!\"");
+        lore.add(ChatColor.ITALIC + "\"New cookie flavor: chicken feet\"");
 
         meta.setLore(lore);
         icon.setItemMeta(meta);
@@ -44,6 +45,4 @@ public class ChineseWorkers extends Upgrade{
         game.getBuilding(Buildings.FACTORY).visualize(game.getInventory());
         active = true;
     }
-
-
 }

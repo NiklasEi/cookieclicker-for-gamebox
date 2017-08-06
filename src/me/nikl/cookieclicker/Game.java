@@ -15,6 +15,7 @@ import me.nikl.cookieclicker.updates.clicking.IronMouse;
 import me.nikl.cookieclicker.updates.clicking.PlasticMouse;
 import me.nikl.cookieclicker.updates.clicking.TitaniumMouse;
 import me.nikl.cookieclicker.updates.factory.ChildLabor;
+import me.nikl.cookieclicker.updates.factory.ChineseWorkers;
 import me.nikl.cookieclicker.updates.factory.SturdierConveyorBelts;
 import me.nikl.cookieclicker.updates.farm.CheapHoes;
 import me.nikl.cookieclicker.updates.farm.CookieTrees;
@@ -178,6 +179,7 @@ public class Game extends BukkitRunnable{
         // Factory
         futureUpgradesTemp.add(new SturdierConveyorBelts(this));
         futureUpgradesTemp.add(new ChildLabor(this));
+        futureUpgradesTemp.add(new ChineseWorkers(this));
 
         // Bank
         futureUpgradesTemp.add(new TallerTellers(this));
