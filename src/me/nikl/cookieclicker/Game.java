@@ -1,6 +1,12 @@
 package me.nikl.cookieclicker;
 
 import me.nikl.cookieclicker.buildings.*;
+import me.nikl.cookieclicker.updates.bank.AcidProofVaults;
+import me.nikl.cookieclicker.updates.bank.ChocolateCoins;
+import me.nikl.cookieclicker.updates.bank.ExponentialInterestRates;
+import me.nikl.cookieclicker.updates.bank.FinancialZen;
+import me.nikl.cookieclicker.updates.bank.TheStuffRationale;
+import me.nikl.cookieclicker.updates.bank.WayOfTheWallet;
 import me.nikl.cookieclicker.updates.curser.Ambidextrous;
 import me.nikl.cookieclicker.updates.curser.BillionFingers;
 import me.nikl.cookieclicker.updates.curser.CarpalTunnelPreventionCream;
@@ -224,6 +230,12 @@ public class Game extends BukkitRunnable{
         // Bank
         futureUpgradesTemp.add(new TallerTellers(this));
         futureUpgradesTemp.add(new ScissorResistantCreditCards(this));
+        futureUpgradesTemp.add(new AcidProofVaults(this));
+        futureUpgradesTemp.add(new ChocolateCoins(this));
+        futureUpgradesTemp.add(new ExponentialInterestRates(this));
+        futureUpgradesTemp.add(new FinancialZen(this));
+        futureUpgradesTemp.add(new WayOfTheWallet(this));
+        futureUpgradesTemp.add(new TheStuffRationale(this));
 
 
         // sort updates in map with ids as key (fast lookup for loading of old game)
