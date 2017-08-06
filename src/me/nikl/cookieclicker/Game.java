@@ -30,10 +30,14 @@ import me.nikl.cookieclicker.updates.farm.GeneticallyModifiedCookies;
 import me.nikl.cookieclicker.updates.farm.GingerbreadScarecrows;
 import me.nikl.cookieclicker.updates.farm.PulsarSprinklers;
 import me.nikl.cookieclicker.updates.farm.WheatTriffids;
+import me.nikl.cookieclicker.updates.grandma.AgingAgents;
+import me.nikl.cookieclicker.updates.grandma.DoubleThickGlasses;
 import me.nikl.cookieclicker.updates.grandma.ForwardsFromGrandma;
 import me.nikl.cookieclicker.updates.grandma.LubricatedDentures;
 import me.nikl.cookieclicker.updates.grandma.PruneJuice;
 import me.nikl.cookieclicker.updates.grandma.SteelPlatedRollingPins;
+import me.nikl.cookieclicker.updates.grandma.TheUnbridling;
+import me.nikl.cookieclicker.updates.grandma.XtremeWalkers;
 import me.nikl.cookieclicker.updates.mine.Megadrill;
 import me.nikl.cookieclicker.updates.mine.SugarGas;
 import me.nikl.gamebox.Sounds;
@@ -171,6 +175,10 @@ public class Game extends BukkitRunnable{
         futureUpgradesTemp.add(new SteelPlatedRollingPins(this));
         futureUpgradesTemp.add(new LubricatedDentures(this));
         futureUpgradesTemp.add(new PruneJuice(this));
+        futureUpgradesTemp.add(new DoubleThickGlasses(this));
+        futureUpgradesTemp.add(new AgingAgents(this));
+        futureUpgradesTemp.add(new XtremeWalkers(this));
+        futureUpgradesTemp.add(new TheUnbridling(this));
 
         // Farm
         futureUpgradesTemp.add(new CheapHoes(this));
