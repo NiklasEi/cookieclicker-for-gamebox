@@ -33,7 +33,8 @@ public class QuintillionFingers extends Upgrade{
         lore.add(ChatColor.AQUA + "The mouse and cursors gain "+ ChatColor.BOLD + "+5000"+ ChatColor.RESET + ChatColor.AQUA + " cookies");
         lore.add(ChatColor.AQUA + "     for each non-cursor object owned.");
         lore.add("");
-        lore.add(ChatColor.ITALIC + "\"man, just go click click click click click, it’s real easy, man.\"");
+        lore.add(ChatColor.ITALIC + "\"man, just go click click click click click,");
+        lore.add(ChatColor.ITALIC + "     it’s real easy, man.\"");
 
         meta.setLore(lore);
         icon.setItemMeta(meta);
