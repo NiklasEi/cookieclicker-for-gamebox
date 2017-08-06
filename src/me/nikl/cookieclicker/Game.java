@@ -5,7 +5,12 @@ import me.nikl.cookieclicker.updates.curser.Ambidextrous;
 import me.nikl.cookieclicker.updates.curser.BillionFingers;
 import me.nikl.cookieclicker.updates.curser.CarpalTunnelPreventionCream;
 import me.nikl.cookieclicker.updates.curser.MillionFingers;
+import me.nikl.cookieclicker.updates.curser.OctillionFingers;
+import me.nikl.cookieclicker.updates.curser.QuadrillionFingers;
+import me.nikl.cookieclicker.updates.curser.QuintillionFingers;
 import me.nikl.cookieclicker.updates.curser.ReinforcedIndexFinger;
+import me.nikl.cookieclicker.updates.curser.SeptillionFingers;
+import me.nikl.cookieclicker.updates.curser.SextillionFingers;
 import me.nikl.cookieclicker.updates.curser.ThousandFingers;
 import me.nikl.cookieclicker.updates.curser.TrillionFingers;
 import me.nikl.cookieclicker.updates.Upgrade;
@@ -155,6 +160,11 @@ public class Game extends BukkitRunnable{
         futureUpgradesTemp.add(new MillionFingers(this));
         futureUpgradesTemp.add(new BillionFingers(this));
         futureUpgradesTemp.add(new TrillionFingers(this));
+        futureUpgradesTemp.add(new QuadrillionFingers(this));
+        futureUpgradesTemp.add(new QuintillionFingers(this));
+        futureUpgradesTemp.add(new SextillionFingers(this));
+        futureUpgradesTemp.add(new SeptillionFingers(this));
+        futureUpgradesTemp.add(new OctillionFingers(this));
 
         // GRANDMA
         futureUpgradesTemp.add(new ForwardsFromGrandma(this));
