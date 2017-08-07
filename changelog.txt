@@ -3,6 +3,11 @@
 
 ---------------------------------------------------------------------
 
+v 0.2.0
+- completed Cursor, Grandma, Mine, Factory, clicking and Bank upgrades
+- corrected titanium mouse cost
+- fix missing CPC update after new calculation of CPS
+
 v 0.1.3
  - move and improve number formatting
  - add number formatting to top list (through GameBox!)
