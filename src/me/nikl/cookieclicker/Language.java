@@ -46,17 +46,20 @@ public class Language {
 		this.GAME_PRODUCTION_LORE = getStringList("buildings.generalLore");
 		Buildings building;
 		List<String> lore;
-		for(String key : langFile.getConfigurationSection("buildings").getKeys(false)){
-			try{
-				building = Buildings.valueOf(key.toUpperCase());
-			} catch (IllegalArgumentException exception){
-				// ignore
-				continue;
+
+		if(langFile.isConfigurationSection("buildings")) {
+			for (String key : langFile.getConfigurationSection("buildings").getKeys(false)) {
+				try {
+					building = Buildings.valueOf(key.toUpperCase());
+				} catch (IllegalArgumentException exception) {
+					// ignore
+					continue;
+				}
+				lore = GAME_PRODUCTION_LORE;
+				buildingName.put(building, getString("buildings." + key + ".name"));
+				lore.addAll(getStringList("buildings." + key + ".name"));
+				buildingLore.put(building, lore);
 			}
-			lore = GAME_PRODUCTION_LORE;
-			buildingName.put(building, getString("buildings." + key + ".name"));
-			lore.addAll(getStringList("buildings." + key + ".name"));
-			buildingLore.put(building, lore);
 		}
 
 		// check for missing language in default file
