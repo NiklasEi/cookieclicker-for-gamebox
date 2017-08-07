@@ -290,9 +290,9 @@ public class Game extends BukkitRunnable{
     }
 
     private void buildInv() {
-        visualize();
         calcCookiesPerSecond();
         calcCookiesPerClick();
+        visualize();
 
 
         mainCookie.setAmount(1);
@@ -542,14 +542,15 @@ public class Game extends BukkitRunnable{
             for (String key : save.getConfigurationSection("productions").getKeys(false)) {
                 try{
                     building = Buildings.valueOf(key);
+                    buildings.get(building).addProductions(save.getInt("productions" + "." + key, 0));
                 } catch (IllegalArgumentException exception){
-                    if(key.equalsIgnoreCase("Curser")){
-                        building = Buildings.CURSOR;
-                    } else {
-                        continue;
-                    }
+                    // ignore
                 }
-                buildings.get(building).addProductions(save.getInt("productions" + "." + key, 0));
+            }
+
+            if(save.isInt("productions.CURSER")){
+                buildings.get(Buildings.CURSOR).addProductions(save.getInt("productions" + "." + "CURSER", 0));
+                save.set("productions.CURSER", null);
             }
         }
 
