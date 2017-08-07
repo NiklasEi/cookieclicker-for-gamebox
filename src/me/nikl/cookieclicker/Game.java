@@ -7,6 +7,12 @@ import me.nikl.cookieclicker.updates.bank.ExponentialInterestRates;
 import me.nikl.cookieclicker.updates.bank.FinancialZen;
 import me.nikl.cookieclicker.updates.bank.TheStuffRationale;
 import me.nikl.cookieclicker.updates.bank.WayOfTheWallet;
+import me.nikl.cookieclicker.updates.clicking.AdamantiumMouse;
+import me.nikl.cookieclicker.updates.clicking.EludiumMouse;
+import me.nikl.cookieclicker.updates.clicking.FantasteelMouse;
+import me.nikl.cookieclicker.updates.clicking.NevercrackMouse;
+import me.nikl.cookieclicker.updates.clicking.UnobtainiumMouse;
+import me.nikl.cookieclicker.updates.clicking.WishalloyMouse;
 import me.nikl.cookieclicker.updates.curser.Ambidextrous;
 import me.nikl.cookieclicker.updates.curser.BillionFingers;
 import me.nikl.cookieclicker.updates.curser.CarpalTunnelPreventionCream;
@@ -172,6 +178,12 @@ public class Game extends BukkitRunnable{
         futureUpgradesTemp.add(new PlasticMouse(this));
         futureUpgradesTemp.add(new IronMouse(this));
         futureUpgradesTemp.add(new TitaniumMouse(this));
+        futureUpgradesTemp.add(new AdamantiumMouse(this));
+        futureUpgradesTemp.add(new UnobtainiumMouse(this));
+        futureUpgradesTemp.add(new EludiumMouse(this));
+        futureUpgradesTemp.add(new WishalloyMouse(this));
+        futureUpgradesTemp.add(new FantasteelMouse(this));
+        futureUpgradesTemp.add(new NevercrackMouse(this));
 
         // Cursor
         futureUpgradesTemp.add(new CarpalTunnelPreventionCream(this));
@@ -361,8 +373,8 @@ public class Game extends BukkitRunnable{
                     building.visualize(inventory);
                     break;
             }
-            calcCookiesPerClick();
             calcCookiesPerSecond();
+            calcCookiesPerClick();
             updateOven();
         }
 
@@ -383,8 +395,8 @@ public class Game extends BukkitRunnable{
 
             visualizeUpgrades();
 
-            calcCookiesPerClick();
             calcCookiesPerSecond();
+            calcCookiesPerClick();
             updateOven();
         }
     }
