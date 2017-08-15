@@ -1,6 +1,7 @@
 package me.nikl.cookieclicker;
 
 import me.nikl.cookieclicker.buildings.Buildings;
+import me.nikl.cookieclicker.upgrades.UpgradeType;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -31,6 +32,10 @@ public class Language {
 	public HashMap<Buildings, String> buildingName = new HashMap<>();
 	public HashMap<Buildings, List<String>> buildingLore = new HashMap<>();
 
+	public HashMap<Integer, String> upgradeName = new HashMap<>();
+	public HashMap<Integer, List<String>> upgradeAddLore = new HashMap<>();
+	public HashMap<UpgradeType, List<String>> upgradeLore = new HashMap<>();
+
 	public Language(Main plugin){
 		this.plugin = plugin;
 		getLangFile();
@@ -40,6 +45,10 @@ public class Language {
 
 		getGameMessages();
 		loadBuildingLanguage();
+		loadUpgradeLanguage();
+	}
+
+	private void loadUpgradeLanguage() {
 	}
 
 	private void loadBuildingLanguage() {
