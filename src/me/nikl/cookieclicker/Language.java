@@ -32,8 +32,10 @@ public class Language {
 	public HashMap<Buildings, String> buildingName = new HashMap<>();
 	public HashMap<Buildings, List<String>> buildingLore = new HashMap<>();
 
+	public String GAME_UPGRADE_NAME;
+	public List<String> GAME_UPGRADE_LORE;
 	public HashMap<Integer, String> upgradeName = new HashMap<>();
-	public HashMap<Integer, List<String>> upgradeAddLore = new HashMap<>();
+	public HashMap<Integer, List<String>> upgradeDescriptionLore = new HashMap<>();
 	public HashMap<UpgradeType, List<String>> upgradeLore = new HashMap<>();
 
 	public Language(Main plugin){
@@ -49,6 +51,72 @@ public class Language {
 	}
 
 	private void loadUpgradeLanguage() {
+		this.GAME_UPGRADE_LORE = getStringList("upgrades.upgradeLore");
+		this.GAME_UPGRADE_NAME = getString("upgrades.upgrades");
+
+
+		UpgradeType upgradeType;
+		List<String> lore = new ArrayList<>();
+
+		// load middle lore
+		if(langFile.isConfigurationSection("upgrades.types")) {
+			for (String key : langFile.getConfigurationSection("upgrades.types").getKeys(false)) {
+				try {
+					upgradeType = UpgradeType.valueOf(key.toUpperCase());
+				} catch (IllegalArgumentException exception) {
+					// ignore
+					continue;
+				}
+				lore.clear();
+				lore.addAll(GAME_UPGRADE_LORE);
+				lore.addAll(getStringList("upgrades.types." + key));
+				upgradeLore.put(upgradeType, new ArrayList<>(lore));
+			}
+		}
+		// check for missing middle lore
+		for (String key : defaultLang.getConfigurationSection("upgrades.types").getKeys(false)) {
+			try {
+				upgradeType = UpgradeType.valueOf(key.toUpperCase());
+			} catch (IllegalArgumentException exception) {
+				// ignore
+				continue;
+			}
+			if(upgradeLore.containsKey(upgradeType)) continue;
+			lore.clear();
+			lore.addAll(GAME_UPGRADE_LORE);
+			lore.addAll(getStringList("upgrades.types." + key));
+			upgradeLore.put(upgradeType, new ArrayList<>(lore));
+		}
+
+
+		int id;
+		// load description and names
+		if(langFile.isConfigurationSection("upgrades.upgrades")) {
+			for (String key : langFile.getConfigurationSection("upgrades.upgrades").getKeys(false)) {
+				try {
+					id = Integer.valueOf(key);
+				} catch (NumberFormatException exception) {
+					// ignore
+					continue;
+				}
+				upgradeDescriptionLore.put(id, getStringList("upgrades.upgrades." + key + ".description"));
+				upgradeName.put(id, getString("upgrades.upgrades." + key + ".name"));
+			}
+		}
+		// check for missing description and names
+		if(langFile.isConfigurationSection("upgrades.upgrades")) {
+			for (String key : defaultLang.getConfigurationSection("upgrades.upgrades").getKeys(false)) {
+				try {
+					id = Integer.valueOf(key);
+				} catch (NumberFormatException exception) {
+					// ignore
+					continue;
+				}
+				if(upgradeDescriptionLore.containsKey(id) && upgradeName.containsKey(id)) continue;
+				upgradeDescriptionLore.put(id, getStringList("upgrades.upgrades." + key + ".description"));
+				upgradeName.put(id, getString("upgrades.upgrades." + key + ".name"));
+			}
+		}
 	}
 
 	private void loadBuildingLanguage() {
