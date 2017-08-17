@@ -13,8 +13,8 @@ import java.util.ArrayList;
  */
 public class Grandma extends Building {
 
-    public Grandma(Main plugin, int slot, String name) {
-        super(plugin, slot, name);
+    public Grandma(Main plugin, int slot, Buildings building) {
+        super(plugin, slot, building);
 
         icon = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
         icon.setAmount(1);
@@ -25,8 +25,5 @@ public class Grandma extends Building {
 
         this.baseCost = 100;
         this.productionPerSecond = 1;
-
-        this.description = new ArrayList<>();
-        description.add(ChatColor.ITALIC + "\"A nice grandma to bake more cookies.\"");
     }
 }

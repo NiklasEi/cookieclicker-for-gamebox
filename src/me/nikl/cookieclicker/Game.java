@@ -264,17 +264,17 @@ public class Game extends BukkitRunnable{
         // create inventory
         this.inventory = Bukkit.createInventory(null, 54, lang.GAME_TITLE.replace("%score%", String.valueOf((int) cookies)));
 
-        buildings.put(Buildings.CURSOR, new Cursor(plugin, 3, "Cursor"));
+        buildings.put(Buildings.CURSOR, new Cursor(plugin, 3, Buildings.CURSOR));
         buildingsPositions.put(3, Buildings.CURSOR);
-        buildings.put(Buildings.GRANDMA, new Grandma(plugin, 4, "Grandma"));
+        buildings.put(Buildings.GRANDMA, new Grandma(plugin, 4, Buildings.GRANDMA));
         buildingsPositions.put(4, Buildings.GRANDMA);
-        buildings.put(Buildings.FARM, new Farm(plugin, 5, "Farm"));
+        buildings.put(Buildings.FARM, new Farm(plugin, 5, Buildings.FARM));
         buildingsPositions.put(5, Buildings.FARM);
-        buildings.put(Buildings.MINE, new Mine(plugin, 6, "Mine"));
+        buildings.put(Buildings.MINE, new Mine(plugin, 6, Buildings.MINE));
         buildingsPositions.put(6, Buildings.MINE);
-        buildings.put(Buildings.FACTORY, new Factory(plugin, 7, "Factory"));
+        buildings.put(Buildings.FACTORY, new Factory(plugin, 7, Buildings.FACTORY));
         buildingsPositions.put(7, Buildings.FACTORY);
-        buildings.put(Buildings.BANK, new Bank(plugin, 8, "Bank"));
+        buildings.put(Buildings.BANK, new Bank(plugin, 8, Buildings.BANK));
         buildingsPositions.put(8, Buildings.BANK);
 
         if(save != null){

@@ -22,25 +22,23 @@ public class Building {
     protected double multiplier = 1.;
     protected double otherBuildingsBonus = 0.;
     protected List<String > lore;
-    protected List<String > description;
 
     protected String name;
 
     protected Language lang;
 
-    public Building(Main plugin, int slot, String name){
+    public Building(Main plugin, int slot, Buildings building){
         this.lang = plugin.lang;
-        this.name = name;
+        this.name = lang.buildingName.get(building);
 
         lore = new ArrayList<>();
-        for(String line : lang.GAME_PRODUCTION_LORE){
+        for(String line : lang.buildingLore.get(building)){
             lore.add(line.replace("%name%", name));
         }
 
         if(slot < 0 || slot > 53){
             slot = 0;
         }
-
 
         this.slot = slot;
     }
@@ -99,10 +97,6 @@ public class Building {
                     .replace("%cost%", NumberUtil.convertHugeNumber(getCost()))
                     .replace("%cookies_per_second_per_item%", NumberUtil.convertHugeNumber(getProductionPerSecondPerItem()))
                     .replace("%cookies_per_second%", NumberUtil.convertHugeNumber(getAllInAllProductionPerSecond())));
-        }
-        if(description != null && !description.isEmpty()){
-            newLore.add("");
-            newLore.addAll(description);
         }
         ItemMeta meta = icon.getItemMeta();
         meta.setLore(newLore);

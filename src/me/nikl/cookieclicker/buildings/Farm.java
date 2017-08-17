@@ -13,19 +13,16 @@ import java.util.ArrayList;
  */
 public class Farm extends Building {
 
-    public Farm(Main plugin, int slot, String name) {
-        super(plugin, slot, name);
+    public Farm(Main plugin, int slot, Buildings building) {
+        super(plugin, slot, building);
 
         icon = new MaterialData(Material.DIRT).toItemStack();
         icon.setAmount(1);
         ItemMeta meta = icon.getItemMeta();
-        meta.setDisplayName("Farm");
+        meta.setDisplayName(name);
         icon.setItemMeta(meta);
 
         this.productionPerSecond = 8;
         this.baseCost = 1100;
-
-        this.description = new ArrayList<>();
-        description.add(ChatColor.ITALIC + "\"Grows cookie plants from cookie seeds.\"");
     }
 }

@@ -13,8 +13,8 @@ import java.util.ArrayList;
  */
 public class Cursor extends Building {
 
-    public Cursor(Main plugin, int slot, String name) {
-        super(plugin, slot, name);
+    public Cursor(Main plugin, int slot, Buildings building) {
+        super(plugin, slot, building);
 
         icon = new MaterialData(Material.ARROW).toItemStack();
         icon.setAmount(1);
@@ -24,8 +24,5 @@ public class Cursor extends Building {
 
         this.productionPerSecond = 0.1;
         this.baseCost = 15;
-
-        this.description = new ArrayList<>();
-        description.add(ChatColor.ITALIC + "\"Autoclicks once every 10 seconds.\"");
     }
 }

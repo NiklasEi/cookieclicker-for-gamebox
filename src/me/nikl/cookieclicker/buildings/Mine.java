@@ -15,20 +15,17 @@ import java.util.ArrayList;
  */
 public class Mine extends Building {
 
-    public Mine(Main plugin, int slot, String name) {
-        super(plugin, slot, name);
+    public Mine(Main plugin, int slot, Buildings building) {
+        super(plugin, slot, building);
 
         icon = new MaterialData(Material.DIAMOND_PICKAXE).toItemStack();
         icon.setAmount(1);
         ItemMeta meta = icon.getItemMeta();
         if(!GameBoxSettings.delayedInventoryUpdate) meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-        meta.setDisplayName("Mine");
+        meta.setDisplayName(name);
         icon.setItemMeta(meta);
 
         this.productionPerSecond = 47;
         this.baseCost = 12000;
-
-        this.description = new ArrayList<>();
-        description.add(ChatColor.ITALIC + "\"Mines out cookie dough and chocolate chips.\"");
     }
 }

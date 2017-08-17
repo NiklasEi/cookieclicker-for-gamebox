@@ -13,19 +13,16 @@ import java.util.ArrayList;
  */
 public class Bank extends Building {
 
-    public Bank(Main plugin, int slot, String name) {
-        super(plugin, slot, name);
+    public Bank(Main plugin, int slot, Buildings building) {
+        super(plugin, slot, building);
 
         icon = new MaterialData(Material.GOLD_NUGGET).toItemStack();
         icon.setAmount(1);
         ItemMeta meta = icon.getItemMeta();
-        meta.setDisplayName("Bank");
+        meta.setDisplayName(name);
         icon.setItemMeta(meta);
 
         this.productionPerSecond = 1400;
         this.baseCost = 1400000;
-
-        this.description = new ArrayList<>();
-        description.add(ChatColor.ITALIC + "\"Generates cookies from interest.\"");
     }
 }

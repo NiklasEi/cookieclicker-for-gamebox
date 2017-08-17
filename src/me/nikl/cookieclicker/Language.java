@@ -66,7 +66,7 @@ public class Language {
 				}
 				lore = GAME_PRODUCTION_LORE;
 				buildingName.put(building, getString("buildings." + key + ".name"));
-				lore.addAll(getStringList("buildings." + key + ".name"));
+				lore.addAll(getStringList("buildings." + key + ".description"));
 				buildingLore.put(building, lore);
 			}
 		}
@@ -82,7 +82,7 @@ public class Language {
 			if(buildingLore.containsKey(building) && buildingName.containsKey(building)) continue;
 			lore = GAME_PRODUCTION_LORE;
 			buildingName.put(building, getString("buildings." + key + ".name"));
-			lore.addAll(getStringList("buildings." + key + ".name"));
+			lore.addAll(getStringList("buildings." + key + ".description"));
 			buildingLore.put(building, lore);
 		}
 	}

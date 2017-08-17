@@ -13,19 +13,16 @@ import java.util.ArrayList;
  */
 public class Factory extends Building {
 
-    public Factory(Main plugin, int slot, String name) {
-        super(plugin, slot, name);
+    public Factory(Main plugin, int slot, Buildings building) {
+        super(plugin, slot, building);
 
         icon = new MaterialData(Material.IRON_BLOCK).toItemStack();
         icon.setAmount(1);
         ItemMeta meta = icon.getItemMeta();
-        meta.setDisplayName("Factory");
+        meta.setDisplayName(name);
         icon.setItemMeta(meta);
 
         this.productionPerSecond = 260;
         this.baseCost = 130000;
-
-        this.description = new ArrayList<>();
-        description.add(ChatColor.ITALIC + "\"Produces large quantities of cookies.\"");
     }
 }
