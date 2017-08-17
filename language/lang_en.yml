@@ -52,24 +52,24 @@ buildings:
   cursor:
     name: "Cursor"
     description:
-      - '"&5&oAutoclicks once every 10 seconds."'
+      - '&5&o"Autoclicks once every 10 seconds."'
   grandma:
     name: "Grandma"
     description:
-      - '"&5&oA nice grandma to bake more cookies."'
+      - '&5&o"A nice grandma to bake more cookies."'
   farm:
     name: "Farm"
     description:
-      - '"&5&oGrows cookie plants from cookie seeds."'
+      - '&5&o"Grows cookie plants from cookie seeds."'
   mine:
     name: "Mine"
     description:
-      - '"&5&oMines out cookie dough and chocolate chips."'
+      - '&5&o"Mines out cookie dough and chocolate chips."'
   factory:
     name: "Factory"
     description:
-      - '"&5&oProduces large quantities of cookies."'
+      - '&5&o"Produces large quantities of cookies."'
   bank:
     name: "Bank"
     description:
-      - '"&5&oGenerates cookies from interest."'
+      - '&5&o"Generates cookies from interest."'
