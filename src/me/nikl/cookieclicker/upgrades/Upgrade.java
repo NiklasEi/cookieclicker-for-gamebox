@@ -1,13 +1,19 @@
 package me.nikl.cookieclicker.upgrades;
 
 import me.nikl.cookieclicker.Game;
+import me.nikl.cookieclicker.Language;
 import me.nikl.cookieclicker.buildings.Buildings;
+import me.nikl.gamebox.GameBox;
+import me.nikl.gamebox.util.NumberUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.material.MaterialData;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 
@@ -17,12 +23,19 @@ import java.util.logging.Level;
  *
  */
 public abstract class Upgrade {
-    private int id;
+    protected int id;
     protected Map<Buildings, Integer> productionsRequirements;
     private Map<String, Double> cookiesRequirements;
 
     protected double cost;
     protected ItemStack icon;
+
+    protected String gain = "NULL";
+
+    private Language lang;
+
+    protected List<String > lore;
+    protected String name;
 
     protected Game game;
 
@@ -36,6 +49,8 @@ public abstract class Upgrade {
         icon.setAmount(1);
         this.cost = 1;
         this.game = game;
+
+        this.lang = game.getLang();
     }
 
     protected void setTotalCookieReq(double count){
@@ -72,6 +87,42 @@ public abstract class Upgrade {
         }
 
         return true;
+    }
+
+    protected void loadLanguage(UpgradeType upgradeType, Buildings... buildings){
+        name = lang.upgradeName.get(id);
+
+        lore = new ArrayList<>();
+        for(String line : lang.upgradeLore.get(upgradeType)){
+            line = line.replace("%cost%", NumberUtil.convertHugeNumber(cost));
+
+            if(buildings != null && buildings.length > 0){
+                line = line.replace("%building%", lang.buildingName.get(buildings[0]).toLowerCase()).replace("%Building%", lang.buildingName.get(buildings[0]));
+            }
+
+            switch (upgradeType){
+                case CLASSIC:
+                case CLASSIC_MOUSE:
+                    break;
+
+                case GAIN_MOUSE:
+                    line = line.replace("%gain%", gain);
+                    break;
+
+                default:
+                    GameBox.debug("not handled upgradeType is trying to load language");
+                    break;
+            }
+
+            lore.add(line);
+        }
+        lore.addAll(lang.upgradeDescriptionLore.get(id));
+
+
+        ItemMeta meta = icon.getItemMeta();
+        meta.setDisplayName(lang.GAME_UPGRADE_NAME.replace("%name%", name));
+        meta.setLore(lore);
+        icon.setItemMeta(meta);
     }
 
     public abstract void onActivation();
