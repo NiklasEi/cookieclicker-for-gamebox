@@ -20,7 +20,7 @@ public class Grandma extends Building {
         icon.setAmount(1);
         SkullMeta skullMeta = (SkullMeta) icon.getItemMeta();
         skullMeta.setOwner("MHF_Villager");
-        skullMeta.setDisplayName(name);
+        skullMeta.setDisplayName(lang.GAME_BUILDING_NAME.replace("%name%", name));
         icon.setItemMeta(skullMeta);
 
         this.baseCost = 100;

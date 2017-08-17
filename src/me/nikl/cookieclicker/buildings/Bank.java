@@ -19,7 +19,7 @@ public class Bank extends Building {
         icon = new MaterialData(Material.GOLD_NUGGET).toItemStack();
         icon.setAmount(1);
         ItemMeta meta = icon.getItemMeta();
-        meta.setDisplayName(name);
+        meta.setDisplayName(lang.GAME_BUILDING_NAME.replace("%name%", name));
         icon.setItemMeta(meta);
 
         this.productionPerSecond = 1400;

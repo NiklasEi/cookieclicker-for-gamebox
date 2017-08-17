@@ -22,11 +22,11 @@ public class Language {
 	private FileConfiguration langFile;
 	
 	public String PREFIX = "[CookieClicker]", NAME = "&1CookieClicker&r";
-	public List<String> GAME_HELP, GAME_OVEN_LORE, GAME_PRODUCTION_LORE;
+	public List<String> GAME_HELP, GAME_OVEN_LORE, GAME_BUILDING_LORE;
 	private YamlConfiguration defaultLang;
 
 	public String GAME_TITLE, GAME_CLOSED
-			, GAME_COOKIE_NAME, GAME_OVEN_NAME;
+			, GAME_COOKIE_NAME, GAME_OVEN_NAME, GAME_BUILDING_NAME;
 	public String GAME_PAYED, GAME_NOT_ENOUGH_MONEY;
 
 	public HashMap<Buildings, String> buildingName = new HashMap<>();
@@ -52,7 +52,8 @@ public class Language {
 	}
 
 	private void loadBuildingLanguage() {
-		this.GAME_PRODUCTION_LORE = getStringList("buildings.generalLore");
+		this.GAME_BUILDING_LORE = getStringList("buildings.buildingLore");
+		this.GAME_BUILDING_NAME = getString("buildings.buildingDisplayName");
 		Buildings building;
 		List<String> lore = new ArrayList<>();
 
@@ -65,7 +66,7 @@ public class Language {
 					continue;
 				}
 				lore.clear();
-				lore.addAll(GAME_PRODUCTION_LORE);
+				lore.addAll(GAME_BUILDING_LORE);
 				buildingName.put(building, getString("buildings." + key + ".name"));
 				lore.addAll(getStringList("buildings." + key + ".description"));
 				buildingLore.put(building, new ArrayList<>(lore));
@@ -82,7 +83,7 @@ public class Language {
 			}
 			if(buildingLore.containsKey(building) && buildingName.containsKey(building)) continue;
 			lore.clear();
-			lore.addAll(GAME_PRODUCTION_LORE);
+			lore.addAll(GAME_BUILDING_LORE);
 			buildingName.put(building, getString("buildings." + key + ".name"));
 			lore.addAll(getStringList("buildings." + key + ".description"));
 			buildingLore.put(building, new ArrayList<>(lore));

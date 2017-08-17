@@ -36,9 +36,12 @@ gameHelp:
 
 
 buildings:
+  # this allows you to colour the display name of the buildings
+  #   %name% is defined for each building below
+  buildingDisplayName: "&a&l%name%"
   # The following lore is used for all buildings
   # placeholders: cost, name, cookies_per_second_per_item, cookies_per_second
-  generalLore:
+  buildingLore:
     - "Buy one for %cost% (left click)"
     - ""
     - '&1You have %count% %name%(s)'

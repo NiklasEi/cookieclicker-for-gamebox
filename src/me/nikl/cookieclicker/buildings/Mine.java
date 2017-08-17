@@ -22,7 +22,7 @@ public class Mine extends Building {
         icon.setAmount(1);
         ItemMeta meta = icon.getItemMeta();
         if(!GameBoxSettings.delayedInventoryUpdate) meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-        meta.setDisplayName(name);
+        meta.setDisplayName(lang.GAME_BUILDING_NAME.replace("%name%", name));
         icon.setItemMeta(meta);
 
         this.productionPerSecond = 47;
