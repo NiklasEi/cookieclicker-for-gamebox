@@ -1,6 +1,7 @@
 package me.nikl.cookieclicker.upgrades.curser;
 
 import me.nikl.cookieclicker.Game;
+import me.nikl.cookieclicker.upgrades.UpgradeType;
 import me.nikl.gamebox.util.NumberUtil;
 import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.upgrades.Upgrade;
@@ -25,18 +26,8 @@ public class MillionFingers extends Upgrade{
         icon = new MaterialData(Material.ARROW).toItemStack();
         icon.setAmount(1);
 
-        ItemMeta meta = icon.getItemMeta();
-        meta.setDisplayName("Million fingers");
-
-        ArrayList<String> lore = new ArrayList<>();
-        lore.add("Price: " + NumberUtil.convertHugeNumber(cost));
-        lore.add(ChatColor.AQUA + "The mouse and cursors gain "+ ChatColor.BOLD + "+0.5"+ ChatColor.RESET + ChatColor.AQUA + " cookies");
-        lore.add(ChatColor.AQUA + "     for each non-cursor object owned.");
-        lore.add("");
-        lore.add(ChatColor.ITALIC + "\"clickityclickity\"");
-
-        meta.setLore(lore);
-        icon.setItemMeta(meta);
+        gain = "+0.5";
+        loadLanguage(UpgradeType.GAIN_MOUSE, Buildings.CURSOR);
     }
 
     @Override

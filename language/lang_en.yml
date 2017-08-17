@@ -98,8 +98,61 @@ upgrades:
       - "&bThe mouse and %building%s gain &l%gain%&r&b cookies"
       - "     &bfor each non-%building% object owned."
 
+  # list of all upgrades is following
+  #   DO NOT change the numbers! they are unique in-game IDs for the upgrades
   upgrades:
+    # Cursor upgrades
+    #   the following three upgrades double the mouse and cursor efficiency (type: classic_mouse)
     0:
       name: "Reinforced index finger"
       description:
         - '&5&o"prod prod"'
+    1:
+      name: "Carpal tunnel prevention cream"
+      description:
+        - '&5&o"it... it hurts to click..."'
+    2:
+      name: "Ambidextrous"
+      description:
+        - '&5&o"Look ma, both hands!"'
+
+    #  the following Cursor upgrades add gain to mouse and cursor for all non cursor buildings owned (type: gain_mouse)
+    3:
+      name: "Thousand fingers"
+      description:
+        - '&5&o"clickity"'
+    4:
+      name: "Million fingers"
+      description:
+        - '&5&o"clickityclickity"'
+    5:
+      name: "Billion fingers"
+      description:
+        - '&5&o"clickityclickityclickity"'
+    6:
+      name: "Trillion fingers"
+      description:
+        - '&5&o"clickityclickityclickityclickity"'
+    43:
+      name: "Quadrillion fingers"
+      description:
+        - '&5&o"clickityclickityclickityclickityclick"'
+    82:
+      name: "Quintillion fingers"
+      description:
+        - '&5&o"man, just go click click click click click,'
+        - '&5&o     it’s real easy, man."'
+    109:
+      name: "Sextillion fingers"
+      description:
+        - '&5&o"sometimes'
+        - '&5&othings just'
+        - '&5&oclick"'
+    188:
+      name: "Septillion fingers"
+      description:
+        - '&5&o"[cursory flavor text]"'
+    189:
+      name: "Octillion fingers"
+      description:
+        - '&5&o"Turns out you &5&lcan&5&o quite put your finger on it."'

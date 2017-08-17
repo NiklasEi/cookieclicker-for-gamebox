@@ -3,6 +3,7 @@ package me.nikl.cookieclicker.upgrades.curser;
 import me.nikl.cookieclicker.Game;
 import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.upgrades.Upgrade;
+import me.nikl.cookieclicker.upgrades.UpgradeType;
 import me.nikl.gamebox.util.NumberUtil;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -25,18 +26,8 @@ public class SeptillionFingers extends Upgrade{
         icon = new MaterialData(Material.ARROW).toItemStack();
         icon.setAmount(1);
 
-        ItemMeta meta = icon.getItemMeta();
-        meta.setDisplayName("Septillion fingers");
-
-        ArrayList<String> lore = new ArrayList<>();
-        lore.add("Price: " + NumberUtil.convertHugeNumber(cost));
-        lore.add(ChatColor.AQUA + "The mouse and cursors gain "+ ChatColor.BOLD + "+500000"+ ChatColor.RESET + ChatColor.AQUA + " cookies");
-        lore.add(ChatColor.AQUA + "     for each non-cursor object owned.");
-        lore.add("");
-        lore.add(ChatColor.ITALIC + "\"[cursory flavor text]\"");
-
-        meta.setLore(lore);
-        icon.setItemMeta(meta);
+        gain = "+500000";
+        loadLanguage(UpgradeType.GAIN_MOUSE, Buildings.CURSOR);
     }
 
     @Override
