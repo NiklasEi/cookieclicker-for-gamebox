@@ -92,11 +92,14 @@ upgrades:
   types:
     classic:
       - "&b%Building%s are &ltwice&r&b as efficient."
+      - ""
     classic_mouse:
       - "&bThe mouse and %building%s are &ltwice&r&b as efficient."
+      - ""
     gain_mouse:
       - "&bThe mouse and %building%s gain &l%gain%&r&b cookies"
       - "     &bfor each non-%building% object owned."
+      - ""
 
   # list of all upgrades is following
   #   DO NOT change the numbers! they are unique in-game IDs for the upgrades
