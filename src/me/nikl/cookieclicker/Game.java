@@ -646,4 +646,8 @@ public class Game extends BukkitRunnable{
     public Player getPlayer(){
         return this.player;
     }
+
+    public Language getLang(){
+        return this.lang;
+    }
 }
