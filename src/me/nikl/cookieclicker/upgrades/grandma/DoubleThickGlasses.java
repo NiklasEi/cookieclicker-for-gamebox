@@ -3,6 +3,7 @@ package me.nikl.cookieclicker.upgrades.grandma;
 import me.nikl.cookieclicker.Game;
 import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.upgrades.Upgrade;
+import me.nikl.cookieclicker.upgrades.UpgradeType;
 import me.nikl.gamebox.util.NumberUtil;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -25,16 +26,9 @@ public class DoubleThickGlasses extends Upgrade{
         icon.setAmount(1);
         SkullMeta skullMeta = (SkullMeta) icon.getItemMeta();
         skullMeta.setOwner("MHF_Villager");
-        skullMeta.setDisplayName("Double-thick glasses");
-
-        ArrayList<String> lore = new ArrayList<>();
-        lore.add("Price: " + NumberUtil.convertHugeNumber(cost));
-        lore.add(ChatColor.AQUA + "Grandmas are "+ ChatColor.BOLD + "twice"+ ChatColor.RESET + ChatColor.AQUA + " as efficient.");
-        lore.add("");
-        lore.add(ChatColor.ITALIC + "\"Oh... so THAT's what I've been baking.\"");
-
-        skullMeta.setLore(lore);
         icon.setItemMeta(skullMeta);
+
+        loadLanguage(UpgradeType.CLASSIC, Buildings.GRANDMA);
     }
 
     @Override

@@ -3,13 +3,10 @@ package me.nikl.cookieclicker.upgrades.grandma;
 import me.nikl.cookieclicker.Game;
 import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.upgrades.Upgrade;
-import me.nikl.gamebox.util.NumberUtil;
-import org.bukkit.ChatColor;
+import me.nikl.cookieclicker.upgrades.UpgradeType;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
-
-import java.util.ArrayList;
 
 /**
  * Created by Niklas on 09.07.2017.
@@ -25,18 +22,9 @@ public class TheUnbridling extends Upgrade{
         icon.setAmount(1);
         SkullMeta skullMeta = (SkullMeta) icon.getItemMeta();
         skullMeta.setOwner("MHF_Villager");
-        skullMeta.setDisplayName("The Unbridling");
-
-        ArrayList<String> lore = new ArrayList<>();
-        lore.add("Price: " + NumberUtil.convertHugeNumber(cost));
-        lore.add(ChatColor.AQUA + "Grandmas are "+ ChatColor.BOLD + "twice"+ ChatColor.RESET + ChatColor.AQUA + " as efficient.");
-        lore.add("");
-        lore.add(ChatColor.ITALIC + "\"It might be a classic tale of bad");
-        lore.add(ChatColor.ITALIC + "    parenting, but let's see where");
-        lore.add(ChatColor.ITALIC + "    grandma is going with this.\"");
-
-        skullMeta.setLore(lore);
         icon.setItemMeta(skullMeta);
+
+        loadLanguage(UpgradeType.CLASSIC, Buildings.GRANDMA);
     }
 
     @Override

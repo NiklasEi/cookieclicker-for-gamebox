@@ -3,13 +3,10 @@ package me.nikl.cookieclicker.upgrades.grandma;
 import me.nikl.cookieclicker.Game;
 import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.upgrades.Upgrade;
-import me.nikl.gamebox.util.NumberUtil;
-import org.bukkit.ChatColor;
+import me.nikl.cookieclicker.upgrades.UpgradeType;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
-
-import java.util.ArrayList;
 
 /**
  * Created by Niklas on 09.07.2017.
@@ -25,18 +22,9 @@ public class AgingAgents extends Upgrade{
         icon.setAmount(1);
         SkullMeta skullMeta = (SkullMeta) icon.getItemMeta();
         skullMeta.setOwner("MHF_Villager");
-        skullMeta.setDisplayName("Aging agents");
-
-        ArrayList<String> lore = new ArrayList<>();
-        lore.add("Price: " + NumberUtil.convertHugeNumber(cost));
-        lore.add(ChatColor.AQUA + "Grandmas are "+ ChatColor.BOLD + "twice"+ ChatColor.RESET + ChatColor.AQUA + " as efficient.");
-        lore.add("");
-        lore.add(ChatColor.ITALIC + "\"Counter-intuitively, grandmas have the");
-        lore.add(ChatColor.ITALIC + "    uncanny ability to become more");
-        lore.add(ChatColor.ITALIC + "    powerful the older they get.\"");
-
-        skullMeta.setLore(lore);
         icon.setItemMeta(skullMeta);
+
+        loadLanguage(UpgradeType.CLASSIC, Buildings.GRANDMA);
     }
 
     @Override

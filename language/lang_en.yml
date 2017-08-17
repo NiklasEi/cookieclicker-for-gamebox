@@ -159,3 +159,42 @@ upgrades:
       name: "Octillion fingers"
       description:
         - '&5&o"Turns out you &5&lcan&5&o quite put your finger on it."'
+
+    # Grandma upgrades (type: classic)
+    7:
+      name: "Forwards from grandma"
+      description:
+        - '&5&o"RE:RE:thought you''d get a kick out of this ;))"'
+    8:
+      name: "Steel-plated rolling pins"
+      description:
+        - '&5&o"Just what you kneaded."'
+    9:
+      name: "Lubricated dentures"
+      description:
+        - '&5&o"squish"'
+    44:
+      name: "Prune juice"
+      description:
+        - '&5&o"Gets me going."'
+    110:
+      name: "Double-thick glasses"
+      description:
+        - '&5&o"Oh... so THAT''s what I''ve been baking."'
+    192:
+      name: "Aging agents"
+      description:
+        - '&5&o"Counter-intuitively, grandmas have the'
+        - '&5&o    uncanny ability to become more'
+        - '&5&o    powerful the older they get."'
+    294:
+      name: "Xtreme walkers"
+      description:
+        - '&5&o"Complete with flame decals and a little'
+        - '&5&o    horn that goes "toot"."'
+    307:
+      name: "The Unbridling"
+      description:
+        - '&5&o"It might be a classic tale of bad'
+        - '&5&o    parenting, but let''s see where'
+        - '&5&o    grandma is going with this."'
