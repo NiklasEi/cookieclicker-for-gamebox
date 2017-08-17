@@ -52,7 +52,7 @@ public class Language {
 
 	private void loadUpgradeLanguage() {
 		this.GAME_UPGRADE_LORE = getStringList("upgrades.upgradeLore");
-		this.GAME_UPGRADE_NAME = getString("upgrades.upgrades");
+		this.GAME_UPGRADE_NAME = getString("upgrades.upgradeDisplayName");
 
 
 		UpgradeType upgradeType;
