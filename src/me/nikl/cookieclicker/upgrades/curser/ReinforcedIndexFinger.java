@@ -1,6 +1,7 @@
 package me.nikl.cookieclicker.upgrades.curser;
 
 import me.nikl.cookieclicker.Game;
+import me.nikl.cookieclicker.upgrades.UpgradeType;
 import me.nikl.gamebox.util.NumberUtil;
 import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.upgrades.Upgrade;
@@ -25,17 +26,7 @@ public class ReinforcedIndexFinger extends Upgrade{
         icon = new MaterialData(Material.ARROW).toItemStack();
         icon.setAmount(1);
 
-        ItemMeta meta = icon.getItemMeta();
-        meta.setDisplayName("Reinforced index finger");
-
-        ArrayList<String> lore = new ArrayList<>();
-        lore.add("Price: " + NumberUtil.convertHugeNumber(cost));
-        lore.add(ChatColor.AQUA + "The mouse and cursors are "+ ChatColor.BOLD + "twice"+ ChatColor.RESET + ChatColor.AQUA + " as efficient.");
-        lore.add("");
-        lore.add(ChatColor.ITALIC + "\"prod prod\"");
-
-        meta.setLore(lore);
-        icon.setItemMeta(meta);
+        loadLanguage(UpgradeType.CLASSIC_MOUSE, Buildings.CURSOR);
     }
 
     @Override
