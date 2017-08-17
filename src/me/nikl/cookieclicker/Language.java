@@ -54,7 +54,7 @@ public class Language {
 	private void loadBuildingLanguage() {
 		this.GAME_PRODUCTION_LORE = getStringList("buildings.generalLore");
 		Buildings building;
-		List<String> lore;
+		List<String> lore = new ArrayList<>();
 
 		if(langFile.isConfigurationSection("buildings")) {
 			for (String key : langFile.getConfigurationSection("buildings").getKeys(false)) {
@@ -64,10 +64,11 @@ public class Language {
 					// ignore
 					continue;
 				}
-				lore = GAME_PRODUCTION_LORE;
+				lore.clear();
+				lore.addAll(GAME_PRODUCTION_LORE);
 				buildingName.put(building, getString("buildings." + key + ".name"));
 				lore.addAll(getStringList("buildings." + key + ".description"));
-				buildingLore.put(building, lore);
+				buildingLore.put(building, new ArrayList<>(lore));
 			}
 		}
 
@@ -80,10 +81,11 @@ public class Language {
 				continue;
 			}
 			if(buildingLore.containsKey(building) && buildingName.containsKey(building)) continue;
-			lore = GAME_PRODUCTION_LORE;
+			lore.clear();
+			lore.addAll(GAME_PRODUCTION_LORE);
 			buildingName.put(building, getString("buildings." + key + ".name"));
 			lore.addAll(getStringList("buildings." + key + ".description"));
-			buildingLore.put(building, lore);
+			buildingLore.put(building, new ArrayList<>(lore));
 		}
 	}
 
