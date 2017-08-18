@@ -4,9 +4,11 @@ import me.nikl.cookieclicker.Game;
 import me.nikl.cookieclicker.Language;
 import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.gamebox.GameBox;
+import me.nikl.gamebox.GameBoxSettings;
 import me.nikl.gamebox.util.NumberUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.material.MaterialData;
@@ -120,6 +122,7 @@ public abstract class Upgrade {
 
 
         ItemMeta meta = icon.getItemMeta();
+        if(!GameBoxSettings.delayedInventoryUpdate) meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         meta.setDisplayName(lang.GAME_UPGRADE_NAME.replace("%name%", name));
         meta.setLore(lore);
         icon.setItemMeta(meta);
