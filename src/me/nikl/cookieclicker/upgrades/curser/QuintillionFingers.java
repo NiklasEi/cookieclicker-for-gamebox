@@ -4,13 +4,8 @@ import me.nikl.cookieclicker.Game;
 import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.upgrades.Upgrade;
 import me.nikl.cookieclicker.upgrades.UpgradeType;
-import me.nikl.gamebox.util.NumberUtil;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
-import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.material.MaterialData;
-
-import java.util.ArrayList;
 
 /**
  * Created by Niklas on 09.07.2017.
@@ -27,7 +22,7 @@ public class QuintillionFingers extends Upgrade{
         icon.setAmount(1);
 
         gain = "+5000";
-        loadLanguage(UpgradeType.GAIN_MOUSE, Buildings.CURSOR);
+        loadLanguage(UpgradeType.GAIN_MOUSE_AND_OTHER, Buildings.CURSOR);
     }
 
     @Override

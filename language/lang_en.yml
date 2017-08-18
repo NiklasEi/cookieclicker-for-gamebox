@@ -96,7 +96,7 @@ upgrades:
     classic_mouse:
       - "&bThe mouse and %building%s are &ltwice&r&b as efficient."
       - ""
-    gain_mouse:
+    gain_mouse_and_other:
       - "&bThe mouse and %building%s gain &l%gain%&r&b cookies"
       - "     &bfor each non-%building% object owned."
       - ""
@@ -104,6 +104,11 @@ upgrades:
   # list of all upgrades is following
   #   DO NOT change the numbers! they are unique in-game IDs for the upgrades
   upgrades:
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    # Mouse upgrades
+    #   the following three upgrades double the mouse and cursor efficiency (type: classic_mouse)
+
+
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     # Cursor upgrades
     #   the following three upgrades double the mouse and cursor efficiency (type: classic_mouse)

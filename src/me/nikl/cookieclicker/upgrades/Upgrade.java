@@ -107,7 +107,7 @@ public abstract class Upgrade {
                 case CLASSIC_MOUSE:
                     break;
 
-                case GAIN_MOUSE:
+                case GAIN_MOUSE_AND_OTHER:
                     line = line.replace("%gain%", gain);
                     break;
 
