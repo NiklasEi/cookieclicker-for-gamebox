@@ -1,5 +1,5 @@
-
-
+- full language support for all buildings and upgrades
+- improved default style of the lores and titles
 
 ---------------------------------------------------------------------
 
