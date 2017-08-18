@@ -108,6 +108,7 @@ public abstract class Upgrade {
                     break;
 
                 case GAIN_MOUSE_AND_OTHER:
+                case GAIN_MOUSE_PER_CPS:
                     line = line.replace("%gain%", gain);
                     break;
 
