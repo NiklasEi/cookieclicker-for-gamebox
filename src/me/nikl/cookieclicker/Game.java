@@ -579,7 +579,7 @@ public class Game extends BukkitRunnable{
 
         lastTimeStamp = newTimeStamp;
 
-        nms.updateInventoryTitle(player, lang.GAME_TITLE.replace("%score%", NumberUtil.convertHugeNumber(BigInteger.valueOf((long) cookies))));
+        nms.updateInventoryTitle(player, lang.GAME_TITLE.replace("%score%", NumberUtil.convertHugeNumber(cookies)));
         checkUpgrades();
     }
 
