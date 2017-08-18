@@ -100,14 +100,58 @@ upgrades:
       - "&bThe mouse and %building%s gain &l%gain%&r&b cookies"
       - "     &bfor each non-%building% object owned."
       - ""
+    gain_mouse_per_cps: # gain a percentage of current CPS
+      - "&bClicking gains &l%gain%&r&b of your CpS.."
+      - ""
 
   # list of all upgrades is following
   #   DO NOT change the numbers! they are unique in-game IDs for the upgrades
   upgrades:
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    # Mouse upgrades
-    #   the following three upgrades double the mouse and cursor efficiency (type: classic_mouse)
-
+    # Mouse upgrades (type: gain_mouse_per_cps)
+    75:
+      name: "Plastic mouse"
+      description:
+        - '&5&o"Slightly squeaky."'
+    76:
+      name: "Iron mouse"
+      description:
+        - '&5&o"Click like it''s 1,349!"'
+    77:
+      name: "Titanium mouse"
+      description:
+        - '&5&o"Heavy, but powerful."'
+    78:
+      name: "Adamantium mouse"
+      description:
+        - '&5&o"You could cut diamond with these."'
+    119:
+      name: "Unobtainium mouse"
+      description:
+        - '&5&o"These nice mice should suffice."'
+    190:
+      name: "Eludium mouse"
+      description:
+        - '&5&o"I rodent do that if I were you."'
+    191:
+      name: "Wishalloy mouse"
+      description:
+        - '&5&o"Clicking is fine and dandy,'
+        - '&5&o  but don''t smash your'
+        - '&5&o  mouse over it.'
+        - '&5&o  Get your game on. Go play."'
+    366:
+      name: "Fantasteel mouse"
+      description:
+        - '&5&o"You could be clicking using'
+        - '&5&o   your touchpad and'
+        - '&5&o   we''d benone the wiser."'
+    367:
+      name: "Nevercrack mouse"
+      description:
+        - '&5&o"How much beefier can you'
+        - '&5&o   make a mouse until'
+        - '&5&o   it''s considered a rat?"'
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     # Cursor upgrades

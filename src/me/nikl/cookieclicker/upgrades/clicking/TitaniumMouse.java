@@ -1,6 +1,7 @@
 package me.nikl.cookieclicker.upgrades.clicking;
 
 import me.nikl.cookieclicker.Game;
+import me.nikl.cookieclicker.upgrades.UpgradeType;
 import me.nikl.gamebox.util.NumberUtil;
 import me.nikl.cookieclicker.upgrades.Upgrade;
 import org.bukkit.ChatColor;
@@ -24,17 +25,8 @@ public class TitaniumMouse extends Upgrade{
         icon = new MaterialData(Material.ARROW).toItemStack();
         icon.setAmount(1);
 
-        ItemMeta meta = icon.getItemMeta();
-        meta.setDisplayName("Titanium mouse");
-
-        ArrayList<String> lore = new ArrayList<>();
-        lore.add("Price: " + NumberUtil.convertHugeNumber(cost));
-        lore.add(ChatColor.AQUA + "Clicking gains +1% of your CpS..");
-        lore.add("");
-        lore.add(ChatColor.ITALIC + "\"Heavy, but powerful.\"");
-
-        meta.setLore(lore);
-        icon.setItemMeta(meta);
+        gain = "+1%";
+        loadLanguage(UpgradeType.GAIN_MOUSE_PER_CPS);
     }
 
     @Override
