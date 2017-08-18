@@ -241,3 +241,56 @@ upgrades:
         - '&5&o"Taking care of crops is so much easier when your plants'
         - '&5&o    can just walk about and help around the farm.'
         - '&5&oDo not pet. Do not feed. Do not attempt to converse with."'
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    # Mine upgrades (type: classic)
+    16:
+      name: "Sugar gas"
+      description:
+        - '&5&o"A pink, volatile gas, found in'
+        - '&5&o    the depths of some chocolate caves."'
+    17:
+      name: "Megadrill"
+      description:
+        - '&5&o"You''re in deep."'
+    18:
+      name: "Ultradrill"
+      description:
+        - '&5&o"Finally caved in?"'
+    47:
+      name: "Ultimadrill"
+      description:
+        - '&5&o"Pierce the heavens, etc."'
+    113:
+      name: "H-bomb mining"
+      description:
+        - '&5&o"Questionable efficiency,'
+        - '&5&o    but spectacular nonetheless."'
+    195:
+      name: "Coreforge"
+      description:
+        - '&5&o"You''ve finally dug a tunnel down to'
+        - '&5&o     the Earth''s core.'
+        - '&5&o     It''s pretty warm down here."'
+    296:
+      name: "Planetsplitters"
+      description:
+        - '&5&o"These new state-of-the-art excavators'
+        - '&5&o     have been tested on Merula,'
+        - '&5&o     Globort and Flwanza VI, among other'
+        - '&5&o     distant planets which have been'
+        - '&5&o     curiously quiet lately."'
+    309:
+      name: "Canola oil wells"
+      description:
+        - '&5&o"A previously untapped resource,'
+        - '&5&o     canola oil permeates the underground'
+        - '&5&o     olifers which grant it its particular'
+        - '&5&o     taste and lucrative properties."'
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    # Mine upgrades (type: classic)
+    2:
+      name: "Ambidextrous"
+      description:
+        - '&5&o"Look"'
