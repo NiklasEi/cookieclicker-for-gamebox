@@ -32,7 +32,7 @@ import me.nikl.cookieclicker.upgrades.clicking.IronMouse;
 import me.nikl.cookieclicker.upgrades.clicking.PlasticMouse;
 import me.nikl.cookieclicker.upgrades.clicking.TitaniumMouse;
 import me.nikl.cookieclicker.upgrades.factory.ChildLabor;
-import me.nikl.cookieclicker.upgrades.factory.ChineseWorkers;
+import me.nikl.cookieclicker.upgrades.factory.Sweatshop;
 import me.nikl.cookieclicker.upgrades.factory.CyborgWorkforce;
 import me.nikl.cookieclicker.upgrades.factory.DeepBakeProcess;
 import me.nikl.cookieclicker.upgrades.factory.HourDays;
@@ -232,7 +232,7 @@ public class Game extends BukkitRunnable{
         // Factory
         futureUpgradesTemp.add(new SturdierConveyorBelts(this));
         futureUpgradesTemp.add(new ChildLabor(this));
-        futureUpgradesTemp.add(new ChineseWorkers(this));
+        futureUpgradesTemp.add(new Sweatshop(this));
         futureUpgradesTemp.add(new RadiumReactors(this));
         futureUpgradesTemp.add(new Recombobulators(this));
         futureUpgradesTemp.add(new DeepBakeProcess(this));

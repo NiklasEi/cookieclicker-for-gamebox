@@ -17,9 +17,9 @@ import java.util.ArrayList;
  *
  * Custom upgrade replacing 'Sweatshop'
  */
-public class ChineseWorkers extends Upgrade{
+public class Sweatshop extends Upgrade{
 
-    public ChineseWorkers(Game game) {
+    public Sweatshop(Game game) {
         super(game, 15);
         this.cost = 65000000;
         productionsRequirements.put(Buildings.FACTORY, 25);
