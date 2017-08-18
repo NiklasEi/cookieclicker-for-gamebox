@@ -104,6 +104,7 @@ upgrades:
   # list of all upgrades is following
   #   DO NOT change the numbers! they are unique in-game IDs for the upgrades
   upgrades:
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     # Cursor upgrades
     #   the following three upgrades double the mouse and cursor efficiency (type: classic_mouse)
     0:
@@ -160,6 +161,7 @@ upgrades:
       description:
         - '&5&o"Turns out you &5&lcan&5&o quite put your finger on it."'
 
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     # Grandma upgrades (type: classic)
     7:
       name: "Forwards from grandma"
@@ -190,11 +192,52 @@ upgrades:
     294:
       name: "Xtreme walkers"
       description:
-        - '&5&o"Complete with flame decals and a little'
-        - '&5&o    horn that goes "toot"."'
+        - '&5&o"Complete with flame decals and a'
+        - '&5&o    little horn that goes "toot"."'
     307:
       name: "The Unbridling"
       description:
         - '&5&o"It might be a classic tale of bad'
         - '&5&o    parenting, but let''s see where'
         - '&5&o    grandma is going with this."'
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    # Farm upgrades (type: classic)
+    10:
+      name: "Cheap hoes"
+      description:
+        - '&5&o"Rake in the dough!"'
+    11:
+      name: "Fertilizer"
+      description:
+        - '&5&o"It''s chocolate, I swear."'
+    12:
+      name: "Cookie trees"
+      description:
+        - '&5&o"A relative of the breadfruit."'
+    45:
+      name: "Genetically-modified cookies"
+      description:
+        - '&5&o"All-natural mutations."'
+    111:
+      name: "Gingerbread scarecrows"
+      description:
+        - '&5&o"Staring at your crops with mischievous glee."'
+    193:
+      name: "Pulsar sprinklers"
+      description:
+        - '&5&o"There''s no such thing as over-watering.'
+        - '&5&o    The moistest is the bestest."'
+    295:
+      name: "Fudge fungus"
+      description:
+        - '&5&o"A sugary parasite whose tendrils help cookie growth.'
+        - '&5&o    Please do not breathe in the spores.'
+        - '&5&o    In case of spore ingestion,'
+        - '&5&o    seek medical help within the next 36 seconds."'
+    308:
+      name: "Wheat triffids"
+      description:
+        - '&5&o"Taking care of crops is so much easier when your plants'
+        - '&5&o    can just walk about and help around the farm.'
+        - '&5&oDo not pet. Do not feed. Do not attempt to converse with."'

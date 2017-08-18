@@ -1,6 +1,7 @@
 package me.nikl.cookieclicker.upgrades.farm;
 
 import me.nikl.cookieclicker.Game;
+import me.nikl.cookieclicker.upgrades.UpgradeType;
 import me.nikl.gamebox.util.NumberUtil;
 import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.upgrades.Upgrade;
@@ -25,20 +26,7 @@ public class FudgeFungus extends Upgrade{
         icon = new MaterialData(Material.DIRT).toItemStack();
         icon.setAmount(1);
 
-        ItemMeta meta = icon.getItemMeta();
-        meta.setDisplayName("Fudge fungus");
-
-        ArrayList<String> lore = new ArrayList<>();
-        lore.add("Price: " + NumberUtil.convertHugeNumber(cost));
-        lore.add(ChatColor.AQUA + "Farms are "+ ChatColor.BOLD + "twice"+ ChatColor.RESET + ChatColor.AQUA + " as efficient.");
-        lore.add("");
-        lore.add(ChatColor.ITALIC + "\"A sugary parasite whose tendrils help cookie growth.\"");
-        lore.add(ChatColor.ITALIC + "\"    Please do not breathe in the spores.\"");
-        lore.add(ChatColor.ITALIC + "\"    In case of spore ingestion,\"");
-        lore.add(ChatColor.ITALIC + "\"    seek medical help within the next 36 seconds.\"");
-
-        meta.setLore(lore);
-        icon.setItemMeta(meta);
+        loadLanguage(UpgradeType.CLASSIC, Buildings.FARM);
     }
 
     @Override
