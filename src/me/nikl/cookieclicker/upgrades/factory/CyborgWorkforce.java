@@ -3,6 +3,7 @@ package me.nikl.cookieclicker.upgrades.factory;
 import me.nikl.cookieclicker.Game;
 import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.upgrades.Upgrade;
+import me.nikl.cookieclicker.upgrades.UpgradeType;
 import me.nikl.gamebox.util.NumberUtil;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -26,20 +27,7 @@ public class CyborgWorkforce extends Upgrade{
         icon = new MaterialData(Material.IRON_BLOCK).toItemStack();
         icon.setAmount(1);
 
-        ItemMeta meta = icon.getItemMeta();
-        meta.setDisplayName("Cyborg workforce");
-
-        ArrayList<String> lore = new ArrayList<>();
-        lore.add("Price: " + NumberUtil.convertHugeNumber(cost));
-        lore.add(ChatColor.AQUA + "Factories are "+ ChatColor.BOLD + "twice"+ ChatColor.RESET + ChatColor.AQUA + " as efficient.");
-        lore.add("");
-        lore.add(ChatColor.ITALIC + "\"Semi-synthetic organisms don't");
-        lore.add(ChatColor.ITALIC + "    slack off, don't unionize, and");
-        lore.add(ChatColor.ITALIC + "    have 20% shorter lunch breaks,");
-        lore.add(ChatColor.ITALIC + "    making them ideal labor fodder.\"");
-
-        meta.setLore(lore);
-        icon.setItemMeta(meta);
+        loadLanguage(UpgradeType.CLASSIC, Buildings.FACTORY);
     }
 
     @Override

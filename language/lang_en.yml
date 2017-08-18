@@ -338,8 +338,44 @@ upgrades:
         - '&5&o     taste and lucrative properties."'
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    # Mine upgrades (type: classic)
-    2:
-      name: "Ambidextrous"
+    # Factory upgrades (type: classic)
+    13:
+      name: "Sturdier conveyor belts"
       description:
-        - '&5&o"Look"'
+        - '&5&o"You''re going places."'
+    14:
+      name: "Child labor"
+      description:
+        - '&5&o"Cheaper, healthier workforce."'
+    15:
+      name: "Sweatshop"
+      description:
+        - '&5&o"Slackers will be terminated."'
+    46:
+      name: "Radium reactors"
+      description:
+        - '&5&o"Gives your cookies a healthy glow."'
+    112:
+      name: "Recombobulators"
+      description:
+        - '&5&o"A major part of cookie recombobulation."'
+    194:
+      name: "Deep-bake process"
+      description:
+        - '&5&o"A patented process increasing cookie'
+        - '&5&o    yield two-fold for the same'
+        - '&5&o    amount of ingredients.'
+        - '&5&o    Don''t ask how, don''t take pictures,'
+        - '&5&o    and be sure to wear your'
+        - '&5&o    protective suit."'
+    297:
+      name: "Cyborg workforce"
+      description:
+        - '&5&o"Semi-synthetic organisms don''t'
+        - '&5&o    slack off, don''t unionize, and'
+        - '&5&o    have 20% shorter lunch breaks,'
+        - '&5&o    making them ideal labor fodder."'
+    310:
+      name: "78-hour days"
+      description:
+        - '&5&o"Why didn''t we think of this earlier?"'
