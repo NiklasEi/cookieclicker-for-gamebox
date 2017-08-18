@@ -379,3 +379,54 @@ upgrades:
       name: "78-hour days"
       description:
         - '&5&o"Why didn''t we think of this earlier?"'
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    # Bank upgrades (type: classic)
+    232:
+      name: "Taller tellers"
+      description:
+        - '&5&o"Able to process a higher amount'
+        - '&5&o     of transactions. Careful though,'
+        - '&5&o     as taller tellers tell tall tales."'
+    233:
+      name: "Scissor-resistant credit cards"
+      description:
+        - '&5&o"For those truly valued customers."'
+    234:
+      name: "Acid-proof vaults"
+      description:
+        - '&5&o"You know what they say:'
+        - '&5&o    better safe than sorry."'
+    235:
+      name: "Chocolate coins"
+      description:
+        - '&5&o"This revolutionary currency is'
+        - '&5&o    much easier to melt and form'
+        - '&5&o    into ingots - and tastes much'
+        - '&5&o    better, for a change."'
+    236:
+      name: "Exponential interest rates"
+      description:
+        - '&5&o"Can''t argue with mathematics!'
+        - '&5&o     Now fork it over.'
+    237:
+      name: "Financial zen"
+      description:
+        - '&5&o"The ultimate grail of economic thought;'
+        - '&5&o    the feng shui of big money,'
+        - '&5&o    the stock market yoga,'
+        - '&5&o    the Heimlich maneuver'
+        - '&5&o    of dimes and nickels."'
+    298:
+      name: "Way of the wallet"
+      description:
+        - '&5&o"This new monetary school of thought'
+        - '&5&o    is all the rage on the'
+        - '&5&o    banking scene;'
+        - '&5&o    follow its precepts'
+        - '&5&o    and you may just profit from it."'
+    311:
+      name: "The stuff rationale"
+      description:
+        - '&5&o"If not now, when? If not it, what?'
+        - '&5&o    If not things... stuff?"'

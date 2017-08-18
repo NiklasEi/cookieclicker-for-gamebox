@@ -1,6 +1,7 @@
 package me.nikl.cookieclicker.upgrades.bank;
 
 import me.nikl.cookieclicker.Game;
+import me.nikl.cookieclicker.upgrades.UpgradeType;
 import me.nikl.gamebox.util.NumberUtil;
 import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.upgrades.Upgrade;
@@ -25,17 +26,7 @@ public class ScissorResistantCreditCards extends Upgrade{
         icon = new MaterialData(Material.GOLD_NUGGET).toItemStack();
         icon.setAmount(1);
 
-        ItemMeta meta = icon.getItemMeta();
-        meta.setDisplayName("Scissor-resistant credit cards");
-
-        ArrayList<String> lore = new ArrayList<>();
-        lore.add("Price: " + NumberUtil.convertHugeNumber(cost));
-        lore.add(ChatColor.AQUA + "Banks are "+ ChatColor.BOLD + "twice"+ ChatColor.RESET + ChatColor.AQUA + " as efficient.");
-        lore.add("");
-        lore.add(ChatColor.ITALIC + "\"For those truly valued customers.\"");
-
-        meta.setLore(lore);
-        icon.setItemMeta(meta);
+        loadLanguage(UpgradeType.CLASSIC, Buildings.BANK);
     }
 
     @Override
