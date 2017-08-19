@@ -2,13 +2,10 @@ package me.nikl.cookieclicker.buildings;
 
 import me.nikl.cookieclicker.Main;
 import me.nikl.gamebox.GameBoxSettings;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.material.MaterialData;
-
-import java.util.ArrayList;
 
 /**
  * Created by Niklas on 05.07.2017.

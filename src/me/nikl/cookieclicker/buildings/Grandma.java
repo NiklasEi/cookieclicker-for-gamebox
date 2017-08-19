@@ -1,12 +1,9 @@
 package me.nikl.cookieclicker.buildings;
 
 import me.nikl.cookieclicker.Main;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
-
-import java.util.ArrayList;
 
 /**
  * Created by Niklas on 07.07.2017.

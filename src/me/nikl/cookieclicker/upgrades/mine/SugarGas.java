@@ -1,18 +1,11 @@
 package me.nikl.cookieclicker.upgrades.mine;
 
 import me.nikl.cookieclicker.Game;
-import me.nikl.cookieclicker.upgrades.UpgradeType;
-import me.nikl.gamebox.util.NumberUtil;
 import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.upgrades.Upgrade;
-import me.nikl.gamebox.GameBoxSettings;
-import org.bukkit.ChatColor;
+import me.nikl.cookieclicker.upgrades.UpgradeType;
 import org.bukkit.Material;
-import org.bukkit.inventory.ItemFlag;
-import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.material.MaterialData;
-
-import java.util.ArrayList;
 
 /**
  * Created by Niklas on 09.07.2017.
