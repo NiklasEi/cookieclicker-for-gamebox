@@ -1,7 +1,9 @@
-- full language support for all buildings and upgrades
-- improved default style of the lores and titles
+
 
 ---------------------------------------------------------------------
+v 1.0.0
+- full language support for all buildings and upgrades
+- improved default style of the lores and titles
 
 v 0.2.0
 - completed Cursor, Grandma, Mine, Factory, clicking and Bank upgrades
