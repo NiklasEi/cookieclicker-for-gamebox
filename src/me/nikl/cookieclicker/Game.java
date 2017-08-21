@@ -70,6 +70,7 @@ import me.nikl.cookieclicker.upgrades.mine.Planetsplitters;
 import me.nikl.cookieclicker.upgrades.mine.SugarGas;
 import me.nikl.cookieclicker.upgrades.mine.Ultimadrill;
 import me.nikl.cookieclicker.upgrades.mine.Ultradrill;
+import me.nikl.gamebox.GameBoxSettings;
 import me.nikl.gamebox.Sounds;
 import me.nikl.gamebox.nms.NMSUtil;
 import me.nikl.gamebox.util.NumberUtil;
@@ -268,7 +269,11 @@ public class Game extends BukkitRunnable{
         this.playSounds = plugin.getPlaySounds() && playSounds;
 
         // create inventory
-        this.inventory = Bukkit.createInventory(null, 54, lang.GAME_TITLE.replace("%score%", String.valueOf((int) cookies)));
+        String title = lang.GAME_TITLE.replace("%score%", String.valueOf((int) cookies));
+        if(GameBoxSettings.checkInventoryLength && title.length() > 32){
+            title = "Title is too long!";
+        }
+        this.inventory = Bukkit.createInventory(null, 54, title);
 
         buildings.put(Buildings.CURSOR, new Cursor(plugin, 3, Buildings.CURSOR));
         buildingsPositions.put(3, Buildings.CURSOR);
