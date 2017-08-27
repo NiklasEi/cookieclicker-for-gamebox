@@ -199,6 +199,7 @@ public class Language {
 	}
 
 	private void getLangFile() {
+		// load the default language as YML config from the english lang file in the jar
 		try {
 			String fileName = "language/lang_en.yml";
 			this.defaultLang =  YamlConfiguration.loadConfiguration(new InputStreamReader(plugin.getResource(fileName), "UTF-8"));
@@ -206,6 +207,7 @@ public class Language {
 			e2.printStackTrace();
 		}
 		
+		// check for all default language files. If not found in the plugin folder: copy from the jar
 		File defaultEn = new File(plugin.getDataFolder().toString() + File.separatorChar + "language" + File.separatorChar + "lang_en.yml");
 		if(!defaultEn.exists()){
 			defaultEn.getParentFile().mkdirs();
@@ -214,6 +216,10 @@ public class Language {
 		File defaultDe = new File(plugin.getDataFolder().toString() + File.separatorChar + "language" + File.separatorChar + "lang_de.yml");
 		if(!defaultDe.exists()){
 			plugin.saveResource("language" + File.separatorChar + "lang_de.yml", false);
+		}
+		File defaultZh = new File(plugin.getDataFolder().toString() + File.separatorChar + "language" + File.separatorChar + "lang_zh-cn.yml");
+		if(!defaultZh.exists()){
+			plugin.saveResource("language" + File.separatorChar + "lang_zh-cn.yml", false);
 		}
 		if(!plugin.getConfig().isString("langFile")){
 			Bukkit.getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&4*******************************************************"));
