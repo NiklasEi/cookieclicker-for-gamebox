@@ -77,6 +77,10 @@ buildings:
     name: "Temple"
     description:
       - '&5&o"Full of precious, ancient chocolate."'
+  wizard_tower:
+    name: "Wizard Tower"
+    description:
+      - '&5&o"Summons cookies with magic spells."'
 
 
 upgrades:

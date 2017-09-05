@@ -9,6 +9,7 @@ import me.nikl.cookieclicker.buildings.Farm;
 import me.nikl.cookieclicker.buildings.Grandma;
 import me.nikl.cookieclicker.buildings.Mine;
 import me.nikl.cookieclicker.buildings.Temple;
+import me.nikl.cookieclicker.buildings.WizardTower;
 import me.nikl.cookieclicker.upgrades.Upgrade;
 import me.nikl.cookieclicker.upgrades.bank.AcidProofVaults;
 import me.nikl.cookieclicker.upgrades.bank.ChocolateCoins;
@@ -290,6 +291,8 @@ public class Game extends BukkitRunnable{
         buildingsPositions.put(7, Buildings.BANK);
         buildings.put(Buildings.TEMPLE, new Temple(plugin, 8, Buildings.TEMPLE));
         buildingsPositions.put(8, Buildings.TEMPLE);
+        buildings.put(Buildings.WIZARD_TOWER, new WizardTower(plugin, 11, Buildings.WIZARD_TOWER));
+        buildingsPositions.put(11, Buildings.WIZARD_TOWER);
 
         if(save != null){
             //load the game
