@@ -1,19 +1,6 @@
 package me.nikl.cookieclicker;
 
-import me.nikl.cookieclicker.buildings.AntimatterCondenser;
-import me.nikl.cookieclicker.buildings.Bank;
-import me.nikl.cookieclicker.buildings.Building;
-import me.nikl.cookieclicker.buildings.Buildings;
-import me.nikl.cookieclicker.buildings.Cursor;
-import me.nikl.cookieclicker.buildings.Factory;
-import me.nikl.cookieclicker.buildings.Farm;
-import me.nikl.cookieclicker.buildings.Grandma;
-import me.nikl.cookieclicker.buildings.Mine;
-import me.nikl.cookieclicker.buildings.Portal;
-import me.nikl.cookieclicker.buildings.Shipment;
-import me.nikl.cookieclicker.buildings.Temple;
-import me.nikl.cookieclicker.buildings.TimeMachine;
-import me.nikl.cookieclicker.buildings.WizardTower;
+import me.nikl.cookieclicker.buildings.*;
 import me.nikl.cookieclicker.upgrades.Upgrade;
 import me.nikl.cookieclicker.upgrades.bank.AcidProofVaults;
 import me.nikl.cookieclicker.upgrades.bank.ChocolateCoins;
@@ -299,7 +286,7 @@ public class Game extends BukkitRunnable{
         buildingsPositions.put(11, Buildings.WIZARD_TOWER);
         buildings.put(Buildings.SHIPMENT, new Shipment(plugin, 12, Buildings.SHIPMENT));
         buildingsPositions.put(12, Buildings.SHIPMENT);
-        buildings.put(Buildings.ALCHEMY_LAB, new Shipment(plugin, 13, Buildings.ALCHEMY_LAB));
+        buildings.put(Buildings.ALCHEMY_LAB, new AlchemyLab(plugin, 13, Buildings.ALCHEMY_LAB));
         buildingsPositions.put(13, Buildings.ALCHEMY_LAB);
         buildings.put(Buildings.PORTAL, new Portal(plugin, 14, Buildings.PORTAL));
         buildingsPositions.put(14, Buildings.PORTAL);
@@ -307,6 +294,8 @@ public class Game extends BukkitRunnable{
         buildingsPositions.put(15, Buildings.TIME_MACHINE);
         buildings.put(Buildings.ANTIMATTER_CONDENSER, new AntimatterCondenser(plugin, 16, Buildings.ANTIMATTER_CONDENSER));
         buildingsPositions.put(16, Buildings.ANTIMATTER_CONDENSER);
+        buildings.put(Buildings.PRISM, new Prism(plugin, 17, Buildings.PRISM));
+        buildingsPositions.put(17, Buildings.PRISM);
 
         if(save != null){
             //load the game

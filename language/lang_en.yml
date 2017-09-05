@@ -101,6 +101,10 @@ buildings:
     name: "Antimatter Condenser"
     description:
       - '&5&o"Condenses the antimatter in the universe into cookies."'
+  prism:
+    name: "Prism"
+    description:
+      - '&5&o"Converts light itself into cookies."'
 
 
 upgrades:
