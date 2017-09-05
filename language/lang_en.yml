@@ -97,6 +97,10 @@ buildings:
     name: "Time Machine"
     description:
       - '&5&o"Brings cookies from the past, before they were even eaten."'
+  antimatter_condenser:
+    name: "Antimatter Condenser"
+    description:
+      - '&5&o"Condenses the antimatter in the universe into cookies."'
 
 
 upgrades:

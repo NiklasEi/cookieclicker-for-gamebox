@@ -1,5 +1,6 @@
 package me.nikl.cookieclicker;
 
+import me.nikl.cookieclicker.buildings.AntimatterCondenser;
 import me.nikl.cookieclicker.buildings.Bank;
 import me.nikl.cookieclicker.buildings.Building;
 import me.nikl.cookieclicker.buildings.Buildings;
@@ -304,6 +305,8 @@ public class Game extends BukkitRunnable{
         buildingsPositions.put(14, Buildings.PORTAL);
         buildings.put(Buildings.TIME_MACHINE, new TimeMachine(plugin, 15, Buildings.TIME_MACHINE));
         buildingsPositions.put(15, Buildings.TIME_MACHINE);
+        buildings.put(Buildings.ANTIMATTER_CONDENSER, new AntimatterCondenser(plugin, 16, Buildings.ANTIMATTER_CONDENSER));
+        buildingsPositions.put(16, Buildings.ANTIMATTER_CONDENSER);
 
         if(save != null){
             //load the game
