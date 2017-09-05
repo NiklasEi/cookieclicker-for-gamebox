@@ -1,6 +1,9 @@
 
 - merged #5
 --- add lang_zh-cn to default language files
+- added buildings up to prism
+- upgrades for new buildings
+--- temple is done
 
 ---------------------------------------------------------------------
 v 1.0.0
