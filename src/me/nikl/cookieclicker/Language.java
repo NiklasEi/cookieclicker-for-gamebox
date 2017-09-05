@@ -46,7 +46,9 @@ public class Language {
 
 
 		getGameMessages();
+		// saving building language in hash maps
 		loadBuildingLanguage();
+		// saving upgrade language in hash maps
 		loadUpgradeLanguage();
 	}
 
@@ -193,6 +195,7 @@ public class Language {
 
 	private String getString(String path) {
 		if(!langFile.isString(path)){
+			// get string from default lang file
 			return ChatColor.translateAlternateColorCodes('&',defaultLang.getString(path));
 		}
 		return ChatColor.translateAlternateColorCodes('&',langFile.getString(path));
@@ -206,7 +209,7 @@ public class Language {
 		} catch (UnsupportedEncodingException e2) {
 			e2.printStackTrace();
 		}
-		
+
 		// check for all default language files. If not found in the plugin folder: copy from the jar
 		File defaultEn = new File(plugin.getDataFolder().toString() + File.separatorChar + "language" + File.separatorChar + "lang_en.yml");
 		if(!defaultEn.exists()){
