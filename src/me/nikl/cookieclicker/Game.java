@@ -8,6 +8,7 @@ import me.nikl.cookieclicker.buildings.Factory;
 import me.nikl.cookieclicker.buildings.Farm;
 import me.nikl.cookieclicker.buildings.Grandma;
 import me.nikl.cookieclicker.buildings.Mine;
+import me.nikl.cookieclicker.buildings.Temple;
 import me.nikl.cookieclicker.upgrades.Upgrade;
 import me.nikl.cookieclicker.upgrades.bank.AcidProofVaults;
 import me.nikl.cookieclicker.upgrades.bank.ChocolateCoins;
@@ -275,18 +276,20 @@ public class Game extends BukkitRunnable{
         }
         this.inventory = Bukkit.createInventory(null, 54, title);
 
-        buildings.put(Buildings.CURSOR, new Cursor(plugin, 3, Buildings.CURSOR));
-        buildingsPositions.put(3, Buildings.CURSOR);
-        buildings.put(Buildings.GRANDMA, new Grandma(plugin, 4, Buildings.GRANDMA));
-        buildingsPositions.put(4, Buildings.GRANDMA);
-        buildings.put(Buildings.FARM, new Farm(plugin, 5, Buildings.FARM));
-        buildingsPositions.put(5, Buildings.FARM);
-        buildings.put(Buildings.MINE, new Mine(plugin, 6, Buildings.MINE));
-        buildingsPositions.put(6, Buildings.MINE);
-        buildings.put(Buildings.FACTORY, new Factory(plugin, 7, Buildings.FACTORY));
-        buildingsPositions.put(7, Buildings.FACTORY);
-        buildings.put(Buildings.BANK, new Bank(plugin, 8, Buildings.BANK));
-        buildingsPositions.put(8, Buildings.BANK);
+        buildings.put(Buildings.CURSOR, new Cursor(plugin, 2, Buildings.CURSOR));
+        buildingsPositions.put(2, Buildings.CURSOR);
+        buildings.put(Buildings.GRANDMA, new Grandma(plugin, 3, Buildings.GRANDMA));
+        buildingsPositions.put(3, Buildings.GRANDMA);
+        buildings.put(Buildings.FARM, new Farm(plugin, 4, Buildings.FARM));
+        buildingsPositions.put(4, Buildings.FARM);
+        buildings.put(Buildings.MINE, new Mine(plugin, 5, Buildings.MINE));
+        buildingsPositions.put(5, Buildings.MINE);
+        buildings.put(Buildings.FACTORY, new Factory(plugin, 6, Buildings.FACTORY));
+        buildingsPositions.put(6, Buildings.FACTORY);
+        buildings.put(Buildings.BANK, new Bank(plugin, 7, Buildings.BANK));
+        buildingsPositions.put(7, Buildings.BANK);
+        buildings.put(Buildings.TEMPLE, new Temple(plugin, 8, Buildings.TEMPLE));
+        buildingsPositions.put(8, Buildings.TEMPLE);
 
         if(save != null){
             //load the game

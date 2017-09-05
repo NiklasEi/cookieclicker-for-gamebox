@@ -73,6 +73,10 @@ buildings:
     name: "Bank"
     description:
       - '&5&o"Generates cookies from interest."'
+  temple:
+    name: "Temple"
+    description:
+      - '&5&o"Full of precious, ancient chocolate."'
 
 
 upgrades:
