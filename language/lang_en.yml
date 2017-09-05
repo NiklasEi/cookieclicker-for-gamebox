@@ -89,6 +89,10 @@ buildings:
     name: "Alchemy Lab"
     description:
       - '&5&o"Turns gold into cookies!"'
+  portal:
+    name: "Portal"
+    description:
+      - '&5&o"Opens a door to the cookieverse."'
 
 
 upgrades:
