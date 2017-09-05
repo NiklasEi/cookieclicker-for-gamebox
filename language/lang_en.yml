@@ -81,6 +81,10 @@ buildings:
     name: "Wizard Tower"
     description:
       - '&5&o"Summons cookies with magic spells."'
+  shipment:
+    name: "Shipment"
+    description:
+      - '&5&o"Brings in fresh cookies from the cookie planet."'
 
 
 upgrades:
