@@ -93,6 +93,10 @@ buildings:
     name: "Portal"
     description:
       - '&5&o"Opens a door to the cookieverse."'
+  time_machine:
+    name: "Time Machine"
+    description:
+      - '&5&o"Brings cookies from the past, before they were even eaten."'
 
 
 upgrades:

@@ -11,6 +11,7 @@ import me.nikl.cookieclicker.buildings.Mine;
 import me.nikl.cookieclicker.buildings.Portal;
 import me.nikl.cookieclicker.buildings.Shipment;
 import me.nikl.cookieclicker.buildings.Temple;
+import me.nikl.cookieclicker.buildings.TimeMachine;
 import me.nikl.cookieclicker.buildings.WizardTower;
 import me.nikl.cookieclicker.upgrades.Upgrade;
 import me.nikl.cookieclicker.upgrades.bank.AcidProofVaults;
@@ -301,6 +302,8 @@ public class Game extends BukkitRunnable{
         buildingsPositions.put(13, Buildings.ALCHEMY_LAB);
         buildings.put(Buildings.PORTAL, new Portal(plugin, 14, Buildings.PORTAL));
         buildingsPositions.put(14, Buildings.PORTAL);
+        buildings.put(Buildings.TIME_MACHINE, new TimeMachine(plugin, 15, Buildings.TIME_MACHINE));
+        buildingsPositions.put(15, Buildings.TIME_MACHINE);
 
         if(save != null){
             //load the game
