@@ -2,8 +2,12 @@ package me.nikl.cookieclicker.buildings;
 
 import me.nikl.cookieclicker.Main;
 import org.bukkit.Material;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.PotionMeta;
 import org.bukkit.material.MaterialData;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
 /**
  * Created by Niklas on 05.07.2017.
@@ -15,7 +19,8 @@ public class AlchemyLab extends Building {
 
         icon = new MaterialData(Material.SPLASH_POTION).toItemStack();
         icon.setAmount(1);
-        ItemMeta meta = icon.getItemMeta();
+        PotionMeta meta = (PotionMeta) icon.getItemMeta();
+        meta.addItemFlags(ItemFlag.values());
         meta.setDisplayName(lang.GAME_BUILDING_NAME.replace("%name%", name));
         icon.setItemMeta(meta);
 
