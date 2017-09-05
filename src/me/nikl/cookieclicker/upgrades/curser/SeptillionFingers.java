@@ -16,7 +16,7 @@ public class SeptillionFingers extends Upgrade{
     public SeptillionFingers(Game game) {
         super(game, 188);
         this.cost = 1000000000000000.;
-        productionsRequirements.put(Buildings.CURSOR, 280);
+        productionsRequirements.put(Buildings.CURSOR, 350);
 
         icon = new MaterialData(Material.ARROW).toItemStack();
         icon.setAmount(1);

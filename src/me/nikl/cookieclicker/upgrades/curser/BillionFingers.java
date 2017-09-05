@@ -16,7 +16,7 @@ public class BillionFingers extends Upgrade{
     public BillionFingers(Game game) {
         super(game, 5);
         this.cost = 100000000;
-        productionsRequirements.put(Buildings.CURSOR, 80);
+        productionsRequirements.put(Buildings.CURSOR, 100);
 
         icon = new MaterialData(Material.ARROW).toItemStack();
         icon.setAmount(1);

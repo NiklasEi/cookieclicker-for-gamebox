@@ -16,7 +16,7 @@ public class TrillionFingers extends Upgrade{
     public TrillionFingers(Game game) {
         super(game, 6);
         this.cost = 1000000000;
-        productionsRequirements.put(Buildings.CURSOR, 120);
+        productionsRequirements.put(Buildings.CURSOR, 150);
 
         icon = new MaterialData(Material.ARROW).toItemStack();
         icon.setAmount(1);

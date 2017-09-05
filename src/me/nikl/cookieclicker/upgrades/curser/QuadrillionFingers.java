@@ -16,7 +16,7 @@ public class QuadrillionFingers extends Upgrade{
     public QuadrillionFingers(Game game) {
         super(game, 43);
         this.cost = 10000000000.;
-        productionsRequirements.put(Buildings.CURSOR, 160);
+        productionsRequirements.put(Buildings.CURSOR, 200);
 
         icon = new MaterialData(Material.ARROW).toItemStack();
         icon.setAmount(1);

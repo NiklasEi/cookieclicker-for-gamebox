@@ -16,7 +16,7 @@ public class MillionFingers extends Upgrade{
     public MillionFingers(Game game) {
         super(game, 4);
         this.cost = 10000000;
-        productionsRequirements.put(Buildings.CURSOR, 40);
+        productionsRequirements.put(Buildings.CURSOR, 50);
 
         icon = new MaterialData(Material.ARROW).toItemStack();
         icon.setAmount(1);

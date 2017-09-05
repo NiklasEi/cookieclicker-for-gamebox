@@ -16,7 +16,7 @@ public class QuintillionFingers extends Upgrade{
     public QuintillionFingers(Game game) {
         super(game, 82);
         this.cost = 10000000000000.;
-        productionsRequirements.put(Buildings.CURSOR, 200);
+        productionsRequirements.put(Buildings.CURSOR, 250);
 
         icon = new MaterialData(Material.ARROW).toItemStack();
         icon.setAmount(1);
