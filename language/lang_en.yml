@@ -96,11 +96,13 @@ buildings:
   time_machine:
     name: "Time Machine"
     description:
-      - '&5&o"Brings cookies from the past, before they were even eaten."'
+      - '&5&o"Brings cookies from the past,'
+      - '&5&o     before they were even eaten."'
   antimatter_condenser:
     name: "Antimatter Condenser"
     description:
-      - '&5&o"Condenses the antimatter in the universe into cookies."'
+      - '&5&o"Condenses the antimatter in the universe...'
+      - '&5&o     into cookies."'
   prism:
     name: "Prism"
     description:
@@ -440,7 +442,7 @@ upgrades:
       name: "Exponential interest rates"
       description:
         - '&5&o"Can''t argue with mathematics!'
-        - '&5&o     Now fork it over.'
+        - '&5&o     Now fork it over."'
     237:
       name: "Financial zen"
       description:
@@ -462,3 +464,72 @@ upgrades:
       description:
         - '&5&o"If not now, when? If not it, what?'
         - '&5&o    If not things... stuff?"'
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    # Temple upgrades (type: classic)
+    238:
+      name: "Golden idols"
+      description:
+        - '&5&o"Lure even greedier adventurers'
+        - '&5&o     to retrieve your cookies.'
+        - '&5&o     Now that''s a real idol game!"'
+    239:
+      name: "Sacrifices"
+      description:
+        - '&5&o"What''s a life to a gigaton of cookies?"'
+    240:
+      name: "Delicious blessing"
+      description:
+        - '&5&o"And lo, the Baker''s almighty spoon'
+        - '&5&o    came down and distributed'
+        - '&5&o    holy gifts unto the believers -'
+        - '&5&o    shimmering sugar,'
+        - '&5&o    and chocolate dark as night,'
+        - '&5&o    and all manner of wheats.'
+        - '&5&o    And boy let me tell you,'
+        - '&5&o    that party was mighty gnarly."'
+    241:
+      name: "Sun festival"
+      description:
+        - '&5&o"Free the primordial powers of your temples'
+        - '&5&o    with these annual celebrations'
+        - '&5&o    involving fire-breathers,'
+        - '&5&o    traditional dancing,'
+        - '&5&o    ritual beheadings'
+        - '&5&o    and other merriments!"'
+    242:
+      name: "Enlarged pantheon"
+      description:
+        - '&5&o"Enough spiritual inadequacy! More'
+        - '&5&o    divinities than you''ll ever need,'
+        - '&5&o    or your money back!'
+        - '&5&o    100% guaranteed!"'
+    243:
+      name: "Great Baker in the sky"
+      description:
+        - '&5&o"This is it. The ultimate deity has finally'
+        - '&5&o    cast Their sublimely divine eye upon'
+        - '&5&o    your operation;'
+        - '&5&o    whether this is a good thing'
+        - '&5&o    or possibly the end of days'
+        - '&5&o    is something you should find out...'
+        - '&5&o    very soon!"'
+    299:
+      name: "Creation myth"
+      description:
+        - '&5&o"Stories have been circulating'
+        - '&5&o    about the origins of'
+        - '&5&o    the very first cookie'
+        - '&5&o    that was ever baked;'
+        - '&5&o    tales of how it all began,'
+        - '&5&o    in the Dough beyond time'
+        - '&5&o    and the Ovens of destiny."'
+    312:
+      name: "Theocracy"
+      description:
+        - '&5&o"You''ve turned your cookie empire'
+        - '&5&o    into a perfect theocracy,'
+        - '&5&o    gathering the adoration'
+        - '&5&o    of zillions of followers'
+        - '&5&o    from every corner of the universe.'
+        - '&5&o    Don''t let it go to your head."'

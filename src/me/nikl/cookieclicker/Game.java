@@ -63,6 +63,14 @@ import me.nikl.cookieclicker.upgrades.mine.Planetsplitters;
 import me.nikl.cookieclicker.upgrades.mine.SugarGas;
 import me.nikl.cookieclicker.upgrades.mine.Ultimadrill;
 import me.nikl.cookieclicker.upgrades.mine.Ultradrill;
+import me.nikl.cookieclicker.upgrades.temple.CreationMyth;
+import me.nikl.cookieclicker.upgrades.temple.DeliciousBlessing;
+import me.nikl.cookieclicker.upgrades.temple.EnlargedPantheon;
+import me.nikl.cookieclicker.upgrades.temple.GoldenIdols;
+import me.nikl.cookieclicker.upgrades.temple.GreatBakerInTheSky;
+import me.nikl.cookieclicker.upgrades.temple.Sacrifices;
+import me.nikl.cookieclicker.upgrades.temple.SunFestival;
+import me.nikl.cookieclicker.upgrades.temple.Theocracy;
 import me.nikl.gamebox.GameBoxSettings;
 import me.nikl.gamebox.Sounds;
 import me.nikl.gamebox.nms.NMSUtil;
@@ -248,6 +256,16 @@ public class Game extends BukkitRunnable{
         futureUpgradesTemp.add(new FinancialZen(this));
         futureUpgradesTemp.add(new WayOfTheWallet(this));
         futureUpgradesTemp.add(new TheStuffRationale(this));
+
+        // Temple
+        futureUpgradesTemp.add(new GoldenIdols(this));
+        futureUpgradesTemp.add(new Sacrifices(this));
+        futureUpgradesTemp.add(new DeliciousBlessing(this));
+        futureUpgradesTemp.add(new SunFestival(this));
+        futureUpgradesTemp.add(new EnlargedPantheon(this));
+        futureUpgradesTemp.add(new GreatBakerInTheSky(this));
+        futureUpgradesTemp.add(new CreationMyth(this));
+        futureUpgradesTemp.add(new Theocracy(this));
 
 
         // sort upgrades in map with ids as key (fast lookup for loading of old game)
