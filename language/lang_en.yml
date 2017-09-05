@@ -85,6 +85,10 @@ buildings:
     name: "Shipment"
     description:
       - '&5&o"Brings in fresh cookies from the cookie planet."'
+  alchemy_lab:
+    name: "Alchemy Lab"
+    description:
+      - '&5&o"Turns gold into cookies!"'
 
 
 upgrades:

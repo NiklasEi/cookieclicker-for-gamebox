@@ -296,6 +296,8 @@ public class Game extends BukkitRunnable{
         buildingsPositions.put(11, Buildings.WIZARD_TOWER);
         buildings.put(Buildings.SHIPMENT, new Shipment(plugin, 12, Buildings.SHIPMENT));
         buildingsPositions.put(12, Buildings.SHIPMENT);
+        buildings.put(Buildings.ALCHEMY_LAB, new Shipment(plugin, 13, Buildings.ALCHEMY_LAB));
+        buildingsPositions.put(13, Buildings.ALCHEMY_LAB);
 
         if(save != null){
             //load the game
