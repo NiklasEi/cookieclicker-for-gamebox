@@ -71,6 +71,14 @@ import me.nikl.cookieclicker.upgrades.mine.Planetsplitters;
 import me.nikl.cookieclicker.upgrades.mine.SugarGas;
 import me.nikl.cookieclicker.upgrades.mine.Ultimadrill;
 import me.nikl.cookieclicker.upgrades.mine.Ultradrill;
+import me.nikl.cookieclicker.upgrades.portal.AncientTablet;
+import me.nikl.cookieclicker.upgrades.portal.BraneTransplant;
+import me.nikl.cookieclicker.upgrades.portal.DeitySizedPortals;
+import me.nikl.cookieclicker.upgrades.portal.EndOfTimesBackUpPlan;
+import me.nikl.cookieclicker.upgrades.portal.InsaneOatlingWorkers;
+import me.nikl.cookieclicker.upgrades.portal.MaddeningChants;
+import me.nikl.cookieclicker.upgrades.portal.SanityDance;
+import me.nikl.cookieclicker.upgrades.portal.SoulBond;
 import me.nikl.cookieclicker.upgrades.shipment.ChocolateMonoliths;
 import me.nikl.cookieclicker.upgrades.shipment.DysonSphere;
 import me.nikl.cookieclicker.upgrades.shipment.FrequentFlyer;
@@ -320,6 +328,16 @@ public class Game extends BukkitRunnable{
         futureUpgradesTemp.add(new OriginCrucible(this));
         futureUpgradesTemp.add(new TheoryOfAtomicFluidity(this));
         futureUpgradesTemp.add(new BeigeGoo(this));
+
+        // Portal
+        futureUpgradesTemp.add(new AncientTablet(this));
+        futureUpgradesTemp.add(new InsaneOatlingWorkers(this));
+        futureUpgradesTemp.add(new SoulBond(this));
+        futureUpgradesTemp.add(new SanityDance(this));
+        futureUpgradesTemp.add(new BraneTransplant(this));
+        futureUpgradesTemp.add(new DeitySizedPortals(this));
+        futureUpgradesTemp.add(new EndOfTimesBackUpPlan(this));
+        futureUpgradesTemp.add(new MaddeningChants(this));
 
 
         // sort upgrades in map with ids as key (fast lookup for loading of old game)

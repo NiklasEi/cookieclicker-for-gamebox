@@ -703,3 +703,50 @@ upgrades:
         - '&5&o    converted into cookies.'
         - '&5&o    Good thing you can hop'
         - '&5&o    from universe to universe."'
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    # Portal upgrades (type: classic)
+    25:
+      name: "Ancient tablet"
+      description:
+        - '&5&o"A strange slab of peanut brittle, holding'
+        - '&5&o     an ancient cookie recipe. Neat!"'
+    26:
+      name: "Insane oatling workers"
+      description:
+        - '&5&o"ARISE, MY MINIONS!"'
+    27:
+      name: "Soul bond"
+      description:
+        - '&5&o"So I just sign up and get more cookies?'
+        - '&5&o     Sure, whatever!"'
+    50:
+      name: "Sanity dance"
+      description:
+        - '&5&o"We can change if we want to.'
+        - '&5&o     We can leave our brains behind."'
+    116:
+      name: "Brane transplant"
+      description:
+        - '&5&o"This refers to the practice of merging'
+        - '&5&o  higher dimensional universes,'
+        - '&5&o  or "branes", with our own,'
+        - '&5&o  in order to facilitate transit'
+        - '&5&o  (and harvesting of precious cookie dough)."'
+    198:
+      name: "Deity-sized portals"
+      description:
+        - '&5&o"It''s almost like, say, an elder god'
+        - '&5&o    could fit through this thing now.'
+        - '&5&o    '
+        - '&5&o    Hypothetically."'
+    303:
+      name: "End of times back-up plan"
+      description:
+        - '&5&o"Just in case, alright?"'
+    316:
+      name: "Maddening chants"
+      description:
+        - '&5&o"A popular verse goes like so:'
+        - '&5&o    "jau''hn madden jau''hn madden'
+        - '&5&o    aeiouaeiouaeiou brbrbrbrbrbrbr""'
