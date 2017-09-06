@@ -596,3 +596,53 @@ upgrades:
         - ''
         - '&5&o    Resulting cookies may or may not'
         - '&5&o    be fit for vegans.'
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    # Shipment upgrades (type: classic)
+    19:
+      name: "Vanilla nebulae"
+      description:
+        - '&5&o"If you removed your space helmet,'
+        - '&5&o     you could probably smell it!'
+        - '&5&o     '
+        - '&5&o     (Note : don''t do that.)"'
+    20:
+      name: "Wormholes"
+      description:
+        - '&5&o"By using these as shortcuts,'
+        - '&5&o  your ships can travel much faster."'
+    21:
+      name: "Frequent flyer"
+      description:
+        - '&5&o"Come back soon!"'
+    48:
+      name: "Warp drive"
+      description:
+        - '&5&o"To boldly bake."'
+    114:
+      name: "Chocolate monoliths"
+      description:
+        - '&5&o"My god. It''s full of chocolate bars."'
+    196:
+      name: "Generation ship"
+      description:
+        - '&5&o"Built to last, this humongous spacecraft'
+        - '&5&o    will surely deliver your cookies'
+        - '&5&o    to the deep ends of space, one day."'
+    301:
+      name: "Dyson sphere"
+      description:
+        - '&5&o"You''ve found a way to apply your knowledge'
+        - '&5&o of cosmic technology to slightly'
+        - '&5&o more local endeavors;'
+        - '&5&o this gigantic sphere of meta-materials,'
+        - '&5&o wrapping the solar system,'
+        - '&5&o is sure to kick your baking abilities'
+        - '&5&o           up a notch."'
+    314:
+      name: "The final frontier"
+      description:
+        - '&5&o"It''s been a long road, getting from there'
+        - '&5&o    to here. It''s all worth it though -'
+        - '&5&o    the sights are lovely and'
+        - '&5&o    the oil prices slightly more reasonable."'
