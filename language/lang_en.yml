@@ -533,3 +533,66 @@ upgrades:
         - '&5&o    of zillions of followers'
         - '&5&o    from every corner of the universe.'
         - '&5&o    Don''t let it go to your head."'
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    # Wizard Tower upgrades (type: classic)
+    244:
+      name: "Pointier hats"
+      description:
+        - '&5&o"Tests have shown increased thaumic'
+        - '&5&o     receptivity relative to the'
+        - '&5&o     geometric proportions of'
+        - '&5&o     wizardly conic implements."'
+    245:
+      name: "Beardlier beards"
+      description:
+        - '&5&o"Haven''t you heard? The beard is the word."'
+    246:
+      name: "Ancient grimoires"
+      description:
+        - '&5&o"Contain interesting spells such as:'
+        - '&5&o    "Turn Water To Drool",'
+        - '&5&o    "Grow Eyebrows On Furniture"'
+        - '&5&o    and "Summon Politician"."'
+    247:
+      name: "Kitchen curses"
+      description:
+        - '&5&o"Exotic magic involved in all'
+        - '&5&o    things pastry-related.'
+        - '&5&o    '
+        - '&5&o    Hexcellent!"'
+    248:
+      name: "School of sorcery"
+      description:
+        - '&5&o"This cookie-funded academy of'
+        - '&5&o    witchcraft is home to the 4'
+        - '&5&o    prestigious houses of magic :'
+        - '&5&o    the Jocks, the Nerds,'
+        - '&5&o    the Preps, and the Deathmunchers."'
+    249:
+      name: "Dark formulas"
+      description:
+        - '&5&o"Eldritch forces are behind these spells -'
+        - '&5&o    you get the feeling you really'
+        - '&5&o    shouldn''t be messing with those.'
+        - '&5&o    But I mean, free cookies, right?"'
+    300:
+      name: "Cookiemancy"
+      description:
+        - '&5&o"There it is;'
+        - '&5&o the perfected school of baking magic.'
+        - '&5&o From summoning chips to hexing nuts,'
+        - '&5&o there is not a single part of'
+        - '&5&o cookie-making that hasn''t been'
+        - '&5&o improved tenfold by magic tricks."'
+    313:
+      name: "Rabbit trick"
+      description:
+        - '&5&o"Using nothing more than a fancy top hat,'
+        - '&5&o    your wizards have found a way'
+        - '&5&o    to simultaneously curb rabbit population'
+        - '&5&o    and produce heaps of extra cookies'
+        - '&5&o    for basically free!'
+        - ''
+        - '&5&o    Resulting cookies may or may not'
+        - '&5&o    be fit for vegans.'

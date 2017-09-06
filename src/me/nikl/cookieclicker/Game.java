@@ -71,6 +71,14 @@ import me.nikl.cookieclicker.upgrades.temple.GreatBakerInTheSky;
 import me.nikl.cookieclicker.upgrades.temple.Sacrifices;
 import me.nikl.cookieclicker.upgrades.temple.SunFestival;
 import me.nikl.cookieclicker.upgrades.temple.Theocracy;
+import me.nikl.cookieclicker.upgrades.wizardtower.AncientGrimoires;
+import me.nikl.cookieclicker.upgrades.wizardtower.BeardlierBeards;
+import me.nikl.cookieclicker.upgrades.wizardtower.Cookiemancy;
+import me.nikl.cookieclicker.upgrades.wizardtower.DarkFormulas;
+import me.nikl.cookieclicker.upgrades.wizardtower.KitchenCurses;
+import me.nikl.cookieclicker.upgrades.wizardtower.PointierHats;
+import me.nikl.cookieclicker.upgrades.wizardtower.RabbitTrick;
+import me.nikl.cookieclicker.upgrades.wizardtower.SchoolOfSorcery;
 import me.nikl.gamebox.GameBoxSettings;
 import me.nikl.gamebox.Sounds;
 import me.nikl.gamebox.nms.NMSUtil;
@@ -267,6 +275,16 @@ public class Game extends BukkitRunnable{
         futureUpgradesTemp.add(new CreationMyth(this));
         futureUpgradesTemp.add(new Theocracy(this));
 
+        // Wizard Tower
+        futureUpgradesTemp.add(new PointierHats(this));
+        futureUpgradesTemp.add(new BeardlierBeards(this));
+        futureUpgradesTemp.add(new AncientGrimoires(this));
+        futureUpgradesTemp.add(new KitchenCurses(this));
+        futureUpgradesTemp.add(new SchoolOfSorcery(this));
+        futureUpgradesTemp.add(new DarkFormulas(this));
+        futureUpgradesTemp.add(new Cookiemancy(this));
+        futureUpgradesTemp.add(new RabbitTrick(this));
+
 
         // sort upgrades in map with ids as key (fast lookup for loading of old game)
         Upgrade upgrade;
@@ -286,6 +304,7 @@ public class Game extends BukkitRunnable{
         }
         this.inventory = Bukkit.createInventory(null, 54, title);
 
+        // add all buildings to the inventory and register them with their slot
         buildings.put(Buildings.CURSOR, new Cursor(plugin, 2, Buildings.CURSOR));
         buildingsPositions.put(2, Buildings.CURSOR);
         buildings.put(Buildings.GRANDMA, new Grandma(plugin, 3, Buildings.GRANDMA));
