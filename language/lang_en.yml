@@ -646,3 +646,60 @@ upgrades:
         - '&5&o    to here. It''s all worth it though -'
         - '&5&o    the sights are lovely and'
         - '&5&o    the oil prices slightly more reasonable."'
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    # Alchemy Lab upgrades (type: classic)
+    22:
+      name: "Antimony"
+      description:
+        - '&5&o"Actually worth a lot of mony."'
+    23:
+      name: "Essence of dough"
+      description:
+        - '&5&o"Extracted through the 5 ancient steps'
+        - '&5&o  of alchemical baking."'
+    24:
+      name: "True chocolate"
+      description:
+        - '&5&o"The purest form of cacao."'
+    49:
+      name: "Ambrosia"
+      description:
+        - '&5&o"Adding this to the cookie mix is sure to'
+        - '&5&o     make them even more addictive!'
+        - '&5&o     Perhaps dangerously so.'
+        - '&5&o     Let''s hope you can keep'
+        - '&5&o     selling these legally."'
+    115:
+      name: "Aqua crustulae"
+      description:
+        - '&5&o"Careful with the dosing -'
+        - '&5&o     one drop too much and'
+        - '&5&o     you get muffins...'
+        - '&5&o     Nobody likes muffins..."'
+    197:
+      name: "Origin crucible"
+      description:
+        - '&5&o"Built from the rarest of earths'
+        - '&5&o    and located at the very deepest'
+        - '&5&o    of the largest mountain,'
+        - '&5&o    this legendary crucible is said'
+        - '&5&o    to retain properties'
+        - '&5&o    from the big-bang itself."'
+    302:
+      name: "Theory of atomic fluidity"
+      description:
+        - '&5&o"Pushing alchemy to its most extreme limits,'
+        - '&5&o you find that everything is transmutable'
+        - '&5&o into anything else - lead to gold,'
+        - '&5&o mercury to water; more importantly,'
+        - '&5&o you realize that anything can -and should-'
+        - '&5&o be converted to cookies."'
+    315:
+      name: "Beige goo"
+      description:
+        - '&5&o"Well now you''ve done it. Good job. Very nice.'
+        - '&5&o    That''s 3 galaxies you''ve just'
+        - '&5&o    converted into cookies.'
+        - '&5&o    Good thing you can hop'
+        - '&5&o    from universe to universe."'

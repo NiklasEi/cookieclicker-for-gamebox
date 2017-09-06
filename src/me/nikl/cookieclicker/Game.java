@@ -2,6 +2,14 @@ package me.nikl.cookieclicker;
 
 import me.nikl.cookieclicker.buildings.*;
 import me.nikl.cookieclicker.upgrades.Upgrade;
+import me.nikl.cookieclicker.upgrades.alchemylab.Ambrosia;
+import me.nikl.cookieclicker.upgrades.alchemylab.Antimony;
+import me.nikl.cookieclicker.upgrades.alchemylab.AquaCrustulae;
+import me.nikl.cookieclicker.upgrades.alchemylab.BeigeGoo;
+import me.nikl.cookieclicker.upgrades.alchemylab.EssenceOfDough;
+import me.nikl.cookieclicker.upgrades.alchemylab.OriginCrucible;
+import me.nikl.cookieclicker.upgrades.alchemylab.TheoryOfAtomicFluidity;
+import me.nikl.cookieclicker.upgrades.alchemylab.TrueChocolate;
 import me.nikl.cookieclicker.upgrades.bank.AcidProofVaults;
 import me.nikl.cookieclicker.upgrades.bank.ChocolateCoins;
 import me.nikl.cookieclicker.upgrades.bank.ExponentialInterestRates;
@@ -302,6 +310,16 @@ public class Game extends BukkitRunnable{
         futureUpgradesTemp.add(new GenerationShip(this));
         futureUpgradesTemp.add(new DysonSphere(this));
         futureUpgradesTemp.add(new TheFinalFrontier(this));
+
+        // Alchemy Lab
+        futureUpgradesTemp.add(new Antimony(this));
+        futureUpgradesTemp.add(new EssenceOfDough(this));
+        futureUpgradesTemp.add(new TrueChocolate(this));
+        futureUpgradesTemp.add(new Ambrosia(this));
+        futureUpgradesTemp.add(new AquaCrustulae(this));
+        futureUpgradesTemp.add(new OriginCrucible(this));
+        futureUpgradesTemp.add(new TheoryOfAtomicFluidity(this));
+        futureUpgradesTemp.add(new BeigeGoo(this));
 
 
         // sort upgrades in map with ids as key (fast lookup for loading of old game)
