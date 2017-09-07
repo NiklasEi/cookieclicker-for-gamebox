@@ -236,6 +236,37 @@ public class Game extends BukkitRunnable{
         cookies = 0.;
 
 
+        // add all buildings and register them with their slot
+        buildings.put(Buildings.CURSOR, new Cursor(plugin, 2, Buildings.CURSOR));
+        buildingsPositions.put(2, Buildings.CURSOR);
+        buildings.put(Buildings.GRANDMA, new Grandma(plugin, 3, Buildings.GRANDMA));
+        buildingsPositions.put(3, Buildings.GRANDMA);
+        buildings.put(Buildings.FARM, new Farm(plugin, 4, Buildings.FARM));
+        buildingsPositions.put(4, Buildings.FARM);
+        buildings.put(Buildings.MINE, new Mine(plugin, 5, Buildings.MINE));
+        buildingsPositions.put(5, Buildings.MINE);
+        buildings.put(Buildings.FACTORY, new Factory(plugin, 6, Buildings.FACTORY));
+        buildingsPositions.put(6, Buildings.FACTORY);
+        buildings.put(Buildings.BANK, new Bank(plugin, 7, Buildings.BANK));
+        buildingsPositions.put(7, Buildings.BANK);
+        buildings.put(Buildings.TEMPLE, new Temple(plugin, 8, Buildings.TEMPLE));
+        buildingsPositions.put(8, Buildings.TEMPLE);
+        buildings.put(Buildings.WIZARD_TOWER, new WizardTower(plugin, 11, Buildings.WIZARD_TOWER));
+        buildingsPositions.put(11, Buildings.WIZARD_TOWER);
+        buildings.put(Buildings.SHIPMENT, new Shipment(plugin, 12, Buildings.SHIPMENT));
+        buildingsPositions.put(12, Buildings.SHIPMENT);
+        buildings.put(Buildings.ALCHEMY_LAB, new AlchemyLab(plugin, 13, Buildings.ALCHEMY_LAB));
+        buildingsPositions.put(13, Buildings.ALCHEMY_LAB);
+        buildings.put(Buildings.PORTAL, new Portal(plugin, 14, Buildings.PORTAL));
+        buildingsPositions.put(14, Buildings.PORTAL);
+        buildings.put(Buildings.TIME_MACHINE, new TimeMachine(plugin, 15, Buildings.TIME_MACHINE));
+        buildingsPositions.put(15, Buildings.TIME_MACHINE);
+        buildings.put(Buildings.ANTIMATTER_CONDENSER, new AntimatterCondenser(plugin, 16, Buildings.ANTIMATTER_CONDENSER));
+        buildingsPositions.put(16, Buildings.ANTIMATTER_CONDENSER);
+        buildings.put(Buildings.PRISM, new Prism(plugin, 17, Buildings.PRISM));
+        buildingsPositions.put(17, Buildings.PRISM);
+
+
         Set<Upgrade> futureUpgradesTemp = new HashSet<>();
 
         // clicking
@@ -411,36 +442,6 @@ public class Game extends BukkitRunnable{
             title = "Title is too long!";
         }
         this.inventory = Bukkit.createInventory(null, 54, title);
-
-        // add all buildings to the inventory and register them with their slot
-        buildings.put(Buildings.CURSOR, new Cursor(plugin, 2, Buildings.CURSOR));
-        buildingsPositions.put(2, Buildings.CURSOR);
-        buildings.put(Buildings.GRANDMA, new Grandma(plugin, 3, Buildings.GRANDMA));
-        buildingsPositions.put(3, Buildings.GRANDMA);
-        buildings.put(Buildings.FARM, new Farm(plugin, 4, Buildings.FARM));
-        buildingsPositions.put(4, Buildings.FARM);
-        buildings.put(Buildings.MINE, new Mine(plugin, 5, Buildings.MINE));
-        buildingsPositions.put(5, Buildings.MINE);
-        buildings.put(Buildings.FACTORY, new Factory(plugin, 6, Buildings.FACTORY));
-        buildingsPositions.put(6, Buildings.FACTORY);
-        buildings.put(Buildings.BANK, new Bank(plugin, 7, Buildings.BANK));
-        buildingsPositions.put(7, Buildings.BANK);
-        buildings.put(Buildings.TEMPLE, new Temple(plugin, 8, Buildings.TEMPLE));
-        buildingsPositions.put(8, Buildings.TEMPLE);
-        buildings.put(Buildings.WIZARD_TOWER, new WizardTower(plugin, 11, Buildings.WIZARD_TOWER));
-        buildingsPositions.put(11, Buildings.WIZARD_TOWER);
-        buildings.put(Buildings.SHIPMENT, new Shipment(plugin, 12, Buildings.SHIPMENT));
-        buildingsPositions.put(12, Buildings.SHIPMENT);
-        buildings.put(Buildings.ALCHEMY_LAB, new AlchemyLab(plugin, 13, Buildings.ALCHEMY_LAB));
-        buildingsPositions.put(13, Buildings.ALCHEMY_LAB);
-        buildings.put(Buildings.PORTAL, new Portal(plugin, 14, Buildings.PORTAL));
-        buildingsPositions.put(14, Buildings.PORTAL);
-        buildings.put(Buildings.TIME_MACHINE, new TimeMachine(plugin, 15, Buildings.TIME_MACHINE));
-        buildingsPositions.put(15, Buildings.TIME_MACHINE);
-        buildings.put(Buildings.ANTIMATTER_CONDENSER, new AntimatterCondenser(plugin, 16, Buildings.ANTIMATTER_CONDENSER));
-        buildingsPositions.put(16, Buildings.ANTIMATTER_CONDENSER);
-        buildings.put(Buildings.PRISM, new Prism(plugin, 17, Buildings.PRISM));
-        buildingsPositions.put(17, Buildings.PRISM);
 
         if(save != null){
             //load the game
