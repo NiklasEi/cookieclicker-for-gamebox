@@ -1,11 +1,13 @@
 
+
+
+---------------------------------------------------------------------
+v 1.1.0
 - merged #5
 --- add lang_zh-cn to default language files
 - added buildings up to prism
 - upgrades for new buildings
---- temple is done
 
----------------------------------------------------------------------
 v 1.0.0
 - full language support for all buildings and upgrades
 - improved default style of the lores and titles
