@@ -95,6 +95,14 @@ import me.nikl.cookieclicker.upgrades.temple.GreatBakerInTheSky;
 import me.nikl.cookieclicker.upgrades.temple.Sacrifices;
 import me.nikl.cookieclicker.upgrades.temple.SunFestival;
 import me.nikl.cookieclicker.upgrades.temple.Theocracy;
+import me.nikl.cookieclicker.upgrades.timemachine.CausalityEnforcer;
+import me.nikl.cookieclicker.upgrades.timemachine.CookietopianMomentsOfMaybe;
+import me.nikl.cookieclicker.upgrades.timemachine.FarFutureEnactment;
+import me.nikl.cookieclicker.upgrades.timemachine.FluxCapacitors;
+import me.nikl.cookieclicker.upgrades.timemachine.GreatLoopHypothesis;
+import me.nikl.cookieclicker.upgrades.timemachine.QuantumConundrum;
+import me.nikl.cookieclicker.upgrades.timemachine.TimeParadoxResolver;
+import me.nikl.cookieclicker.upgrades.timemachine.YestermorrowComparators;
 import me.nikl.cookieclicker.upgrades.wizardtower.AncientGrimoires;
 import me.nikl.cookieclicker.upgrades.wizardtower.BeardlierBeards;
 import me.nikl.cookieclicker.upgrades.wizardtower.Cookiemancy;
@@ -338,6 +346,16 @@ public class Game extends BukkitRunnable{
         futureUpgradesTemp.add(new DeitySizedPortals(this));
         futureUpgradesTemp.add(new EndOfTimesBackUpPlan(this));
         futureUpgradesTemp.add(new MaddeningChants(this));
+
+        // Time Machine
+        futureUpgradesTemp.add(new FluxCapacitors(this));
+        futureUpgradesTemp.add(new TimeParadoxResolver(this));
+        futureUpgradesTemp.add(new QuantumConundrum(this));
+        futureUpgradesTemp.add(new CausalityEnforcer(this));
+        futureUpgradesTemp.add(new YestermorrowComparators(this));
+        futureUpgradesTemp.add(new FarFutureEnactment(this));
+        futureUpgradesTemp.add(new GreatLoopHypothesis(this));
+        futureUpgradesTemp.add(new CookietopianMomentsOfMaybe(this));
 
 
         // sort upgrades in map with ids as key (fast lookup for loading of old game)
