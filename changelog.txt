@@ -2,6 +2,10 @@
 
 
 ---------------------------------------------------------------------
+v 1.1.1
+- update lang_zh-cn
+- compatibility for minecraft 1.8+
+
 v 1.1.0
 - merged #5
 --- add lang_zh-cn to default language files
