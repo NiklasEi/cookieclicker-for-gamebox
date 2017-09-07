@@ -10,6 +10,14 @@ import me.nikl.cookieclicker.upgrades.alchemylab.EssenceOfDough;
 import me.nikl.cookieclicker.upgrades.alchemylab.OriginCrucible;
 import me.nikl.cookieclicker.upgrades.alchemylab.TheoryOfAtomicFluidity;
 import me.nikl.cookieclicker.upgrades.alchemylab.TrueChocolate;
+import me.nikl.cookieclicker.upgrades.antimattercondenser.BigBangBake;
+import me.nikl.cookieclicker.upgrades.antimattercondenser.LargeMacaronCollider;
+import me.nikl.cookieclicker.upgrades.antimattercondenser.Nanocosmics;
+import me.nikl.cookieclicker.upgrades.antimattercondenser.ReverseCyclotrons;
+import me.nikl.cookieclicker.upgrades.antimattercondenser.SomeOtherSuperTinyFundamentalParticle;
+import me.nikl.cookieclicker.upgrades.antimattercondenser.StringTheory;
+import me.nikl.cookieclicker.upgrades.antimattercondenser.SugarBosons;
+import me.nikl.cookieclicker.upgrades.antimattercondenser.ThePulse;
 import me.nikl.cookieclicker.upgrades.bank.AcidProofVaults;
 import me.nikl.cookieclicker.upgrades.bank.ChocolateCoins;
 import me.nikl.cookieclicker.upgrades.bank.ExponentialInterestRates;
@@ -356,6 +364,16 @@ public class Game extends BukkitRunnable{
         futureUpgradesTemp.add(new FarFutureEnactment(this));
         futureUpgradesTemp.add(new GreatLoopHypothesis(this));
         futureUpgradesTemp.add(new CookietopianMomentsOfMaybe(this));
+
+        // Antimatter Condenser
+        futureUpgradesTemp.add(new SugarBosons(this));
+        futureUpgradesTemp.add(new StringTheory(this));
+        futureUpgradesTemp.add(new LargeMacaronCollider(this));
+        futureUpgradesTemp.add(new BigBangBake(this));
+        futureUpgradesTemp.add(new ReverseCyclotrons(this));
+        futureUpgradesTemp.add(new Nanocosmics(this));
+        futureUpgradesTemp.add(new ThePulse(this));
+        futureUpgradesTemp.add(new SomeOtherSuperTinyFundamentalParticle(this));
 
 
         // sort upgrades in map with ids as key (fast lookup for loading of old game)

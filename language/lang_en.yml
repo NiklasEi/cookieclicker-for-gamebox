@@ -800,3 +800,56 @@ upgrades:
       description:
         - '&5&o"Reminiscing how things could have been,'
         - '&5&o should have been, will have been."'
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    # Antimatter Condenser upgrades (type: classic)
+    99:
+      name: "Sugar bosons"
+      description:
+        - '&5&o"Sweet firm bosons."'
+    100:
+      name: "String theory"
+      description:
+        - '&5&o"Reveals new insight about the true'
+        - '&5&o     meaning of baking cookies'
+        - '&5&o     (and, as a bonus, the'
+        - '&5&o     structure of the universe)."'
+    101:
+      name: "Large macaron collider"
+      description:
+        - '&5&o"How singular!"'
+    102:
+      name: "Big bang bake"
+      description:
+        - '&5&o"And that''s how it all began."'
+    118:
+      name: "Reverse cyclotrons"
+      description:
+        - '&5&o"These can uncollision particles'
+        - '&5&o and unspin atoms.'
+        - '&5&o   For... uh...'
+        - '&5&o   better flavor, and stuff."'
+    200:
+      name: "Nanocosmics"
+      description:
+        - '&5&o"The theory of nanocosmics posits'
+        - '&5&o    that each subatomic particle'
+        - '&5&o    is in fact its own self-'
+        - '&5&o    contained universe, holding'
+        - '&5&o    unfathomable amounts of energy."'
+    305:
+      name: "The Pulse"
+      description:
+        - '&5&o"You''ve tapped into the very pulse'
+        - '&5&o    of the cosmos,'
+        - '&5&o    a timeless rhythm along which'
+        - '&5&o    every material and antimaterial'
+        - '&5&o    thing beats in unison.'
+        - '&5&o    This, somehow, means more cookies."'
+    318:
+      name: "Some other super-tiny fundamental particle?"
+      description:
+        - '&5&o"When even the universe is running'
+        - '&5&o      out of ideas,'
+        - '&5&o      that''s when you know:'
+        - '&5&o      you''re nearing the end."'
