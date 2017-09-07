@@ -87,6 +87,14 @@ import me.nikl.cookieclicker.upgrades.portal.InsaneOatlingWorkers;
 import me.nikl.cookieclicker.upgrades.portal.MaddeningChants;
 import me.nikl.cookieclicker.upgrades.portal.SanityDance;
 import me.nikl.cookieclicker.upgrades.portal.SoulBond;
+import me.nikl.cookieclicker.upgrades.prism.ChocolateLight;
+import me.nikl.cookieclicker.upgrades.prism.GemPolish;
+import me.nikl.cookieclicker.upgrades.prism.GlowInTheDark;
+import me.nikl.cookieclicker.upgrades.prism.Grainbow;
+import me.nikl.cookieclicker.upgrades.prism.LuxSanctorum;
+import me.nikl.cookieclicker.upgrades.prism.NinethColor;
+import me.nikl.cookieclicker.upgrades.prism.PureCosmicLight;
+import me.nikl.cookieclicker.upgrades.prism.ReverseShadows;
 import me.nikl.cookieclicker.upgrades.shipment.ChocolateMonoliths;
 import me.nikl.cookieclicker.upgrades.shipment.DysonSphere;
 import me.nikl.cookieclicker.upgrades.shipment.FrequentFlyer;
@@ -374,6 +382,16 @@ public class Game extends BukkitRunnable{
         futureUpgradesTemp.add(new Nanocosmics(this));
         futureUpgradesTemp.add(new ThePulse(this));
         futureUpgradesTemp.add(new SomeOtherSuperTinyFundamentalParticle(this));
+
+        // Prism Condenser
+        futureUpgradesTemp.add(new GemPolish(this));
+        futureUpgradesTemp.add(new NinethColor(this));
+        futureUpgradesTemp.add(new ChocolateLight(this));
+        futureUpgradesTemp.add(new Grainbow(this));
+        futureUpgradesTemp.add(new PureCosmicLight(this));
+        futureUpgradesTemp.add(new GlowInTheDark(this));
+        futureUpgradesTemp.add(new LuxSanctorum(this));
+        futureUpgradesTemp.add(new ReverseShadows(this));
 
 
         // sort upgrades in map with ids as key (fast lookup for loading of old game)

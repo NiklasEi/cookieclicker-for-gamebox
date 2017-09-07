@@ -853,3 +853,56 @@ upgrades:
         - '&5&o      out of ideas,'
         - '&5&o      that''s when you know:'
         - '&5&o      you''re nearing the end."'
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    # Prism upgrades (type: classic)
+    175:
+      name: "Gem polish"
+      description:
+        - '&5&o"Get rid of the grime'
+        - '&5&o    and let more light in.'
+        - '&5&o    Truly, truly outrageous."'
+    176:
+      name: "9th color"
+      description:
+        - '&5&o"Delve into the untouched optical'
+        - '&5&o     depths where even the mantis'
+        - '&5&o     shrimp hasn''t set an eye!"'
+    177:
+      name: "Chocolate light"
+      description:
+        - '&5&o"Bask into its cocoalesence.'
+        - '&5&o    (Warning :'
+        - '&5&o     may cause various interesting'
+        - '&5&o     albeit deadly skin conditions.)"'
+    178:
+      name: "Grainbow"
+      description:
+        - '&5&o"Remember the different grains using'
+        - '&5&o    the handy Roy G. Biv mnemonic:'
+        - '&5&o    R is for rice, O is for Oats...'
+        - '&5&o    uh, B for barley?..."'
+    179:
+      name: "Pure cosmic light"
+      description:
+        - '&5&o"Your prisms now receive pristine'
+        - '&5&o unadulterated photons from the'
+        - '&5&o other end of the universe."'
+    201:
+      name: "Glow-in-the-dark"
+      description:
+        - '&5&o"Your prisms now glow in the dark,'
+        - '&5&o  effectively doubling their output."'
+    306:
+      name: "Lux sanctorum"
+      description:
+        - '&5&o"Your prism attendants have become'
+        - '&5&o   increasingly mesmerized with'
+        - '&5&o   something in the light - '
+        - '&5&o   or maybe something beyond it;'
+        - '&5&o   beyond us all, perhaps?"'
+    319:
+      name: "Reverse shadows"
+      description:
+        - '&5&o"Oh man,'
+        - '&5&o   this is really messing with your eyes."'
