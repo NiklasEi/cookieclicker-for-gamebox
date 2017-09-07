@@ -17,7 +17,15 @@ public class AlchemyLab extends Building {
     public AlchemyLab(Main plugin, int slot, Buildings building) {
         super(plugin, slot, building);
 
-        icon = new MaterialData(Material.SPLASH_POTION).toItemStack();
+        // old minecraft versions are missing the material SPLASH_POTION
+        Material mat;
+        try{
+            mat = Material.SPLASH_POTION;
+        } catch (NoSuchFieldError tooOldVersion){
+            mat = Material.POTION;
+        }
+
+        icon = new MaterialData(mat).toItemStack();
         icon.setAmount(1);
         PotionMeta meta = (PotionMeta) icon.getItemMeta();
         meta.addItemFlags(ItemFlag.values());

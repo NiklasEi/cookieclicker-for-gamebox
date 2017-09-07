@@ -18,9 +18,6 @@ public class OriginCrucible extends Upgrade{
         this.cost = 37500000000000000000.;
         productionsRequirements.put(Buildings.ALCHEMY_LAB, 150);
 
-        icon = new MaterialData(Material.SPLASH_POTION).toItemStack();
-        icon.setAmount(1);
-
         loadLanguage(UpgradeType.CLASSIC, Buildings.ALCHEMY_LAB);
     }
 

@@ -18,9 +18,6 @@ public class TrueChocolate extends Upgrade{
         this.cost = 37500000000000.;
         productionsRequirements.put(Buildings.ALCHEMY_LAB, 25);
 
-        icon = new MaterialData(Material.SPLASH_POTION).toItemStack();
-        icon.setAmount(1);
-
         loadLanguage(UpgradeType.CLASSIC, Buildings.ALCHEMY_LAB);
     }
 
@@ -30,6 +27,4 @@ public class TrueChocolate extends Upgrade{
         game.getBuilding(Buildings.ALCHEMY_LAB).visualize(game.getInventory());
         active = true;
     }
-
-
 }

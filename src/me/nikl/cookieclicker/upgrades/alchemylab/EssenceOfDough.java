@@ -18,9 +18,6 @@ public class EssenceOfDough extends Upgrade{
         this.cost = 3750000000000.;
         productionsRequirements.put(Buildings.ALCHEMY_LAB, 5);
 
-        icon = new MaterialData(Material.SPLASH_POTION).toItemStack();
-        icon.setAmount(1);
-
         loadLanguage(UpgradeType.CLASSIC, Buildings.ALCHEMY_LAB);
     }
 
