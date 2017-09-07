@@ -94,6 +94,11 @@ public abstract class Upgrade {
     protected void loadLanguage(UpgradeType upgradeType, Buildings... buildings){
         name = lang.upgradeName.get(id);
 
+        // for the standard upgrade type the building icon is used
+        if(upgradeType == UpgradeType.CLASSIC && buildings != null && buildings.length == 1){
+            icon = game.getBuilding(buildings[0]).getIcon();
+        }
+
         lore = new ArrayList<>();
         for(String line : lang.upgradeLore.get(upgradeType)){
             line = line.replace("%cost%", NumberUtil.convertHugeNumber(cost));

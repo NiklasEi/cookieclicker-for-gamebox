@@ -108,4 +108,8 @@ public class Building {
     public void setOtherBuildingsBonus(double bonus){
         this.otherBuildingsBonus = bonus;
     }
+
+    public ItemStack getIcon(){
+        return icon.clone();
+    }
 }
