@@ -36,7 +36,8 @@ gameHelp:
   - '&1&lMit Keksen kannst du Gebäude kaufen,'
   - '  &1&ldie automatisch Kekse produzieren.'
   - ""
-  - '&1&lDu kannst Upgrades freischalten und kaufen.'
+  - '&1&lDu kannst Upgrades freischalten und kaufen,'
+  - '  &1&lum die Produktion zu erhöhen.'
 
 
 buildings:
@@ -46,71 +47,71 @@ buildings:
   # The following lore is used for all buildings
   # placeholders: cost, name, cookies_per_second_per_item, cookies_per_second
   buildingLore:
-    - "Buy one for &r&c%cost%&5&o (left click)"
+    - "Eins kaufen für &r&c%cost%&5&o (links-klick)"
     - ""
-    - '&1You have &r&2%count%&1 %name%(s)'
-    - "  &1Each produces &r&2%cookies_per_second_per_item%&1 cookies per second"
-    - "  &1Total production: &r&2%cookies_per_second%&1"
+    - '&1Du hast &r&2%count%&1 %name%'
+    - "  &1Jede(s) produziert &r&2%cookies_per_second_per_item%&1 pro Sekunde"
+    - "  &1Gesammte Produktion: &r&2%cookies_per_second%&1"
     - ""
     # here the building specific description is added
   cursor:
-    name: "Cursor"
+    name: "Zeiger"
     description:
-      - '&5&o"Autoclicks once every 10 seconds."'
+      - '&5&o"Klickt einmal alle 10 Sekunden."'
   grandma:
-    name: "Grandma"
+    name: "Oma"
     description:
-      - '&5&o"A nice grandma to bake more cookies."'
+      - '&5&o"Eine nette Oma, die für dich backt."'
   farm:
     name: "Farm"
     description:
-      - '&5&o"Grows cookie plants from cookie seeds."'
+      - '&5&o"Züchte Kekse auf Feldern"'
   mine:
     name: "Mine"
     description:
-      - '&5&o"Mines out cookie dough and chocolate chips."'
+      - '&5&o"Baut Teig und Schokolade im Stollen ab."'
   factory:
-    name: "Factory"
+    name: "Fabrik"
     description:
-      - '&5&o"Produces large quantities of cookies."'
+      - '&5&o"Industrielle Keksproduktion..."'
   bank:
     name: "Bank"
     description:
-      - '&5&o"Generates cookies from interest."'
+      - '&5&o"Kekse aus Zinsen."'
   temple:
-    name: "Temple"
+    name: "Tempel"
     description:
-      - '&5&o"Full of precious, ancient chocolate."'
+      - '&5&o"Voller alter und heiliger Kekse."'
   wizard_tower:
-    name: "Wizard Tower"
+    name: "Zaubererturm"
     description:
-      - '&5&o"Summons cookies with magic spells."'
+      - '&5&o"Rufe Kekse mit Zaubern herbei."'
   shipment:
-    name: "Shipment"
+    name: "Weltraumfracht"
     description:
-      - '&5&o"Brings in fresh cookies from the cookie planet."'
+      - '&5&o"Bringt Kekse vom fernen Keksplaneten."'
   alchemy_lab:
-    name: "Alchemy Lab"
+    name: "Laboratorium"
     description:
-      - '&5&o"Turns gold into cookies!"'
+      - '&5&o"Verwandelt Gold in Kekse!"'
   portal:
     name: "Portal"
     description:
-      - '&5&o"Opens a door to the cookieverse."'
+      - '&5&o"Öffnet ein Tor zum Keksuniversum."'
   time_machine:
-    name: "Time Machine"
+    name: "Zeitmaschine"
     description:
-      - '&5&o"Brings cookies from the past,'
-      - '&5&o     before they were even eaten."'
+      - '&5&o"Holt Kekse zurück aus der Vergangenheit,'
+      - '&5&o     bevor sie gegessen wurden."'
   antimatter_condenser:
-    name: "Antimatter Condenser"
+    name: "Antimaterie-Kondensierer"
     description:
-      - '&5&o"Condenses the antimatter in the universe...'
-      - '&5&o     into cookies."'
+      - '&5&o"Kondensiert die Antimaterie des Universums...'
+      - '&5&o     zu Keksen."'
   prism:
-    name: "Prism"
+    name: "Prisma"
     description:
-      - '&5&o"Converts light itself into cookies."'
+      - '&5&o"Verwandelt Licht zu Keksen."'
 
 
 upgrades:
@@ -120,7 +121,7 @@ upgrades:
   # with the following lines every upgrade lore begins
   #   %cost% can be used
   upgradeLore:
-    - "Price: &r&c%cost%"
+    - "Preis: &r&c%cost%"
     - ""
   # to this the other (defined below) lore parts are added
 
@@ -129,17 +130,17 @@ upgrades:
   #   use %Building% to get the name exactly as defined
   types:
     classic:
-      - "&b%Building%s are &ltwice&r&b as efficient."
+      - "&b%Building% &lverdoppelt&r&b die Produktion."
       - ""
     classic_mouse:
-      - "&bThe mouse and %building%s are &ltwice&r&b as efficient."
+      - "&bMaus und %building%s sind &ldoppelt&r&b so effektiv."
       - ""
     gain_mouse_and_other:
-      - "&bThe mouse and %building%s gain &l%gain%&r&b cookies"
-      - "     &bfor each non-%building% object owned."
+      - "&bMaus und %building%s produzieren zusätzlich &l%gain%&r&bs"
+      - "     &bKekse pro nicht-%building% Gebäude."
       - ""
     gain_mouse_per_cps: # gain a percentage of current CPS
-      - "&bClicking gains &l%gain%&r&b of your CpS.."
+      - "&bKlicken generiert zusätzlich &l%gain%&r&b deiner CpS.."
       - ""
 
   # list of all upgrades is following
