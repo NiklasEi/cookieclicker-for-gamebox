@@ -195,98 +195,98 @@ upgrades:
     # Cursor upgrades
     #   the following three upgrades double the mouse and cursor efficiency (type: classic_mouse)
     0:
-      name: "Reinforced index finger"
+      name: "Verstärkter Indexfinger"
       description:
         - '&5&o"prod prod"'
     1:
-      name: "Carpal tunnel prevention cream"
+      name: "Fingerwundheilcreme"
       description:
-        - '&5&o"it... it hurts to click..."'
+        - '&5&o"Es... es tut weh zu klicken..."'
     2:
       name: "Ambidextrous"
       description:
-        - '&5&o"Look ma, both hands!"'
+        - '&5&o"Guck Mama, mit beiden Händen!"'
 
     #  the following Cursor upgrades add gain to mouse and cursor for all non cursor buildings owned (type: gain_mouse)
     3:
-      name: "Thousand fingers"
+      name: "Tausend Finger"
       description:
-        - '&5&o"clickity"'
+        - '&5&o"klickity"'
     4:
-      name: "Million fingers"
+      name: "Millionen Finger"
       description:
-        - '&5&o"clickityclickity"'
+        - '&5&o"klickityklickity"'
     5:
-      name: "Billion fingers"
+      name: "Billionen Finger"
       description:
-        - '&5&o"clickityclickityclickity"'
+        - '&5&o"klickityklickityklickity"'
     6:
-      name: "Trillion fingers"
+      name: "Trillionen Finger"
       description:
-        - '&5&o"clickityclickityclickityclickity"'
+        - '&5&o"klickityklickityklickityklickity"'
     43:
-      name: "Quadrillion fingers"
+      name: "Quadrillionen Finger"
       description:
-        - '&5&o"clickityclickityclickityclickityclick"'
+        - '&5&o"klickityklickityklickityklickityklickity"'
     82:
-      name: "Quintillion fingers"
+      name: "Quintillionen Finger"
       description:
-        - '&5&o"man, just go click click click click click,'
-        - '&5&o     it’s real easy, man."'
+        - '&5&o"Junge, klick einfach: klick klick klick,'
+        - '&5&o     Echt einfach..."'
     109:
-      name: "Sextillion fingers"
+      name: "Sextillionen Finger"
       description:
-        - '&5&o"sometimes'
-        - '&5&othings just'
-        - '&5&oclick"'
+        - '&5&o"Manchmal'
+        - '&5&oklicken Dinge'
+        - '&5&oeinfach"'
     188:
-      name: "Septillion fingers"
+      name: "Septillionen Finger"
       description:
-        - '&5&o"[cursory flavor text]"'
+        - '&5&o"[schmackhafter Zeigertext]"'
     189:
-      name: "Octillion fingers"
+      name: "Octillionen Finger"
       description:
-        - '&5&o"Turns out you &5&lcan&5&o quite put your finger on it."'
+        - '&5&o"Wow, so viele Finger!"'
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     # Grandma upgrades (type: classic)
     7:
-      name: "Forwards from grandma"
+      name: "Applaus von Oma"
       description:
-        - '&5&o"RE:RE:thought you''d get a kick out of this ;))"'
+        - '&5&o"RE:RE:Ich dachte mir schon, dass dir das hilft ;))"'
     8:
-      name: "Steel-plated rolling pins"
+      name: "Stahl-Teigroller"
       description:
-        - '&5&o"Just what you kneaded."'
+        - '&5&o"Genau was du brauchst."'
     9:
-      name: "Lubricated dentures"
+      name: "Dritte Zähne"
       description:
         - '&5&o"squish"'
     44:
-      name: "Prune juice"
+      name: "Multivitaminsaft"
       description:
-        - '&5&o"Gets me going."'
+        - '&5&o"Jetzt kann''s los gehen"'
     110:
-      name: "Double-thick glasses"
+      name: "Gleitsichtbrillen"
       description:
-        - '&5&o"Oh... so THAT''s what I''ve been baking."'
+        - '&5&o"Oh... DAS hab ich gebacken."'
     192:
-      name: "Aging agents"
+      name: "Falten-erzeugende-creme"
       description:
-        - '&5&o"Counter-intuitively, grandmas have the'
-        - '&5&o    uncanny ability to become more'
-        - '&5&o    powerful the older they get."'
+        - '&5&o"Im Gegensatz zu dem Glauben der meisten,'
+        - '&5&o    werden Omas immer machtvoller,'
+        - '&5&o    je älter sie sind."'
     294:
-      name: "Xtreme walkers"
+      name: "X-treme Gehhilfe"
       description:
-        - '&5&o"Complete with flame decals and a'
-        - '&5&o    little horn that goes "toot"."'
+        - '&5&o"Vollständig mit Feuerdeko und einem'
+        - '&5&o    kleinen Horn: "toot"."'
     307:
-      name: "The Unbridling"
+      name: "Unbridling"
       description:
-        - '&5&o"It might be a classic tale of bad'
-        - '&5&o    parenting, but let''s see where'
-        - '&5&o    grandma is going with this."'
+        - '&5&o"Sehr schlechte Erziehung...'
+        - '&5&o    Aber wir schauen mal, was Oma'
+        - '&5&o    noch damit vorhat."'
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     # Farm upgrades (type: classic)
