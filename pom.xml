@@ -58,7 +58,11 @@
             <version>1.12.2-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
-        <!--GameBox-->
+        <!--GameBox
+
+        For the moment a manual installation of GameBox
+        in your local maven repository is necessary.
+        -->
         <dependency>
             <groupId>me.nikl</groupId>
             <artifactId>gamebox</artifactId>
