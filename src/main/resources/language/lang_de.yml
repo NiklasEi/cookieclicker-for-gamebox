@@ -291,89 +291,89 @@ upgrades:
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     # Farm upgrades (type: classic)
     10:
-      name: "Cheap hoes"
+      name: "Billige Harken"
       description:
-        - '&5&o"Rake in the dough!"'
+        - '&5&o"Harke den Teig!"'
     11:
-      name: "Fertilizer"
+      name: "Dünger"
       description:
-        - '&5&o"It''s chocolate, I swear."'
+        - '&5&o"Das ist Schokolade, ich schwöre."'
     12:
-      name: "Cookie trees"
+      name: "Keksbäume"
       description:
-        - '&5&o"A relative of the breadfruit."'
+        - '&5&o"Ein Verwanter der Brotfrucht."'
     45:
-      name: "Genetically-modified cookies"
+      name: "Genetisch veränderte Kekse"
       description:
-        - '&5&o"All-natural mutations."'
+        - '&5&o"Nur natürliche Mutationen."'
     111:
-      name: "Gingerbread scarecrows"
+      name: "Ginger Vogelscheuchen"
       description:
-        - '&5&o"Staring at your crops with mischievous glee."'
+        - '&5&o"Sie starren deine Kekspflanzen komisch an."'
     193:
-      name: "Pulsar sprinklers"
+      name: "Pulsierende Sprinkler"
       description:
-        - '&5&o"There''s no such thing as over-watering.'
-        - '&5&o    The moistest is the bestest."'
+        - '&5&o"So etwas wir überwässern gibt es nicht.'
+        - '&5&o    Je nasser, desto besser."'
     295:
-      name: "Fudge fungus"
+      name: "Teigpilze"
       description:
-        - '&5&o"A sugary parasite whose tendrils help cookie growth.'
-        - '&5&o    Please do not breathe in the spores.'
-        - '&5&o    In case of spore ingestion,'
-        - '&5&o    seek medical help within the next 36 seconds."'
+        - '&5&o"Ein süßer Parasit, der beim Kekswachstum hilft.'
+        - '&5&o    Atme die Sporen nicht ein!'
+        - '&5&o    Im Falle von Hautkontakt, suche in den'
+        - '&5&o    nächsten 36 Sekunden einen Artzt auf!"'
     308:
-      name: "Wheat triffids"
+      name: "Lebendige Pflanzen"
       description:
-        - '&5&o"Taking care of crops is so much easier when your plants'
-        - '&5&o    can just walk about and help around the farm.'
-        - '&5&oDo not pet. Do not feed. Do not attempt to converse with."'
+        - '&5&o"Gartenarbeit ist so viel leichter, wenn deinen Pflanzen'
+        - '&5&o    einfach rumlaufen können und auf der Farm helfen.'
+        - '&5&oNicht streicheln. Nicht füttern. Versuche nicht dich anzufreunden."'
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     # Mine upgrades (type: classic)
     16:
-      name: "Sugar gas"
+      name: "Zuckergas"
       description:
-        - '&5&o"A pink, volatile gas, found in'
-        - '&5&o    the depths of some chocolate caves."'
+        - '&5&o"Ein pinkes, giftiges Gas, welches in den Tiefen'
+        - '&5&o    der Schokolademinen gefunden werden kann."'
     17:
-      name: "Megadrill"
+      name: "Megabohrer"
       description:
-        - '&5&o"You''re in deep."'
+        - '&5&o"Du bist tief drinnen."'
     18:
-      name: "Ultradrill"
+      name: "Ultrabohrer"
       description:
-        - '&5&o"Finally caved in?"'
+        - '&5&o"Endlich eingestürzt?"'
     47:
-      name: "Ultimadrill"
+      name: "Ultimativer Bohrer"
       description:
-        - '&5&o"Pierce the heavens, etc."'
+        - '&5&o"Durchbohre den Himmel, und so weiter..."'
     113:
-      name: "H-bomb mining"
+      name: "H-bomben-sprengung"
       description:
-        - '&5&o"Questionable efficiency,'
-        - '&5&o    but spectacular nonetheless."'
+        - '&5&o"Fragliche Effizienz,'
+        - '&5&o    aber trotzdem spektakulär."'
     195:
       name: "Coreforge"
       description:
-        - '&5&o"You''ve finally dug a tunnel down to'
-        - '&5&o     the Earth''s core.'
-        - '&5&o     It''s pretty warm down here."'
+        - '&5&o"Du bist endlich im Mittelpunkt'
+        - '&5&o     der Erde angekommen.'
+        - '&5&o     Ist ziemlich warm hier unten..."'
     296:
-      name: "Planetsplitters"
+      name: "Planetenspalter"
       description:
-        - '&5&o"These new state-of-the-art excavators'
-        - '&5&o     have been tested on Merula,'
-        - '&5&o     Globort and Flwanza VI, among other'
-        - '&5&o     distant planets which have been'
-        - '&5&o     curiously quiet lately."'
+        - '&5&o"Diese neuen state-of-the-art Bohrer'
+        - '&5&o     wurden schon auf Merula,'
+        - '&5&o     Globort und Flwanza VI getested,'
+        - '&5&o     zusammen mit anderen fernen Planeten,'
+        - '&5&o     die seltsam still geworden sind."'
     309:
-      name: "Canola oil wells"
+      name: "Canola Öl Quellen"
       description:
-        - '&5&o"A previously untapped resource,'
-        - '&5&o     canola oil permeates the underground'
-        - '&5&o     olifers which grant it its particular'
-        - '&5&o     taste and lucrative properties."'
+        - '&5&o"Ein bis jetzt nicht verwendeter Rohstoff.'
+        - '&5&o     Canola Öl weicht den untergrund auf'
+        - '&5&o     und verleiht der gewonnen Schokolade'
+        - '&5&o     ihren unglaublichen Geschmack."'
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     # Factory upgrades (type: classic)
