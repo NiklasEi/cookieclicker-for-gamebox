@@ -205,13 +205,6 @@ public class Main extends JavaPlugin{
                     meta.setLore(lore);
                 }
 
-
-                /*
-                // ToDo: if it is a two player game!
-
-                guiManager.registerGameGUI(gameID, buttonID, new StartMultiplayerGamePage(gameBox, guiManager, 54, gameID, buttonID, chatColor(buttonSec.getString("inviteGuiTitle","&4title not set in config"))));
-                button.setAction(ClickAction.CHANGE_GAME_GUI);
-                */
                 button.setAction(ClickAction.START_GAME);
 
                 button.setItemMeta(meta);
