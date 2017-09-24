@@ -75,25 +75,7 @@ public class Main extends JavaPlugin{
 
         hook();
         if (disabled) return;
-
-
-
-        //Bukkit.getPluginManager().registerEvents(this, this);
     }
-
-    /*
-    @EventHandler
-    public void onTest(PlayerCommandPreprocessEvent event){
-        String [] split = event.getMessage().split(" ");
-        if(split[0].equalsIgnoreCase("/test")){
-            if(split.length == 2){
-                event.setCancelled(true);
-                gameManager.restart(split[1]);
-            } else {
-                return;
-            }
-        }
-    }*/
 
 
 
