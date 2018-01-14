@@ -66,8 +66,6 @@ public class Main extends JavaPlugin{
 
     @Override
     public void onEnable() {
-
-
         this.con = new File(this.getDataFolder().toString() + File.separatorChar + "config.yml");
 
         reload();
@@ -78,12 +76,9 @@ public class Main extends JavaPlugin{
     }
 
 
-
-
-
     @Override
     public void onDisable() {
-        gameManager.onShutDown();
+        if(gameManager != null) gameManager.onShutDown();
     }
 
     private boolean setupEconomy() {

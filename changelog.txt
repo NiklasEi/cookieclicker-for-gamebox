@@ -1,10 +1,10 @@
 
-
+- fixed NPE on disable, when economy setup failed
 
 ---------------------------------------------------------------------
 v 1.1.1
 - update lang_zh-cn
-- compatibility for minecraft 1.8+
+- compatibility for minecraft 1.8
 
 v 1.1.0
 - merged #5
