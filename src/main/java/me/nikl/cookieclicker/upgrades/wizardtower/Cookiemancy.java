@@ -1,6 +1,6 @@
 package me.nikl.cookieclicker.upgrades.wizardtower;
 
-import me.nikl.cookieclicker.Game;
+import me.nikl.cookieclicker.CCGame;
 import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.upgrades.Upgrade;
 import me.nikl.cookieclicker.upgrades.UpgradeType;
@@ -8,12 +8,11 @@ import org.bukkit.Material;
 import org.bukkit.material.MaterialData;
 
 /**
- * Created by Niklas on 09.07.2017.
- *
+ * @author Niklas Eicker
  */
-public class Cookiemancy extends Upgrade{
+public class Cookiemancy extends Upgrade {
 
-    public Cookiemancy(Game game) {
+    public Cookiemancy(CCGame game) {
         super(game, 300);
         this.cost = 165000000000000000000.;
         productionsRequirements.put(Buildings.WIZARD_TOWER, 200);

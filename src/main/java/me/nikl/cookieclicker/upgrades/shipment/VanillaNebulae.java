@@ -1,6 +1,6 @@
 package me.nikl.cookieclicker.upgrades.shipment;
 
-import me.nikl.cookieclicker.Game;
+import me.nikl.cookieclicker.CCGame;
 import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.upgrades.Upgrade;
 import me.nikl.cookieclicker.upgrades.UpgradeType;
@@ -8,12 +8,11 @@ import org.bukkit.Material;
 import org.bukkit.material.MaterialData;
 
 /**
- * Created by Niklas on 09.07.2017.
- *
+ * @author Niklas Eicker
  */
-public class VanillaNebulae extends Upgrade{
+public class VanillaNebulae extends Upgrade {
 
-    public VanillaNebulae(Game game) {
+    public VanillaNebulae(CCGame game) {
         super(game, 19);
         this.cost = 51000000000.;
         productionsRequirements.put(Buildings.SHIPMENT, 1);

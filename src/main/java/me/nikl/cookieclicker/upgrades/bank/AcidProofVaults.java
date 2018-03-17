@@ -1,6 +1,6 @@
 package me.nikl.cookieclicker.upgrades.bank;
 
-import me.nikl.cookieclicker.Game;
+import me.nikl.cookieclicker.CCGame;
 import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.upgrades.Upgrade;
 import me.nikl.cookieclicker.upgrades.UpgradeType;
@@ -8,12 +8,11 @@ import org.bukkit.Material;
 import org.bukkit.material.MaterialData;
 
 /**
- * Created by Niklas on 09.07.2017.
- *
+ * @author Niklas Eicker
  */
-public class AcidProofVaults extends Upgrade{
+public class AcidProofVaults extends Upgrade {
 
-    public AcidProofVaults(Game game) {
+    public AcidProofVaults(CCGame game) {
         super(game, 234);
         this.cost = 700000000;
         productionsRequirements.put(Buildings.BANK, 25);

@@ -1,6 +1,6 @@
 package me.nikl.cookieclicker.upgrades.grandma;
 
-import me.nikl.cookieclicker.Game;
+import me.nikl.cookieclicker.CCGame;
 import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.upgrades.Upgrade;
 import me.nikl.cookieclicker.upgrades.UpgradeType;
@@ -9,11 +9,11 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 
 /**
- * Created by Niklas on 09.07.2017.
+ * @author Niklas Eicker
  */
-public class TheUnbridling extends Upgrade{
+public class TheUnbridling extends Upgrade {
 
-    public TheUnbridling(Game game) {
+    public TheUnbridling(CCGame game) {
         super(game, 307);
         this.cost = 50000000000000000.;
         productionsRequirements.put(Buildings.GRANDMA, 250);

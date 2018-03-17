@@ -5,18 +5,25 @@
 game:
   econ:
     # use %cost% for the amount payed
-    payed: " &2You paid &4%cost%"
-    notEnoughMoney: " &4You do not have enough money!"
-  closedGame: " &2You have a current score of &6%score%"
+    payed: " &2Du hast &4%cost% gezahlt"
+    notEnoughMoney: " &4Nicht genug Geld!"
+  closedGame: " &2Momentaner Punktestand: &6%score%"
   inventoryTitles:
-    gameTitle: "&9&lCC   &r&1%score% cookies"
-  cookieName: "&1&lCookie"
-  ovenName: "&a&lYour Cookie Production"
+    gameTitle: "&9&lCC   &r&1%score% Kekse"
+  cookieName: "&1&lKeks"
+  ovenName: "&a&lDeine Keksproduktion"
   ovenLore:
     - ""
-    - '&1You currently produce'
-    - "  &2%cookies_per_second% &1cookies per second"
-    - "  &2%cookies_per_click% &1cookies per click"
+    - '&1Do produzierst im Moment:'
+    - "  &2%cookies_per_second% &1Kekse pro Sekunde (CpS)"
+    - "  &2%cookies_per_click% &1Kekse pro Klick"
+  productionLore:
+    - "Kaufen für: %cost% (linksclick)"
+    - "  Verkaufe mit Rechtsklick"
+    - ""
+    - '&1Du hast %count% %name%(s)'
+    - "  &1Jedes Gebäude produziert %cookies_per_second_per_item% pro Sekunde"
+    - "  &1Gesamtproduktion: %cookies_per_second%"
 
 
 prefix: "[&3CookieClicker&r]"
@@ -24,15 +31,13 @@ name: "&1CookieClicker&r"
 
 
 gameHelp:
-  - '&1&lClick on the cookie to produce cookies.'
+  - '&1&lBacke Kekse, indem du auf den Keks klickst.'
   - ""
-  - '&1&lFor cookies you can buy buildings,'
-  - '  &1&lthat automatically produce more cookies'
+  - '&1&lMit Keksen kannst du Gebäude kaufen,'
+  - '  &1&ldie automatisch Kekse produzieren.'
   - ""
-  - '&1&lYou can also unlock and buy upgrades.'
-  - ""
-  - '"&oThe most addictive cookie game"'
-  - '            - Your Grandma'
+  - '&1&lDu kannst Upgrades freischalten und kaufen,'
+  - '  &1&lum die Produktion zu erhöhen.'
 
 
 buildings:
@@ -42,71 +47,71 @@ buildings:
   # The following lore is used for all buildings
   # placeholders: cost, name, cookies_per_second_per_item, cookies_per_second
   buildingLore:
-    - "Buy one for &r&c%cost%&5&o (left click)"
+    - "Eins kaufen für &r&c%cost%&5&o (links-klick)"
     - ""
-    - '&1You have &r&2%count%&1 %name%(s)'
-    - "  &1Each produces &r&2%cookies_per_second_per_item%&1 cookies per second"
-    - "  &1Total production: &r&2%cookies_per_second%&1"
+    - '&1Du hast &r&2%count%&1 %name%'
+    - "  &1Jede(s) produziert &r&2%cookies_per_second_per_item%&1 pro Sekunde"
+    - "  &1Gesammte Produktion: &r&2%cookies_per_second%&1"
     - ""
     # here the building specific description is added
   cursor:
-    name: "Cursor"
+    name: "Zeiger"
     description:
-      - '&5&o"Autoclicks once every 10 seconds."'
+      - '&5&o"Klickt einmal alle 10 Sekunden."'
   grandma:
-    name: "Grandma"
+    name: "Oma"
     description:
-      - '&5&o"A nice grandma to bake more cookies."'
+      - '&5&o"Eine nette Oma, die für dich backt."'
   farm:
     name: "Farm"
     description:
-      - '&5&o"Grows cookie plants from cookie seeds."'
+      - '&5&o"Züchte Kekse auf Feldern"'
   mine:
     name: "Mine"
     description:
-      - '&5&o"Mines out cookie dough and chocolate chips."'
+      - '&5&o"Baut Teig und Schokolade im Stollen ab."'
   factory:
-    name: "Factory"
+    name: "Fabrik"
     description:
-      - '&5&o"Produces large quantities of cookies."'
+      - '&5&o"Industrielle Keksproduktion..."'
   bank:
     name: "Bank"
     description:
-      - '&5&o"Generates cookies from interest."'
+      - '&5&o"Kekse aus Zinsen."'
   temple:
-    name: "Temple"
+    name: "Tempel"
     description:
-      - '&5&o"Full of precious, ancient chocolate."'
+      - '&5&o"Voller alter und heiliger Kekse."'
   wizard_tower:
-    name: "Wizard Tower"
+    name: "Zaubererturm"
     description:
-      - '&5&o"Summons cookies with magic spells."'
+      - '&5&o"Rufe Kekse mit Zaubern herbei."'
   shipment:
-    name: "Shipment"
+    name: "Weltraumfrachter"
     description:
-      - '&5&o"Brings in fresh cookies from the cookie planet."'
+      - '&5&o"Bringt Kekse vom fernen Keksplaneten."'
   alchemy_lab:
-    name: "Alchemy Lab"
+    name: "Laboratorium"
     description:
-      - '&5&o"Turns gold into cookies!"'
+      - '&5&o"Verwandelt Gold in Kekse!"'
   portal:
     name: "Portal"
     description:
-      - '&5&o"Opens a door to the cookieverse."'
+      - '&5&o"Öffnet ein Tor zum Keksuniversum."'
   time_machine:
-    name: "Time Machine"
+    name: "Zeitmaschine"
     description:
-      - '&5&o"Brings cookies from the past,'
-      - '&5&o     before they were even eaten."'
+      - '&5&o"Holt Kekse zurück aus der Vergangenheit,'
+      - '&5&o     bevor sie gegessen wurden."'
   antimatter_condenser:
-    name: "Antimatter Condenser"
+    name: "Antimaterie-Kondensierer"
     description:
-      - '&5&o"Condenses the antimatter in the universe...'
-      - '&5&o     into cookies."'
+      - '&5&o"Kondensiert die Antimaterie des Universums...'
+      - '&5&o     zu Keksen."'
   prism:
-    name: "Prism"
+    name: "Prisma"
     description:
-      - '&5&o"Converts light itself into cookies."'
+      - '&5&o"Verwandelt reines Licht in Kekse."'
 
 
 upgrades:
@@ -116,7 +121,7 @@ upgrades:
   # with the following lines every upgrade lore begins
   #   %cost% can be used
   upgradeLore:
-    - "Price: &r&c%cost%"
+    - "Preis: &r&c%cost%"
     - ""
   # to this the other (defined below) lore parts are added
 
@@ -125,17 +130,17 @@ upgrades:
   #   use %Building% to get the name exactly as defined
   types:
     classic:
-      - "&b%Building%s are &ltwice&r&b as efficient."
+      - "&b%Building% &lverdoppelt&r&b die Produktion."
       - ""
     classic_mouse:
-      - "&bThe mouse and %building%s are &ltwice&r&b as efficient."
+      - "&bMaus und %building%s sind &ldoppelt&r&b so effektiv."
       - ""
     gain_mouse_and_other:
-      - "&bThe mouse and %building%s gain &l%gain%&r&b cookies"
-      - "     &bfor each non-%building% object owned."
+      - "&bMaus und %building%s produzieren zusätzlich &l%gain%&r&bs"
+      - "     &bKekse pro nicht-%building% Gebäude."
       - ""
     gain_mouse_per_cps: # gain a percentage of current CPS
-      - "&bClicking gains &l%gain%&r&b of your CpS.."
+      - "&bKlicken generiert zusätzlich &l%gain%&r&b deiner CpS.."
       - ""
 
   # list of all upgrades is following
@@ -144,232 +149,231 @@ upgrades:
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     # Mouse upgrades (type: gain_mouse_per_cps)
     75:
-      name: "Plastic mouse"
+      name: "Plastik Maus"
       description:
-        - '&5&o"Slightly squeaky."'
+        - '&5&o"Etwas quitschig."'
     76:
-      name: "Iron mouse"
+      name: "Eisen Maus"
       description:
-        - '&5&o"Click like it''s 1,349!"'
+        - '&5&o"Klick als wäre es 1,349!"'
     77:
-      name: "Titanium mouse"
+      name: "Titan Maus"
       description:
-        - '&5&o"Heavy, but powerful."'
+        - '&5&o"Schwer, aber stark."'
     78:
-      name: "Adamantium mouse"
+      name: "Adamantium Maus"
       description:
-        - '&5&o"You could cut diamond with these."'
+        - '&5&o"Die könnte Diamant schneiden..."'
     119:
-      name: "Unobtainium mouse"
+      name: "Unobtainium Maus"
       description:
-        - '&5&o"These nice mice should suffice."'
+        - '&5&o"Diese schöne Maus sollte reichen."'
     190:
-      name: "Eludium mouse"
+      name: "Eludium Maus"
       description:
-        - '&5&o"I rodent do that if I were you."'
+        - '&5&o"An deiner Stelle würde ich das lassen..."'
     191:
-      name: "Wishalloy mouse"
+      name: "Wishalloy Maus"
       description:
-        - '&5&o"Clicking is fine and dandy,'
-        - '&5&o  but don''t smash your'
-        - '&5&o  mouse over it.'
-        - '&5&o  Get your game on. Go play."'
+        - '&5&o"Klicken ist schön und gut,'
+        - '&5&o  aber zertrümmer deine'
+        - '&5&o  Maus nicht darüber."'
     366:
-      name: "Fantasteel mouse"
+      name: "Fantastahl Maus"
       description:
-        - '&5&o"You could be clicking using'
-        - '&5&o   your touchpad and'
-        - '&5&o   we''d benone the wiser."'
+        - '&5&o"Du köntest mit deinem'
+        - '&5&o   touchpad klicken und'
+        - '&5&o   wir hätten keine Ahnung."'
     367:
-      name: "Nevercrack mouse"
+      name: "Unzerstörbare Maus"
       description:
-        - '&5&o"How much beefier can you'
-        - '&5&o   make a mouse until'
-        - '&5&o   it''s considered a rat?"'
+        - '&5&o"Wie viel größer kann man eine'
+        - '&5&o   Maus machen, bevor sie als'
+        - '&5&o   Ratte gesehen wird?"'
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     # Cursor upgrades
     #   the following three upgrades double the mouse and cursor efficiency (type: classic_mouse)
     0:
-      name: "Reinforced index finger"
+      name: "Verstärkter Indexfinger"
       description:
         - '&5&o"prod prod"'
     1:
-      name: "Carpal tunnel prevention cream"
+      name: "Fingerwundheilcreme"
       description:
-        - '&5&o"it... it hurts to click..."'
+        - '&5&o"Es... es tut weh zu klicken..."'
     2:
       name: "Ambidextrous"
       description:
-        - '&5&o"Look ma, both hands!"'
+        - '&5&o"Guck Mama, mit beiden Händen!"'
 
     #  the following Cursor upgrades add gain to mouse and cursor for all non cursor buildings owned (type: gain_mouse)
     3:
-      name: "Thousand fingers"
+      name: "Tausend Finger"
       description:
-        - '&5&o"clickity"'
+        - '&5&o"klickity"'
     4:
-      name: "Million fingers"
+      name: "Millionen Finger"
       description:
-        - '&5&o"clickityclickity"'
+        - '&5&o"klickityklickity"'
     5:
-      name: "Billion fingers"
+      name: "Billionen Finger"
       description:
-        - '&5&o"clickityclickityclickity"'
+        - '&5&o"klickityklickityklickity"'
     6:
-      name: "Trillion fingers"
+      name: "Trillionen Finger"
       description:
-        - '&5&o"clickityclickityclickityclickity"'
+        - '&5&o"klickityklickityklickityklickity"'
     43:
-      name: "Quadrillion fingers"
+      name: "Quadrillionen Finger"
       description:
-        - '&5&o"clickityclickityclickityclickityclick"'
+        - '&5&o"klickityklickityklickityklickityklickity"'
     82:
-      name: "Quintillion fingers"
+      name: "Quintillionen Finger"
       description:
-        - '&5&o"man, just go click click click click click,'
-        - '&5&o     it’s real easy, man."'
+        - '&5&o"Junge, klick einfach: klick klick klick,'
+        - '&5&o     Echt einfach..."'
     109:
-      name: "Sextillion fingers"
+      name: "Sextillionen Finger"
       description:
-        - '&5&o"sometimes'
-        - '&5&othings just'
-        - '&5&oclick"'
+        - '&5&o"Manchmal'
+        - '&5&oklicken Dinge'
+        - '&5&oeinfach"'
     188:
-      name: "Septillion fingers"
+      name: "Septillionen Finger"
       description:
-        - '&5&o"[cursory flavor text]"'
+        - '&5&o"[schmackhafter Zeigertext]"'
     189:
-      name: "Octillion fingers"
+      name: "Octillionen Finger"
       description:
-        - '&5&o"Turns out you &5&lcan&5&o quite put your finger on it."'
+        - '&5&o"Wow, so viele Finger!"'
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     # Grandma upgrades (type: classic)
     7:
-      name: "Forwards from grandma"
+      name: "Applaus von Oma"
       description:
-        - '&5&o"RE:RE:thought you''d get a kick out of this ;))"'
+        - '&5&o"RE:RE:Ich dachte mir schon, dass dir das hilft ;))"'
     8:
-      name: "Steel-plated rolling pins"
+      name: "Stahl-Teigroller"
       description:
-        - '&5&o"Just what you kneaded."'
+        - '&5&o"Genau was du brauchst."'
     9:
-      name: "Lubricated dentures"
+      name: "Dritte Zähne"
       description:
         - '&5&o"squish"'
     44:
-      name: "Prune juice"
+      name: "Multivitaminsaft"
       description:
-        - '&5&o"Gets me going."'
+        - '&5&o"Jetzt kann''s los gehen"'
     110:
-      name: "Double-thick glasses"
+      name: "Gleitsichtbrillen"
       description:
-        - '&5&o"Oh... so THAT''s what I''ve been baking."'
+        - '&5&o"Oh... DAS hab ich gebacken."'
     192:
-      name: "Aging agents"
+      name: "Falten-erzeugende-creme"
       description:
-        - '&5&o"Counter-intuitively, grandmas have the'
-        - '&5&o    uncanny ability to become more'
-        - '&5&o    powerful the older they get."'
+        - '&5&o"Im Gegensatz zu dem Glauben der meisten,'
+        - '&5&o    werden Omas immer machtvoller,'
+        - '&5&o    je älter sie sind."'
     294:
-      name: "Xtreme walkers"
+      name: "X-treme Gehhilfe"
       description:
-        - '&5&o"Complete with flame decals and a'
-        - '&5&o    little horn that goes "toot"."'
+        - '&5&o"Vollständig mit Feuerdeko und einem'
+        - '&5&o    kleinen Horn: "toot"."'
     307:
-      name: "The Unbridling"
+      name: "Unbridling"
       description:
-        - '&5&o"It might be a classic tale of bad'
-        - '&5&o    parenting, but let''s see where'
-        - '&5&o    grandma is going with this."'
+        - '&5&o"Sehr schlechte Erziehung...'
+        - '&5&o    Aber wir schauen mal, was Oma'
+        - '&5&o    noch damit vorhat."'
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     # Farm upgrades (type: classic)
     10:
-      name: "Cheap hoes"
+      name: "Billige Harken"
       description:
-        - '&5&o"Rake in the dough!"'
+        - '&5&o"Harke den Teig!"'
     11:
-      name: "Fertilizer"
+      name: "Dünger"
       description:
-        - '&5&o"It''s chocolate, I swear."'
+        - '&5&o"Das ist Schokolade, ich schwöre."'
     12:
-      name: "Cookie trees"
+      name: "Keksbäume"
       description:
-        - '&5&o"A relative of the breadfruit."'
+        - '&5&o"Ein Verwanter der Brotfrucht."'
     45:
-      name: "Genetically-modified cookies"
+      name: "Genetisch veränderte Kekse"
       description:
-        - '&5&o"All-natural mutations."'
+        - '&5&o"Nur natürliche Mutationen."'
     111:
-      name: "Gingerbread scarecrows"
+      name: "Ginger Vogelscheuchen"
       description:
-        - '&5&o"Staring at your crops with mischievous glee."'
+        - '&5&o"Sie starren deine Kekspflanzen komisch an."'
     193:
-      name: "Pulsar sprinklers"
+      name: "Pulsierende Sprinkler"
       description:
-        - '&5&o"There''s no such thing as over-watering.'
-        - '&5&o    The moistest is the bestest."'
+        - '&5&o"So etwas wir überwässern gibt es nicht.'
+        - '&5&o    Je nasser, desto besser."'
     295:
-      name: "Fudge fungus"
+      name: "Teigpilze"
       description:
-        - '&5&o"A sugary parasite whose tendrils help cookie growth.'
-        - '&5&o    Please do not breathe in the spores.'
-        - '&5&o    In case of spore ingestion,'
-        - '&5&o    seek medical help within the next 36 seconds."'
+        - '&5&o"Ein süßer Parasit, der beim Kekswachstum hilft.'
+        - '&5&o    Atme die Sporen nicht ein!'
+        - '&5&o    Im Falle von Hautkontakt, suche in den'
+        - '&5&o    nächsten 36 Sekunden einen Artzt auf!"'
     308:
-      name: "Wheat triffids"
+      name: "Lebendige Pflanzen"
       description:
-        - '&5&o"Taking care of crops is so much easier when your plants'
-        - '&5&o    can just walk about and help around the farm.'
-        - '&5&oDo not pet. Do not feed. Do not attempt to converse with."'
+        - '&5&o"Gartenarbeit ist so viel leichter, wenn deinen Pflanzen'
+        - '&5&o    einfach rumlaufen können und auf der Farm helfen.'
+        - '&5&oNicht streicheln. Nicht füttern. Versuche nicht dich anzufreunden."'
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     # Mine upgrades (type: classic)
     16:
-      name: "Sugar gas"
+      name: "Zuckergas"
       description:
-        - '&5&o"A pink, volatile gas, found in'
-        - '&5&o    the depths of some chocolate caves."'
+        - '&5&o"Ein pinkes, giftiges Gas, welches in den Tiefen'
+        - '&5&o    der Schokolademinen gefunden werden kann."'
     17:
-      name: "Megadrill"
+      name: "Megabohrer"
       description:
-        - '&5&o"You''re in deep."'
+        - '&5&o"Du bist tief drinnen."'
     18:
-      name: "Ultradrill"
+      name: "Ultrabohrer"
       description:
-        - '&5&o"Finally caved in?"'
+        - '&5&o"Endlich eingestürzt?"'
     47:
-      name: "Ultimadrill"
+      name: "Ultimativer Bohrer"
       description:
-        - '&5&o"Pierce the heavens, etc."'
+        - '&5&o"Durchbohre den Himmel, und so weiter..."'
     113:
-      name: "H-bomb mining"
+      name: "H-bomben-sprengung"
       description:
-        - '&5&o"Questionable efficiency,'
-        - '&5&o    but spectacular nonetheless."'
+        - '&5&o"Fragliche Effizienz,'
+        - '&5&o    aber trotzdem spektakulär."'
     195:
       name: "Coreforge"
       description:
-        - '&5&o"You''ve finally dug a tunnel down to'
-        - '&5&o     the Earth''s core.'
-        - '&5&o     It''s pretty warm down here."'
+        - '&5&o"Du bist endlich im Mittelpunkt'
+        - '&5&o     der Erde angekommen.'
+        - '&5&o     Ist ziemlich warm hier unten..."'
     296:
-      name: "Planetsplitters"
+      name: "Planetenspalter"
       description:
-        - '&5&o"These new state-of-the-art excavators'
-        - '&5&o     have been tested on Merula,'
-        - '&5&o     Globort and Flwanza VI, among other'
-        - '&5&o     distant planets which have been'
-        - '&5&o     curiously quiet lately."'
+        - '&5&o"Diese neuen state-of-the-art Bohrer'
+        - '&5&o     wurden schon auf Merula,'
+        - '&5&o     Globort und Flwanza VI getested,'
+        - '&5&o     zusammen mit anderen fernen Planeten,'
+        - '&5&o     die seltsam still geworden sind."'
     309:
-      name: "Canola oil wells"
+      name: "Canola Öl Quellen"
       description:
-        - '&5&o"A previously untapped resource,'
-        - '&5&o     canola oil permeates the underground'
-        - '&5&o     olifers which grant it its particular'
-        - '&5&o     taste and lucrative properties."'
+        - '&5&o"Ein bis jetzt nicht verwendeter Rohstoff.'
+        - '&5&o     Canola Öl weicht den Untergrund auf'
+        - '&5&o     und verleiht der gewonnen Schokolade'
+        - '&5&o     ihren unglaublichen Geschmack."'
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     # Factory upgrades (type: classic)

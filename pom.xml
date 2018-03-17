@@ -4,13 +4,19 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-
-    <groupId>me.nikl.cookieclicker</groupId>
-    <artifactId>CookieClicker</artifactId>
+    <groupId>me.nikl</groupId>
+    <artifactId>cookieclicker</artifactId>
     <name>CookieClicker</name>
     <packaging>jar</packaging>
-    <version>1.1.1</version>
+    <version>2.0.0</version>
     <description>The super addictive backing game</description>
+
+    <distributionManagement>
+        <repository>
+            <id>nikl-repo</id>
+            <url>http://repo.nikl.me/artifactory/repositories</url>
+        </repository>
+    </distributionManagement>
 
     <build>
         <defaultGoal>clean package</defaultGoal>
@@ -45,35 +51,23 @@
             <url>https://hub.spigotmc.org/nexus/content/groups/public/</url>
         </repository>
         <repository>
-            <id>vault-repo</id>
-            <url>http://nexus.hc.to/content/repositories/pub_releases</url>
+            <id>nikl-repo</id>
+            <url>http://repo.nikl.me/artifactory/repositories</url>
         </repository>
     </repositories>
 
     <dependencies>
-        <!--Bukkit API-->
         <dependency>
             <groupId>org.bukkit</groupId>
             <artifactId>bukkit</artifactId>
             <version>1.12.2-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
-        <!--GameBox
-
-        For the moment a manual installation of GameBox
-        in your local maven repository is necessary.
-        -->
         <dependency>
             <groupId>me.nikl</groupId>
             <artifactId>gamebox</artifactId>
-            <version>1.5.9</version>
+            <version>2.0.0-BETA</version>
             <scope>provided</scope>
-        </dependency>
-        <!-- vault -->
-        <dependency>
-            <groupId>net.milkbowl.vault</groupId>
-            <artifactId>VaultAPI</artifactId>
-            <version>1.6</version>
         </dependency>
     </dependencies>
 
@@ -83,6 +77,4 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
-
-
 </project>

@@ -1,19 +1,16 @@
 package me.nikl.cookieclicker.upgrades.alchemylab;
 
-import me.nikl.cookieclicker.Game;
+import me.nikl.cookieclicker.CCGame;
 import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.upgrades.Upgrade;
 import me.nikl.cookieclicker.upgrades.UpgradeType;
-import org.bukkit.Material;
-import org.bukkit.material.MaterialData;
 
 /**
- * Created by Niklas on 09.07.2017.
- *
+ * @author Niklas Eicker
  */
-public class Ambrosia extends Upgrade{
+public class Ambrosia extends Upgrade {
 
-    public Ambrosia(Game game) {
+    public Ambrosia(CCGame game) {
         super(game, 49);
         this.cost = 3750000000000000.;
         productionsRequirements.put(Buildings.ALCHEMY_LAB, 50);

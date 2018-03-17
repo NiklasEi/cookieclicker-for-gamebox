@@ -1,18 +1,17 @@
 package me.nikl.cookieclicker.upgrades.clicking;
 
-import me.nikl.cookieclicker.Game;
+import me.nikl.cookieclicker.CCGame;
 import me.nikl.cookieclicker.upgrades.Upgrade;
 import me.nikl.cookieclicker.upgrades.UpgradeType;
 import org.bukkit.Material;
 import org.bukkit.material.MaterialData;
 
 /**
- * Created by Niklas on 09.07.2017.
- *
+ * @author Niklas Eicker
  */
-public class AdamantiumMouse extends Upgrade{
+public class AdamantiumMouse extends Upgrade {
 
-    public AdamantiumMouse(Game game) {
+    public AdamantiumMouse(CCGame game) {
         super(game, 78);
         this.cost = 50000000000.;
         setClickCookieReq(1000000000.);

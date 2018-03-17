@@ -1,6 +1,6 @@
 package me.nikl.cookieclicker.upgrades.farm;
 
-import me.nikl.cookieclicker.Game;
+import me.nikl.cookieclicker.CCGame;
 import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.upgrades.Upgrade;
 import me.nikl.cookieclicker.upgrades.UpgradeType;
@@ -8,12 +8,11 @@ import org.bukkit.Material;
 import org.bukkit.material.MaterialData;
 
 /**
- * Created by Niklas on 09.07.2017.
- *
+ * @author Niklas Eicker
  */
-public class WheatTriffids extends Upgrade{
+public class WheatTriffids extends Upgrade {
 
-    public WheatTriffids(Game game) {
+    public WheatTriffids(CCGame game) {
         super(game, 308);
         this.cost = 550000000000000000.;
         productionsRequirements.put(Buildings.FARM, 250);

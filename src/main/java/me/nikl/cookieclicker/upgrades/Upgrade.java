@@ -1,11 +1,12 @@
 package me.nikl.cookieclicker.upgrades;
 
-import me.nikl.cookieclicker.Game;
-import me.nikl.cookieclicker.Language;
-import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.gamebox.GameBox;
 import me.nikl.gamebox.GameBoxSettings;
-import me.nikl.gamebox.util.NumberUtil;
+import me.nikl.cookieclicker.CCGame;
+import me.nikl.cookieclicker.CCLanguage;
+import me.nikl.cookieclicker.buildings.Buildings;
+import me.nikl.cookieclicker.upgrades.UpgradeType;
+import me.nikl.gamebox.utility.NumberUtility;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemFlag;
@@ -20,30 +21,22 @@ import java.util.Map;
 import java.util.logging.Level;
 
 /**
- * Created by Niklas on 09.07.2017.
- *
- *
+ * @author Niklas Eicker
  */
 public abstract class Upgrade {
     protected int id;
     protected Map<Buildings, Integer> productionsRequirements;
-    private Map<String, Double> cookiesRequirements;
-
     protected double cost;
     protected ItemStack icon;
-
     protected String gain = "NULL";
-
-    private Language lang;
-
-    protected List<String > lore;
+    protected List<String> lore;
     protected String name;
-
-    protected Game game;
-
+    protected CCGame game;
     protected boolean active;
+    private Map<String, Double> cookiesRequirements;
+    private CCLanguage lang;
 
-    public Upgrade(Game game, int id){
+    public Upgrade(CCGame game, int id) {
         this.id = id;
         productionsRequirements = new HashMap<>();
         cookiesRequirements = new HashMap<>();
@@ -55,24 +48,24 @@ public abstract class Upgrade {
         this.lang = game.getLang();
     }
 
-    protected void setTotalCookieReq(double count){
+    protected void setTotalCookieReq(double count) {
         cookiesRequirements.put("total", count);
     }
 
-    protected void setClickCookieReq(double count){
+    protected void setClickCookieReq(double count) {
         cookiesRequirements.put("click", count);
     }
 
-    public boolean isUnlocked(){
-        for(String key : cookiesRequirements.keySet()){
-            switch (key){
+    public boolean isUnlocked() {
+        for (String key : cookiesRequirements.keySet()) {
+            switch (key) {
                 case "total":
-                    if(game.getTotalCookiesProduced() < cookiesRequirements.get(key)){
+                    if (game.getTotalCookiesProduced() < cookiesRequirements.get(key)) {
                         return false;
                     }
                     break;
                 case "click":
-                    if(game.getClickCookiesProduced() < cookiesRequirements.get(key)){
+                    if (game.getClickCookiesProduced() < cookiesRequirements.get(key)) {
                         return false;
                     }
                     break;
@@ -82,8 +75,8 @@ public abstract class Upgrade {
             }
         }
 
-        for (Buildings buildings : productionsRequirements.keySet()){
-            if(game.getBuilding(buildings).getCount() < productionsRequirements.get(buildings)){
+        for (Buildings buildings : productionsRequirements.keySet()) {
+            if (game.getBuilding(buildings).getCount() < productionsRequirements.get(buildings)) {
                 return false;
             }
         }
@@ -91,23 +84,25 @@ public abstract class Upgrade {
         return true;
     }
 
-    protected void loadLanguage(UpgradeType upgradeType, Buildings... buildings){
+    protected void loadLanguage(me.nikl.cookieclicker.upgrades.UpgradeType upgradeType, Buildings... buildings) {
         name = lang.upgradeName.get(id);
 
         // for the standard upgrade type the building icon is used
-        if(upgradeType == UpgradeType.CLASSIC && buildings != null && buildings.length == 1){
+        if (upgradeType == UpgradeType.CLASSIC && buildings != null && buildings.length == 1) {
             icon = game.getBuilding(buildings[0]).getIcon();
         }
 
         lore = new ArrayList<>();
-        for(String line : lang.upgradeLore.get(upgradeType)){
-            line = line.replace("%cost%", NumberUtil.convertHugeNumber(cost));
+        for (String line : lang.upgradeLore.get(upgradeType)) {
+            line = line.replace("%cost%", NumberUtility.convertHugeNumber(cost)
+                    .replace("%cost_long%", NumberUtility.convertHugeNumber(cost, false)));
 
-            if(buildings != null && buildings.length > 0){
-                line = line.replace("%building%", lang.buildingName.get(buildings[0]).toLowerCase()).replace("%Building%", lang.buildingName.get(buildings[0]));
+            if (buildings != null && buildings.length > 0) {
+                line = line.replace("%building%", lang.buildingName.get(buildings[0]).toLowerCase())
+                        .replace("%Building%", lang.buildingName.get(buildings[0]));
             }
 
-            switch (upgradeType){
+            switch (upgradeType) {
                 case CLASSIC:
                 case CLASSIC_MOUSE:
                     break;
@@ -128,7 +123,7 @@ public abstract class Upgrade {
 
 
         ItemMeta meta = icon.getItemMeta();
-        if(!GameBoxSettings.delayedInventoryUpdate) meta.addItemFlags(ItemFlag.values());
+        if (!GameBoxSettings.version1_8) meta.addItemFlags(ItemFlag.values());
         meta.setDisplayName(lang.GAME_UPGRADE_NAME.replace("%name%", name));
         meta.setLore(lore);
         icon.setItemMeta(meta);
@@ -140,11 +135,11 @@ public abstract class Upgrade {
         return active;
     }
 
-    public double getCost(){
+    public double getCost() {
         return this.cost;
     }
 
-    public ItemStack getIcon(){
+    public ItemStack getIcon() {
         return this.icon;
     }
 

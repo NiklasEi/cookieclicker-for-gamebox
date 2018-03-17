@@ -1,6 +1,6 @@
 package me.nikl.cookieclicker.upgrades.farm;
 
-import me.nikl.cookieclicker.Game;
+import me.nikl.cookieclicker.CCGame;
 import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.upgrades.Upgrade;
 import me.nikl.cookieclicker.upgrades.UpgradeType;
@@ -8,12 +8,11 @@ import org.bukkit.Material;
 import org.bukkit.material.MaterialData;
 
 /**
- * Created by Niklas on 09.07.2017.
- *
+ * @author Niklas Eicker
  */
-public class CheapHoes extends Upgrade{
+public class CheapHoes extends Upgrade {
 
-    public CheapHoes(Game game) {
+    public CheapHoes(CCGame game) {
         super(game, 10);
         this.cost = 11000;
         productionsRequirements.put(Buildings.FARM, 1);

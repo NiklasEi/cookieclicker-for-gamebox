@@ -1,17 +1,16 @@
 package me.nikl.cookieclicker.upgrades.antimattercondenser;
 
-import me.nikl.cookieclicker.Game;
+import me.nikl.cookieclicker.CCGame;
 import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.upgrades.Upgrade;
 import me.nikl.cookieclicker.upgrades.UpgradeType;
 
 /**
- * Created by Niklas on 09.07.2017.
- *
+ * @author Niklas Eicker
  */
-public class ReverseCyclotrons extends Upgrade{
+public class ReverseCyclotrons extends Upgrade {
 
-    public ReverseCyclotrons(Game game) {
+    public ReverseCyclotrons(CCGame game) {
         super(game, 118);
         this.cost = 850000000000000000000.;
         productionsRequirements.put(Buildings.ANTIMATTER_CONDENSER, 100);

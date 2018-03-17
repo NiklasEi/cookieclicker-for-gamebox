@@ -1,6 +1,6 @@
 package me.nikl.cookieclicker.upgrades.portal;
 
-import me.nikl.cookieclicker.Game;
+import me.nikl.cookieclicker.CCGame;
 import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.upgrades.Upgrade;
 import me.nikl.cookieclicker.upgrades.UpgradeType;
@@ -8,12 +8,11 @@ import org.bukkit.Material;
 import org.bukkit.material.MaterialData;
 
 /**
- * Created by Niklas on 09.07.2017.
- *
+ * @author Niklas Eicker
  */
-public class InsaneOatlingWorkers extends Upgrade{
+public class InsaneOatlingWorkers extends Upgrade {
 
-    public InsaneOatlingWorkers(Game game) {
+    public InsaneOatlingWorkers(CCGame game) {
         super(game, 26);
         this.cost = 50000000000000.;
         productionsRequirements.put(Buildings.PORTAL, 5);

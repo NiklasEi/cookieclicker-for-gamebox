@@ -1,6 +1,6 @@
 package me.nikl.cookieclicker.upgrades.farm;
 
-import me.nikl.cookieclicker.Game;
+import me.nikl.cookieclicker.CCGame;
 import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.upgrades.Upgrade;
 import me.nikl.cookieclicker.upgrades.UpgradeType;
@@ -8,12 +8,11 @@ import org.bukkit.Material;
 import org.bukkit.material.MaterialData;
 
 /**
- * Created by Niklas on 09.07.2017.
- *
+ * @author Niklas Eicker
  */
-public class CookieTrees extends Upgrade{
+public class CookieTrees extends Upgrade {
 
-    public CookieTrees(Game game) {
+    public CookieTrees(CCGame game) {
         super(game, 12);
         this.cost = 550000;
         productionsRequirements.put(Buildings.FARM, 25);

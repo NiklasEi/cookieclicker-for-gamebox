@@ -1,18 +1,17 @@
 package me.nikl.cookieclicker.upgrades.clicking;
 
-import me.nikl.cookieclicker.Game;
+import me.nikl.cookieclicker.CCGame;
 import me.nikl.cookieclicker.upgrades.Upgrade;
 import me.nikl.cookieclicker.upgrades.UpgradeType;
 import org.bukkit.Material;
 import org.bukkit.material.MaterialData;
 
 /**
- * Created by Niklas on 09.07.2017.
- *
+ * @author Niklas Eicker
  */
-public class NevercrackMouse extends Upgrade{
+public class NevercrackMouse extends Upgrade {
 
-    public NevercrackMouse(Game game) {
+    public NevercrackMouse(CCGame game) {
         super(game, 367);
         this.cost = 500000000000000000000.;
         setClickCookieReq(10000000000000000000.);

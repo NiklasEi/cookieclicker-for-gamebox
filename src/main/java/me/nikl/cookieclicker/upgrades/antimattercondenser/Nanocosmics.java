@@ -1,17 +1,16 @@
 package me.nikl.cookieclicker.upgrades.antimattercondenser;
 
-import me.nikl.cookieclicker.Game;
+import me.nikl.cookieclicker.CCGame;
 import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.upgrades.Upgrade;
 import me.nikl.cookieclicker.upgrades.UpgradeType;
 
 /**
- * Created by Niklas on 09.07.2017.
- *
+ * @author Niklas Eicker
  */
-public class Nanocosmics extends Upgrade{
+public class Nanocosmics extends Upgrade {
 
-    public Nanocosmics(Game game) {
+    public Nanocosmics(CCGame game) {
         super(game, 200);
         this.cost = 85000000000000000000000.;
         productionsRequirements.put(Buildings.ANTIMATTER_CONDENSER, 150);

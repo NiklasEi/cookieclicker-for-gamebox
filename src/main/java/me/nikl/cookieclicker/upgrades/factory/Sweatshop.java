@@ -1,6 +1,6 @@
 package me.nikl.cookieclicker.upgrades.factory;
 
-import me.nikl.cookieclicker.Game;
+import me.nikl.cookieclicker.CCGame;
 import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.upgrades.Upgrade;
 import me.nikl.cookieclicker.upgrades.UpgradeType;
@@ -8,13 +8,13 @@ import org.bukkit.Material;
 import org.bukkit.material.MaterialData;
 
 /**
- * Created by Niklas on 09.07.2017.
+ * @author Niklas Eicker
  *
- * Custom upgrade replacing 'Sweatshop'
+ *         Custom upgrade replacing 'Sweatshop'
  */
-public class Sweatshop extends Upgrade{
+public class Sweatshop extends Upgrade {
 
-    public Sweatshop(Game game) {
+    public Sweatshop(CCGame game) {
         super(game, 15);
         this.cost = 65000000;
         productionsRequirements.put(Buildings.FACTORY, 25);

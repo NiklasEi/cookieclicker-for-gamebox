@@ -1,7 +1,9 @@
 # Cookie Clicker
 
-Cookie Clicker is an inventory game for the Spigot plugin [GameBox].
+Cookie Clicker is an inventory game for the Spigot plugin [GameBox] inspired by the awesome [Cookieclicker by dashnet](http://orteil.dashnet.org/cookieclicker/).
 
-Since GameBox version 2, CookieClicker is included in the GameBox project and this repository is outdated. The included version can be [found in the GameBox repository](https://github.com/NiklasEi/GameBox/tree/master/GameBox/src/main/java/me/nikl/gamebox/games/cookieclicker).
+Since GameBox version 2, CookieClicker is distributed in the GameBox jar which is published on [Spigot](https://www.spigotmc.org/resources/37273/).
+
+![cookie clicker game](cookieclicker.png "Cookie Clicker game")
 
 [GameBox]: https://github.com/NiklasEi/GameBox

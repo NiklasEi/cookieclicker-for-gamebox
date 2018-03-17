@@ -1,6 +1,6 @@
 package me.nikl.cookieclicker.upgrades.farm;
 
-import me.nikl.cookieclicker.Game;
+import me.nikl.cookieclicker.CCGame;
 import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.upgrades.Upgrade;
 import me.nikl.cookieclicker.upgrades.UpgradeType;
@@ -8,12 +8,11 @@ import org.bukkit.Material;
 import org.bukkit.material.MaterialData;
 
 /**
- * Created by Niklas on 09.07.2017.
- *
+ * @author Niklas Eicker
  */
-public class GeneticallyModifiedCookies extends Upgrade{
+public class GeneticallyModifiedCookies extends Upgrade {
 
-    public GeneticallyModifiedCookies(Game game) {
+    public GeneticallyModifiedCookies(CCGame game) {
         super(game, 45);
         this.cost = 55000000;
         productionsRequirements.put(Buildings.FARM, 50);

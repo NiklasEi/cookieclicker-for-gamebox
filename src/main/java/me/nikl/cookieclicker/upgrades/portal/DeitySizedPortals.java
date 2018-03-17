@@ -1,6 +1,6 @@
 package me.nikl.cookieclicker.upgrades.portal;
 
-import me.nikl.cookieclicker.Game;
+import me.nikl.cookieclicker.CCGame;
 import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.upgrades.Upgrade;
 import me.nikl.cookieclicker.upgrades.UpgradeType;
@@ -8,12 +8,11 @@ import org.bukkit.Material;
 import org.bukkit.material.MaterialData;
 
 /**
- * Created by Niklas on 09.07.2017.
- *
+ * @author Niklas Eicker
  */
-public class DeitySizedPortals extends Upgrade{
+public class DeitySizedPortals extends Upgrade {
 
-    public DeitySizedPortals(Game game) {
+    public DeitySizedPortals(CCGame game) {
         super(game, 198);
         this.cost = 500000000000000000000.;
         productionsRequirements.put(Buildings.PORTAL, 150);

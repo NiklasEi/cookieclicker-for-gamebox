@@ -1,6 +1,21 @@
 package me.nikl.cookieclicker;
 
-import me.nikl.cookieclicker.buildings.*;
+import me.nikl.cookieclicker.buildings.AlchemyLab;
+import me.nikl.cookieclicker.buildings.AntimatterCondenser;
+import me.nikl.cookieclicker.buildings.Bank;
+import me.nikl.cookieclicker.buildings.Building;
+import me.nikl.cookieclicker.buildings.Buildings;
+import me.nikl.cookieclicker.buildings.Cursor;
+import me.nikl.cookieclicker.buildings.Factory;
+import me.nikl.cookieclicker.buildings.Farm;
+import me.nikl.cookieclicker.buildings.Grandma;
+import me.nikl.cookieclicker.buildings.Mine;
+import me.nikl.cookieclicker.buildings.Portal;
+import me.nikl.cookieclicker.buildings.Prism;
+import me.nikl.cookieclicker.buildings.Shipment;
+import me.nikl.cookieclicker.buildings.Temple;
+import me.nikl.cookieclicker.buildings.TimeMachine;
+import me.nikl.cookieclicker.buildings.WizardTower;
 import me.nikl.cookieclicker.upgrades.Upgrade;
 import me.nikl.cookieclicker.upgrades.alchemylab.Ambrosia;
 import me.nikl.cookieclicker.upgrades.alchemylab.Antimony;
@@ -127,13 +142,12 @@ import me.nikl.cookieclicker.upgrades.wizardtower.KitchenCurses;
 import me.nikl.cookieclicker.upgrades.wizardtower.PointierHats;
 import me.nikl.cookieclicker.upgrades.wizardtower.RabbitTrick;
 import me.nikl.cookieclicker.upgrades.wizardtower.SchoolOfSorcery;
-import me.nikl.gamebox.GameBoxSettings;
-import me.nikl.gamebox.Sounds;
-import me.nikl.gamebox.nms.NMSUtil;
-import me.nikl.gamebox.util.NumberUtil;
+import me.nikl.gamebox.nms.NmsFactory;
+import me.nikl.gamebox.nms.NmsUtility;
+import me.nikl.gamebox.utility.NumberUtility;
+import me.nikl.gamebox.utility.Sound;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.Sound;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryAction;
@@ -158,117 +172,92 @@ import java.util.Set;
  *
  * Game
  */
-public class Game extends BukkitRunnable{
-
-    private Random rand;
-
-    private Language lang;
-
-    private NMSUtil nms;
-
-    private Main plugin;
-
-    private boolean playSounds;
-
-    private GameRules rule;
-
-    private Player player;
-
-    private Inventory inventory;
-
-    private double cookies;
-
-    private double cookiesPerClick = 0.;
+public class CCGame extends BukkitRunnable {
 
     public double baseCookiesPerClick = 1.;
     public double cookiesPerClickPerCPS = 0.;
-
+    private Random rand;
+    private CCLanguage lang;
+    private NmsUtility nms;
+    private CookieClicker plugin;
+    private boolean playSounds;
+    private CCGameRules rule;
+    private Player player;
+    private Inventory inventory;
+    private double cookies;
+    private double cookiesPerClick = 0.;
     private Map<Buildings, Double> clickBonuses = new HashMap<>();
-
-
     private Map<Buildings, Map<Buildings, Double>> buildingBonuses = new HashMap<>();
-
     // stats
     private double totalCookiesProduced = 0.;
     private double clickCookiesProduced = 0.;
-
     private double cookiesPerSecond = 0.;
-    private long lastTimeStamp = System.currentTimeMillis();
 
+    private long lastTimeStamp = System.currentTimeMillis();
     private HashMap<Buildings, Building> buildings = new HashMap<>();
     private HashMap<Integer, Buildings> buildingsPositions = new HashMap<>();
-
     private ItemStack mainCookie = new MaterialData(Material.COOKIE).toItemStack();
     private int mainCookieSlot = 31;
     private List<Integer> mainCookieSlots;
     private int moveCookieAfterClicks;
     private ItemStack oven = new MaterialData(Material.FURNACE).toItemStack();
     private int ovenSlot = 0;
-
     private Set<Upgrade> activeUpgrades = new HashSet<>();
     private Map<Integer, Upgrade> futureUpgrades = new HashMap<>();
     private Map<Integer, Upgrade> shownUpgrades = new HashMap<>();
 
-    private Sound click = Sounds.CLICK.bukkitSound();
-    private Sound clickCookie = Sounds.WOOD_CLICK.bukkitSound();
-    private Sound upgrade = Sounds.LEVEL_UP.bukkitSound();
-    private Sound no = Sounds.VILLAGER_NO.bukkitSound();
+    private org.bukkit.Sound click = Sound.CLICK.bukkitSound();
+    private org.bukkit.Sound clickCookie = Sound.WOOD_CLICK.bukkitSound();
+    private org.bukkit.Sound upgrade = Sound.LEVEL_UP.bukkitSound();
+    private org.bukkit.Sound no = Sound.VILLAGER_NO.bukkitSound();
     private float volume = 0.5f;
     private float pitch = 10f;
 
 
-    public Game(GameRules rule, Main plugin, Player player, boolean playSounds, ConfigurationSection save){
-        this.plugin = plugin;
-        nms = plugin.getNms();
-        this.lang = plugin.lang;
+    public CCGame(CCGameRules rule, CookieClicker game, Player player, boolean playSounds, ConfigurationSection save) {
+        this.plugin = game;
+        nms = NmsFactory.getNmsUtility();
+        this.lang = (CCLanguage) game.getGameLang();
         this.rule = rule;
         this.player = player;
-
         rand = new Random();
-
         mainCookieSlots = new ArrayList<>();
         mainCookieSlots.add(30);
         mainCookieSlots.add(31);
         mainCookieSlots.add(32);
-
         moveCookieAfterClicks = rule.getMoveCookieAfterClicks();
-
         cookies = 0.;
-
-
         // add all buildings and register them with their slot
-        buildings.put(Buildings.CURSOR, new Cursor(plugin, 2, Buildings.CURSOR));
+        buildings.put(Buildings.CURSOR, new Cursor(game, 2, Buildings.CURSOR));
         buildingsPositions.put(2, Buildings.CURSOR);
-        buildings.put(Buildings.GRANDMA, new Grandma(plugin, 3, Buildings.GRANDMA));
+        buildings.put(Buildings.GRANDMA, new Grandma(game, 3, Buildings.GRANDMA));
         buildingsPositions.put(3, Buildings.GRANDMA);
-        buildings.put(Buildings.FARM, new Farm(plugin, 4, Buildings.FARM));
+        buildings.put(Buildings.FARM, new Farm(game, 4, Buildings.FARM));
         buildingsPositions.put(4, Buildings.FARM);
-        buildings.put(Buildings.MINE, new Mine(plugin, 5, Buildings.MINE));
+        buildings.put(Buildings.MINE, new Mine(game, 5, Buildings.MINE));
         buildingsPositions.put(5, Buildings.MINE);
-        buildings.put(Buildings.FACTORY, new Factory(plugin, 6, Buildings.FACTORY));
+        buildings.put(Buildings.FACTORY, new Factory(game, 6, Buildings.FACTORY));
         buildingsPositions.put(6, Buildings.FACTORY);
-        buildings.put(Buildings.BANK, new Bank(plugin, 7, Buildings.BANK));
+        buildings.put(Buildings.BANK, new Bank(game, 7, Buildings.BANK));
         buildingsPositions.put(7, Buildings.BANK);
-        buildings.put(Buildings.TEMPLE, new Temple(plugin, 8, Buildings.TEMPLE));
+        buildings.put(Buildings.TEMPLE, new Temple(game, 8, Buildings.TEMPLE));
         buildingsPositions.put(8, Buildings.TEMPLE);
-        buildings.put(Buildings.WIZARD_TOWER, new WizardTower(plugin, 11, Buildings.WIZARD_TOWER));
+        buildings.put(Buildings.WIZARD_TOWER, new WizardTower(game, 11, Buildings.WIZARD_TOWER));
         buildingsPositions.put(11, Buildings.WIZARD_TOWER);
-        buildings.put(Buildings.SHIPMENT, new Shipment(plugin, 12, Buildings.SHIPMENT));
+        buildings.put(Buildings.SHIPMENT, new Shipment(game, 12, Buildings.SHIPMENT));
         buildingsPositions.put(12, Buildings.SHIPMENT);
-        buildings.put(Buildings.ALCHEMY_LAB, new AlchemyLab(plugin, 13, Buildings.ALCHEMY_LAB));
+        buildings.put(Buildings.ALCHEMY_LAB, new AlchemyLab(game, 13, Buildings.ALCHEMY_LAB));
         buildingsPositions.put(13, Buildings.ALCHEMY_LAB);
-        buildings.put(Buildings.PORTAL, new Portal(plugin, 14, Buildings.PORTAL));
+        buildings.put(Buildings.PORTAL, new Portal(game, 14, Buildings.PORTAL));
         buildingsPositions.put(14, Buildings.PORTAL);
-        buildings.put(Buildings.TIME_MACHINE, new TimeMachine(plugin, 15, Buildings.TIME_MACHINE));
+        buildings.put(Buildings.TIME_MACHINE, new TimeMachine(game, 15, Buildings.TIME_MACHINE));
         buildingsPositions.put(15, Buildings.TIME_MACHINE);
-        buildings.put(Buildings.ANTIMATTER_CONDENSER, new AntimatterCondenser(plugin, 16, Buildings.ANTIMATTER_CONDENSER));
+        buildings.put(Buildings.ANTIMATTER_CONDENSER, new AntimatterCondenser(game, 16, Buildings.ANTIMATTER_CONDENSER));
         buildingsPositions.put(16, Buildings.ANTIMATTER_CONDENSER);
-        buildings.put(Buildings.PRISM, new Prism(plugin, 17, Buildings.PRISM));
+        buildings.put(Buildings.PRISM, new Prism(game, 17, Buildings.PRISM));
         buildingsPositions.put(17, Buildings.PRISM);
 
-
         Set<Upgrade> futureUpgradesTemp = new HashSet<>();
-
         // clicking
         futureUpgradesTemp.add(new PlasticMouse(this));
         futureUpgradesTemp.add(new IronMouse(this));
@@ -428,22 +417,21 @@ public class Game extends BukkitRunnable{
         // sort upgrades in map with ids as key (fast lookup for loading of old game)
         Upgrade upgrade;
         Iterator<Upgrade> iterator = futureUpgradesTemp.iterator();
-        while (iterator.hasNext()){
+        while (iterator.hasNext()) {
             upgrade = iterator.next();
             futureUpgrades.put(upgrade.getId(), upgrade);
         }
 
         // only play sounds if the game setting allows to
-        this.playSounds = plugin.getPlaySounds() && playSounds;
+        this.playSounds = game.getSettings().isPlaySounds() && playSounds;
 
         // create inventory
-        String title = lang.GAME_TITLE.replace("%score%", String.valueOf((int) cookies));
-        if(GameBoxSettings.checkInventoryLength && title.length() > 32){
-            title = "Title is too long!";
-        }
-        this.inventory = Bukkit.createInventory(null, 54, title);
+        String title = lang.GAME_TITLE
+                .replace("%score%", String.valueOf((int) cookies));
 
-        if(save != null){
+        this.inventory = game.createInventory(54, title);
+
+        if (save != null) {
             //load the game
             load(save);
         }
@@ -452,14 +440,13 @@ public class Game extends BukkitRunnable{
 
         player.openInventory(inventory);
 
-        this.runTaskTimer(plugin, 0, 10);
+        this.runTaskTimer(game.getGameBox(), 0, 10);
     }
 
     private void buildInv() {
         calcCookiesPerSecond();
         calcCookiesPerClick();
         visualize();
-
 
         mainCookie.setAmount(1);
         ItemMeta meta = mainCookie.getItemMeta();
@@ -476,9 +463,11 @@ public class Game extends BukkitRunnable{
 
     private void updateOven() {
         ArrayList<String> lore = new ArrayList<>();
-        for(String line : lang.GAME_OVEN_LORE){
-            lore.add(line.replace("%cookies_per_second%", NumberUtil.convertHugeNumber(cookiesPerSecond))
-                    .replace("%cookies_per_click%", NumberUtil.convertHugeNumber(cookiesPerClick)));
+        for (String line : lang.GAME_OVEN_LORE) {
+            lore.add(line.replace("%cookies_per_second%", NumberUtility.convertHugeNumber(cookiesPerSecond))
+                    .replace("%cookies_per_click%", NumberUtility.convertHugeNumber(cookiesPerClick))
+                    .replace("%cookies_per_second_long%", NumberUtility.convertHugeNumber(cookiesPerSecond, false))
+                    .replace("%cookies_per_click_long%", NumberUtility.convertHugeNumber(cookiesPerClick, false)));
         }
         ItemMeta meta = oven.getItemMeta();
         meta.setLore(lore);
@@ -488,54 +477,55 @@ public class Game extends BukkitRunnable{
 
 
     public void onClick(InventoryClickEvent inventoryClickEvent) {
-        if(inventoryClickEvent.getAction() != InventoryAction.PICKUP_ALL && inventoryClickEvent.getAction() != InventoryAction.PICKUP_HALF) return;
-        if(inventoryClickEvent.getCurrentItem() == null) return;
+        if (inventoryClickEvent.getAction() != InventoryAction.PICKUP_ALL && inventoryClickEvent.getAction() != InventoryAction.PICKUP_HALF)
+            return;
+        if (inventoryClickEvent.getCurrentItem() == null) return;
 
         // Click on cookie
-        if(inventoryClickEvent.getRawSlot() == mainCookieSlot) {
+        if (inventoryClickEvent.getRawSlot() == mainCookieSlot) {
             cookies += cookiesPerClick;
-            clickCookiesProduced += cookiesPerClick ;
+            clickCookiesProduced += cookiesPerClick;
             totalCookiesProduced += cookiesPerClick;
 
             // move the cookie if configured
-            if(moveCookieAfterClicks == 1){
+            if (moveCookieAfterClicks == 1) {
                 int oldSlot = mainCookieSlot;
-                while (oldSlot == mainCookieSlot){
+                while (oldSlot == mainCookieSlot) {
                     mainCookieSlot = mainCookieSlots.get(rand.nextInt(mainCookieSlots.size()));
                 }
                 inventory.setItem(oldSlot, null);
                 inventory.setItem(mainCookieSlot, mainCookie);
                 moveCookieAfterClicks = rule.getMoveCookieAfterClicks();
-            } else if(moveCookieAfterClicks > 0){
-                moveCookieAfterClicks --;
+            } else if (moveCookieAfterClicks > 0) {
+                moveCookieAfterClicks--;
             }
 
-            if(playSounds) player.playSound(player.getLocation(), clickCookie, volume * 0.5f, pitch);
+            if (playSounds) player.playSound(player.getLocation(), clickCookie, volume * 0.5f, pitch);
         }
 
         // click on production
-        else if(buildingsPositions.keySet().contains(inventoryClickEvent.getRawSlot())){
+        else if (buildingsPositions.keySet().contains(inventoryClickEvent.getRawSlot())) {
             Building building = buildings.get(buildingsPositions.get(inventoryClickEvent.getRawSlot()));
             double cost = building.getCost();
 
-            switch (inventoryClickEvent.getAction()){
+            switch (inventoryClickEvent.getAction()) {
                 case PICKUP_ALL:
-                    if(cookies < cost){
-                        if(playSounds) player.playSound(player.getLocation(), no, volume, pitch);
+                    if (cookies < cost) {
+                        if (playSounds) player.playSound(player.getLocation(), no, volume, pitch);
                         return;
                     }
                     cookies -= cost;
                     building.addProductions(1);
                     building.visualize(inventory);
-                    if(playSounds) player.playSound(player.getLocation(), click, volume, pitch);
+                    if (playSounds) player.playSound(player.getLocation(), click, volume, pitch);
                     break;
 
                 case PICKUP_HALF:
-                    if(building.getCount() == 0) return;
+                    if (building.getCount() == 0) return;
 
                     building.addProductions(-1);
                     cookies += 0.45 * cost;
-                    if(playSounds) player.playSound(player.getLocation(), clickCookie, volume, pitch);
+                    if (playSounds) player.playSound(player.getLocation(), clickCookie, volume, pitch);
                     building.visualize(inventory);
                     break;
             }
@@ -545,16 +535,16 @@ public class Game extends BukkitRunnable{
         }
 
         // click on upgrade
-        else if(shownUpgrades.keySet().contains(53 - inventoryClickEvent.getRawSlot())){
+        else if (shownUpgrades.keySet().contains(53 - inventoryClickEvent.getRawSlot())) {
             Upgrade upgrade = shownUpgrades.get(53 - inventoryClickEvent.getRawSlot());
-            if(cookies < upgrade.getCost()) {
-                if(playSounds) player.playSound(player.getLocation(), no, volume, pitch);
+            if (cookies < upgrade.getCost()) {
+                if (playSounds) player.playSound(player.getLocation(), no, volume, pitch);
                 return;
             }
 
             cookies -= upgrade.getCost();
             upgrade.onActivation();
-            if(playSounds) player.playSound(player.getLocation(), this.upgrade, volume, pitch);
+            if (playSounds) player.playSound(player.getLocation(), this.upgrade, volume, pitch);
 
             activeUpgrades.add(upgrade);
             shownUpgrades.remove(53 - inventoryClickEvent.getRawSlot());
@@ -569,9 +559,9 @@ public class Game extends BukkitRunnable{
 
     private void calcCookiesPerSecond() {
         cookiesPerSecond = 0.;
-        for(Buildings buildings : buildings.keySet()){
+        for (Buildings buildings : buildings.keySet()) {
             // check for bonuses from other buildings
-            if(buildingBonuses.keySet().contains(buildings)) {
+            if (buildingBonuses.keySet().contains(buildings)) {
 
                 double otherBuildingBonus = 0.;
                 double bonus;
@@ -593,33 +583,33 @@ public class Game extends BukkitRunnable{
     private void calcCookiesPerClick() {
         cookiesPerClick = baseCookiesPerClick + cookiesPerClickPerCPS * cookiesPerSecond;
 
-        for(Buildings buildings : clickBonuses.keySet()){
+        for (Buildings buildings : clickBonuses.keySet()) {
             cookiesPerClick += this.buildings.get(buildings).getCount() * clickBonuses.get(buildings);
         }
     }
 
-    private void checkUpgrades(){
+    private void checkUpgrades() {
         boolean added = false;
-        Set<Upgrade> toAdd =  new HashSet<>();
+        Set<Upgrade> toAdd = new HashSet<>();
         Iterator<Upgrade> iterator = futureUpgrades.values().iterator();
-        while (iterator.hasNext()){
+        while (iterator.hasNext()) {
             Upgrade upgrade = iterator.next();
-            if(!upgrade.isUnlocked()) continue;
+            if (!upgrade.isUnlocked()) continue;
 
             added = true;
             toAdd.add(upgrade);
             iterator.remove();
         }
 
-        if(added) visualizeUpgrades(toAdd);
+        if (added) visualizeUpgrades(toAdd);
     }
 
     private void visualizeUpgrades(Set<Upgrade> toAdd) {
         Iterator<Upgrade> iterator = toAdd.iterator();
         int slot = 8;
-        while (iterator.hasNext()){
-            if(shownUpgrades.keySet().contains(slot)){
-                slot --;
+        while (iterator.hasNext()) {
+            if (shownUpgrades.keySet().contains(slot)) {
+                slot--;
                 continue;
             }
 
@@ -636,7 +626,7 @@ public class Game extends BukkitRunnable{
     private void visualizeUpgrades() {
         Map<Integer, Upgrade> orderedUpgrades = new HashMap<>();
 
-        if(shownUpgrades.isEmpty()){
+        if (shownUpgrades.isEmpty()) {
             inventory.setItem(53 - 8, null);
             return;
         }
@@ -661,8 +651,8 @@ public class Game extends BukkitRunnable{
 
         shownUpgrades = orderedUpgrades;
 
-        for(int i = 8; i >= 0 ; i --){
-            if(shownUpgrades.get(i) == null){
+        for (int i = 8; i >= 0; i--) {
+            if (shownUpgrades.get(i) == null) {
                 inventory.setItem(53 - i, null);
                 continue;
             }
@@ -671,9 +661,9 @@ public class Game extends BukkitRunnable{
         }
     }
 
-
-    public void onGameEnd() {
-        player.sendMessage(lang.PREFIX + lang.GAME_CLOSED.replace("%score%", NumberUtil.convertHugeNumber(Math.floor(totalCookiesProduced))));
+    public void onGameEnd(boolean async) {
+        Bukkit.getLogger().info(" on game end...");
+        player.sendMessage(lang.PREFIX + lang.GAME_CLOSED.replace("%score%", NumberUtility.convertHugeNumber(Math.floor(totalCookiesProduced))));
 
         Map<String, Double> cookies = new HashMap<>();
         cookies.put("current", this.cookies);
@@ -681,51 +671,45 @@ public class Game extends BukkitRunnable{
         cookies.put("total", this.totalCookiesProduced);
 
         Map<String, Integer> productions = new HashMap<>();
-        for(Buildings production : buildingsPositions.values()){
+        for (Buildings production : buildingsPositions.values()) {
             productions.put(production.toString(), getBuilding(production).getCount());
         }
 
         List<Integer> upgrades = new ArrayList<>();
-        for(Upgrade upgrade : activeUpgrades){
+        for (Upgrade upgrade : activeUpgrades) {
             upgrades.add(upgrade.getId());
         }
 
-        plugin.getGameManager().saveGame(rule, player.getUniqueId(), cookies, productions, upgrades);
+        ((CCGameManager) plugin.getGameManager()).saveGame(rule, player.getUniqueId(), cookies, productions, upgrades, async);
     }
 
     private void load(ConfigurationSection save) {
-        if(save.isConfigurationSection("cookies")){
+        if (save.isConfigurationSection("cookies")) {
             ConfigurationSection cookieSection = save.getConfigurationSection("cookies");
             cookies = cookieSection.getDouble("current", 0.);
             clickCookiesProduced = cookieSection.getDouble("click", 0.);
             totalCookiesProduced = cookieSection.getDouble("total", 0.);
         }
 
-        if(save.isConfigurationSection("productions")) {
+        if (save.isConfigurationSection("productions")) {
 
-            // building name of Cursor was corrected => allow for old save and convert
             Buildings building;
             for (String key : save.getConfigurationSection("productions").getKeys(false)) {
-                try{
+                try {
                     building = Buildings.valueOf(key);
                     buildings.get(building).addProductions(save.getInt("productions" + "." + key, 0));
-                } catch (IllegalArgumentException exception){
+                } catch (IllegalArgumentException exception) {
                     // ignore
                 }
-            }
-
-            if(save.isInt("productions.CURSER")){
-                buildings.get(Buildings.CURSOR).addProductions(save.getInt("productions" + "." + "CURSER", 0));
-                save.set("productions.CURSER", null);
             }
         }
 
         List<Integer> upgrades = save.getIntegerList("upgrades");
 
-        if(upgrades != null && !upgrades.isEmpty()){
-            for(int id : upgrades){
+        if (upgrades != null && !upgrades.isEmpty()) {
+            for (int id : upgrades) {
                 Upgrade upgrade = futureUpgrades.get(id);
-                if(upgrade == null) continue;
+                if (upgrade == null) continue;
                 upgrade.onActivation();
                 activeUpgrades.add(upgrade);
                 futureUpgrades.remove(id);
@@ -736,32 +720,32 @@ public class Game extends BukkitRunnable{
     @Override
     public void run() {
         long newTimeStamp = System.currentTimeMillis();
-
-        if(cookiesPerSecond > 0) {
+        if (cookiesPerSecond > 0) {
             double newCookies = ((newTimeStamp - lastTimeStamp) / 1000.) * cookiesPerSecond;
             cookies += newCookies;
             totalCookiesProduced += newCookies;
         }
-
         lastTimeStamp = newTimeStamp;
-
-        nms.updateInventoryTitle(player, lang.GAME_TITLE.replace("%score%", NumberUtil.convertHugeNumber(cookies)));
+        nms.updateInventoryTitle(player, lang.GAME_TITLE
+                .replace("%score%", NumberUtility.convertHugeNumber(cookies))
+                .replace("%score_long%", NumberUtility.convertHugeNumber(cookies, false)));
         checkUpgrades();
     }
 
-    public void visualize(){
-        for(Building building : buildings.values()) {
+    public void visualize() {
+        for (Building building : buildings.values()) {
             building.visualize(inventory);
         }
     }
 
     /**
      * Add a bonus number of cookies per click and per specified building
-     * @param production
-     * @param bonusPerBuilding
+     *
+     * @param production building type to apply bonus to
+     * @param bonusPerBuilding bonus to apply per building
      */
-    public void addClickBonus(Buildings production, double bonusPerBuilding){
-        if(clickBonuses.keySet().contains(production)){
+    public void addClickBonus(Buildings production, double bonusPerBuilding) {
+        if (clickBonuses.keySet().contains(production)) {
             clickBonuses.put(production, (clickBonuses.get(production) + bonusPerBuilding));
             return;
         } else {
@@ -770,10 +754,10 @@ public class Game extends BukkitRunnable{
         }
     }
 
-    public void addBuildingBonus(Buildings buildingThatGetsTheBonus, Buildings buildingTheBonusComesFrom, double bonus){
-        if(buildingBonuses.keySet().contains(buildingThatGetsTheBonus)){
+    public void addBuildingBonus(Buildings buildingThatGetsTheBonus, Buildings buildingTheBonusComesFrom, double bonus) {
+        if (buildingBonuses.keySet().contains(buildingThatGetsTheBonus)) {
             Map<Buildings, Double> bonusMap = buildingBonuses.get(buildingThatGetsTheBonus);
-            if(bonusMap.keySet().contains(buildingTheBonusComesFrom)){
+            if (bonusMap.keySet().contains(buildingTheBonusComesFrom)) {
                 bonusMap.put(buildingTheBonusComesFrom, bonusMap.get(buildingTheBonusComesFrom) + bonus);
                 buildingBonuses.put(buildingThatGetsTheBonus, bonusMap);
                 return;
@@ -789,11 +773,11 @@ public class Game extends BukkitRunnable{
         }
     }
 
-    public double getTotalCookiesProduced(){
+    public double getTotalCookiesProduced() {
         return this.totalCookiesProduced;
     }
 
-    public double getClickCookiesProduced(){
+    public double getClickCookiesProduced() {
         return this.clickCookiesProduced;
     }
 
@@ -805,15 +789,15 @@ public class Game extends BukkitRunnable{
         return inventory;
     }
 
-    public GameRules getRule(){
+    public CCGameRules getRule() {
         return this.rule;
     }
 
-    public Player getPlayer(){
+    public Player getPlayer() {
         return this.player;
     }
 
-    public Language getLang(){
+    public CCLanguage getLang() {
         return this.lang;
     }
 }

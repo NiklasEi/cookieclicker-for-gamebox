@@ -1,17 +1,16 @@
 package me.nikl.cookieclicker.upgrades.antimattercondenser;
 
-import me.nikl.cookieclicker.Game;
+import me.nikl.cookieclicker.CCGame;
 import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.upgrades.Upgrade;
 import me.nikl.cookieclicker.upgrades.UpgradeType;
 
 /**
- * Created by Niklas on 09.07.2017.
- *
+ * @author Niklas Eicker
  */
-public class BigBangBake extends Upgrade{
+public class BigBangBake extends Upgrade {
 
-    public BigBangBake(Game game) {
+    public BigBangBake(CCGame game) {
         super(game, 102);
         this.cost = 8500000000000000000.;
         productionsRequirements.put(Buildings.ANTIMATTER_CONDENSER, 50);

@@ -1,17 +1,17 @@
 package me.nikl.cookieclicker.upgrades.clicking;
 
-import me.nikl.cookieclicker.Game;
+import me.nikl.cookieclicker.CCGame;
 import me.nikl.cookieclicker.upgrades.Upgrade;
 import me.nikl.cookieclicker.upgrades.UpgradeType;
 import org.bukkit.Material;
 import org.bukkit.material.MaterialData;
 
 /**
- * Created by Niklas on 09.07.2017.
+ * @author Niklas Eicker
  */
-public class PlasticMouse extends Upgrade{
+public class PlasticMouse extends Upgrade {
 
-    public PlasticMouse(Game game) {
+    public PlasticMouse(CCGame game) {
         super(game, 75);
         this.cost = 50000;
         setClickCookieReq(1000);

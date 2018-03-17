@@ -1,18 +1,17 @@
 package me.nikl.cookieclicker.upgrades.clicking;
 
-import me.nikl.cookieclicker.Game;
+import me.nikl.cookieclicker.CCGame;
 import me.nikl.cookieclicker.upgrades.Upgrade;
 import me.nikl.cookieclicker.upgrades.UpgradeType;
 import org.bukkit.Material;
 import org.bukkit.material.MaterialData;
 
 /**
- * Created by Niklas on 09.07.2017.
- *
+ * @author Niklas Eicker
  */
-public class UnobtainiumMouse extends Upgrade{
+public class UnobtainiumMouse extends Upgrade {
 
-    public UnobtainiumMouse(Game game) {
+    public UnobtainiumMouse(CCGame game) {
         super(game, 119);
         this.cost = 5000000000000.;
         setClickCookieReq(100000000000.);

@@ -1,6 +1,6 @@
 package me.nikl.cookieclicker.upgrades.wizardtower;
 
-import me.nikl.cookieclicker.Game;
+import me.nikl.cookieclicker.CCGame;
 import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.upgrades.Upgrade;
 import me.nikl.cookieclicker.upgrades.UpgradeType;
@@ -8,12 +8,11 @@ import org.bukkit.Material;
 import org.bukkit.material.MaterialData;
 
 /**
- * Created by Niklas on 09.07.2017.
- *
+ * @author Niklas Eicker
  */
-public class DarkFormulas extends Upgrade{
+public class DarkFormulas extends Upgrade {
 
-    public DarkFormulas(Game game) {
+    public DarkFormulas(CCGame game) {
         super(game, 249);
         this.cost = 165000000000000000.;
         productionsRequirements.put(Buildings.WIZARD_TOWER, 150);

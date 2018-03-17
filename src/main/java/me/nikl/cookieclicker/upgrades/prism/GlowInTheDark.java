@@ -1,17 +1,16 @@
 package me.nikl.cookieclicker.upgrades.prism;
 
-import me.nikl.cookieclicker.Game;
+import me.nikl.cookieclicker.CCGame;
 import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.upgrades.Upgrade;
 import me.nikl.cookieclicker.upgrades.UpgradeType;
 
 /**
- * Created by Niklas on 09.07.2017.
- *
+ * @author Niklas Eicker
  */
-public class GlowInTheDark extends Upgrade{
+public class GlowInTheDark extends Upgrade {
 
-    public GlowInTheDark(Game game) {
+    public GlowInTheDark(CCGame game) {
         super(game, 201);
         this.cost = 1050000000000000000000000.;
         productionsRequirements.put(Buildings.PRISM, 150);

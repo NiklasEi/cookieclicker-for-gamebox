@@ -1,16 +1,18 @@
 package me.nikl.cookieclicker.buildings;
 
-import me.nikl.cookieclicker.Main;
+import me.nikl.cookieclicker.CookieClicker;
+import me.nikl.cookieclicker.buildings.Building;
+import me.nikl.cookieclicker.buildings.Buildings;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 
 /**
- * Created by Niklas on 07.07.2017.
+ * @author Niklas Eicker
  */
 public class Grandma extends Building {
 
-    public Grandma(Main plugin, int slot, Buildings building) {
+    public Grandma(CookieClicker plugin, int slot, Buildings building) {
         super(plugin, slot, building);
 
         icon = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);

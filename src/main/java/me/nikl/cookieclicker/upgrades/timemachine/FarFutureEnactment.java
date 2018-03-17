@@ -1,6 +1,6 @@
 package me.nikl.cookieclicker.upgrades.timemachine;
 
-import me.nikl.cookieclicker.Game;
+import me.nikl.cookieclicker.CCGame;
 import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.upgrades.Upgrade;
 import me.nikl.cookieclicker.upgrades.UpgradeType;
@@ -8,12 +8,11 @@ import org.bukkit.Material;
 import org.bukkit.material.MaterialData;
 
 /**
- * Created by Niklas on 09.07.2017.
- *
+ * @author Niklas Eicker
  */
-public class FarFutureEnactment extends Upgrade{
+public class FarFutureEnactment extends Upgrade {
 
-    public FarFutureEnactment(Game game) {
+    public FarFutureEnactment(CCGame game) {
         super(game, 199);
         this.cost = 7000000000000000000000.;
         productionsRequirements.put(Buildings.TIME_MACHINE, 150);

@@ -1,27 +1,26 @@
 package me.nikl.cookieclicker.buildings;
 
-import me.nikl.cookieclicker.Main;
+import me.nikl.cookieclicker.CookieClicker;
+import me.nikl.cookieclicker.buildings.Building;
+import me.nikl.cookieclicker.buildings.Buildings;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemFlag;
-import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.PotionMeta;
 import org.bukkit.material.MaterialData;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
 
 /**
- * Created by Niklas on 05.07.2017.
+ * @author Niklas Eicker
  */
 public class AlchemyLab extends Building {
 
-    public AlchemyLab(Main plugin, int slot, Buildings building) {
+    public AlchemyLab(CookieClicker plugin, int slot, Buildings building) {
         super(plugin, slot, building);
 
         // old minecraft versions are missing the material SPLASH_POTION
         Material mat;
-        try{
+        try {
             mat = Material.SPLASH_POTION;
-        } catch (NoSuchFieldError tooOldVersion){
+        } catch (NoSuchFieldError tooOldVersion) {
             mat = Material.POTION;
         }
 

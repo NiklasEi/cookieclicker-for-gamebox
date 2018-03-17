@@ -1,16 +1,18 @@
 package me.nikl.cookieclicker.buildings;
 
-import me.nikl.cookieclicker.Main;
+import me.nikl.cookieclicker.CookieClicker;
+import me.nikl.cookieclicker.buildings.Building;
+import me.nikl.cookieclicker.buildings.Buildings;
 import org.bukkit.Material;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.material.MaterialData;
 
 /**
- * Created by Niklas on 05.07.2017.
+ * @author Niklas Eicker
  */
 public class Prism extends Building {
 
-    public Prism(Main plugin, int slot, Buildings building) {
+    public Prism(CookieClicker plugin, int slot, Buildings building) {
         super(plugin, slot, building);
 
         icon = new MaterialData(Material.EMERALD).toItemStack();

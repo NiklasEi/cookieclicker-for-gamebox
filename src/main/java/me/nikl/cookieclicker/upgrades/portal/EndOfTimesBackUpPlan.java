@@ -1,6 +1,6 @@
 package me.nikl.cookieclicker.upgrades.portal;
 
-import me.nikl.cookieclicker.Game;
+import me.nikl.cookieclicker.CCGame;
 import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.upgrades.Upgrade;
 import me.nikl.cookieclicker.upgrades.UpgradeType;
@@ -8,12 +8,11 @@ import org.bukkit.Material;
 import org.bukkit.material.MaterialData;
 
 /**
- * Created by Niklas on 09.07.2017.
- *
+ * @author Niklas Eicker
  */
-public class EndOfTimesBackUpPlan extends Upgrade{
+public class EndOfTimesBackUpPlan extends Upgrade {
 
-    public EndOfTimesBackUpPlan(Game game) {
+    public EndOfTimesBackUpPlan(CCGame game) {
         super(game, 303);
         this.cost = 500000000000000000000000.;
         productionsRequirements.put(Buildings.PORTAL, 200);

@@ -1,6 +1,6 @@
 package me.nikl.cookieclicker.upgrades.wizardtower;
 
-import me.nikl.cookieclicker.Game;
+import me.nikl.cookieclicker.CCGame;
 import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.upgrades.Upgrade;
 import me.nikl.cookieclicker.upgrades.UpgradeType;
@@ -8,12 +8,11 @@ import org.bukkit.Material;
 import org.bukkit.material.MaterialData;
 
 /**
- * Created by Niklas on 09.07.2017.
- *
+ * @author Niklas Eicker
  */
-public class PointierHats extends Upgrade{
+public class PointierHats extends Upgrade {
 
-    public PointierHats(Game game) {
+    public PointierHats(CCGame game) {
         super(game, 244);
         this.cost = 3300000000.;
         productionsRequirements.put(Buildings.WIZARD_TOWER, 1);

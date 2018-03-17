@@ -1,6 +1,6 @@
 package me.nikl.cookieclicker.upgrades.factory;
 
-import me.nikl.cookieclicker.Game;
+import me.nikl.cookieclicker.CCGame;
 import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.upgrades.Upgrade;
 import me.nikl.cookieclicker.upgrades.UpgradeType;
@@ -8,13 +8,13 @@ import org.bukkit.Material;
 import org.bukkit.material.MaterialData;
 
 /**
- * Created by Niklas on 09.07.2017.
+ * @author Niklas Eicker
  *
- * Custom upgrade replacing 'Sweatshop'
+ *         Custom upgrade replacing 'Sweatshop'
  */
-public class Recombobulators extends Upgrade{
+public class Recombobulators extends Upgrade {
 
-    public Recombobulators(Game game) {
+    public Recombobulators(CCGame game) {
         super(game, 112);
         this.cost = 650000000000.;
         productionsRequirements.put(Buildings.FACTORY, 100);

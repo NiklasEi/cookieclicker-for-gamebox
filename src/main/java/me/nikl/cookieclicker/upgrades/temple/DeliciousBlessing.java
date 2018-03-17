@@ -1,6 +1,6 @@
 package me.nikl.cookieclicker.upgrades.temple;
 
-import me.nikl.cookieclicker.Game;
+import me.nikl.cookieclicker.CCGame;
 import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.upgrades.Upgrade;
 import me.nikl.cookieclicker.upgrades.UpgradeType;
@@ -8,12 +8,11 @@ import org.bukkit.Material;
 import org.bukkit.material.MaterialData;
 
 /**
- * Created by Niklas on 09.07.2017.
- *
+ * @author Niklas Eicker
  */
-public class DeliciousBlessing extends Upgrade{
+public class DeliciousBlessing extends Upgrade {
 
-    public DeliciousBlessing(Game game) {
+    public DeliciousBlessing(CCGame game) {
         super(game, 240);
         this.cost = 10000000000.;
         productionsRequirements.put(Buildings.TEMPLE, 25);
