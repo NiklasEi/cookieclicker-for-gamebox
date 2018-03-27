@@ -1,11 +1,10 @@
 package me.nikl.cookieclicker.upgrades;
 
-import me.nikl.gamebox.GameBox;
-import me.nikl.gamebox.GameBoxSettings;
 import me.nikl.cookieclicker.CCGame;
 import me.nikl.cookieclicker.CCLanguage;
 import me.nikl.cookieclicker.buildings.Buildings;
-import me.nikl.cookieclicker.upgrades.UpgradeType;
+import me.nikl.gamebox.GameBox;
+import me.nikl.gamebox.GameBoxSettings;
 import me.nikl.gamebox.utility.NumberUtility;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;

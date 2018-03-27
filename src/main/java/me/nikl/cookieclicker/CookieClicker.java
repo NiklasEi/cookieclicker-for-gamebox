@@ -3,8 +3,6 @@ package me.nikl.cookieclicker;
 import me.nikl.gamebox.GameBox;
 import me.nikl.gamebox.game.Game;
 import me.nikl.gamebox.game.GameSettings;
-import me.nikl.cookieclicker.CCGameManager;
-import me.nikl.cookieclicker.CCLanguage;
 
 /**
  * Created by Niklas
