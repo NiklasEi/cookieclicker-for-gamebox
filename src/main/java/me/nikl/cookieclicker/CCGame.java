@@ -662,7 +662,6 @@ public class CCGame extends BukkitRunnable {
     }
 
     public void onGameEnd(boolean async) {
-        Bukkit.getLogger().info(" on game end...");
         player.sendMessage(lang.PREFIX + lang.GAME_CLOSED.replace("%score%", NumberUtility.convertHugeNumber(Math.floor(totalCookiesProduced))));
 
         Map<String, Double> cookies = new HashMap<>();

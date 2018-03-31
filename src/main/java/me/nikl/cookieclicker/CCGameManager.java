@@ -152,7 +152,6 @@ public class CCGameManager implements GameManager {
     }
 
     public void saveGame(CCGameRules rule, UUID uuid, Map<String, Double> cookies, Map<String, Integer> productions, List<Integer> upgrades, boolean async) {
-        Bukkit.getLogger().info(" saving game and add stats");
         for (String key : cookies.keySet()) {
             saves.set(rule.getKey() + "." + uuid.toString() + "." + "cookies" + "." + key, Math.floor(cookies.get(key)));
         }
