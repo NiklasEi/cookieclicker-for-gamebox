@@ -378,165 +378,139 @@ upgrades:
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     # Factory upgrades (type: classic)
     13:
-      name: "Sturdier conveyor belts"
+      name: "Stabilere Antriebsriehmen"
       description:
-        - '&5&o"You''re going places."'
+        - '&5&o"Langsam bewegt sich etwas."'
     14:
-      name: "Child labor"
+      name: "Kinderarbeit"
       description:
-        - '&5&o"Cheaper, healthier workforce."'
+        - '&5&o"Billigere, gesündere Arbeitskräfte"'
     15:
-      name: "Sweatshop"
+      name: "Ausbeutungsbetrieb"
       description:
-        - '&5&o"Slackers will be terminated."'
+        - '&5&o"Faulenzer werden aussortiert."'
     46:
-      name: "Radium reactors"
+      name: "Radium Reaktoren"
       description:
-        - '&5&o"Gives your cookies a healthy glow."'
+        - '&5&o"Gibt deinen Keksen das leuchtende Etwas."'
     112:
-      name: "Recombobulators"
+      name: "Recombobulatoren"
       description:
-        - '&5&o"A major part of cookie recombobulation."'
+        - '&5&o"Bauteil der Keks-recombobulation."'
     194:
-      name: "Deep-bake process"
+      name: "Langes Backen"
       description:
-        - '&5&o"A patented process increasing cookie'
-        - '&5&o    yield two-fold for the same'
-        - '&5&o    amount of ingredients.'
-        - '&5&o    Don''t ask how, don''t take pictures,'
-        - '&5&o    and be sure to wear your'
-        - '&5&o    protective suit."'
+        - '&5&o"Ein patentireter Vorgang'
+        - '&5&o    um das doppelte an Keksen'
+        - '&5&o    aus der gleichen Menge Zutaten'
+        - '&5&o    zu erzeugen.'
+        - '&5&o    Keine Fragen, keine Bilder oder'
+        - '&5&o    Videos und trage immer deinen'
+        - '&5&o    Schutzanzug."'
     297:
-      name: "Cyborg workforce"
+      name: "Cyborg Arbeiter"
       description:
-        - '&5&o"Semi-synthetic organisms don''t'
-        - '&5&o    slack off, don''t unionize, and'
-        - '&5&o    have 20% shorter lunch breaks,'
-        - '&5&o    making them ideal labor fodder."'
+        - '&5&o"Roboter faulenzen nicht.'
     310:
-      name: "78-hour days"
+      name: "78-Stunden Tag"
       description:
-        - '&5&o"Why didn''t we think of this earlier?"'
+        - '&5&o"Warum fällt uns das erst jetzt ein?"'
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     # Bank upgrades (type: classic)
     232:
-      name: "Taller tellers"
+      name: "Größere Bankiers"
       description:
-        - '&5&o"Able to process a higher amount'
-        - '&5&o     of transactions. Careful though,'
-        - '&5&o     as taller tellers tell tall tales."'
+        - '&5&o"Können größere Überweisungen tätigen.'
     233:
-      name: "Scissor-resistant credit cards"
+      name: "Un-kaputbare Kreditkarten"
       description:
-        - '&5&o"For those truly valued customers."'
+        - '&5&o"Für die wirklich wichtigen Kunden."'
     234:
-      name: "Acid-proof vaults"
+      name: "Säure resistente Schließfächer"
       description:
-        - '&5&o"You know what they say:'
+        - '&5&o"Wie es so schön heißt:'
         - '&5&o    better safe than sorry."'
     235:
-      name: "Chocolate coins"
+      name: "Schoko Münzen"
       description:
-        - '&5&o"This revolutionary currency is'
-        - '&5&o    much easier to melt and form'
-        - '&5&o    into ingots - and tastes much'
-        - '&5&o    better, for a change."'
+        - '&5&o"Diese revolutionäre Währung'
+        - '&5&o    ist deutlich einfacher'
+        - '&5&o    herzustellen und eignet sich'
+        - '&5&o    auch gut zum Verzehr."'
     236:
-      name: "Exponential interest rates"
+      name: "Exponentielle Zinsen"
       description:
-        - '&5&o"Can''t argue with mathematics!'
-        - '&5&o     Now fork it over."'
+        - '&5&o"Pure Mathematik...!'
     237:
-      name: "Financial zen"
+      name: "Finanzieller zen"
       description:
-        - '&5&o"The ultimate grail of economic thought;'
-        - '&5&o    the feng shui of big money,'
-        - '&5&o    the stock market yoga,'
-        - '&5&o    the Heimlich maneuver'
-        - '&5&o    of dimes and nickels."'
+        - '&5&o"Die ultimative Economie;'
+        - '&5&o    Feng shui des Geldes,'
+        - '&5&o    Börsen yoga.'
     298:
-      name: "Way of the wallet"
+      name: "Der Weg des Geldes"
       description:
-        - '&5&o"This new monetary school of thought'
-        - '&5&o    is all the rage on the'
-        - '&5&o    banking scene;'
-        - '&5&o    follow its precepts'
-        - '&5&o    and you may just profit from it."'
+        - '&5&o"Die neue Geld Philosophie.'
     311:
-      name: "The stuff rationale"
+      name: "Rationalität"
       description:
-        - '&5&o"If not now, when? If not it, what?'
-        - '&5&o    If not things... stuff?"'
+        - '&5&o"Wenn nicht jetzt, wann dann?'
+        - '&5&o    Wenn nicht Geld, was dann?"'
+        - '&5&o    ... Zeugs?"'
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     # Temple upgrades (type: classic)
     238:
-      name: "Golden idols"
+      name: "Goldene Idole"
       description:
-        - '&5&o"Lure even greedier adventurers'
-        - '&5&o     to retrieve your cookies.'
-        - '&5&o     Now that''s a real idol game!"'
+        - '&5&o"Locke gierige Abenteuerer an,'
+        - '&5&o     um dir Kekse zu bringen.'
     239:
-      name: "Sacrifices"
+      name: "Opfer"
       description:
-        - '&5&o"What''s a life to a gigaton of cookies?"'
+        - '&5&o"Was ist schon ein Leben für eine Tonne Kekse?"'
     240:
-      name: "Delicious blessing"
+      name: "Schmackhafte Segnung"
       description:
-        - '&5&o"And lo, the Baker''s almighty spoon'
-        - '&5&o    came down and distributed'
-        - '&5&o    holy gifts unto the believers -'
-        - '&5&o    shimmering sugar,'
-        - '&5&o    and chocolate dark as night,'
-        - '&5&o    and all manner of wheats.'
-        - '&5&o    And boy let me tell you,'
-        - '&5&o    that party was mighty gnarly."'
+        - '&5&o"Und lo, des Bäkers heiliger Löffel'
+        - '&5&o    kam herab und verteilte heilige'
+        - '&5&o    Geschenke unter den Gläubigen -'
+        - '&5&o    glänzender Zucker und'
+        - '&5&o    Schokolade schwarz wie die Nacht.'
     241:
-      name: "Sun festival"
+      name: "Sonnenfeier"
       description:
-        - '&5&o"Free the primordial powers of your temples'
-        - '&5&o    with these annual celebrations'
-        - '&5&o    involving fire-breathers,'
-        - '&5&o    traditional dancing,'
-        - '&5&o    ritual beheadings'
-        - '&5&o    and other merriments!"'
+        - '&5&o"Berfreie die primordiale Kraft deines'
+        - '&5&o    Tempels mit dieser jährlichen'
+        - '&5&o    Feier: Feuerwerk, Tänze und'
+        - '&5&o    blutige Rituale.'
     242:
-      name: "Enlarged pantheon"
+      name: "Größeres Pantheon"
       description:
-        - '&5&o"Enough spiritual inadequacy! More'
-        - '&5&o    divinities than you''ll ever need,'
-        - '&5&o    or your money back!'
-        - '&5&o    100% guaranteed!"'
+        - '&5&o"Mehr Heiligkeit, als du jemals'
+        - '&5&o    brauchen wirst. Mit Geld-zurück'
+        - '&5&o    Garantie!'
     243:
-      name: "Great Baker in the sky"
+      name: "Großer Bäcker im Himmel"
       description:
-        - '&5&o"This is it. The ultimate deity has finally'
-        - '&5&o    cast Their sublimely divine eye upon'
-        - '&5&o    your operation;'
-        - '&5&o    whether this is a good thing'
-        - '&5&o    or possibly the end of days'
-        - '&5&o    is something you should find out...'
-        - '&5&o    very soon!"'
+        - '&5&o"Es ist so weit. Die große Heiligkeit hat'
+        - '&5&o    sein Auge auf deine Kekse geworfen.'
     299:
-      name: "Creation myth"
+      name: "Der Back Mythos"
       description:
-        - '&5&o"Stories have been circulating'
-        - '&5&o    about the origins of'
-        - '&5&o    the very first cookie'
-        - '&5&o    that was ever baked;'
-        - '&5&o    tales of how it all began,'
-        - '&5&o    in the Dough beyond time'
-        - '&5&o    and the Ovens of destiny."'
+        - '&5&o"Es gibt eine alter Geschichte'
+        - '&5&o    über den Ursprung des ersten'
+        - '&5&o    Keks, der jemals gebacken wurde.'
+        - '&5&o    Eine Fabel wie alles begann'
+        - '&5&o    mit dem Urteig im Ofen'
+        - '&5&o    der Bestimmung."'
     312:
-      name: "Theocracy"
+      name: "Theokratie"
       description:
-        - '&5&o"You''ve turned your cookie empire'
-        - '&5&o    into a perfect theocracy,'
-        - '&5&o    gathering the adoration'
-        - '&5&o    of zillions of followers'
-        - '&5&o    from every corner of the universe.'
-        - '&5&o    Don''t let it go to your head."'
+        - '&5&o"Du hast dien Keksreich in eine'
+        - '&5&o    ultimative Theokratie gewandelt.'
+        - '&5&o    Lass es dir nicht zu Kopf steigen!"'
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     # Wizard Tower upgrades (type: classic)
