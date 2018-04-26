@@ -1,3 +1,9 @@
+### v 2.1.0
+- sync top lists via plugin channels
+- improved cookie clicker database
+  - save games in MySQL database when enabled
+  - all handled in database class instead of Game and Manager classes
+
 ### v 2.0.0
 - update to gamebox v2
 

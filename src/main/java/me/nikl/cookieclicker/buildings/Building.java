@@ -88,7 +88,7 @@ public class Building {
     }
 
     public void visualize(Inventory inventory) {
-        if (icon == null || lore == null) return;
+        if (icon == null || lore == null || inventory == null) return;
         List<String> newLore = new ArrayList<>();
         for (String line : lore) {
             newLore.add(line.replace("%count%", String.valueOf(count))

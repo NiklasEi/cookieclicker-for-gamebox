@@ -48,28 +48,10 @@ public class CCGameManager implements GameManager {
     private DataBase statistics;
     private CCLanguage lang;
 
-    private File savesFile;
-    private FileConfiguration saves;
-
     public CCGameManager(CookieClicker game) {
         this.game = game;
         this.statistics = game.getGameBox().getDataBase();
         this.lang = (CCLanguage) game.getGameLang();
-
-        savesFile = new File(game.getDataFolder().toString() + File.separatorChar + "saves.yml");
-        if (!savesFile.exists()) {
-            try {
-                savesFile.createNewFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-        try {
-            this.saves = YamlConfiguration.loadConfiguration(new InputStreamReader(new FileInputStream(savesFile), "UTF-8"));
-        } catch (UnsupportedEncodingException | FileNotFoundException e) {
-            e.printStackTrace();
-        }
     }
 
 
@@ -106,11 +88,7 @@ public class CCGameManager implements GameManager {
         if (!game.payIfNecessary(players[0], rule.getCost())) {
             throw new GameStartException(GameStartException.Reason.NOT_ENOUGH_MONEY);
         }
-        if (saves.isConfigurationSection(rule.getKey() + "." + players[0].getUniqueId())) {
-            games.put(players[0].getUniqueId(), new CCGame(rule, game, players[0], playSounds, saves.getConfigurationSection(rule.getKey() + "." + players[0].getUniqueId())));
-        } else {
-            games.put(players[0].getUniqueId(), new CCGame(rule, game, players[0], playSounds, null));
-        }
+        games.put(players[0].getUniqueId(), new CCGame(rule, game, players[0], playSounds));
         return;
     }
 
@@ -151,27 +129,11 @@ public class CCGameManager implements GameManager {
         return gameRules;
     }
 
-    public void saveGame(CCGameRules rule, UUID uuid, Map<String, Double> cookies, Map<String, Integer> productions, List<Integer> upgrades, boolean async) {
-        for (String key : cookies.keySet()) {
-            saves.set(rule.getKey() + "." + uuid.toString() + "." + "cookies" + "." + key, Math.floor(cookies.get(key)));
-        }
-        for (String production : productions.keySet()) {
-            saves.set(rule.getKey() + "." + uuid.toString() + "." + "productions" + "." + production, productions.get(production));
-        }
-        saves.set(rule.getKey() + "." + uuid.toString() + "." + "upgrades", upgrades);
-        statistics.addStatistics(uuid, game.getGameID(), rule.getKey(), Math.floor(cookies.get("total")), SaveType.HIGH_NUMBER_SCORE, async);
-    }
-
     public void onShutDown() {
         // save all open games!
         for (CCGame game : games.values()) {
             game.cancel();
             game.onGameEnd(false);
-        }
-        try {
-            saves.save(savesFile);
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 
@@ -192,9 +154,7 @@ public class CCGameManager implements GameManager {
         // ToDo: update GameBox and allow for removing of statistics
 
         // delete saves
-        if (saves.isConfigurationSection(key)) {
-            saves.set(key, null);
-        }
+        game.getDatabase().deleteSaves(key);
     }
 
     @Override

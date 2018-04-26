@@ -16,6 +16,7 @@ import me.nikl.cookieclicker.buildings.Shipment;
 import me.nikl.cookieclicker.buildings.Temple;
 import me.nikl.cookieclicker.buildings.TimeMachine;
 import me.nikl.cookieclicker.buildings.WizardTower;
+import me.nikl.cookieclicker.data.GameSave;
 import me.nikl.cookieclicker.upgrades.Upgrade;
 import me.nikl.cookieclicker.upgrades.alchemylab.Ambrosia;
 import me.nikl.cookieclicker.upgrades.alchemylab.Antimony;
@@ -142,6 +143,7 @@ import me.nikl.cookieclicker.upgrades.wizardtower.KitchenCurses;
 import me.nikl.cookieclicker.upgrades.wizardtower.PointierHats;
 import me.nikl.cookieclicker.upgrades.wizardtower.RabbitTrick;
 import me.nikl.cookieclicker.upgrades.wizardtower.SchoolOfSorcery;
+import me.nikl.gamebox.data.database.DataBase;
 import me.nikl.gamebox.nms.NmsFactory;
 import me.nikl.gamebox.nms.NmsUtility;
 import me.nikl.gamebox.utility.NumberUtility;
@@ -158,6 +160,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.material.MaterialData;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -173,7 +176,6 @@ import java.util.Set;
  * Game
  */
 public class CCGame extends BukkitRunnable {
-
     public double baseCookiesPerClick = 1.;
     public double cookiesPerClickPerCPS = 0.;
     private Random rand;
@@ -213,8 +215,9 @@ public class CCGame extends BukkitRunnable {
     private float volume = 0.5f;
     private float pitch = 10f;
 
+    private boolean loaded = false;
 
-    public CCGame(CCGameRules rule, CookieClicker game, Player player, boolean playSounds, ConfigurationSection save) {
+    public CCGame(CCGameRules rule, CookieClicker game, Player player, boolean playSounds) {
         this.plugin = game;
         nms = NmsFactory.getNmsUtility();
         this.lang = (CCLanguage) game.getGameLang();
@@ -421,6 +424,18 @@ public class CCGame extends BukkitRunnable {
             upgrade = iterator.next();
             futureUpgrades.put(upgrade.getId(), upgrade);
         }
+        game.getDatabase().getGameSave(player.getUniqueId(), rule.getKey(), new DataBase.Callback<GameSave>() {
+            @Override
+            public void onSuccess(GameSave gameSave) {
+                load(gameSave);
+            }
+
+            @Override
+            public void onFailure(@Nullable Throwable throwable, @Nullable GameSave gameSave) {
+                if (throwable != null) throwable.printStackTrace();
+                load(gameSave);
+            }
+        });
 
         // only play sounds if the game setting allows to
         this.playSounds = game.getSettings().isPlaySounds() && playSounds;
@@ -430,11 +445,6 @@ public class CCGame extends BukkitRunnable {
                 .replace("%score%", String.valueOf((int) cookies));
 
         this.inventory = game.createInventory(54, title);
-
-        if (save != null) {
-            //load the game
-            load(save);
-        }
 
         buildInv();
 
@@ -477,7 +487,7 @@ public class CCGame extends BukkitRunnable {
 
 
     public void onClick(InventoryClickEvent inventoryClickEvent) {
-        if (inventoryClickEvent.getAction() != InventoryAction.PICKUP_ALL && inventoryClickEvent.getAction() != InventoryAction.PICKUP_HALF)
+        if (!loaded || inventoryClickEvent.getAction() != InventoryAction.PICKUP_ALL && inventoryClickEvent.getAction() != InventoryAction.PICKUP_HALF)
             return;
         if (inventoryClickEvent.getCurrentItem() == null) return;
 
@@ -663,48 +673,35 @@ public class CCGame extends BukkitRunnable {
 
     public void onGameEnd(boolean async) {
         player.sendMessage(lang.PREFIX + lang.GAME_CLOSED.replace("%score%", NumberUtility.convertHugeNumber(Math.floor(totalCookiesProduced))));
+        GameSave.Builder builder = new GameSave.Builder(player.getUniqueId(), rule.getKey());
 
-        Map<String, Double> cookies = new HashMap<>();
-        cookies.put("current", this.cookies);
-        cookies.put("click", this.clickCookiesProduced);
-        cookies.put("total", this.totalCookiesProduced);
-
-        Map<String, Integer> productions = new HashMap<>();
+        builder.setCookiesClicked(this.clickCookiesProduced);
+        builder.setCookiesCurrent(this.cookies);
+        builder.setCookiesTotal(this.totalCookiesProduced);
         for (Buildings production : buildingsPositions.values()) {
-            productions.put(production.toString(), getBuilding(production).getCount());
+            builder.addBuilding(production, getBuilding(production).getCount());
         }
-
         List<Integer> upgrades = new ArrayList<>();
         for (Upgrade upgrade : activeUpgrades) {
             upgrades.add(upgrade.getId());
         }
-
-        ((CCGameManager) plugin.getGameManager()).saveGame(rule, player.getUniqueId(), cookies, productions, upgrades, async);
+        builder.setUpgrades(upgrades);
+        plugin.getDatabase().saveGame(builder.build(), async);
     }
 
-    private void load(ConfigurationSection save) {
-        if (save.isConfigurationSection("cookies")) {
-            ConfigurationSection cookieSection = save.getConfigurationSection("cookies");
-            cookies = cookieSection.getDouble("current", 0.);
-            clickCookiesProduced = cookieSection.getDouble("click", 0.);
-            totalCookiesProduced = cookieSection.getDouble("total", 0.);
+    private void load(GameSave save) {
+        loaded = true;
+        if (save == null) return;
+        Map<String, Double> cookiesMap = save.getCookies();
+        cookies = cookiesMap.get(GameSave.CURRENT);
+        clickCookiesProduced = cookiesMap.get(GameSave.CLICKED);
+        totalCookiesProduced = cookiesMap.get(GameSave.TOTAL);
+        Map<Buildings, Integer> buildings = save.getBuildings();
+        for (Buildings building : buildings.keySet()) {
+            this.buildings.get(building).addProductions(buildings.get(building));
+            if (inventory != null)this.buildings.get(building).visualize(inventory);
         }
-
-        if (save.isConfigurationSection("productions")) {
-
-            Buildings building;
-            for (String key : save.getConfigurationSection("productions").getKeys(false)) {
-                try {
-                    building = Buildings.valueOf(key);
-                    buildings.get(building).addProductions(save.getInt("productions" + "." + key, 0));
-                } catch (IllegalArgumentException exception) {
-                    // ignore
-                }
-            }
-        }
-
-        List<Integer> upgrades = save.getIntegerList("upgrades");
-
+        List<Integer> upgrades = save.getUpgrades();
         if (upgrades != null && !upgrades.isEmpty()) {
             for (int id : upgrades) {
                 Upgrade upgrade = futureUpgrades.get(id);
@@ -713,6 +710,11 @@ public class CCGame extends BukkitRunnable {
                 activeUpgrades.add(upgrade);
                 futureUpgrades.remove(id);
             }
+        }
+        if (oven != null) {
+            calcCookiesPerSecond();
+            calcCookiesPerClick();
+            updateOven();
         }
     }
 
