@@ -1,6 +1,7 @@
 package me.nikl.cookieclicker;
 
 import me.nikl.cookieclicker.buildings.*;
+import me.nikl.cookieclicker.commands.ManipulateCookies;
 import me.nikl.cookieclicker.data.Database;
 import me.nikl.cookieclicker.data.FileDatabase;
 import me.nikl.cookieclicker.data.MySQLDatabase;
@@ -172,6 +173,7 @@ public class CookieClicker extends Game {
         }
         loadBuildings();
         loadUpgrades();
+        //new ManipulateCookies(gameBox, this);
     }
 
     @Override
