@@ -65,7 +65,7 @@
         </dependency>
         <dependency>
             <groupId>me.nikl</groupId>
-            <artifactId>gamebox</artifactId>
+            <artifactId>gamebox-core</artifactId>
             <version>2.1.0</version>
             <scope>provided</scope>
         </dependency>
