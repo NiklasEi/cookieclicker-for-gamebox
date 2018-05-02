@@ -1,6 +1,7 @@
 package me.nikl.cookieclicker.upgrades.prism;
 
 import me.nikl.cookieclicker.CCGame;
+import me.nikl.cookieclicker.CookieClicker;
 import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.upgrades.Upgrade;
 import me.nikl.cookieclicker.upgrades.UpgradeType;
@@ -10,7 +11,7 @@ import me.nikl.cookieclicker.upgrades.UpgradeType;
  */
 public class GemPolish extends Upgrade {
 
-    public GemPolish(CCGame game) {
+    public GemPolish(CookieClicker game) {
         super(game, 175);
         this.cost = 21000000000000000.;
         productionsRequirements.put(Buildings.PRISM, 1);
@@ -20,9 +21,8 @@ public class GemPolish extends Upgrade {
     }
 
     @Override
-    public void onActivation() {
-        game.getBuilding(Buildings.PRISM).multiply(2);
-        game.getBuilding(Buildings.PRISM).visualize(game.getInventory());
-        active = true;
+    public void onActivation(CCGame game) {
+        game.getBuilding(Buildings.PRISM).multiply(game.getGameUuid(), 2);
+        game.getBuilding(Buildings.PRISM).visualize(game);
     }
 }

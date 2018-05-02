@@ -1,6 +1,7 @@
 package me.nikl.cookieclicker.upgrades.farm;
 
 import me.nikl.cookieclicker.CCGame;
+import me.nikl.cookieclicker.CookieClicker;
 import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.upgrades.Upgrade;
 import me.nikl.cookieclicker.upgrades.UpgradeType;
@@ -12,7 +13,7 @@ import org.bukkit.material.MaterialData;
  */
 public class CookieTrees extends Upgrade {
 
-    public CookieTrees(CCGame game) {
+    public CookieTrees(CookieClicker game) {
         super(game, 12);
         this.cost = 550000;
         productionsRequirements.put(Buildings.FARM, 25);
@@ -24,10 +25,9 @@ public class CookieTrees extends Upgrade {
     }
 
     @Override
-    public void onActivation() {
-        game.getBuilding(Buildings.FARM).multiply(2);
-        game.getBuilding(Buildings.FARM).visualize(game.getInventory());
-        active = true;
+    public void onActivation(CCGame game) {
+        game.getBuilding(Buildings.FARM).multiply(game.getGameUuid(), 2);
+        game.getBuilding(Buildings.FARM).visualize(game);
     }
 
 

@@ -1,6 +1,7 @@
 package me.nikl.cookieclicker.upgrades.mine;
 
 import me.nikl.cookieclicker.CCGame;
+import me.nikl.cookieclicker.CookieClicker;
 import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.upgrades.Upgrade;
 import me.nikl.cookieclicker.upgrades.UpgradeType;
@@ -12,7 +13,7 @@ import org.bukkit.material.MaterialData;
  */
 public class HBombMining extends Upgrade {
 
-    public HBombMining(CCGame game) {
+    public HBombMining(CookieClicker game) {
         super(game, 113);
         this.cost = 60000000000.;
         productionsRequirements.put(Buildings.MINE, 100);
@@ -24,10 +25,9 @@ public class HBombMining extends Upgrade {
     }
 
     @Override
-    public void onActivation() {
-        game.getBuilding(Buildings.MINE).multiply(2);
-        game.getBuilding(Buildings.MINE).visualize(game.getInventory());
-        active = true;
+    public void onActivation(CCGame game) {
+        game.getBuilding(Buildings.MINE).multiply(game.getGameUuid(), 2);
+        game.getBuilding(Buildings.MINE).visualize(game);
     }
 
 

@@ -1,33 +1,19 @@
 package me.nikl.cookieclicker;
 
 import me.nikl.gamebox.data.database.DataBase;
-import me.nikl.gamebox.data.toplist.SaveType;
 import me.nikl.gamebox.game.exceptions.GameStartException;
 import me.nikl.gamebox.game.manager.GameManager;
 import me.nikl.gamebox.game.rules.GameRule;
-import me.nikl.cookieclicker.CCGame;
-import me.nikl.cookieclicker.CCGameRules;
-import me.nikl.cookieclicker.CCLanguage;
-import me.nikl.cookieclicker.CookieClicker;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.inventory.Inventory;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
@@ -53,7 +39,6 @@ public class CCGameManager implements GameManager {
         this.statistics = game.getGameBox().getDataBase();
         this.lang = (CCLanguage) game.getGameLang();
     }
-
 
     public void onInventoryClick(InventoryClickEvent inventoryClickEvent) {
         if (!games.keySet().contains(inventoryClickEvent.getWhoClicked().getUniqueId())) return;

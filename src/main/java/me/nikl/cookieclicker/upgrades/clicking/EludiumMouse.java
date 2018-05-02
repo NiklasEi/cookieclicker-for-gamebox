@@ -1,6 +1,7 @@
 package me.nikl.cookieclicker.upgrades.clicking;
 
 import me.nikl.cookieclicker.CCGame;
+import me.nikl.cookieclicker.CookieClicker;
 import me.nikl.cookieclicker.upgrades.Upgrade;
 import me.nikl.cookieclicker.upgrades.UpgradeType;
 import org.bukkit.Material;
@@ -11,7 +12,7 @@ import org.bukkit.material.MaterialData;
  */
 public class EludiumMouse extends Upgrade {
 
-    public EludiumMouse(CCGame game) {
+    public EludiumMouse(CookieClicker game) {
         super(game, 190);
         this.cost = 500000000000000.;
         setClickCookieReq(10000000000000.);
@@ -24,9 +25,8 @@ public class EludiumMouse extends Upgrade {
     }
 
     @Override
-    public void onActivation() {
+    public void onActivation(CCGame game) {
         game.cookiesPerClickPerCPS += 0.01;
-        active = true;
     }
 
 

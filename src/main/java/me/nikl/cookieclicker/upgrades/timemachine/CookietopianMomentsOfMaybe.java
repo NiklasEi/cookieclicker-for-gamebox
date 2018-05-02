@@ -1,6 +1,7 @@
 package me.nikl.cookieclicker.upgrades.timemachine;
 
 import me.nikl.cookieclicker.CCGame;
+import me.nikl.cookieclicker.CookieClicker;
 import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.upgrades.Upgrade;
 import me.nikl.cookieclicker.upgrades.UpgradeType;
@@ -12,7 +13,7 @@ import org.bukkit.material.MaterialData;
  */
 public class CookietopianMomentsOfMaybe extends Upgrade {
 
-    public CookietopianMomentsOfMaybe(CCGame game) {
+    public CookietopianMomentsOfMaybe(CookieClicker game) {
         super(game, 317);
         this.cost = 7000000000000000000000000000.;
         productionsRequirements.put(Buildings.TIME_MACHINE, 250);
@@ -24,9 +25,8 @@ public class CookietopianMomentsOfMaybe extends Upgrade {
     }
 
     @Override
-    public void onActivation() {
-        game.getBuilding(Buildings.TIME_MACHINE).multiply(2);
-        game.getBuilding(Buildings.TIME_MACHINE).visualize(game.getInventory());
-        active = true;
+    public void onActivation(CCGame game) {
+        game.getBuilding(Buildings.TIME_MACHINE).multiply(game.getGameUuid(), 2);
+        game.getBuilding(Buildings.TIME_MACHINE).visualize(game);
     }
 }

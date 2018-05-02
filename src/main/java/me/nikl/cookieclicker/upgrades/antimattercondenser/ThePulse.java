@@ -1,6 +1,7 @@
 package me.nikl.cookieclicker.upgrades.antimattercondenser;
 
 import me.nikl.cookieclicker.CCGame;
+import me.nikl.cookieclicker.CookieClicker;
 import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.upgrades.Upgrade;
 import me.nikl.cookieclicker.upgrades.UpgradeType;
@@ -10,7 +11,7 @@ import me.nikl.cookieclicker.upgrades.UpgradeType;
  */
 public class ThePulse extends Upgrade {
 
-    public ThePulse(CCGame game) {
+    public ThePulse(CookieClicker game) {
         super(game, 305);
         this.cost = 85000000000000000000000000.;
         productionsRequirements.put(Buildings.ANTIMATTER_CONDENSER, 200);
@@ -20,9 +21,8 @@ public class ThePulse extends Upgrade {
     }
 
     @Override
-    public void onActivation() {
-        game.getBuilding(Buildings.ANTIMATTER_CONDENSER).multiply(2);
-        game.getBuilding(Buildings.ANTIMATTER_CONDENSER).visualize(game.getInventory());
-        active = true;
+    public void onActivation(CCGame game) {
+        game.getBuilding(Buildings.ANTIMATTER_CONDENSER).multiply(game.getGameUuid(), 2);
+        game.getBuilding(Buildings.ANTIMATTER_CONDENSER).visualize(game);
     }
 }

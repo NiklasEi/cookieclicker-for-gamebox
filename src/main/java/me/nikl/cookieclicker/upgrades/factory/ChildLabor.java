@@ -1,6 +1,7 @@
 package me.nikl.cookieclicker.upgrades.factory;
 
 import me.nikl.cookieclicker.CCGame;
+import me.nikl.cookieclicker.CookieClicker;
 import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.upgrades.Upgrade;
 import me.nikl.cookieclicker.upgrades.UpgradeType;
@@ -12,7 +13,7 @@ import org.bukkit.material.MaterialData;
  */
 public class ChildLabor extends Upgrade {
 
-    public ChildLabor(CCGame game) {
+    public ChildLabor(CookieClicker game) {
         super(game, 14);
         this.cost = 6500000;
         productionsRequirements.put(Buildings.FACTORY, 5);
@@ -24,10 +25,9 @@ public class ChildLabor extends Upgrade {
     }
 
     @Override
-    public void onActivation() {
-        game.getBuilding(Buildings.FACTORY).multiply(2);
-        game.getBuilding(Buildings.FACTORY).visualize(game.getInventory());
-        active = true;
+    public void onActivation(CCGame game) {
+        game.getBuilding(Buildings.FACTORY).multiply(game.getGameUuid(), 2);
+        game.getBuilding(Buildings.FACTORY).visualize(game);
     }
 
 

@@ -1,6 +1,7 @@
 package me.nikl.cookieclicker.upgrades.clicking;
 
 import me.nikl.cookieclicker.CCGame;
+import me.nikl.cookieclicker.CookieClicker;
 import me.nikl.cookieclicker.upgrades.Upgrade;
 import me.nikl.cookieclicker.upgrades.UpgradeType;
 import org.bukkit.Material;
@@ -11,7 +12,7 @@ import org.bukkit.material.MaterialData;
  */
 public class WishalloyMouse extends Upgrade {
 
-    public WishalloyMouse(CCGame game) {
+    public WishalloyMouse(CookieClicker game) {
         super(game, 191);
         this.cost = 50000000000000000.;
         setClickCookieReq(1000000000000000.);
@@ -24,9 +25,8 @@ public class WishalloyMouse extends Upgrade {
     }
 
     @Override
-    public void onActivation() {
+    public void onActivation(CCGame game) {
         game.cookiesPerClickPerCPS += 0.01;
-        active = true;
     }
 
 

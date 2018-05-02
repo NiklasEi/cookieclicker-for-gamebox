@@ -1,6 +1,7 @@
 package me.nikl.cookieclicker.upgrades.mine;
 
 import me.nikl.cookieclicker.CCGame;
+import me.nikl.cookieclicker.CookieClicker;
 import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.upgrades.Upgrade;
 import me.nikl.cookieclicker.upgrades.UpgradeType;
@@ -12,7 +13,7 @@ import org.bukkit.material.MaterialData;
  */
 public class Megadrill extends Upgrade {
 
-    public Megadrill(CCGame game) {
+    public Megadrill(CookieClicker game) {
         super(game, 17);
         this.cost = 600000;
         productionsRequirements.put(Buildings.MINE, 5);
@@ -24,10 +25,9 @@ public class Megadrill extends Upgrade {
     }
 
     @Override
-    public void onActivation() {
-        game.getBuilding(Buildings.MINE).multiply(2);
-        game.getBuilding(Buildings.MINE).visualize(game.getInventory());
-        active = true;
+    public void onActivation(CCGame game) {
+        game.getBuilding(Buildings.MINE).multiply(game.getGameUuid(), 2);
+        game.getBuilding(Buildings.MINE).visualize(game);
     }
 
 

@@ -1,6 +1,7 @@
 package me.nikl.cookieclicker.upgrades.bank;
 
 import me.nikl.cookieclicker.CCGame;
+import me.nikl.cookieclicker.CookieClicker;
 import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.upgrades.Upgrade;
 import me.nikl.cookieclicker.upgrades.UpgradeType;
@@ -12,7 +13,7 @@ import org.bukkit.material.MaterialData;
  */
 public class WayOfTheWallet extends Upgrade {
 
-    public WayOfTheWallet(CCGame game) {
+    public WayOfTheWallet(CookieClicker game) {
         super(game, 298);
         this.cost = 700000000000000000.;
         productionsRequirements.put(Buildings.BANK, 200);
@@ -24,10 +25,9 @@ public class WayOfTheWallet extends Upgrade {
     }
 
     @Override
-    public void onActivation() {
-        game.getBuilding(Buildings.BANK).multiply(2);
-        game.getBuilding(Buildings.BANK).visualize(game.getInventory());
-        active = true;
+    public void onActivation(CCGame game) {
+        game.getBuilding(Buildings.BANK).multiply(game.getGameUuid(), 2);
+        game.getBuilding(Buildings.BANK).visualize(game);
     }
 
 

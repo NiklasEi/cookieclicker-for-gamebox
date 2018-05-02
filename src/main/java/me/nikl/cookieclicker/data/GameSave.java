@@ -4,6 +4,7 @@ import me.nikl.cookieclicker.buildings.Buildings;
 import org.bukkit.Bukkit;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -103,8 +104,8 @@ public class GameSave {
             return this;
         }
 
-        public Builder setUpgrades(List<Integer> upgrades) {
-            this.upgrades = upgrades;
+        public Builder setUpgrades(Collection<Integer> upgrades) {
+            this.upgrades = new ArrayList<>(upgrades);
             return this;
         }
 

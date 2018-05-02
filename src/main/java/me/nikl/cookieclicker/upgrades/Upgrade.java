@@ -1,7 +1,10 @@
 package me.nikl.cookieclicker.upgrades;
 
 import me.nikl.cookieclicker.CCGame;
+import me.nikl.cookieclicker.CCGameManager;
 import me.nikl.cookieclicker.CCLanguage;
+import me.nikl.cookieclicker.CookieClicker;
+import me.nikl.cookieclicker.buildings.Building;
 import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.gamebox.GameBox;
 import me.nikl.gamebox.GameBoxSettings;
@@ -30,12 +33,11 @@ public abstract class Upgrade {
     protected String gain = "NULL";
     protected List<String> lore;
     protected String name;
-    protected CCGame game;
-    protected boolean active;
+    protected CookieClicker game;
     private Map<String, Double> cookiesRequirements;
     private CCLanguage lang;
 
-    public Upgrade(CCGame game, int id) {
+    public Upgrade(CookieClicker game, int id) {
         this.id = id;
         productionsRequirements = new HashMap<>();
         cookiesRequirements = new HashMap<>();
@@ -44,7 +46,7 @@ public abstract class Upgrade {
         this.cost = 1;
         this.game = game;
 
-        this.lang = game.getLang();
+        this.lang = (CCLanguage) game.getGameLang();
     }
 
     protected void setTotalCookieReq(double count) {
@@ -55,7 +57,7 @@ public abstract class Upgrade {
         cookiesRequirements.put("click", count);
     }
 
-    public boolean isUnlocked() {
+    public boolean isUnlocked(CCGame game) {
         for (String key : cookiesRequirements.keySet()) {
             switch (key) {
                 case "total":
@@ -75,7 +77,7 @@ public abstract class Upgrade {
         }
 
         for (Buildings buildings : productionsRequirements.keySet()) {
-            if (game.getBuilding(buildings).getCount() < productionsRequirements.get(buildings)) {
+            if (game.getBuilding(buildings).getCount(game.getGameUuid()) < productionsRequirements.get(buildings)) {
                 return false;
             }
         }
@@ -83,12 +85,12 @@ public abstract class Upgrade {
         return true;
     }
 
-    protected void loadLanguage(me.nikl.cookieclicker.upgrades.UpgradeType upgradeType, Buildings... buildings) {
+    protected void loadLanguage(UpgradeType upgradeType, Buildings... buildings) {
         name = lang.upgradeName.get(id);
 
         // for the standard upgrade type the building icon is used
         if (upgradeType == UpgradeType.CLASSIC && buildings != null && buildings.length == 1) {
-            icon = game.getBuilding(buildings[0]).getIcon();
+            icon = game.getBuildings().get(buildings[0]).getIcon();
         }
 
         lore = new ArrayList<>();
@@ -128,11 +130,7 @@ public abstract class Upgrade {
         icon.setItemMeta(meta);
     }
 
-    public abstract void onActivation();
-
-    public boolean isActive() {
-        return active;
-    }
+    public abstract void onActivation(CCGame game);
 
     public double getCost() {
         return this.cost;

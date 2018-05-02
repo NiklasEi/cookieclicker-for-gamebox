@@ -1,6 +1,7 @@
 package me.nikl.cookieclicker.upgrades.prism;
 
 import me.nikl.cookieclicker.CCGame;
+import me.nikl.cookieclicker.CookieClicker;
 import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.upgrades.Upgrade;
 import me.nikl.cookieclicker.upgrades.UpgradeType;
@@ -10,7 +11,7 @@ import me.nikl.cookieclicker.upgrades.UpgradeType;
  */
 public class GlowInTheDark extends Upgrade {
 
-    public GlowInTheDark(CCGame game) {
+    public GlowInTheDark(CookieClicker game) {
         super(game, 201);
         this.cost = 1050000000000000000000000.;
         productionsRequirements.put(Buildings.PRISM, 150);
@@ -20,9 +21,8 @@ public class GlowInTheDark extends Upgrade {
     }
 
     @Override
-    public void onActivation() {
-        game.getBuilding(Buildings.PRISM).multiply(2);
-        game.getBuilding(Buildings.PRISM).visualize(game.getInventory());
-        active = true;
+    public void onActivation(CCGame game) {
+        game.getBuilding(Buildings.PRISM).multiply(game.getGameUuid(), 2);
+        game.getBuilding(Buildings.PRISM).visualize(game);
     }
 }

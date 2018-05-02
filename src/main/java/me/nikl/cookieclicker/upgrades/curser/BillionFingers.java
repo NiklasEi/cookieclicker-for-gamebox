@@ -1,6 +1,7 @@
 package me.nikl.cookieclicker.upgrades.curser;
 
 import me.nikl.cookieclicker.CCGame;
+import me.nikl.cookieclicker.CookieClicker;
 import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.upgrades.Upgrade;
 import me.nikl.cookieclicker.upgrades.UpgradeType;
@@ -12,7 +13,7 @@ import org.bukkit.material.MaterialData;
  */
 public class BillionFingers extends Upgrade {
 
-    public BillionFingers(CCGame game) {
+    public BillionFingers(CookieClicker game) {
         super(game, 5);
         this.cost = 100000000;
         productionsRequirements.put(Buildings.CURSOR, 100);
@@ -25,13 +26,12 @@ public class BillionFingers extends Upgrade {
     }
 
     @Override
-    public void onActivation() {
+    public void onActivation(CCGame game) {
         for (Buildings buildings : Buildings.values()) {
             if (buildings == Buildings.CURSOR) continue;
             game.addBuildingBonus(Buildings.CURSOR, buildings, 5);
             game.addClickBonus(buildings, 5);
         }
-        active = true;
     }
 
 

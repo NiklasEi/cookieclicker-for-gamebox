@@ -1,6 +1,7 @@
 package me.nikl.cookieclicker.upgrades.wizardtower;
 
 import me.nikl.cookieclicker.CCGame;
+import me.nikl.cookieclicker.CookieClicker;
 import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.upgrades.Upgrade;
 import me.nikl.cookieclicker.upgrades.UpgradeType;
@@ -12,7 +13,7 @@ import org.bukkit.material.MaterialData;
  */
 public class Cookiemancy extends Upgrade {
 
-    public Cookiemancy(CCGame game) {
+    public Cookiemancy(CookieClicker game) {
         super(game, 300);
         this.cost = 165000000000000000000.;
         productionsRequirements.put(Buildings.WIZARD_TOWER, 200);
@@ -24,10 +25,9 @@ public class Cookiemancy extends Upgrade {
     }
 
     @Override
-    public void onActivation() {
-        game.getBuilding(Buildings.WIZARD_TOWER).multiply(2);
-        game.getBuilding(Buildings.WIZARD_TOWER).visualize(game.getInventory());
-        active = true;
+    public void onActivation(CCGame game) {
+        game.getBuilding(Buildings.WIZARD_TOWER).multiply(game.getGameUuid(), 2);
+        game.getBuilding(Buildings.WIZARD_TOWER).visualize(game);
     }
 
 

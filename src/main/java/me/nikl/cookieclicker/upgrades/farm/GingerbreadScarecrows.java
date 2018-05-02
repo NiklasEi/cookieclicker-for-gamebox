@@ -1,6 +1,7 @@
 package me.nikl.cookieclicker.upgrades.farm;
 
 import me.nikl.cookieclicker.CCGame;
+import me.nikl.cookieclicker.CookieClicker;
 import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.upgrades.Upgrade;
 import me.nikl.cookieclicker.upgrades.UpgradeType;
@@ -12,7 +13,7 @@ import org.bukkit.material.MaterialData;
  */
 public class GingerbreadScarecrows extends Upgrade {
 
-    public GingerbreadScarecrows(CCGame game) {
+    public GingerbreadScarecrows(CookieClicker game) {
         super(game, 111);
         this.cost = 5500000000.;
         productionsRequirements.put(Buildings.FARM, 100);
@@ -24,10 +25,9 @@ public class GingerbreadScarecrows extends Upgrade {
     }
 
     @Override
-    public void onActivation() {
-        game.getBuilding(Buildings.FARM).multiply(2);
-        game.getBuilding(Buildings.FARM).visualize(game.getInventory());
-        active = true;
+    public void onActivation(CCGame game) {
+        game.getBuilding(Buildings.FARM).multiply(game.getGameUuid(), 2);
+        game.getBuilding(Buildings.FARM).visualize(game);
     }
 
 

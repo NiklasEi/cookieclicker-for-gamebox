@@ -1,6 +1,7 @@
 package me.nikl.cookieclicker.upgrades.grandma;
 
 import me.nikl.cookieclicker.CCGame;
+import me.nikl.cookieclicker.CookieClicker;
 import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.upgrades.Upgrade;
 import me.nikl.cookieclicker.upgrades.UpgradeType;
@@ -13,7 +14,7 @@ import org.bukkit.inventory.meta.SkullMeta;
  */
 public class XtremeWalkers extends Upgrade {
 
-    public XtremeWalkers(CCGame game) {
+    public XtremeWalkers(CookieClicker game) {
         super(game, 294);
         this.cost = 50000000000000.;
         productionsRequirements.put(Buildings.GRANDMA, 200);
@@ -28,10 +29,9 @@ public class XtremeWalkers extends Upgrade {
     }
 
     @Override
-    public void onActivation() {
-        game.getBuilding(Buildings.GRANDMA).multiply(2);
-        game.getBuilding(Buildings.GRANDMA).visualize(game.getInventory());
-        active = true;
+    public void onActivation(CCGame game) {
+        game.getBuilding(Buildings.GRANDMA).multiply(game.getGameUuid(), 2);
+        game.getBuilding(Buildings.GRANDMA).visualize(game);
     }
 
 

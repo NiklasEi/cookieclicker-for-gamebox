@@ -1,6 +1,7 @@
 package me.nikl.cookieclicker.upgrades.antimattercondenser;
 
 import me.nikl.cookieclicker.CCGame;
+import me.nikl.cookieclicker.CookieClicker;
 import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.upgrades.Upgrade;
 import me.nikl.cookieclicker.upgrades.UpgradeType;
@@ -10,7 +11,7 @@ import me.nikl.cookieclicker.upgrades.UpgradeType;
  */
 public class Nanocosmics extends Upgrade {
 
-    public Nanocosmics(CCGame game) {
+    public Nanocosmics(CookieClicker game) {
         super(game, 200);
         this.cost = 85000000000000000000000.;
         productionsRequirements.put(Buildings.ANTIMATTER_CONDENSER, 150);
@@ -20,9 +21,8 @@ public class Nanocosmics extends Upgrade {
     }
 
     @Override
-    public void onActivation() {
-        game.getBuilding(Buildings.ANTIMATTER_CONDENSER).multiply(2);
-        game.getBuilding(Buildings.ANTIMATTER_CONDENSER).visualize(game.getInventory());
-        active = true;
+    public void onActivation(CCGame game) {
+        game.getBuilding(Buildings.ANTIMATTER_CONDENSER).multiply(game.getGameUuid(), 2);
+        game.getBuilding(Buildings.ANTIMATTER_CONDENSER).visualize(game);
     }
 }

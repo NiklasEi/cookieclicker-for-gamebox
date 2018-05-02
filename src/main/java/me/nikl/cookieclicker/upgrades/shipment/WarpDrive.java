@@ -1,6 +1,7 @@
 package me.nikl.cookieclicker.upgrades.shipment;
 
 import me.nikl.cookieclicker.CCGame;
+import me.nikl.cookieclicker.CookieClicker;
 import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.upgrades.Upgrade;
 import me.nikl.cookieclicker.upgrades.UpgradeType;
@@ -12,7 +13,7 @@ import org.bukkit.material.MaterialData;
  */
 public class WarpDrive extends Upgrade {
 
-    public WarpDrive(CCGame game) {
+    public WarpDrive(CookieClicker game) {
         super(game, 48);
         this.cost = 255000000000000.;
         productionsRequirements.put(Buildings.SHIPMENT, 50);
@@ -24,9 +25,8 @@ public class WarpDrive extends Upgrade {
     }
 
     @Override
-    public void onActivation() {
-        game.getBuilding(Buildings.SHIPMENT).multiply(2);
-        game.getBuilding(Buildings.SHIPMENT).visualize(game.getInventory());
-        active = true;
+    public void onActivation(CCGame game) {
+        game.getBuilding(Buildings.SHIPMENT).multiply(game.getGameUuid(), 2);
+        game.getBuilding(Buildings.SHIPMENT).visualize(game);
     }
 }

@@ -1,6 +1,8 @@
 package me.nikl.cookieclicker.upgrades.wizardtower;
 
 import me.nikl.cookieclicker.CCGame;
+import me.nikl.cookieclicker.CookieClicker;
+import me.nikl.cookieclicker.buildings.Building;
 import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.upgrades.Upgrade;
 import me.nikl.cookieclicker.upgrades.UpgradeType;
@@ -12,7 +14,7 @@ import org.bukkit.material.MaterialData;
  */
 public class BeardlierBeards extends Upgrade {
 
-    public BeardlierBeards(CCGame game) {
+    public BeardlierBeards(CookieClicker game) {
         super(game, 245);
         this.cost = 16500000000.;
         productionsRequirements.put(Buildings.WIZARD_TOWER, 5);
@@ -24,10 +26,9 @@ public class BeardlierBeards extends Upgrade {
     }
 
     @Override
-    public void onActivation() {
-        game.getBuilding(Buildings.WIZARD_TOWER).multiply(2);
-        game.getBuilding(Buildings.WIZARD_TOWER).visualize(game.getInventory());
-        active = true;
+    public void onActivation(CCGame game) {
+        game.getBuilding(Buildings.WIZARD_TOWER).multiply(game.getGameUuid(), 2);
+        game.getBuilding(Buildings.WIZARD_TOWER).visualize(game);
     }
 
 
