@@ -42,11 +42,11 @@ public class CCGame extends BukkitRunnable {
     private CCLanguage lang;
     private NmsUtility nms;
     private CookieClicker plugin;
-    private boolean playSounds;
+    private boolean playSounds = false;
     private CCGameRules rule;
     private Player player;
     private Inventory inventory;
-    private double cookies;
+    private double cookies = 0;
     private double cookiesPerClick = 0.;
     private Map<Buildings, Double> clickBonuses = new HashMap<>();
     private Map<Buildings, Map<Buildings, Double>> buildingBonuses = new HashMap<>();
@@ -60,7 +60,7 @@ public class CCGame extends BukkitRunnable {
     private int mainCookieSlot = 31;
     private List<Integer> mainCookieSlots;
     private int moveCookieAfterClicks;
-    private ItemStack oven = new MaterialData(Material.FURNACE).toItemStack();
+    private ItemStack oven;
     private int ovenSlot = 0;
     private Set<Integer> activeUpgrades = new HashSet<>();
     private Set<Integer> futureUpgrades = new HashSet<>();
@@ -131,7 +131,7 @@ public class CCGame extends BukkitRunnable {
         mainCookie.setItemMeta(meta);
         inventory.setItem(mainCookieSlot, mainCookie);
 
-        oven.setAmount(1);
+        oven = new MaterialData(Material.FURNACE).toItemStack(1);
         meta = oven.getItemMeta();
         meta.setDisplayName(lang.GAME_OVEN_NAME);
         oven.setItemMeta(meta);
@@ -366,7 +366,7 @@ public class CCGame extends BukkitRunnable {
                 futureUpgrades.remove(id);
             }
         }
-        if (oven != null) {
+        if (oven != null && inventory != null) {
             calcCookiesPerSecond();
             calcCookiesPerClick();
             updateOven();
