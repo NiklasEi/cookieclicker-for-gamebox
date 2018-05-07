@@ -4,6 +4,7 @@ import me.nikl.cookieclicker.buildings.Building;
 import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.data.GameSave;
 import me.nikl.cookieclicker.upgrades.Upgrade;
+import me.nikl.gamebox.GameBox;
 import me.nikl.gamebox.data.database.DataBase;
 import me.nikl.gamebox.nms.NmsFactory;
 import me.nikl.gamebox.nms.NmsUtility;
@@ -20,6 +21,8 @@ import org.bukkit.material.MaterialData;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -64,6 +67,7 @@ public class CCGame extends BukkitRunnable {
     private int ovenSlot = 0;
     private Set<Integer> activeUpgrades = new HashSet<>();
     private Set<Integer> futureUpgrades = new HashSet<>();
+    private Set<Upgrade> upgradesWaitingList = new HashSet<>();
     private Map<Integer, Integer> shownUpgradesSlotToID = new HashMap<>();
 
     private org.bukkit.Sound click = Sound.CLICK.bukkitSound();
@@ -225,9 +229,8 @@ public class CCGame extends BukkitRunnable {
 
             activeUpgrades.add(upgrade.getId());
             shownUpgradesSlotToID.remove(53 - inventoryClickEvent.getRawSlot());
-
+            upgradesWaitingList.remove(upgrade);
             visualizeUpgrades();
-
             calcCookiesPerSecond();
             calcCookiesPerClick();
             updateOven();
@@ -267,65 +270,50 @@ public class CCGame extends BukkitRunnable {
 
     private void checkUpgrades() {
         boolean added = false;
-        Set<Upgrade> toAdd = new HashSet<>();
         for (int upgradeID : futureUpgrades) {
             Upgrade upgrade = plugin.getUpgrade(upgradeID);
             if (!upgrade.isUnlocked(this)) continue;
 
             added = true;
-            toAdd.add(upgrade);
+            upgradesWaitingList.add(upgrade);
         }
         if (added) {
-            for (Upgrade upgrade : toAdd) {
+            for (Upgrade upgrade : upgradesWaitingList) {
                 futureUpgrades.remove(upgrade.getId());
             }
-            visualizeUpgrades(toAdd);
+            visualizeUpgrades();
         }
     }
 
-    private void visualizeUpgrades(Set<Upgrade> toAdd) {
-        Iterator<Upgrade> iterator = toAdd.iterator();
-        int slot = 8;
-        while (iterator.hasNext()) {
-            if (shownUpgradesSlotToID.keySet().contains(slot)) {
-                slot--;
-                continue;
+    private Upgrade getCheapestUpgrade(Set<Upgrade> toAdd) {
+        double lowestCost = Double.MAX_VALUE;
+        Upgrade cheapestUpgrade = null;
+        for (Upgrade upgrade : toAdd) {
+            if (upgrade.getCost() < lowestCost) {
+                lowestCost = upgrade.getCost();
+                cheapestUpgrade = upgrade;
             }
-            Upgrade upgrade = iterator.next();
-            shownUpgradesSlotToID.put(slot, upgrade.getId());
-            slot--;
-            iterator.remove();
         }
-        visualizeUpgrades();
+        return cheapestUpgrade;
     }
 
     private void visualizeUpgrades() {
-        List<Integer> orderedUpgrades = new ArrayList<>();
-        if (shownUpgradesSlotToID.isEmpty()) {
-            inventory.setItem(53 - 8, null);
-            return;
+        List<Upgrade> orderedUpgrades = new ArrayList<>();
+        plugin.info("waiting size: " + upgradesWaitingList.size());
+        Set<Upgrade> waitingUpgradesTemp = new HashSet<>(upgradesWaitingList);
+        while (!waitingUpgradesTemp.isEmpty() && orderedUpgrades.size() < 9) {
+            Upgrade upgrade = getCheapestUpgrade(waitingUpgradesTemp);
+            orderedUpgrades.add(upgrade);
+            waitingUpgradesTemp.remove(upgrade);
         }
-        double lowestCost;
-        int cheapestUpgrade;
-        while (!shownUpgradesSlotToID.isEmpty()) {
-            lowestCost = Double.MAX_VALUE;
-            cheapestUpgrade = 0;
-            for (int slot : shownUpgradesSlotToID.keySet()) {
-                if (plugin.getUpgrade(slot).getCost() < lowestCost) {
-                    lowestCost = plugin.getUpgrade(slot).getCost();
-                    cheapestUpgrade = slot;
-                }
-            }
-            orderedUpgrades.add(shownUpgradesSlotToID.get(cheapestUpgrade));
-            shownUpgradesSlotToID.remove(cheapestUpgrade);
-        }
+        plugin.info("ordered size: " + orderedUpgrades.size());
         for (int i = 0; i < 9; i++) {
-            if (orderedUpgrades.size() < i) {
+            if (orderedUpgrades.size() <= i) {
                 inventory.setItem(45 + i, null);
                 continue;
             }
-            shownUpgradesSlotToID.put(8 - i, orderedUpgrades.get(i));
-            inventory.setItem(45 + i, plugin.getUpgrade(orderedUpgrades.get(i)).getIcon());
+            shownUpgradesSlotToID.put(8 - i, orderedUpgrades.get(i).getId());
+            inventory.setItem(45 + i, orderedUpgrades.get(i).getIcon());
         }
     }
 

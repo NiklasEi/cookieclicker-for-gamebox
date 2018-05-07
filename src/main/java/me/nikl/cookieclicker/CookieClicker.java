@@ -166,13 +166,13 @@ public class CookieClicker extends Game {
 
     @Override
     public void init() {
+        loadBuildings();
+        loadUpgrades();
         if (GameBoxSettings.useMysql) {
             this.database = new MySQLDatabase(this);
         } else {
             this.database = new FileDatabase(this);
         }
-        loadBuildings();
-        loadUpgrades();
         //new ManipulateCookies(gameBox, this);
     }
 
@@ -231,7 +231,6 @@ public class CookieClicker extends Game {
     }
 
     private void loadUpgrades() {
-
         Set<Upgrade> futureUpgradesTemp = new HashSet<>();
         // clicking
         futureUpgradesTemp.add(new PlasticMouse(this));
@@ -427,7 +426,7 @@ public class CookieClicker extends Game {
     }
 
     public Set<Integer> getUpgradeIDs() {
-        return upgrades.keySet();
+        return new HashSet<>(upgrades.keySet());
     }
 
     public void prepareGame(UUID gameUuid) {

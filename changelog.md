@@ -1,3 +1,11 @@
+### v 2.1.1
+- fix upgrades not being displayed
+- fix upgrade ordering
+- fix cutoff when more then 8 upgrades should be displayed in the bottom row
+
+### v 2.1.1
+- fix NPE due to game save being loaded at a time where the inventory isn't initialized jet
+
 ### v 2.1.0
 - sync top lists via plugin channels
 - improved cookie clicker database
