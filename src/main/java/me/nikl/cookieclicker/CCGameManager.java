@@ -1,6 +1,8 @@
 package me.nikl.cookieclicker;
 
+import me.nikl.cookieclicker.data.GameSave;
 import me.nikl.gamebox.data.database.DataBase;
+import me.nikl.gamebox.data.toplist.SaveType;
 import me.nikl.gamebox.game.exceptions.GameStartException;
 import me.nikl.gamebox.game.manager.GameManager;
 import me.nikl.gamebox.game.rules.GameRule;
@@ -32,12 +34,10 @@ public class CCGameManager implements GameManager {
 
     private Map<String, CCGameRules> gameRules = new HashMap<>();
     private DataBase statistics;
-    private CCLanguage lang;
 
     public CCGameManager(CookieClicker game) {
         this.game = game;
         this.statistics = game.getGameBox().getDataBase();
-        this.lang = (CCLanguage) game.getGameLang();
     }
 
     public void onInventoryClick(InventoryClickEvent inventoryClickEvent) {
@@ -73,7 +73,7 @@ public class CCGameManager implements GameManager {
         if (!game.payIfNecessary(players[0], rule.getCost())) {
             throw new GameStartException(GameStartException.Reason.NOT_ENOUGH_MONEY);
         }
-        games.put(players[0].getUniqueId(), new CCGame(rule, game, players[0], playSounds));
+        games.put(players[0].getUniqueId(), new CCGame(rule, this, players[0], playSounds));
         return;
     }
 
@@ -145,5 +145,14 @@ public class CCGameManager implements GameManager {
     @Override
     public Inventory getInventory() {
         return null;
+    }
+
+    public void saveStatistics(GameSave save, boolean async) {
+        statistics.addStatistics(save.getUuid(), game.getGameID(), save.getGameType(),
+                Math.floor(save.getCookies().getOrDefault("total", 0.)), SaveType.HIGH_NUMBER_SCORE, async);
+    }
+
+    public CookieClicker getCookieClicker() {
+        return this.game;
     }
 }

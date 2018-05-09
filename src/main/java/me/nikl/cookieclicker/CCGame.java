@@ -4,7 +4,6 @@ import me.nikl.cookieclicker.buildings.Building;
 import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.data.GameSave;
 import me.nikl.cookieclicker.upgrades.Upgrade;
-import me.nikl.gamebox.GameBox;
 import me.nikl.gamebox.data.database.DataBase;
 import me.nikl.gamebox.nms.NmsFactory;
 import me.nikl.gamebox.nms.NmsUtility;
@@ -21,11 +20,8 @@ import org.bukkit.material.MaterialData;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -39,12 +35,13 @@ import java.util.UUID;
  */
 public class CCGame extends BukkitRunnable {
     private final UUID gameUuid = UUID.randomUUID();
+    private CCGameManager manager;
     public double baseCookiesPerClick = 1.;
     public double cookiesPerClickPerCPS = 0.;
     private Random rand;
     private CCLanguage lang;
     private NmsUtility nms;
-    private CookieClicker plugin;
+    private CookieClicker cookieClicker;
     private boolean playSounds = false;
     private CCGameRules rule;
     private Player player;
@@ -79,11 +76,12 @@ public class CCGame extends BukkitRunnable {
 
     private boolean loaded = false;
 
-    public CCGame(CCGameRules rule, CookieClicker game, Player player, boolean playSounds) {
-        this.plugin = game;
-        plugin.prepareGame(gameUuid);
+    public CCGame(CCGameRules rule, CCGameManager manager, Player player, boolean playSounds) {
+        this.cookieClicker = manager.getCookieClicker();
+        this.manager = manager;
+        cookieClicker.prepareGame(gameUuid);
         nms = NmsFactory.getNmsUtility();
-        this.lang = (CCLanguage) game.getGameLang();
+        this.lang = (CCLanguage) cookieClicker.getGameLang();
         this.rule = rule;
         this.player = player;
         rand = new Random();
@@ -93,9 +91,9 @@ public class CCGame extends BukkitRunnable {
         mainCookieSlots.add(32);
         moveCookieAfterClicks = rule.getMoveCookieAfterClicks();
         cookies = 0.;
-        futureUpgrades = plugin.getUpgradeIDs();
+        futureUpgrades = cookieClicker.getUpgradeIDs();
 
-        game.getDatabase().getGameSave(player.getUniqueId(), rule.getKey(), new DataBase.Callback<GameSave>() {
+        cookieClicker.getDatabase().getGameSave(player.getUniqueId(), rule.getKey(), new DataBase.Callback<GameSave>() {
             @Override
             public void onSuccess(GameSave gameSave) {
                 load(gameSave);
@@ -109,19 +107,19 @@ public class CCGame extends BukkitRunnable {
         });
 
         // only play sounds if the game setting allows to
-        this.playSounds = game.getSettings().isPlaySounds() && playSounds;
+        this.playSounds = cookieClicker.getSettings().isPlaySounds() && playSounds;
 
         // create inventory
         String title = lang.GAME_TITLE
                 .replace("%score%", String.valueOf((int) cookies));
 
-        this.inventory = game.createInventory(54, title);
+        this.inventory = cookieClicker.createInventory(54, title);
 
         buildInv();
 
         player.openInventory(inventory);
 
-        this.runTaskTimer(game.getGameBox(), 0, 10);
+        this.runTaskTimer(cookieClicker.getGameBox(), 0, 10);
     }
 
     private void buildInv() {
@@ -185,8 +183,8 @@ public class CCGame extends BukkitRunnable {
         }
 
         // click on production
-        else if (plugin.isBuildingSlot(inventoryClickEvent.getRawSlot())) {
-            Building building = plugin.getBuilding(inventoryClickEvent.getRawSlot());
+        else if (cookieClicker.isBuildingSlot(inventoryClickEvent.getRawSlot())) {
+            Building building = cookieClicker.getBuilding(inventoryClickEvent.getRawSlot());
             double cost = building.getCost(gameUuid);
 
             switch (inventoryClickEvent.getAction()) {
@@ -217,7 +215,7 @@ public class CCGame extends BukkitRunnable {
 
         // click on upgrade
         else if (shownUpgradesSlotToID.keySet().contains(53 - inventoryClickEvent.getRawSlot())) {
-            Upgrade upgrade = plugin.getUpgrade(shownUpgradesSlotToID.get(53 - inventoryClickEvent.getRawSlot()));
+            Upgrade upgrade = cookieClicker.getUpgrade(shownUpgradesSlotToID.get(53 - inventoryClickEvent.getRawSlot()));
             if (cookies < upgrade.getCost()) {
                 if (playSounds) player.playSound(player.getLocation(), no, volume, pitch);
                 return;
@@ -246,16 +244,16 @@ public class CCGame extends BukkitRunnable {
                 double otherBuildingBonus = 0.;
                 double bonus;
                 for (Buildings otherBuilding : buildingBonuses.get(buildingType).keySet()) {
-                    bonus = plugin.getBuilding(otherBuilding).getCount(gameUuid) * buildingBonuses.get(buildingType).get(otherBuilding);
+                    bonus = cookieClicker.getBuilding(otherBuilding).getCount(gameUuid) * buildingBonuses.get(buildingType).get(otherBuilding);
                     otherBuildingBonus += bonus;
                 }
 
                 // update the building with the new bonus
-                plugin.getBuilding(buildingType).setOtherBuildingsBonus(gameUuid, otherBuildingBonus);
-                plugin.getBuilding(buildingType).visualize(this);
+                cookieClicker.getBuilding(buildingType).setOtherBuildingsBonus(gameUuid, otherBuildingBonus);
+                cookieClicker.getBuilding(buildingType).visualize(this);
             }
 
-            cookiesPerSecond += plugin.getBuilding(buildingType).getAllInAllProductionPerSecond(gameUuid);
+            cookiesPerSecond += cookieClicker.getBuilding(buildingType).getAllInAllProductionPerSecond(gameUuid);
         }
     }
 
@@ -264,14 +262,14 @@ public class CCGame extends BukkitRunnable {
         cookiesPerClick = baseCookiesPerClick + cookiesPerClickPerCPS * cookiesPerSecond;
 
         for (Buildings buildingType : clickBonuses.keySet()) {
-            cookiesPerClick += plugin.getBuilding(buildingType).getCount(gameUuid) * clickBonuses.get(buildingType);
+            cookiesPerClick += cookieClicker.getBuilding(buildingType).getCount(gameUuid) * clickBonuses.get(buildingType);
         }
     }
 
     private void checkUpgrades() {
         boolean added = false;
         for (int upgradeID : futureUpgrades) {
-            Upgrade upgrade = plugin.getUpgrade(upgradeID);
+            Upgrade upgrade = cookieClicker.getUpgrade(upgradeID);
             if (!upgrade.isUnlocked(this)) continue;
 
             added = true;
@@ -299,14 +297,14 @@ public class CCGame extends BukkitRunnable {
 
     private void visualizeUpgrades() {
         List<Upgrade> orderedUpgrades = new ArrayList<>();
-        plugin.info("waiting size: " + upgradesWaitingList.size());
+        cookieClicker.info("waiting size: " + upgradesWaitingList.size());
         Set<Upgrade> waitingUpgradesTemp = new HashSet<>(upgradesWaitingList);
         while (!waitingUpgradesTemp.isEmpty() && orderedUpgrades.size() < 9) {
             Upgrade upgrade = getCheapestUpgrade(waitingUpgradesTemp);
             orderedUpgrades.add(upgrade);
             waitingUpgradesTemp.remove(upgrade);
         }
-        plugin.info("ordered size: " + orderedUpgrades.size());
+        cookieClicker.info("ordered size: " + orderedUpgrades.size());
         for (int i = 0; i < 9; i++) {
             if (orderedUpgrades.size() <= i) {
                 inventory.setItem(45 + i, null);
@@ -328,8 +326,10 @@ public class CCGame extends BukkitRunnable {
             builder.addBuilding(production, getBuilding(production).getCount(gameUuid));
         }
         builder.setUpgrades(activeUpgrades);
-        plugin.getDatabase().saveGame(builder.build(), async);
-        plugin.removeGame(gameUuid);
+        GameSave save = builder.build();
+        cookieClicker.getDatabase().saveGame(save, async);
+        cookieClicker.removeGame(gameUuid);
+        manager.saveStatistics(save, async);
     }
 
     private void load(GameSave save) {
@@ -341,13 +341,13 @@ public class CCGame extends BukkitRunnable {
         totalCookiesProduced = cookiesMap.get(GameSave.TOTAL);
         Map<Buildings, Integer> buildings = save.getBuildings();
         for (Buildings building : buildings.keySet()) {
-            plugin.getBuilding(building).addProductions(gameUuid, buildings.get(building));
-            if (inventory != null) plugin.getBuilding(building).visualize(this);
+            cookieClicker.getBuilding(building).addProductions(gameUuid, buildings.get(building));
+            if (inventory != null) cookieClicker.getBuilding(building).visualize(this);
         }
         List<Integer> upgrades = save.getUpgrades();
         if (upgrades != null && !upgrades.isEmpty()) {
             for (int id : upgrades) {
-                Upgrade upgrade = plugin.getUpgrade(id);
+                Upgrade upgrade = cookieClicker.getUpgrade(id);
                 if (upgrade == null) continue;
                 upgrade.onActivation(this);
                 activeUpgrades.add(upgrade.getId());
@@ -377,7 +377,7 @@ public class CCGame extends BukkitRunnable {
     }
 
     public void visualize() {
-        for (Building building : plugin.getBuildings().values()) {
+        for (Building building : cookieClicker.getBuildings().values()) {
             building.visualize(this);
         }
     }
@@ -426,7 +426,7 @@ public class CCGame extends BukkitRunnable {
     }
 
     public Building getBuilding(Buildings production) {
-        return plugin.getBuilding(production);
+        return cookieClicker.getBuilding(production);
     }
 
     public Inventory getInventory() {

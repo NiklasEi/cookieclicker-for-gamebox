@@ -2,6 +2,7 @@
 - fix upgrades not being displayed
 - fix upgrade ordering
 - fix cutoff when more then 8 upgrades should be displayed in the bottom row
+- fix top list updates
 
 ### v 2.1.1
 - fix NPE due to game save being loaded at a time where the inventory isn't initialized jet
