@@ -1,4 +1,8 @@
-### v 2.1.1
+### v 2.1.3
+- fix players being able to take out items after closing the game in the right moment. In most cases it were just ghost items.
+- remove leftover debug messages from last update
+
+### v 2.1.2
 - fix upgrades not being displayed
 - fix upgrade ordering
 - fix cutoff when more then 8 upgrades should be displayed in the bottom row

@@ -297,14 +297,14 @@ public class CCGame extends BukkitRunnable {
 
     private void visualizeUpgrades() {
         List<Upgrade> orderedUpgrades = new ArrayList<>();
-        cookieClicker.info("waiting size: " + upgradesWaitingList.size());
+        cookieClicker.debug("waiting size: " + upgradesWaitingList.size());
         Set<Upgrade> waitingUpgradesTemp = new HashSet<>(upgradesWaitingList);
         while (!waitingUpgradesTemp.isEmpty() && orderedUpgrades.size() < 9) {
             Upgrade upgrade = getCheapestUpgrade(waitingUpgradesTemp);
             orderedUpgrades.add(upgrade);
             waitingUpgradesTemp.remove(upgrade);
         }
-        cookieClicker.info("ordered size: " + orderedUpgrades.size());
+        cookieClicker.debug("ordered size: " + orderedUpgrades.size());
         for (int i = 0; i < 9; i++) {
             if (orderedUpgrades.size() <= i) {
                 inventory.setItem(45 + i, null);
@@ -316,6 +316,8 @@ public class CCGame extends BukkitRunnable {
     }
 
     public void onGameEnd(boolean async) {
+        // this removes possible ghost items that players can take out of the inventory
+        inventory.clear();
         player.sendMessage(lang.PREFIX + lang.GAME_CLOSED.replace("%score%", NumberUtility.convertHugeNumber(Math.floor(totalCookiesProduced))));
         GameSave.Builder builder = new GameSave.Builder(player.getUniqueId(), rule.getKey());
 
