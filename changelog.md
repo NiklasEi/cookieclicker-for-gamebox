@@ -1,3 +1,6 @@
+### v 2.2.0
+- compatibility with minecraft 1.13
+
 ### v 2.1.3
 - fix players being able to take out items after closing the game in the right moment. In most cases it were just ghost items.
 - remove leftover debug messages from last update
