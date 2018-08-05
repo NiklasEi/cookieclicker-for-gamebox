@@ -1,3 +1,6 @@
+### v 2.2.1
+- add command to manipulate cookies of player saves
+
 ### v 2.2.0
 - compatibility with minecraft 1.13
 

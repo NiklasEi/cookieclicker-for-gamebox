@@ -135,7 +135,9 @@ import me.nikl.gamebox.GameBox;
 import me.nikl.gamebox.GameBoxSettings;
 import me.nikl.gamebox.game.Game;
 import me.nikl.gamebox.game.GameSettings;
+import org.bukkit.Bukkit;
 
+import java.util.AbstractMap;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -144,7 +146,7 @@ import java.util.Set;
 import java.util.UUID;
 
 /**
- * Created by Niklas
+ * @author Niklas Eicker
  *
  * Main class of the GameBox game Cookie Clicker
  */
@@ -173,7 +175,13 @@ public class CookieClicker extends Game {
         } else {
             this.database = new FileDatabase(this);
         }
-        //new ManipulateCookies(gameBox, this);
+    }
+
+    @Override
+    protected void finish() {
+        gameBox.getCommands().getCommandReplacements().addReplacement("cc_game_ids", String.join(":", gameManager.getGameRules().keySet()));
+        gameBox.getCommands().getCommandReplacements().addReplacement("cc_subcommands", String.join("|", getModule().getSubCommands()));
+        gameBox.getCommands().registerCommand(new ManipulateCookies(gameBox, this));
     }
 
     @Override
@@ -181,6 +189,7 @@ public class CookieClicker extends Game {
         gameSettings.setGameType(GameSettings.GameType.SINGLE_PLAYER);
         gameSettings.setGameGuiSize(54);
         gameSettings.setHandleClicksOnHotbar(false);
+        gameSettings.setGameBoxMinimumVersion("2.2.1");
     }
 
     @Override

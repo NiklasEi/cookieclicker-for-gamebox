@@ -41,10 +41,18 @@ public class FileDatabase extends Database {
         }
     }
 
+    /**
+     * Get the saved game state of a player for a specific game type
+     *
+     * The game type has to be verified beforehand. When the player does not have a save jet, an empty one will be returned.
+     * @param uuid
+     * @param gameType
+     * @param callback
+     */
     @Override
     public void getGameSave(UUID uuid, String gameType, DataBase.Callback<GameSave> callback) {
         if (!saves.isConfigurationSection(gameType + "." + uuid.toString())) {
-            callback.onSuccess(null);
+            callback.onSuccess(new GameSave.Builder(uuid, gameType).build());
             return;
         }
         GameSave.Builder builder = new GameSave.Builder(uuid, gameType);
