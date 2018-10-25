@@ -14,7 +14,7 @@
     <distributionManagement>
         <repository>
             <id>nikl-repo</id>
-            <url>http://repo.nikl.me/artifactory/repositories</url>
+            <url>http://repo.nikl.me/artifactory/public</url>
         </repository>
     </distributionManagement>
 
@@ -52,7 +52,7 @@
         </repository>
         <repository>
             <id>nikl-repo</id>
-            <url>http://repo.nikl.me/artifactory/repositories</url>
+            <url>http://repo.nikl.me/artifactory/public</url>
         </repository>
     </repositories>
 
