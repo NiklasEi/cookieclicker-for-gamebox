@@ -508,7 +508,7 @@ upgrades:
     312:
       name: "Theokratie"
       description:
-        - '&5&o"Du hast dien Keksreich in eine'
+        - '&5&o"Du hast dein Keksreich in eine'
         - '&5&o    ultimative Theokratie gewandelt.'
         - '&5&o    Lass es dir nicht zu Kopf steigen!"'
 
@@ -542,6 +542,9 @@ upgrades:
       name: "Schule für Zauberei"
       description:
         - '&5&o"Alle Professoren werden mit Keksen bezahlt.'
+        - '&5&o '
+        - '&5&oDie meisten Hilfswissenschaftler'
+        - '&5&o    sind Kaninchen."'
     249:
       name: "Dunkle Zauber"
       description:
@@ -553,7 +556,7 @@ upgrades:
       name: "Kekserei"
       description:
         - '&5&o"Da ist sie;'
-        - '&5&o die perfekte Schule der KeksMagie.'
+        - '&5&o die perfekte Schule der Keksmagie.'
     313:
       name: "Kaninchen im Hut"
       description:
@@ -623,7 +626,7 @@ upgrades:
     24:
       name: "Echte Schokolade"
       description:
-        - '&5&o"Das pure aus purem Kakao."'
+        - '&5&o"Die pure aus purem Kakao."'
     49:
       name: "Ambrosia"
       description:
@@ -631,38 +634,36 @@ upgrades:
         - '&5&o     mit Sicherheit noch süchtig machender!'
         - '&5&o     Hoffen wir mal sie bleiben legal."'
     115:
-      name: "Aqua crustulae"
+      name: "Flüssige Kekse"
       description:
-        - '&5&o"Careful with the dosing -'
-        - '&5&o     one drop too much and'
-        - '&5&o     you get muffins...'
-        - '&5&o     Nobody likes muffins..."'
+        - '&5&o"Vorsicht mit der Dosierung -'
+        - '&5&o     Ein Tropfen zu viel und'
+        - '&5&o     du bekommst Muffins...'
+        - '&5&o     Niemand mag Muffins..."'
     197:
-      name: "Origin crucible"
+      name: "Kessel des Uhrsprungs"
       description:
-        - '&5&o"Built from the rarest of earths'
-        - '&5&o    and located at the very deepest'
-        - '&5&o    of the largest mountain,'
-        - '&5&o    this legendary crucible is said'
-        - '&5&o    to retain properties'
-        - '&5&o    from the big-bang itself."'
+        - '&5&o"Aus seltenen Erden geschmiedet, steht'
+        - '&5&o    der Kessel des Uhrsprungs'
+        - '&5&o    tief unter dem höchsten Berg.'
+        - '&5&o    Man munkelt er hat seine'
+        - '&5&o    Kräfte vom Urknall selbst."'
     302:
-      name: "Theory of atomic fluidity"
+      name: "Theorie der flüssigen Atome"
       description:
-        - '&5&o"Pushing alchemy to its most extreme limits,'
-        - '&5&o you find that everything is transmutable'
-        - '&5&o into anything else - lead to gold,'
-        - '&5&o mercury to water; more importantly,'
-        - '&5&o you realize that anything can -and should-'
-        - '&5&o be converted to cookies."'
+        - '&5&o"Alchemie am Limit.'
+        - '&5&o Alles ist verwandelbar'
+        - '&5&o     in alles - Blei zu Gold,'
+        - '&5&o     Eisen zu Wasser; Aber vorallem:'
+        - '&5&o     Alles zu Keksen!"'
     315:
-      name: "Beige goo"
+      name: "Grauer Schleim"
       description:
-        - '&5&o"Well now you''ve done it. Good job. Very nice.'
-        - '&5&o    That''s 3 galaxies you''ve just'
-        - '&5&o    converted into cookies.'
-        - '&5&o    Good thing you can hop'
-        - '&5&o    from universe to universe."'
+        - '&5&o"Jetzt hast du''s vollbracht. Nice!'
+        - '&5&o    Du hast gerade drei Galaxien'
+        - '&5&o    in Kekse verwandelt.'
+        - '&5&o    Gut, dass du einfach zwischen'
+        - '&5&o    Universen hin und her springen kannst"'
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     # Portal upgrades (type: classic)
