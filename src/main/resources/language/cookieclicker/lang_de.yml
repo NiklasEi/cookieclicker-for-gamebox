@@ -668,47 +668,50 @@ upgrades:
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     # Portal upgrades (type: classic)
     25:
-      name: "Ancient tablet"
+      name: "Altes Tablet"
       description:
-        - '&5&o"A strange slab of peanut brittle, holding'
-        - '&5&o     an ancient cookie recipe. Neat!"'
+        - '&5&o"Eine schräge Scheibe aus gepressten'
+        - '&5&o     Erdnüssen mit einem antiken'
+        - '&5&o     Keksrezept oben drauf. Nice one!"'
     26:
-      name: "Insane oatling workers"
+      name: "Verrückte Oatling Arbeiter"
       description:
         - '&5&o"ARISE, MY MINIONS!"'
     27:
-      name: "Soul bond"
+      name: "Seelenbund"
       description:
-        - '&5&o"So I just sign up and get more cookies?'
-        - '&5&o     Sure, whatever!"'
+        - '&5&o"Einfach unterschreiben und ich'
+        - '&5&o     bekomme mehr Kekse?'
+        - '&5&o     Klar, wird sofort gemacht!"'
     50:
-      name: "Sanity dance"
+      name: "Tanz der Vernunft"
       description:
-        - '&5&o"We can change if we want to.'
-        - '&5&o     We can leave our brains behind."'
+        - '&5&o"Wir können uns ändern...'
+        - '&5&o   Wir können unser Hirn zurück lassen."'
     116:
-      name: "Brane transplant"
+      name: "Brane Transplanation"
       description:
-        - '&5&o"This refers to the practice of merging'
-        - '&5&o  higher dimensional universes,'
-        - '&5&o  or "branes", with our own,'
-        - '&5&o  in order to facilitate transit'
-        - '&5&o  (and harvesting of precious cookie dough)."'
+        - '&5&o"Hiermit ist die Praxis gemeint,'
+        - '&5&o  höher dimensionale Universen,'
+        - '&5&o  oder "branen", mit unserem eigenen,'
+        - '&5&o  zu vereinen, um schnelleren transit'
+        - '&5&o  (und damit auch schnellere Keksernten)'
+        - '&5&o  zu ermöglichen."'
     198:
-      name: "Deity-sized portals"
+      name: "Portale in Gottes-größe"
       description:
-        - '&5&o"It''s almost like, say, an elder god'
-        - '&5&o    could fit through this thing now.'
+        - '&5&o"Jetzt könnten die alten Götter durch'
+        - '&5&o    dieses Ding passen.'
         - '&5&o    '
-        - '&5&o    Hypothetically."'
+        - '&5&o    Theoretisch."'
     303:
-      name: "End of times back-up plan"
+      name: "Plan B am Ende der Zeit"
       description:
-        - '&5&o"Just in case, alright?"'
+        - '&5&o"Nur für den Fall der Fälle."'
     316:
-      name: "Maddening chants"
+      name: "Nervender Singsang"
       description:
-        - '&5&o"A popular verse goes like so:'
+        - '&5&o"Ein bekannter Vers geht so:'
         - '&5&o    "jau''hn madden jau''hn madden'
         - '&5&o    aeiouaeiouaeiou brbrbrbrbrbrbr""'
 
