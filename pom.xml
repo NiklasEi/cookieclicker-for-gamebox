@@ -18,6 +18,11 @@
         </repository>
     </distributionManagement>
 
+    <scm>
+        <url>https://github.com/NiklasEi/cookieclicker-for-gamebox</url>
+        <connection>git@github.com:NiklasEi/cookieclicker-for-gamebox.git</connection>
+    </scm>
+
     <build>
         <defaultGoal>clean package</defaultGoal>
         <finalName>${project.name}</finalName>
