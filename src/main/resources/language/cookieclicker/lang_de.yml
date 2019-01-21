@@ -718,52 +718,54 @@ upgrades:
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     # Time Machine upgrades (type: classic)
     28:
-      name: "Flux capacitors"
+      name: "Flux Kondensator"
       description:
-        - '&5&o"Bake to the future."'
+        - '&5&o"In die Zukunft Backen."'
     29:
-      name: "Time paradox resolver"
+      name: "Lösung der Zeitparadox"
       description:
-        - '&5&o"No more fooling around with'
-        - '&5&o     your own grandmother!"'
+        - '&5&o"Kein Rummachen mehr mit'
+        - '&5&o     deiner eigenen Oma!"'
     30:
-      name: "Quantum conundrum"
+      name: "Quantenrätzel"
       description:
-        - '&5&o"There is only one constant,'
-        - '&5&o and that is universal uncertainty.'
+        - '&5&o"Es gibt nur eine Konstante,'
+        - '&5&o und das ist die universelle'
+        - '&5&o Unsicherheit.'
         - '&5&o '
-        - '&5&o     Or is it?"'
+        - '&5&o Oder doch nicht? ..."'
     51:
-      name: "Causality enforcer"
+      name: "Festgeschriebene Kausalitäten"
       description:
-        - '&5&o"What happened, happened."'
+        - '&5&o"Was passiert ist, ist passiert."'
     117:
-      name: "Yestermorrow comparators"
+      name: "Gesterorgen Komperator"
       description:
-        - '&5&o"Fortnights into milleniums."'
+        - '&5&o"Viertzehn tage zum Jahrtausend."'
     199:
       name: "Far future enactment"
       description:
-        - '&5&o"The far future enactment authorizes you'
-        - '&5&o    to delve deep into the future -'
-        - '&5&o    where civilization has fallen'
-        - '&5&o    and risen again,'
-        - '&5&o    and cookies are plentiful."'
+        - '&5&o"Du bist befugt, tief in die'
+        - '&5&o    Zukunft einzutauchen -'
+        - '&5&o    Die Civilisation ist gefallen'
+        - '&5&o    und wieder auferstanden,'
+        - '&5&o    und überall sind Kekse."'
     304:
-      name: "Great loop hypothesis"
+      name: "Hypothese der großen Schleife"
       description:
-        - '&5&o"What if our universe is just one instance'
-        - '&5&o    of an infinite cycle?'
-        - '&5&o    What if, before and after it,'
-        - '&5&o    stretched infinite amounts of'
-        - '&5&o    the same universe,'
-        - '&5&o    themselves containing infinite'
-        - '&5&o    amounts of cookies?"'
+        - '&5&o"Was, wenn das Universum nur eine Instanz'
+        - '&5&o    eines unendlichen Kreislaufs ist?'
+        - '&5&o    Was ist, wenn vorher und nach'
+        - '&5&o    unendlich viele des selben'
+        - '&5&o    Universums existieren, die selber'
+        - '&5&o     unendlich viele Kekse enthalten?'
     317:
-      name: "Cookietopian moments of maybe"
+      name: "Vielleicht eine Kekstopie"
       description:
-        - '&5&o"Reminiscing how things could have been,'
-        - '&5&o should have been, will have been."'
+        - '&5&o"Darin schwelgen,'
+        - '&5&o wie Dinge hätten sein können,'
+        - '&5&o hätten seien sollen,'
+        - '&5&o sein werden."'
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     # Antimatter Condenser upgrades (type: classic)
