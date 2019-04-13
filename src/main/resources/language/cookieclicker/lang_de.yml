@@ -722,7 +722,7 @@ upgrades:
       description:
         - '&5&o"In die Zukunft Backen."'
     29:
-      name: "Lösung der Zeitparadox"
+      name: "Lösung des Zeitparadoxon"
       description:
         - '&5&o"Kein Rummachen mehr mit'
         - '&5&o     deiner eigenen Oma!"'
@@ -739,7 +739,7 @@ upgrades:
       description:
         - '&5&o"Was passiert ist, ist passiert."'
     117:
-      name: "Gesterorgen Komperator"
+      name: "Gesternmorgen Komperator"
       description:
         - '&5&o"Viertzehn tage zum Jahrtausend."'
     199:
@@ -748,8 +748,8 @@ upgrades:
         - '&5&o"Du bist befugt, tief in die'
         - '&5&o    Zukunft einzutauchen -'
         - '&5&o    Die Civilisation ist gefallen'
-        - '&5&o    und wieder auferstanden,'
-        - '&5&o    und überall sind Kekse."'
+        - '&5&o    und wieder auferstanden.'
+        - '&5&o    Überall sind Kekse."'
     304:
       name: "Hypothese der großen Schleife"
       description:
@@ -770,105 +770,107 @@ upgrades:
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     # Antimatter Condenser upgrades (type: classic)
     99:
-      name: "Sugar bosons"
+      name: "Zucker Bosonen"
       description:
-        - '&5&o"Sweet firm bosons."'
+        - '&5&o"Starke, süße Bosonen."'
     100:
-      name: "String theory"
+      name: "String Theorie"
       description:
-        - '&5&o"Reveals new insight about the true'
-        - '&5&o     meaning of baking cookies'
-        - '&5&o     (and, as a bonus, the'
-        - '&5&o     structure of the universe)."'
+        - '&5&o"Neue Erkenntnisse über die'
+        - '&5&o     wahre Bedeutung des Kekse'
+        - '&5&o     backens (und der Struktur'
+        - '&5&o     des Universums)."'
     101:
-      name: "Large macaron collider"
+      name: "Großer Makaroni Beschleuniger"
       description:
-        - '&5&o"How singular!"'
+        - '&5&o"Einzigartig!"'
     102:
-      name: "Big bang bake"
+      name: "Urknall Bäckerei"
       description:
-        - '&5&o"And that''s how it all began."'
+        - '&5&o"Und so hat alles begonnen."'
     118:
-      name: "Reverse cyclotrons"
+      name: "Verkehrter Beschleuniger"
       description:
-        - '&5&o"These can uncollision particles'
-        - '&5&o and unspin atoms.'
-        - '&5&o   For... uh...'
-        - '&5&o   better flavor, and stuff."'
+        - '&5&o"Sie können Kollisionen'
+        - '&5&o rückgängig machen und'
+        - '&5&o Atomen ihren Spin nehmen.'
+        - '&5&o   für... uh...'
+        - '&5&o   besseren Geschmack und so..."'
     200:
       name: "Nanocosmics"
       description:
-        - '&5&o"The theory of nanocosmics posits'
-        - '&5&o    that each subatomic particle'
-        - '&5&o    is in fact its own self-'
-        - '&5&o    contained universe, holding'
-        - '&5&o    unfathomable amounts of energy."'
+        - '&5&o"Die nanocosmics Theorie besagt,'
+        - '&5&o    das jedes Elementarteilchen'
+        - '&5&o    in wahrheit sein eigenes Universum'
+        - '&5&o    besitzt mit unfassbaren Mengen'
+        - '&5&o    an Energie."'
     305:
-      name: "The Pulse"
+      name: "Der Puls"
       description:
-        - '&5&o"You''ve tapped into the very pulse'
-        - '&5&o    of the cosmos,'
-        - '&5&o    a timeless rhythm along which'
-        - '&5&o    every material and antimaterial'
-        - '&5&o    thing beats in unison.'
-        - '&5&o    This, somehow, means more cookies."'
+        - '&5&o"Du zapfst den Puls des Kosmos an,'
+        - '&5&o    einen zeitlosen Rythmus in dem'
+        - '&5&o    alle Materie und Antimaterie'
+        - '&5&o    in Einheit schlägt.'
+        - '&5&o    Irgendwie führt das zu mehr Keksen.'
     318:
-      name: "Some other super-tiny fundamental particle?"
+      name: "Irgendein neues mega kleines Elementarteilchen?"
       description:
-        - '&5&o"When even the universe is running'
-        - '&5&o      out of ideas,'
-        - '&5&o      that''s when you know:'
-        - '&5&o      you''re nearing the end."'
+        - '&5&o"Wenn sogar dem Universum die'
+        - '&5&o      Ideen ausgehen, dann'
+        - '&5&o      weißt du, dass du dich'
+        - '&5&o      dem Ende näherst."'
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     # Prism upgrades (type: classic)
     175:
-      name: "Gem polish"
+      name: "Edelsteinpolitur"
       description:
-        - '&5&o"Get rid of the grime'
-        - '&5&o    and let more light in.'
-        - '&5&o    Truly, truly outrageous."'
+        - '&5&o"Werde den Schmutz los und'
+        - '&5&o    lass mehr Licht rein.'
+        - '&5&o    Wirklich skandalös."'
     176:
-      name: "9th color"
+      name: "Die neunte Farbe"
       description:
-        - '&5&o"Delve into the untouched optical'
-        - '&5&o     depths where even the mantis'
-        - '&5&o     shrimp hasn''t set an eye!"'
+        - '&5&o"Vertife dich in die unberührten'
+        - '&5&o     Tiefen des Spektrums, in denen'
+        - '&5&o     nicht mal Fangschreckenkrebse"'
+        - '&5&o     sehen können!'
     177:
-      name: "Chocolate light"
+      name: "Schokoladenlicht"
       description:
-        - '&5&o"Bask into its cocoalesence.'
-        - '&5&o    (Warning :'
-        - '&5&o     may cause various interesting'
-        - '&5&o     albeit deadly skin conditions.)"'
+        - '&5&o"Sonne dich in Kakaoneszenz.'
+        - '&5&o    (Achtung: kann verschiedene'
+        - '&5&o     interessante, aber tödliche,'
+        - '&5&o     Ausschläge verursachen.)"'
     178:
-      name: "Grainbow"
+      name: "Kornbogen"
       description:
-        - '&5&o"Remember the different grains using'
-        - '&5&o    the handy Roy G. Biv mnemonic:'
-        - '&5&o    R is for rice, O is for Oats...'
-        - '&5&o    uh, B for barley?..."'
+        - '&5&o"Du kannst dir die verschiedenen'
+        - '&5&o    Körner mit RQG merken:'
+        - '&5&o    R steht für Reis, Q für Quinoa'
+        - '&5&o    und G für Gerste?..."'
     179:
-      name: "Pure cosmic light"
+      name: "Reines kosmisches Licht"
       description:
-        - '&5&o"Your prisms now receive pristine'
-        - '&5&o unadulterated photons from the'
-        - '&5&o other end of the universe."'
+        - '&5&o"Deine Prismen erhalten jetzt'
+        - '&5&o unveränderte Photonen vom anderen'
+        - '&5&o Ende des Universums."'
     201:
-      name: "Glow-in-the-dark"
+      name: "Leuchten im Dunkeln"
       description:
-        - '&5&o"Your prisms now glow in the dark,'
-        - '&5&o  effectively doubling their output."'
+        - '&5&o"Deine Prismen leuchten jetzt'
+        - '&5&o   im Dunkeln. Das verdoppelt'
+        - '&5&o   ihre Produktivität."'
     306:
-      name: "Lux sanctorum"
+      name: "Licht Tempel"
       description:
-        - '&5&o"Your prism attendants have become'
-        - '&5&o   increasingly mesmerized with'
-        - '&5&o   something in the light - '
-        - '&5&o   or maybe something beyond it;'
-        - '&5&o   beyond us all, perhaps?"'
+        - '&5&o"Deine Prisma Wärter werden'
+        - '&5&o   immer fazinierter von etwas'
+        - '&5&o   im Licht - '
+        - '&5&o   oder etwas größerem als dem Licht;'
+        - '&5&o   villeicht größer als wir alle?"'
     319:
-      name: "Reverse shadows"
+      name: "Umgekehrte Schatten"
       description:
-        - '&5&o"Oh man,'
-        - '&5&o   this is really messing with your eyes."'
+        - '&5&o"Oh man... Das sieht'
+        - '&5&o   wirklich komisch aus."'
