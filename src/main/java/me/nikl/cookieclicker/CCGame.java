@@ -59,7 +59,12 @@ public class CCGame extends BukkitRunnable {
     private boolean idle = false;
     private long lastTimeStamp = System.currentTimeMillis();
     private ItemStack mainCookie = new MaterialData(Material.COOKIE).toItemStack();
+    private ItemStack luckyCookieItem = new MaterialData(Material.COOKIE).toItemStack();
     private int mainCookieSlot = 31;
+    private int luckyCookie = -1;
+    private int luckyCookieSpawnTime = 300000;
+    private int luckyCookieDespawnTime = 13000;
+    private long lastluckyCookieTimeStamp = System.currentTimeMillis();
     private List<Integer> mainCookieSlots;
     private int moveCookieAfterClicks;
     private ItemStack oven;
@@ -134,6 +139,12 @@ public class CCGame extends BukkitRunnable {
         meta.setDisplayName(lang.GAME_COOKIE_NAME);
         mainCookie.setItemMeta(meta);
         inventory.setItem(mainCookieSlot, mainCookie);
+
+        luckyCookieItem.setAmount(1);
+        meta = luckyCookieItem.getItemMeta();
+        meta.setDisplayName(lang.GAME_LUCKY_COOKIE_NAME);
+        luckyCookieItem.setItemMeta(meta);
+        luckyCookieItem = nms.addGlow(luckyCookieItem);
 
         oven = new MaterialData(Material.FURNACE).toItemStack(1);
         meta = oven.getItemMeta();
@@ -239,6 +250,13 @@ public class CCGame extends BukkitRunnable {
             calcCookiesPerSecond();
             calcCookiesPerClick();
             updateOven();
+        }
+
+        else if (inventoryClickEvent.getRawSlot() == luckyCookie) {
+            inventory.setItem(luckyCookie, null);
+            double wonCookies = Math.min(cookies * 0.15, cookiesPerSecond * 900);
+            cookies += wonCookies;
+            luckyCookie = -1;
         }
     }
 
@@ -389,6 +407,26 @@ public class CCGame extends BukkitRunnable {
             player.sendMessage(lang.PREFIX + lang.GAME_IDLE.replace("%player%", player.getName()));
             nms.updateInventoryTitle(player, lang.GAME_TITLE_IDLE);
         }
+        if (luckyCookie == -1) {
+            if (newTimeStamp - lastluckyCookieTimeStamp > luckyCookieSpawnTime) {
+                spawnLuckyCookie();
+            }
+        } else {
+            if (newTimeStamp - lastluckyCookieTimeStamp > luckyCookieDespawnTime) {
+                inventory.setItem(luckyCookie, null);
+                luckyCookie = -1;
+            }
+        }
+    }
+
+    private void spawnLuckyCookie() {
+        lastluckyCookieTimeStamp = System.currentTimeMillis();
+        int addToSlot = rand.nextInt(24);
+        // skip the main cookie slots (30, 31, 32)
+        if (addToSlot > 11) addToSlot = addToSlot + 3;
+        int slot = 18 + addToSlot;
+        inventory.setItem(slot, luckyCookieItem);
+        luckyCookie = slot;
     }
 
     public void visualize() {

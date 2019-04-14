@@ -13,6 +13,7 @@ game:
     gameTitle: "&9&lCC   &r&1%score% Kekse"
     gameTitleIdle: "&9&lCC   &r&1Pausiert - Klick den Keks"
   cookieName: "&1&lKeks"
+  goldenCookieName: "&1&lGlückskeks"
   ovenName: "&a&lDeine Keksproduktion"
   ovenLore:
     - ""

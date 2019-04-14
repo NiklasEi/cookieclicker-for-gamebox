@@ -14,6 +14,7 @@ game:
     gameTitle: "&9&lCC   &r&1%score% cookies"
     gameTitleIdle: "&9&lCC   &r&1Paused - Click the cookie"
   cookieName: "&1&lCookie"
+  goldenCookieName: "&1&lLucky cookie"
   ovenName: "&a&lYour Cookie Production"
   # for longer names of high numbers use %cookies_per_second_long% and %cookies_per_click_long%
   ovenLore:
