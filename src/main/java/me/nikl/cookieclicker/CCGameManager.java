@@ -22,7 +22,7 @@ import java.util.UUID;
 import java.util.logging.Level;
 
 /**
- * Created by Niklas.
+ * @author Nikl
  *
  * GameManager
  */
@@ -89,9 +89,11 @@ public class CCGameManager implements GameManager {
     public void loadGameRules(ConfigurationSection buttonSec, String buttonID) {
         int moveCookieAfterClicks = buttonSec.getInt("moveCookieAfterClicks", 0);
         if (moveCookieAfterClicks < 1) moveCookieAfterClicks = 0;
+        int idleSeconds = buttonSec.getInt("idleSeconds", 0);
+        if (idleSeconds < 1) idleSeconds = 0;
         double cost = buttonSec.getDouble("cost", 0.);
         boolean saveStats = buttonSec.getBoolean("saveStats", false);
-        CCGameRules rules = new CCGameRules(buttonID, cost, moveCookieAfterClicks, saveStats);
+        CCGameRules rules = new CCGameRules(buttonID, cost, moveCookieAfterClicks, saveStats,idleSeconds);
         if (buttonSec.isConfigurationSection("rewards")) {
             ConfigurationSection rewards = buttonSec.getConfigurationSection("rewards");
             for (String key : rewards.getKeys(false)) {

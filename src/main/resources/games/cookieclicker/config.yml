@@ -44,6 +44,8 @@ gameBox:
       cost: 0
       # if true the best score of this button is saved
       saveStats: true
+      # 3 minutes idle time (afterwards the game is paused)
+      idleSeconds: 180
 
       # after the set amount of clicks on the cookie it's position will change
       #   This is optional and can be turned off by setting it to 0 or a negative number

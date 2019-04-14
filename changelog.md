@@ -1,3 +1,6 @@
+### v 2.2.2
+- idle time in config. If the player does no action during x seconds, the game is paused.
+
 ### v 2.2.1
 - add command to manipulate cookies of player saves
 

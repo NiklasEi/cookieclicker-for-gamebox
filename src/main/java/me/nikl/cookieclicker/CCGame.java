@@ -55,6 +55,8 @@ public class CCGame extends BukkitRunnable {
     private double clickCookiesProduced = 0.;
     private double cookiesPerSecond = 0.;
 
+    private long lastAction = System.currentTimeMillis();
+    private boolean idle = false;
     private long lastTimeStamp = System.currentTimeMillis();
     private ItemStack mainCookie = new MaterialData(Material.COOKIE).toItemStack();
     private int mainCookieSlot = 31;
@@ -159,6 +161,11 @@ public class CCGame extends BukkitRunnable {
         if (!loaded || inventoryClickEvent.getAction() != InventoryAction.PICKUP_ALL && inventoryClickEvent.getAction() != InventoryAction.PICKUP_HALF)
             return;
         if (inventoryClickEvent.getCurrentItem() == null) return;
+        lastAction = System.currentTimeMillis();
+        if (idle) {
+            idle = false;
+            lastTimeStamp = System.currentTimeMillis();
+        }
 
         // Click on cookie
         if (inventoryClickEvent.getRawSlot() == mainCookieSlot) {
@@ -365,6 +372,7 @@ public class CCGame extends BukkitRunnable {
 
     @Override
     public void run() {
+        if (idle || !loaded) return;
         long newTimeStamp = System.currentTimeMillis();
         if (cookiesPerSecond > 0) {
             double newCookies = ((newTimeStamp - lastTimeStamp) / 1000.) * cookiesPerSecond;
@@ -376,6 +384,11 @@ public class CCGame extends BukkitRunnable {
                 .replace("%score%", NumberUtility.convertHugeNumber(cookies))
                 .replace("%score_long%", NumberUtility.convertHugeNumber(cookies, false)));
         checkUpgrades();
+        if (rule.getIdleSeconds() > 0 && (newTimeStamp - lastAction)/1000. > rule.getIdleSeconds()) {
+            idle = true;
+            player.sendMessage(lang.PREFIX + lang.GAME_IDLE.replace("%player%", player.getName()));
+            nms.updateInventoryTitle(player, lang.GAME_TITLE_IDLE);
+        }
     }
 
     public void visualize() {

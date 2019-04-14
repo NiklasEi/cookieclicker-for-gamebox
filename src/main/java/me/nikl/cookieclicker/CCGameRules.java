@@ -10,13 +10,19 @@ import me.nikl.gamebox.game.rules.GameRuleMultiRewards;
  */
 public class CCGameRules extends GameRuleMultiRewards {
     private int moveCookieAfterClicks;
+    private int idleSeconds;
 
-    public CCGameRules(String key, double cost, int moveCookieAfterClicks, boolean saveStats) {
+    public CCGameRules(String key, double cost, int moveCookieAfterClicks, boolean saveStats, int idleSeconds) {
         super(key, saveStats, SaveType.HIGH_NUMBER_SCORE, cost);
         this.moveCookieAfterClicks = moveCookieAfterClicks;
+        this.idleSeconds = idleSeconds;
     }
 
     public int getMoveCookieAfterClicks() {
         return moveCookieAfterClicks;
+    }
+
+    public int getIdleSeconds() {
+        return idleSeconds;
     }
 }

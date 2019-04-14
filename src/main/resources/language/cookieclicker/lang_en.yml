@@ -8,9 +8,11 @@ game:
     payed: " &2You paid &4%cost%"
     notEnoughMoney: " &4You do not have enough money!"
   closedGame: " &2You have a current score of &6%score%"
+  idle: " &4You have been idle. The game was paused!"
   inventoryTitles:
     # %score% uses short names for high numbers. For longer names use %score_long%
     gameTitle: "&9&lCC   &r&1%score% cookies"
+    gameTitleIdle: "&9&lCC   &r&1Paused - Click the cookie"
   cookieName: "&1&lCookie"
   ovenName: "&a&lYour Cookie Production"
   # for longer names of high numbers use %cookies_per_second_long% and %cookies_per_click_long%
