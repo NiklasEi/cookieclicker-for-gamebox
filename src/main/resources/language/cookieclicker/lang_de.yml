@@ -27,6 +27,10 @@ game:
     - '&1Du hast %count% %name%(s)'
     - "  &1Jedes Gebäude produziert %cookies_per_second_per_item% pro Sekunde"
     - "  &1Gesamtproduktion: %cookies_per_second%"
+  boosts:
+    ovenBoostTitle: "&1Laufende Boosts:"
+    ovenClickingBoost: "  &2Klicken x %boost%"
+    ovenProductionBoost: "  &2Produktion x %boost%"
 
 
 prefix: "[&3CookieClicker&r]"

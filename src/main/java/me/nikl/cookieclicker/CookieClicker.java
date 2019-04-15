@@ -1,5 +1,6 @@
 package me.nikl.cookieclicker;
 
+import me.nikl.cookieclicker.boosts.BoostManager;
 import me.nikl.cookieclicker.buildings.*;
 import me.nikl.cookieclicker.commands.ManipulateCookies;
 import me.nikl.cookieclicker.data.Database;
@@ -135,9 +136,7 @@ import me.nikl.gamebox.GameBox;
 import me.nikl.gamebox.GameBoxSettings;
 import me.nikl.gamebox.game.Game;
 import me.nikl.gamebox.game.GameSettings;
-import org.bukkit.Bukkit;
 
-import java.util.AbstractMap;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -155,6 +154,7 @@ public class CookieClicker extends Game {
     private Map<Buildings, Building> buildings = new HashMap<>();
     private Map<Integer, Buildings> buildingsPositions = new HashMap<>();
     private Map<Integer, Upgrade> upgrades = new HashMap<>();
+    private BoostManager boostManager;
 
     public CookieClicker(GameBox gameBox) {
         super(gameBox, GameBox.MODULE_COOKIECLICKER);
@@ -179,6 +179,7 @@ public class CookieClicker extends Game {
 
     @Override
     protected void finish() {
+        this.boostManager = new BoostManager(this);
         gameBox.getCommands().getCommandReplacements().addReplacement("cc_game_ids", String.join(":", gameManager.getGameRules().keySet()));
         gameBox.getCommands().getCommandReplacements().addReplacement("cc_subcommands", String.join("|", getModule().getSubCommands()));
         gameBox.getCommands().registerCommand(new ManipulateCookies(gameBox, this));
@@ -448,5 +449,9 @@ public class CookieClicker extends Game {
         for (Building building : buildings.values()) {
             building.removeGame(gameUuid);
         }
+    }
+
+    public BoostManager getBoostManager() {
+        return boostManager;
     }
 }

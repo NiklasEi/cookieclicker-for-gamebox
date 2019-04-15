@@ -18,6 +18,8 @@ public class CCLanguage extends GameLanguage {
     public String GAME_TITLE, GAME_TITLE_IDLE, GAME_CLOSED, GAME_COOKIE_NAME, GAME_OVEN_NAME, GAME_BUILDING_NAME;
     public String GAME_PAYED, GAME_NOT_ENOUGH_MONEY, GAME_IDLE, GAME_LUCKY_COOKIE_NAME;
 
+    public String GAME_OVEN_LORE_BOOST_TITLE, GAME_OVEN_LORE_BOOST_CLICKING, GAME_OVEN_LORE_BOOST_PRODUCTION;
+
     public HashMap<Buildings, String> buildingName;
     public HashMap<Buildings, List<String>> buildingLore;
 
@@ -169,6 +171,10 @@ public class CCLanguage extends GameLanguage {
         this.GAME_TITLE = getString("game.inventoryTitles.gameTitle");
         this.GAME_TITLE_IDLE = getString("game.inventoryTitles.gameTitleIdle");
         this.GAME_IDLE = getString("game.idle");
+
+        this.GAME_OVEN_LORE_BOOST_TITLE = getString("game.boosts.ovenBoostTitle");
+        this.GAME_OVEN_LORE_BOOST_CLICKING = getString("game.boosts.ovenClickingBoost");
+        this.GAME_OVEN_LORE_BOOST_PRODUCTION = getString("game.boosts.ovenProductionBoost");
 
         this.GAME_COOKIE_NAME = getString("game.cookieName");
         this.GAME_LUCKY_COOKIE_NAME = getString("game.goldenCookieName");

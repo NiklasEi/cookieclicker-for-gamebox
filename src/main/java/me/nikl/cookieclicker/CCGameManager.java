@@ -157,4 +157,10 @@ public class CCGameManager implements GameManager {
     public CookieClicker getCookieClicker() {
         return this.game;
     }
+
+    public void updateGlobalBoosts() {
+        for (CCGame game : games.values()) {
+            game.updateGlobalBoosts();
+        }
+    }
 }

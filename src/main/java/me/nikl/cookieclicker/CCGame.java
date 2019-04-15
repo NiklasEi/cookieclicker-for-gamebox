@@ -19,6 +19,8 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.material.MaterialData;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -54,6 +56,9 @@ public class CCGame extends BukkitRunnable {
     private double totalCookiesProduced = 0.;
     private double clickCookiesProduced = 0.;
     private double cookiesPerSecond = 0.;
+
+    private double currentGlobalClickingBoost = 1.;
+    private double currentGlobalProductionBoost = 1.;
 
     private long lastAction = System.currentTimeMillis();
     private boolean idle = false;
@@ -122,6 +127,7 @@ public class CCGame extends BukkitRunnable {
 
         this.inventory = cookieClicker.createInventory(54, title);
 
+        updateGlobalBoosts();
         buildInv();
 
         player.openInventory(inventory);
@@ -156,11 +162,22 @@ public class CCGame extends BukkitRunnable {
     private void updateOven() {
         ArrayList<String> lore = new ArrayList<>();
         for (String line : lang.GAME_OVEN_LORE) {
-            lore.add(line.replace("%cookies_per_second%", NumberUtility.convertHugeNumber(cookiesPerSecond))
-                    .replace("%cookies_per_click%", NumberUtility.convertHugeNumber(cookiesPerClick))
-                    .replace("%cookies_per_second_long%", NumberUtility.convertHugeNumber(cookiesPerSecond, false))
-                    .replace("%cookies_per_click_long%", NumberUtility.convertHugeNumber(cookiesPerClick, false)));
+            lore.add(line.replace("%cookies_per_second%", NumberUtility.convertHugeNumber(cookiesPerSecond * currentGlobalProductionBoost))
+                    .replace("%cookies_per_click%", NumberUtility.convertHugeNumber(cookiesPerClick * currentGlobalClickingBoost))
+                    .replace("%cookies_per_second_long%", NumberUtility.convertHugeNumber(cookiesPerSecond * currentGlobalProductionBoost, false))
+                    .replace("%cookies_per_click_long%", NumberUtility.convertHugeNumber(cookiesPerClick * currentGlobalClickingBoost, false)));
         }
+        if (currentGlobalProductionBoost > 1 || currentGlobalClickingBoost > 1) {
+            lore.add("");
+            lore.add(lang.GAME_OVEN_LORE_BOOST_TITLE);
+            if (currentGlobalClickingBoost > 1) {
+                lore.add(lang.GAME_OVEN_LORE_BOOST_CLICKING.replace("%boost%", String.valueOf(currentGlobalClickingBoost)));
+            }
+            if (currentGlobalProductionBoost > 1) {
+                lore.add(lang.GAME_OVEN_LORE_BOOST_PRODUCTION.replace("%boost%", String.valueOf(currentGlobalProductionBoost)));
+            }
+        }
+
         ItemMeta meta = oven.getItemMeta();
         meta.setLore(lore);
         oven.setItemMeta(meta);
@@ -180,9 +197,10 @@ public class CCGame extends BukkitRunnable {
 
         // Click on cookie
         if (inventoryClickEvent.getRawSlot() == mainCookieSlot) {
-            cookies += cookiesPerClick;
-            clickCookiesProduced += cookiesPerClick;
-            totalCookiesProduced += cookiesPerClick;
+            double cookiesToGet = cookiesPerClick * currentGlobalClickingBoost;
+            cookies += cookiesToGet;
+            clickCookiesProduced += cookiesToGet;
+            totalCookiesProduced += cookiesToGet;
 
             // move the cookie if configured
             if (moveCookieAfterClicks == 1) {
@@ -254,7 +272,7 @@ public class CCGame extends BukkitRunnable {
 
         else if (inventoryClickEvent.getRawSlot() == luckyCookie) {
             inventory.setItem(luckyCookie, null);
-            double wonCookies = Math.min(cookies * 0.15, cookiesPerSecond * 900);
+            double wonCookies = Math.min(cookies * 0.15, cookiesPerSecond * currentGlobalProductionBoost * 900);
             cookies += wonCookies;
             luckyCookie = -1;
         }
@@ -393,7 +411,7 @@ public class CCGame extends BukkitRunnable {
         if (idle || !loaded) return;
         long newTimeStamp = System.currentTimeMillis();
         if (cookiesPerSecond > 0) {
-            double newCookies = ((newTimeStamp - lastTimeStamp) / 1000.) * cookiesPerSecond;
+            double newCookies = ((newTimeStamp - lastTimeStamp) / 1000.) * cookiesPerSecond * currentGlobalProductionBoost;
             cookies += newCookies;
             totalCookiesProduced += newCookies;
         }
@@ -468,6 +486,12 @@ public class CCGame extends BukkitRunnable {
             buildingBonuses.put(buildingThatGetsTheBonus, bonusMap);
             return;
         }
+    }
+
+    public void updateGlobalBoosts() {
+        this.currentGlobalClickingBoost = Math.round(cookieClicker.getBoostManager().getCurrentClickingBoost() * 10)/10.;
+        this.currentGlobalProductionBoost = Math.round(cookieClicker.getBoostManager().getCurrentProductionBoost() * 10)/10.;
+        updateOven();
     }
 
     public double getTotalCookiesProduced() {

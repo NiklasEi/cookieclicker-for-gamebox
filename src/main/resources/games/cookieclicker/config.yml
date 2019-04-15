@@ -65,3 +65,31 @@ gameBox:
       - ''
       - '&6Rank:&1 %rank%'
       - '&6Cookies:&1 %score%'
+
+# Global boosts that give multipliers for clicking and producing cookies
+globalBoosts:
+  # Activation switch for the boost system
+  active: false
+  # For the scheduling of global boosts the plugin CalendarEvents is required!
+  #    FYI: boosts can overlap and will stack. They are rounded to the first decimal place.
+  boosts:
+    # every Sunday, boost the first 10 minutes of a full hour (for more examples of Calendar events visit: https://www.nikl.me/projects/calendarevents/)
+    example1:
+      timing:
+        occasion: "Sunday"
+        time: "xx:00"
+      # duration of the boost in minutes (required and > 0)
+      duration: 10
+      # multiplier for cookies per click
+      clickingBoost: 3
+      # multiplier for cookies produced per second
+      productionBoost: 2
+    # larger boosts on Christmas
+    example2:
+      timing:
+        occasion: "24.12"
+        time: "xx:00"
+      # duration of the boost (in minutes!)
+      duration: 15
+      clickingBoost: 4
+      productionBoost: 4
