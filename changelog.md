@@ -1,6 +1,7 @@
 ### v 2.2.2
 - idle time in config. If the player does no action during x seconds, the game is paused.
 - implement lucky cookies
+- boost system using scheduled events with CalendarEvents
 
 ### v 2.2.1
 - add command to manipulate cookies of player saves
