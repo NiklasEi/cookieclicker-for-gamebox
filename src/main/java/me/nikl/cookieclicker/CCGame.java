@@ -124,7 +124,6 @@ public class CCGame extends BukkitRunnable {
 
         this.inventory = cookieClicker.createInventory(54, title);
 
-        updateGlobalBoosts();
         buildInv();
 
         player.openInventory(inventory);
@@ -153,7 +152,7 @@ public class CCGame extends BukkitRunnable {
         meta = oven.getItemMeta();
         meta.setDisplayName(lang.GAME_OVEN_NAME);
         oven.setItemMeta(meta);
-        updateOven();
+        updateGlobalBoosts();
     }
 
     private void updateOven() {

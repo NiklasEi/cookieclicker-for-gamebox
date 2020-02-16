@@ -1,3 +1,7 @@
+### v 2.2.3
+- fix NPE on game startup
+- fix saving issue for flatfile db on shutdown
+
 ### v 2.2.2
 - idle time in config. If the player does no action during x seconds, the game is paused.
 - implement lucky cookies
