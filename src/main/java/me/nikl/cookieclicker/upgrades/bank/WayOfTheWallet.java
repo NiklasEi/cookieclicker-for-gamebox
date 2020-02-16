@@ -6,7 +6,7 @@ import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.upgrades.Upgrade;
 import me.nikl.cookieclicker.upgrades.UpgradeType;
 import org.bukkit.Material;
-import org.bukkit.material.MaterialData;
+import org.bukkit.inventory.ItemStack;
 
 /**
  * @author Niklas Eicker
@@ -18,7 +18,7 @@ public class WayOfTheWallet extends Upgrade {
         this.cost = 700000000000000000.;
         productionsRequirements.put(Buildings.BANK, 200);
 
-        icon = new MaterialData(Material.GOLD_NUGGET).toItemStack();
+        icon = new ItemStack(Material.GOLD_NUGGET, 1);
         icon.setAmount(1);
 
         loadLanguage(UpgradeType.CLASSIC, Buildings.BANK);

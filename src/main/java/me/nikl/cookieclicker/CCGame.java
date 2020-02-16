@@ -16,11 +16,8 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.material.MaterialData;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import java.math.RoundingMode;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -63,8 +60,8 @@ public class CCGame extends BukkitRunnable {
     private long lastAction = System.currentTimeMillis();
     private boolean idle = false;
     private long lastTimeStamp = System.currentTimeMillis();
-    private ItemStack mainCookie = new MaterialData(Material.COOKIE).toItemStack();
-    private ItemStack luckyCookieItem = new MaterialData(Material.COOKIE).toItemStack();
+    private ItemStack mainCookie = new ItemStack(Material.COOKIE, 1);
+    private ItemStack luckyCookieItem = new ItemStack(Material.COOKIE, 1);
     private int mainCookieSlot = 31;
     private int luckyCookie = -1;
     private int luckyCookieSpawnTime = 300000;
@@ -152,7 +149,7 @@ public class CCGame extends BukkitRunnable {
         luckyCookieItem.setItemMeta(meta);
         luckyCookieItem = nms.addGlow(luckyCookieItem);
 
-        oven = new MaterialData(Material.FURNACE).toItemStack(1);
+        oven = new ItemStack(Material.FURNACE, 1);
         meta = oven.getItemMeta();
         meta.setDisplayName(lang.GAME_OVEN_NAME);
         oven.setItemMeta(meta);
@@ -462,10 +459,8 @@ public class CCGame extends BukkitRunnable {
     public void addClickBonus(Buildings production, double bonusPerBuilding) {
         if (clickBonuses.keySet().contains(production)) {
             clickBonuses.put(production, (clickBonuses.get(production) + bonusPerBuilding));
-            return;
         } else {
             clickBonuses.put(production, bonusPerBuilding);
-            return;
         }
     }
 
@@ -475,16 +470,13 @@ public class CCGame extends BukkitRunnable {
             if (bonusMap.keySet().contains(buildingTheBonusComesFrom)) {
                 bonusMap.put(buildingTheBonusComesFrom, bonusMap.get(buildingTheBonusComesFrom) + bonus);
                 buildingBonuses.put(buildingThatGetsTheBonus, bonusMap);
-                return;
             } else {
                 bonusMap.put(buildingTheBonusComesFrom, bonus);
-                return;
             }
         } else {
             Map<Buildings, Double> bonusMap = new HashMap<>();
             bonusMap.put(buildingTheBonusComesFrom, bonus);
             buildingBonuses.put(buildingThatGetsTheBonus, bonusMap);
-            return;
         }
     }
 

@@ -1,10 +1,8 @@
 package me.nikl.cookieclicker.upgrades;
 
 import me.nikl.cookieclicker.CCGame;
-import me.nikl.cookieclicker.CCGameManager;
 import me.nikl.cookieclicker.CCLanguage;
 import me.nikl.cookieclicker.CookieClicker;
-import me.nikl.cookieclicker.buildings.Building;
 import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.gamebox.GameBox;
 import me.nikl.gamebox.GameBoxSettings;
@@ -14,7 +12,6 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.material.MaterialData;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -41,7 +38,7 @@ public abstract class Upgrade {
         this.id = id;
         productionsRequirements = new HashMap<>();
         cookiesRequirements = new HashMap<>();
-        icon = new MaterialData(Material.BARRIER).toItemStack();
+        icon = new ItemStack(Material.BARRIER, 1);
         icon.setAmount(1);
         this.cost = 1;
         this.game = game;

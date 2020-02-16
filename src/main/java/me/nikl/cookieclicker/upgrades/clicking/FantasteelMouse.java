@@ -5,7 +5,7 @@ import me.nikl.cookieclicker.CookieClicker;
 import me.nikl.cookieclicker.upgrades.Upgrade;
 import me.nikl.cookieclicker.upgrades.UpgradeType;
 import org.bukkit.Material;
-import org.bukkit.material.MaterialData;
+import org.bukkit.inventory.ItemStack;
 
 /**
  * @author Niklas Eicker
@@ -17,7 +17,7 @@ public class FantasteelMouse extends Upgrade {
         this.cost = 5000000000000000000.;
         setClickCookieReq(100000000000000000.);
 
-        icon = new MaterialData(Material.ARROW).toItemStack();
+        icon = new ItemStack(Material.ARROW, 1);
         icon.setAmount(1);
 
         gain = "+1%";

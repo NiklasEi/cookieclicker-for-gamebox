@@ -1,8 +1,6 @@
 package me.nikl.cookieclicker.buildings;
 
 import me.nikl.cookieclicker.CookieClicker;
-import me.nikl.cookieclicker.buildings.Building;
-import me.nikl.cookieclicker.buildings.Buildings;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
@@ -15,7 +13,7 @@ public class Grandma extends Building {
     public Grandma(CookieClicker plugin, int slot, Buildings building) {
         super(plugin, slot, building);
 
-        icon = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
+        icon = new ItemStack(Material.PLAYER_HEAD, 1);
         icon.setAmount(1);
         SkullMeta skullMeta = (SkullMeta) icon.getItemMeta();
         skullMeta.setOwner("MHF_Villager");

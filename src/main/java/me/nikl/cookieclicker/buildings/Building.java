@@ -3,9 +3,7 @@ package me.nikl.cookieclicker.buildings;
 import me.nikl.cookieclicker.CCGame;
 import me.nikl.cookieclicker.CCLanguage;
 import me.nikl.cookieclicker.CookieClicker;
-import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.gamebox.utility.NumberUtility;
-import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 

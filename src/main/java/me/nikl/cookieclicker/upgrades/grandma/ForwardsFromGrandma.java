@@ -19,7 +19,7 @@ public class ForwardsFromGrandma extends Upgrade {
         this.cost = 1000;
         productionsRequirements.put(Buildings.GRANDMA, 1);
 
-        icon = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
+        icon = new ItemStack(Material.PLAYER_HEAD, 1, (short) 3);
         icon.setAmount(1);
         SkullMeta skullMeta = (SkullMeta) icon.getItemMeta();
         skullMeta.setOwner("MHF_Villager");

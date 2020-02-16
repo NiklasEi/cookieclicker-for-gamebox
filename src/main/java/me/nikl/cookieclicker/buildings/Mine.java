@@ -1,13 +1,11 @@
 package me.nikl.cookieclicker.buildings;
 
-import me.nikl.gamebox.GameBoxSettings;
 import me.nikl.cookieclicker.CookieClicker;
-import me.nikl.cookieclicker.buildings.Building;
-import me.nikl.cookieclicker.buildings.Buildings;
+import me.nikl.gamebox.GameBoxSettings;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemFlag;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.material.MaterialData;
 
 /**
  * @author Niklas Eicker
@@ -17,7 +15,7 @@ public class Mine extends Building {
     public Mine(CookieClicker plugin, int slot, Buildings building) {
         super(plugin, slot, building);
 
-        icon = new MaterialData(Material.DIAMOND_PICKAXE).toItemStack();
+        icon = new ItemStack(Material.DIAMOND_PICKAXE, 1);
         icon.setAmount(1);
         ItemMeta meta = icon.getItemMeta();
         if (!GameBoxSettings.version1_8) meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);

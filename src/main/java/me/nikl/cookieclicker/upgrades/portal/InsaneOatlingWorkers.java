@@ -6,7 +6,7 @@ import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.upgrades.Upgrade;
 import me.nikl.cookieclicker.upgrades.UpgradeType;
 import org.bukkit.Material;
-import org.bukkit.material.MaterialData;
+import org.bukkit.inventory.ItemStack;
 
 /**
  * @author Niklas Eicker
@@ -18,7 +18,7 @@ public class InsaneOatlingWorkers extends Upgrade {
         this.cost = 50000000000000.;
         productionsRequirements.put(Buildings.PORTAL, 5);
 
-        icon = new MaterialData(Material.EYE_OF_ENDER).toItemStack();
+        icon = new ItemStack(Material.ENDER_EYE, 1);
         icon.setAmount(1);
 
         loadLanguage(UpgradeType.CLASSIC, Buildings.PORTAL);

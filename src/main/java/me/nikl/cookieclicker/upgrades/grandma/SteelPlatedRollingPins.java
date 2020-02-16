@@ -19,7 +19,7 @@ public class SteelPlatedRollingPins extends Upgrade {
         this.cost = 5000;
         productionsRequirements.put(Buildings.GRANDMA, 5);
 
-        icon = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
+        icon = new ItemStack(Material.PLAYER_HEAD, 1);
         icon.setAmount(1);
         SkullMeta skullMeta = (SkullMeta) icon.getItemMeta();
         skullMeta.setOwner("MHF_Villager");

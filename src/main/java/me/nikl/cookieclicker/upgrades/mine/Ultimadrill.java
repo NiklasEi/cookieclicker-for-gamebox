@@ -6,7 +6,7 @@ import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.upgrades.Upgrade;
 import me.nikl.cookieclicker.upgrades.UpgradeType;
 import org.bukkit.Material;
-import org.bukkit.material.MaterialData;
+import org.bukkit.inventory.ItemStack;
 
 /**
  * @author Niklas Eicker
@@ -18,7 +18,7 @@ public class Ultimadrill extends Upgrade {
         this.cost = 600000000;
         productionsRequirements.put(Buildings.MINE, 50);
 
-        icon = new MaterialData(Material.DIAMOND_PICKAXE).toItemStack();
+        icon = new ItemStack(Material.DIAMOND_PICKAXE, 1);
         icon.setAmount(1);
 
         loadLanguage(UpgradeType.CLASSIC, Buildings.MINE);

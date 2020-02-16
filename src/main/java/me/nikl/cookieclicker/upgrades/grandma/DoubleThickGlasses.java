@@ -19,7 +19,7 @@ public class DoubleThickGlasses extends Upgrade {
         this.cost = 500000000;
         productionsRequirements.put(Buildings.GRANDMA, 100);
 
-        icon = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
+        icon = new ItemStack(Material.PLAYER_HEAD, 1);
         icon.setAmount(1);
         SkullMeta skullMeta = (SkullMeta) icon.getItemMeta();
         skullMeta.setOwner("MHF_Villager");

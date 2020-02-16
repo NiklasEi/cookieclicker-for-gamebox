@@ -6,7 +6,7 @@ import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.upgrades.Upgrade;
 import me.nikl.cookieclicker.upgrades.UpgradeType;
 import org.bukkit.Material;
-import org.bukkit.material.MaterialData;
+import org.bukkit.inventory.ItemStack;
 
 /**
  * @author Niklas Eicker
@@ -18,7 +18,7 @@ public class OctillionFingers extends Upgrade {
         this.cost = 10000000000000000.;
         productionsRequirements.put(Buildings.CURSOR, 320);
 
-        icon = new MaterialData(Material.ARROW).toItemStack();
+        icon = new ItemStack(Material.ARROW, 1);
         icon.setAmount(1);
 
         gain = "+5000000";

@@ -1,9 +1,9 @@
 package me.nikl.cookieclicker;
 
-import me.nikl.gamebox.game.Game;
-import me.nikl.gamebox.game.GameLanguage;
 import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.upgrades.UpgradeType;
+import me.nikl.gamebox.game.Game;
+import me.nikl.gamebox.game.GameLanguage;
 import org.bukkit.ChatColor;
 
 import java.util.ArrayList;

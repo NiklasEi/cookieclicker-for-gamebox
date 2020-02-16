@@ -6,7 +6,7 @@ import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.upgrades.Upgrade;
 import me.nikl.cookieclicker.upgrades.UpgradeType;
 import org.bukkit.Material;
-import org.bukkit.material.MaterialData;
+import org.bukkit.inventory.ItemStack;
 
 /**
  * @author Niklas Eicker
@@ -18,7 +18,7 @@ public class PointierHats extends Upgrade {
         this.cost = 3300000000.;
         productionsRequirements.put(Buildings.WIZARD_TOWER, 1);
 
-        icon = new MaterialData(Material.BLAZE_ROD).toItemStack();
+        icon = new ItemStack(Material.BLAZE_ROD, 1);
         icon.setAmount(1);
 
         loadLanguage(UpgradeType.CLASSIC, Buildings.WIZARD_TOWER);
