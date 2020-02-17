@@ -55,7 +55,7 @@ gameBox:
     # use the same key as the game you want to display the top list for
     #   for that button 'saveStats' must be true (see above)
     weekly:
-      materialData: "SKULL_ITEM:3"
+      materialData: "cookie"
       displayName: "&6Cookie Clicker &c&lTop list"
       slot: 24
       # inventory title of the top list (%player% and %game%)
