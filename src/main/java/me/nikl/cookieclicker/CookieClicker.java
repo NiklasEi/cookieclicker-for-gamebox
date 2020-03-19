@@ -190,7 +190,6 @@ public class CookieClicker extends Game {
         gameSettings.setGameType(GameSettings.GameType.SINGLE_PLAYER);
         gameSettings.setGameGuiSize(54);
         gameSettings.setHandleClicksOnHotbar(false);
-        gameSettings.setGameBoxMinimumVersion("2.2.1");
     }
 
     @Override
@@ -424,7 +423,7 @@ public class CookieClicker extends Game {
     }
 
     public boolean isBuildingSlot(int rawSlot) {
-        return buildingsPositions.keySet().contains(rawSlot);
+        return buildingsPositions.containsKey(rawSlot);
     }
 
     public Building getBuilding(int rawSlot) {
