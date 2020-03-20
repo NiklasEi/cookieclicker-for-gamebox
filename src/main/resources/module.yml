@@ -7,4 +7,4 @@ sourceUrl: ${project.scm.url}
 updatedAt: !!java.lang.Long ${timestamp}
 dependencies:
   - id: gamebox
-    versionConstrain: ">= 3.0.1"
+    versionConstrain: ">= ${gamebox.version}"
