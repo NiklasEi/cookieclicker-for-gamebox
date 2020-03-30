@@ -121,7 +121,7 @@ public abstract class Upgrade {
 
 
         ItemMeta meta = icon.getItemMeta();
-        if (!GameBoxSettings.version1_8) meta.addItemFlags(ItemFlag.values());
+        meta.addItemFlags(ItemFlag.values());
         meta.setDisplayName(lang.GAME_UPGRADE_NAME.replace("%name%", name));
         meta.setLore(lore);
         icon.setItemMeta(meta);

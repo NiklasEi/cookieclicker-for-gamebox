@@ -18,7 +18,7 @@ public class Mine extends Building {
         icon = new ItemStack(Material.DIAMOND_PICKAXE, 1);
         icon.setAmount(1);
         ItemMeta meta = icon.getItemMeta();
-        if (!GameBoxSettings.version1_8) meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         meta.setDisplayName(lang.GAME_BUILDING_NAME.replace("%name%", name));
         icon.setItemMeta(meta);
 

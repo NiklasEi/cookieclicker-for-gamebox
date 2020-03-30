@@ -157,7 +157,7 @@ public class CookieClicker extends Game {
     private BoostManager boostManager;
 
     public CookieClicker(GameBox gameBox) {
-        super(gameBox, GameBox.MODULE_COOKIECLICKER);
+        super(gameBox, Module.MODULE_COOKIECLICKER);
     }
 
     @Override
