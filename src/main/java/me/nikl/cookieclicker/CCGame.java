@@ -41,11 +41,11 @@ public class CCGame extends BukkitRunnable {
     private CCLanguage lang;
     private NmsUtility nms;
     private CookieClicker cookieClicker;
-    private boolean playSounds = false;
+    private boolean playSounds;
     private CCGameRules rule;
     private Player player;
     private Inventory inventory;
-    private double cookies = 0;
+    private double cookies;
     private double cookiesPerClick = 0.;
     private Map<Buildings, Double> clickBonuses = new HashMap<>();
     private Map<Buildings, Map<Buildings, Double>> buildingBonuses = new HashMap<>();
@@ -66,13 +66,13 @@ public class CCGame extends BukkitRunnable {
     private int luckyCookie = -1;
     private int luckyCookieSpawnTime = 300000;
     private int luckyCookieDespawnTime = 13000;
-    private long lastluckyCookieTimeStamp = System.currentTimeMillis();
+    private long lastLuckyCookieTimeStamp = System.currentTimeMillis();
     private List<Integer> mainCookieSlots;
     private int moveCookieAfterClicks;
     private ItemStack oven;
     private int ovenSlot = 0;
     private Set<Integer> activeUpgrades = new HashSet<>();
-    private Set<Integer> futureUpgrades = new HashSet<>();
+    private Set<Integer> futureUpgrades;
     private Set<Upgrade> upgradesWaitingList = new HashSet<>();
     private Map<Integer, Integer> shownUpgradesSlotToID = new HashMap<>();
 
@@ -246,7 +246,7 @@ public class CCGame extends BukkitRunnable {
         }
 
         // click on upgrade
-        else if (shownUpgradesSlotToID.keySet().contains(53 - inventoryClickEvent.getRawSlot())) {
+        else if (shownUpgradesSlotToID.containsKey(53 - inventoryClickEvent.getRawSlot())) {
             Upgrade upgrade = cookieClicker.getUpgrade(shownUpgradesSlotToID.get(53 - inventoryClickEvent.getRawSlot()));
             if (cookies < upgrade.getCost()) {
                 if (playSounds) player.playSound(player.getLocation(), no, volume, pitch);
@@ -278,7 +278,7 @@ public class CCGame extends BukkitRunnable {
         cookiesPerSecond = 0.;
         for (Buildings buildingType : Buildings.values()) {
             // check for bonuses from other buildings
-            if (buildingBonuses.keySet().contains(buildingType)) {
+            if (buildingBonuses.containsKey(buildingType)) {
 
                 double otherBuildingBonus = 0.;
                 double bonus;
@@ -358,8 +358,12 @@ public class CCGame extends BukkitRunnable {
         // this removes possible ghost items that players can take out of the inventory
         inventory.clear();
         player.sendMessage(lang.PREFIX + lang.GAME_CLOSED.replace("%score%", NumberUtility.convertHugeNumber(Math.floor(totalCookiesProduced))));
-        GameSave.Builder builder = new GameSave.Builder(player.getUniqueId(), rule.getKey());
+        saveGameAndStatistics(async);
+        cookieClicker.removeGame(gameUuid);
+    }
 
+    public void saveGameAndStatistics(boolean async) {
+        GameSave.Builder builder = new GameSave.Builder(player.getUniqueId(), rule.getKey());
         builder.setCookiesClicked(this.clickCookiesProduced);
         builder.setCookiesCurrent(this.cookies);
         builder.setCookiesTotal(this.totalCookiesProduced);
@@ -369,7 +373,6 @@ public class CCGame extends BukkitRunnable {
         builder.setUpgrades(activeUpgrades);
         GameSave save = builder.build();
         cookieClicker.getDatabase().saveGame(save, async);
-        cookieClicker.removeGame(gameUuid);
         manager.saveStatistics(save, async);
     }
 
@@ -422,11 +425,11 @@ public class CCGame extends BukkitRunnable {
             nms.updateInventoryTitle(player, lang.GAME_TITLE_IDLE);
         }
         if (luckyCookie == -1) {
-            if (newTimeStamp - lastluckyCookieTimeStamp > luckyCookieSpawnTime) {
+            if (newTimeStamp - lastLuckyCookieTimeStamp > luckyCookieSpawnTime) {
                 spawnLuckyCookie();
             }
         } else {
-            if (newTimeStamp - lastluckyCookieTimeStamp > luckyCookieDespawnTime) {
+            if (newTimeStamp - lastLuckyCookieTimeStamp > luckyCookieDespawnTime) {
                 inventory.setItem(luckyCookie, null);
                 luckyCookie = -1;
             }
@@ -434,7 +437,7 @@ public class CCGame extends BukkitRunnable {
     }
 
     private void spawnLuckyCookie() {
-        lastluckyCookieTimeStamp = System.currentTimeMillis();
+        lastLuckyCookieTimeStamp = System.currentTimeMillis();
         int addToSlot = rand.nextInt(24);
         // skip the main cookie slots (30, 31, 32)
         if (addToSlot > 11) addToSlot = addToSlot + 3;
@@ -456,7 +459,7 @@ public class CCGame extends BukkitRunnable {
      * @param bonusPerBuilding bonus to apply per building
      */
     public void addClickBonus(Buildings production, double bonusPerBuilding) {
-        if (clickBonuses.keySet().contains(production)) {
+        if (clickBonuses.containsKey(production)) {
             clickBonuses.put(production, (clickBonuses.get(production) + bonusPerBuilding));
         } else {
             clickBonuses.put(production, bonusPerBuilding);
@@ -464,9 +467,9 @@ public class CCGame extends BukkitRunnable {
     }
 
     public void addBuildingBonus(Buildings buildingThatGetsTheBonus, Buildings buildingTheBonusComesFrom, double bonus) {
-        if (buildingBonuses.keySet().contains(buildingThatGetsTheBonus)) {
+        if (buildingBonuses.containsKey(buildingThatGetsTheBonus)) {
             Map<Buildings, Double> bonusMap = buildingBonuses.get(buildingThatGetsTheBonus);
-            if (bonusMap.keySet().contains(buildingTheBonusComesFrom)) {
+            if (bonusMap.containsKey(buildingTheBonusComesFrom)) {
                 bonusMap.put(buildingTheBonusComesFrom, bonusMap.get(buildingTheBonusComesFrom) + bonus);
                 buildingBonuses.put(buildingThatGetsTheBonus, bonusMap);
             } else {

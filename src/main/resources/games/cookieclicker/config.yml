@@ -17,6 +17,12 @@ rules:
 economy:
   enabled: false
 
+# Option to save your game in a regular interval while inside the GUI
+autoSave:
+  enabled: true
+  # saving interval in seconds
+  interval: 300
+
 gameBox:
   mainButton:
     # define the Material and data for the button (format: 'material:data')

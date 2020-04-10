@@ -12,6 +12,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.scheduler.BukkitTask;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -29,7 +31,7 @@ import java.util.logging.Level;
 
 public class CCGameManager implements GameManager {
     private CookieClicker game;
-
+    private BukkitTask saveInterval;
     private Map<UUID, CCGame> games = new HashMap<>();
 
     private Map<String, CCGameRules> gameRules = new HashMap<>();
@@ -38,17 +40,38 @@ public class CCGameManager implements GameManager {
     public CCGameManager(CookieClicker game) {
         this.game = game;
         this.statistics = game.getGameBox().getDataBase();
+        setupAutoSave();
+    }
+
+    private void setupAutoSave() {
+        if (!game.getConfig().isConfigurationSection("autoSave")) {
+            return;
+        }
+        ConfigurationSection autoSave = game.getConfig().getConfigurationSection("autoSave");
+        if (!autoSave.getBoolean("enabled", true)) {
+            return;
+        }
+        int interval = autoSave.getInt("interval", 300);
+        if (interval < 1) {
+            interval = 300;
+        }
+        saveInterval = new BukkitRunnable() {
+            @Override
+            public void run() {
+                games.values().forEach(game -> game.saveGameAndStatistics(true));
+            }
+        }.runTaskTimer(game.getGameBox(), interval * 20, interval * 20);
     }
 
     public void onInventoryClick(InventoryClickEvent inventoryClickEvent) {
-        if (!games.keySet().contains(inventoryClickEvent.getWhoClicked().getUniqueId())) return;
+        if (!games.containsKey(inventoryClickEvent.getWhoClicked().getUniqueId())) return;
         CCGame game = games.get(inventoryClickEvent.getWhoClicked().getUniqueId());
         game.onClick(inventoryClickEvent);
     }
 
 
     public void onInventoryClose(InventoryCloseEvent inventoryCloseEvent) {
-        if (!games.keySet().contains(inventoryCloseEvent.getPlayer().getUniqueId())) return;
+        if (!games.containsKey(inventoryCloseEvent.getPlayer().getUniqueId())) return;
 
         // do same stuff as on removeFromGame()
         removeFromGame(inventoryCloseEvent.getPlayer().getUniqueId());
@@ -74,7 +97,6 @@ public class CCGameManager implements GameManager {
             throw new GameStartException(GameStartException.Reason.NOT_ENOUGH_MONEY);
         }
         games.put(players[0].getUniqueId(), new CCGame(rule, this, players[0], playSounds));
-        return;
     }
 
 
@@ -98,7 +120,7 @@ public class CCGameManager implements GameManager {
             ConfigurationSection rewards = buttonSec.getConfigurationSection("rewards");
             for (String key : rewards.getKeys(false)) {
                 try {
-                    int minScore = Integer.valueOf(key);
+                    int minScore = Integer.parseInt(key);
                     int token = rewards.getInt(key + ".token", 0);
                     double money = rewards.getDouble(key + ".money", 0.);
                     rules.addMoneyReward(minScore, money);
@@ -117,6 +139,9 @@ public class CCGameManager implements GameManager {
     }
 
     public void onShutDown() {
+        if (saveInterval != null && !saveInterval.isCancelled()) {
+            saveInterval.cancel();
+        }
         // save all open games!
         for (CCGame game : games.values()) {
             game.cancel();
@@ -125,7 +150,7 @@ public class CCGameManager implements GameManager {
     }
 
     public void restart(String key) {
-        CCGameRules rule = (CCGameRules) gameRules.get(key);
+        CCGameRules rule = gameRules.get(key);
         if (rule == null) return;
         Set<Player> players = new HashSet<>();
         for (CCGame game : games.values()) {

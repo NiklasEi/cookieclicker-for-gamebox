@@ -1,3 +1,10 @@
+
+### v 3.0.0
+- compatibility with MC 1.14+ and GameBox v3
+- auto save option (default: saving every 5min)
+
+#
+
 ### v 2.2.3
 - fix NPE on game startup
 - fix saving issue for flatfile db on shutdown
