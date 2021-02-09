@@ -115,7 +115,7 @@ public class CCGameManager implements GameManager {
         if (idleSeconds < 1) idleSeconds = 0;
         double cost = buttonSec.getDouble("cost", 0.);
         boolean saveStats = buttonSec.getBoolean("saveStats", false);
-        CCGameRules rules = new CCGameRules(buttonID, cost, moveCookieAfterClicks, saveStats,idleSeconds);
+        CCGameRules rules = new CCGameRules(this.game, buttonID, cost, moveCookieAfterClicks, saveStats,idleSeconds);
         if (buttonSec.isConfigurationSection("rewards")) {
             ConfigurationSection rewards = buttonSec.getConfigurationSection("rewards");
             for (String key : rewards.getKeys(false)) {

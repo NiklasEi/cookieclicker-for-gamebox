@@ -7,6 +7,8 @@ game:
     # use %cost% for the amount payed
     payed: " &2Du hast &4%cost% gezahlt"
     notEnoughMoney: " &4Nicht genug Geld!"
+  wonMoney: " &2Du hast %score% Kekse erreicht und %reward% gewonnen"
+  wonToken: " &2Du hast %score% Kekse erreicht und %reward% token gewonnen"
   closedGame: " &2Momentaner Punktestand: &6%score%"
   idle: " &4Du warst untätig. Das Spiel wurde pausiert!"
   inventoryTitles:

@@ -4,11 +4,14 @@ import me.nikl.cookieclicker.buildings.Building;
 import me.nikl.cookieclicker.buildings.Buildings;
 import me.nikl.cookieclicker.data.GameSave;
 import me.nikl.cookieclicker.upgrades.Upgrade;
+import me.nikl.gamebox.GameBox;
 import me.nikl.gamebox.data.database.DataBase;
 import me.nikl.gamebox.nms.NmsFactory;
 import me.nikl.gamebox.nms.NmsUtility;
 import me.nikl.gamebox.utility.NumberUtility;
+import me.nikl.gamebox.utility.Permission;
 import me.nikl.gamebox.utility.Sound;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryAction;
@@ -26,6 +29,7 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 import java.util.UUID;
+import java.util.logging.Level;
 
 /**
  * Created by Niklas
@@ -45,6 +49,8 @@ public class CCGame extends BukkitRunnable {
     private CCGameRules rule;
     private Player player;
     private Inventory inventory;
+    private double currentMoneyKey;
+    private double currentTokenKey;
     private double cookies;
     private double cookiesPerClick = 0.;
     private Map<Buildings, Double> clickBonuses = new HashMap<>();
@@ -99,6 +105,8 @@ public class CCGame extends BukkitRunnable {
         mainCookieSlots.add(31);
         mainCookieSlots.add(32);
         moveCookieAfterClicks = rule.getMoveCookieAfterClicks();
+        currentMoneyKey = 0.;
+        currentTokenKey = 0.;
         cookies = 0.;
         futureUpgrades = cookieClicker.getUpgradeIDs();
 
@@ -197,6 +205,7 @@ public class CCGame extends BukkitRunnable {
             cookies += cookiesToGet;
             clickCookiesProduced += cookiesToGet;
             totalCookiesProduced += cookiesToGet;
+            payRewards();
 
             // move the cookie if configured
             if (moveCookieAfterClicks == 1) {
@@ -362,6 +371,28 @@ public class CCGame extends BukkitRunnable {
         cookieClicker.removeGame(gameUuid);
     }
 
+    private void payRewards() {
+        double newCurrentMoneyKey = rule.currentScoreMoneyKey(totalCookiesProduced);
+        double newCurrentTokenKey = rule.currentScoreTokenKey(totalCookiesProduced);
+        if (newCurrentMoneyKey > currentMoneyKey) {
+            currentMoneyKey = newCurrentMoneyKey;
+            double reward = rule.getMoneyToWin(totalCookiesProduced);
+            // score intervals could be empty or not configured
+            if(reward > 0 && cookieClicker.getSettings().isEconEnabled() && Permission.BYPASS_GAME.hasPermission(player, Module.MODULE_COOKIECLICKER)){
+                    GameBox.econ.depositPlayer(player, reward);
+                    player.sendMessage(lang.PREFIX + lang.GAME_WON_MONEY.replace("%reward%", reward+"").replace("%score%", NumberUtility.convertHugeNumber(Math.floor(currentMoneyKey))));
+            }
+        }
+        if (newCurrentTokenKey > currentTokenKey) {
+            currentTokenKey = newCurrentTokenKey;
+            int token = rule.getTokenToWin(totalCookiesProduced);
+            if(token > 0){
+                player.sendMessage(lang.PREFIX + lang.GAME_WON_TOKEN.replace("%reward%", token+"").replace("%score%", NumberUtility.convertHugeNumber(Math.floor(currentTokenKey))));
+                cookieClicker.getGameBox().getApi().giveToken(player, token);
+            }
+        }
+    }
+
     public void saveGameAndStatistics(boolean async) {
         GameSave.Builder builder = new GameSave.Builder(player.getUniqueId(), rule.getKey());
         builder.setCookiesClicked(this.clickCookiesProduced);
@@ -383,6 +414,8 @@ public class CCGame extends BukkitRunnable {
         cookies = cookiesMap.get(GameSave.CURRENT);
         clickCookiesProduced = cookiesMap.get(GameSave.CLICKED);
         totalCookiesProduced = cookiesMap.get(GameSave.TOTAL);
+        currentMoneyKey = rule.currentScoreMoneyKey(totalCookiesProduced);
+        currentTokenKey = rule.currentScoreTokenKey(totalCookiesProduced);
         Map<Buildings, Integer> buildings = save.getBuildings();
         for (Buildings building : buildings.keySet()) {
             cookieClicker.getBuilding(building).addProductions(gameUuid, buildings.get(building));
@@ -413,6 +446,7 @@ public class CCGame extends BukkitRunnable {
             double newCookies = ((newTimeStamp - lastTimeStamp) / 1000.) * cookiesPerSecond * currentGlobalProductionBoost;
             cookies += newCookies;
             totalCookiesProduced += newCookies;
+            payRewards();
         }
         lastTimeStamp = newTimeStamp;
         nms.updateInventoryTitle(player, lang.GAME_TITLE

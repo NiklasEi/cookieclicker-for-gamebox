@@ -1,3 +1,5 @@
+### v 3.1.0
+- support money and token rewards
 
 ### v 3.0.0
 - compatibility with MC 1.14+ and GameBox v3

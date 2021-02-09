@@ -16,7 +16,7 @@ public class CCLanguage extends GameLanguage {
     public List<String> GAME_OVEN_LORE, GAME_BUILDING_LORE;
 
     public String GAME_TITLE, GAME_TITLE_IDLE, GAME_CLOSED, GAME_COOKIE_NAME, GAME_OVEN_NAME, GAME_BUILDING_NAME;
-    public String GAME_PAYED, GAME_NOT_ENOUGH_MONEY, GAME_IDLE, GAME_LUCKY_COOKIE_NAME;
+    public String GAME_PAYED, GAME_NOT_ENOUGH_MONEY, GAME_IDLE, GAME_LUCKY_COOKIE_NAME, GAME_WON_MONEY, GAME_WON_TOKEN;
 
     public String GAME_OVEN_LORE_BOOST_TITLE, GAME_OVEN_LORE_BOOST_CLICKING, GAME_OVEN_LORE_BOOST_PRODUCTION;
 
@@ -184,6 +184,9 @@ public class CCLanguage extends GameLanguage {
 
         this.GAME_PAYED = getString("game.econ.payed");
         this.GAME_NOT_ENOUGH_MONEY = getString("game.econ.notEnoughMoney");
+
+        this.GAME_WON_MONEY = getString("game.wonMoney");
+        this.GAME_WON_TOKEN = getString("game.wonToken");
 
         this.GAME_CLOSED = getString("game.closedGame");
 

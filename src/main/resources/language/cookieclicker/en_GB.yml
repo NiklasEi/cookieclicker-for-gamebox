@@ -7,6 +7,8 @@ game:
     # use %cost% for the amount payed
     payed: " &2You paid &4%cost%"
     notEnoughMoney: " &4You do not have enough money!"
+  wonMoney: " &2You won %reward% for reaching %score% cookies"
+  wonToken: " &2You won %reward% token for reaching %score% cookies"
   closedGame: " &2You have a current score of &6%score%"
   idle: " &4You have been idle. The game was paused!"
   inventoryTitles:

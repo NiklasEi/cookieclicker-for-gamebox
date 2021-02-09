@@ -31,21 +31,21 @@ gameBox:
     displayName: "&3Cookie Clicker"
     # lore of the button
     lore:
-    - ""
-    - "&1Conquer the world with your cookies."
-    - ""
-    - "&5&o\"Come to the dark side of the force..."
-    - "&5&o    We have cookies!\""
+      - ""
+      - "&1Conquer the world with your cookies."
+      - ""
+      - "&5&o\"Come to the dark side of the force..."
+      - "&5&o    We have cookies!\""
   gameButtons:
     weekly:
       materialData: "cookie"
       displayName: "&aCookie Clicker"
       lore:
-      - ""
-      - "&6Click on the cookie!"
-      - ""
-      - "&5&o\"Yes..."
-      - "  &5&oIt's that simple.\""
+        - ""
+        - "&6Click on the cookie!"
+        - ""
+        - "&5&o\"Yes..."
+        - "  &5&oIt's that simple.\""
       slot: 20
       cost: 0
       # if true the best score of this button is saved
@@ -57,6 +57,24 @@ gameBox:
       #   This is optional and can be turned off by setting it to 0 or a negative number
       #   This option is supposed to prevent players from using autoclickers
       moveCookieAfterClicks: 100
+      # all keys have to be integers otherwise they will be ignored and a warning will be printed in the console
+
+      # money is only paid if economy is enabled
+      # tokens can be used in the GameBox shop
+
+      # You can add as many intervals as you want to. The order of the intervals doesn't matter
+      #   the given rewards will always be used if the game is finished with a score between the key and the
+      #   next higher key. For the highest key the interval goes to infinity
+      scoreIntervals:
+        0:
+          money: 0
+          tokens: 0
+        250:
+          money: 10
+          token: 1
+        1000:
+          money: 100
+          tokens: 1
   topListButtons:
     # use the same key as the game you want to display the top list for
     #   for that button 'saveStats' must be true (see above)
@@ -68,9 +86,9 @@ gameBox:
       inventoryTitle: '     &6Cookie Clicker &rTop List'
       # Lore of the skulls in the inventory. Use %rank% for the rank and %score% for the highest score of the player
       skullLore:
-      - ''
-      - '&6Rank:&1 %rank%'
-      - '&6Cookies:&1 %score%'
+        - ''
+        - '&6Rank:&1 %rank%'
+        - '&6Cookies:&1 %score%'
 
 # Global boosts that give multipliers for clicking and producing cookies
 globalBoosts:

@@ -8,7 +8,7 @@
     <artifactId>cookieclicker</artifactId>
     <name>CookieClicker</name>
     <packaging>jar</packaging>
-    <version>3.0.0-beta.3</version>
+    <version>3.1.0</version>
     <description>The super addictive backing game</description>
 
     <distributionManagement>
@@ -100,6 +100,6 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <gamebox.version>3.0.0-beta.3</gamebox.version>
+        <gamebox.version>3.2.0</gamebox.version>
     </properties>
 </project>
